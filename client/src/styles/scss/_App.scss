@@ -1,0 +1,16 @@
+@import "./variables";
+
+body {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.slightContainer {
+  height: 75vh;
+}
+
+.box-gallery {
+  top: 58px;
+  margin-bottom: 70px;
+  z-index: -1;
+}

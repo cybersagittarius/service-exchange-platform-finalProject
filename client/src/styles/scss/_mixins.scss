@@ -1,0 +1,13 @@
+@mixin flexCenter($direction, $background) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+    background: $background;
+}
+
+@mixin flexCenterOnly() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
