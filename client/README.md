@@ -2,6 +2,8 @@
 
 # "master" is the main branch on Github by default. Do not commit directly to the master.
 
+# any fronend codes are inside the client folder, any backend codes are outside the client folder
+
 # happy coding
 
 # Getting Started with Create React App
