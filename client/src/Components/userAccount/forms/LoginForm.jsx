@@ -120,7 +120,7 @@ const LoginForm = (props) => {
                         <a href="#"></a>
                         <FontAwesomeIcon
                           icon={["fab", "google"]}
-                          size="1.5x"
+                          size="1x"
                         />
                       </button>
                       </div>
@@ -130,7 +130,7 @@ const LoginForm = (props) => {
                         type="button" 
                         className="btn btn-warning">
                         <a href="#"></a>
-                        <FontAwesomeIcon icon={["fab", "facebook"]} size="1.5x" />
+                        <FontAwesomeIcon icon={["fab", "facebook"]} size="1x" />
                       </button>
                       </div>
                       
@@ -141,7 +141,7 @@ const LoginForm = (props) => {
                         style={{ color: "white" }}
                       >
                         <a href="#"></a>
-                        <FontAwesomeIcon icon={["fab", "twitter"]} size="1.5x" />
+                        <FontAwesomeIcon icon={["fab", "twitter"]} size="1x" />
                       </button>
                       </div>                   
                     </div>                  
