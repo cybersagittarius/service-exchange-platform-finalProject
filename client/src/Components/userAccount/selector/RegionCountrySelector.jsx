@@ -31,15 +31,15 @@ const RegionCountrySelector = ({
       {/* <div className="form row-lg-12"> */}
       <div>
         <CountryDropdown
-          // class="form-control col-lg-6"
-          class="form-control"
+          // className="form-control col-lg-6"
+          className="form-control"
           value={country}
           onChange={(val) => selectCountry(val)}
         />
 
         <RegionDropdown
-          // class="form-control col-lg-6"
-          class="form-control"
+          // className="form-control col-lg-6"
+          className="form-control"
           country={country}
           value={region}
           onChange={(val) => selectRegion(val)}
