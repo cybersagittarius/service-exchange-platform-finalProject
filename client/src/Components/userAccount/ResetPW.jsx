@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ResetPWForm from "./forms/ResetPWForm";
 
-
 const ResetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);

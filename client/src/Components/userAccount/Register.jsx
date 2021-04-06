@@ -107,8 +107,8 @@ const Register = () => {
                           changeUserName = { changeUserName }
                           changePassWord = { changePassWord }
                           changeConfirmPW = { changeConfirmPW } 
-                          changeCountry = {changeCountry} 
-                          changeRegion = {changeRegion}
+                          changeCountry = { changeCountry } 
+                          changeRegion = { changeRegion }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }
