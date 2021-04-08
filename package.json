@@ -1,11 +1,16 @@
 {
-  "name": "finalprojectmain",
+  "name": "final projet backend",
   "version": "1.0.0",
-  "description": "created a new branch from master",
-  "main": "app.js",
+  "description": "backend branch for master",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "SCC",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
 }
