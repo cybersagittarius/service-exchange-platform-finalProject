@@ -24,7 +24,8 @@ router.post('/', (req, res)=>{
 
     loginController.checkUser(body)
     .then(response=>{
-        res.send(response)
+        
+        res.json(response)
     })
     .catch(error=>{
         console.log(error)
