@@ -1,12 +1,26 @@
 import { useState } from "react";
 import LoginForm from "./forms/LoginForm";
-//comment hii
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
+
+  const postNewUser = (data) => {
+    console.log(data);
+
+    /// FETCH TO SEND DATA TO BACKEND
+    fetch('http://localhost:4000/register', {
+        method: "POST",
+        headers: { 'Context-Type': 'application/json' },
+        body: JSON.stringify(data)  // backend will receive this in: req.body
+    })
+    .then(res => res.json())
+    .then(userCreated => console.log(userCreated))
+    .catch(err => alert('An error!'))
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -36,7 +50,7 @@ const Login = () => {
     rememberMe === true
       ? saveOnLocal(email, passWord)
       : console.log("No email nor password saved in the browser");
-
+      
     setEmail("");
     setPassWord("");
     setRememberMe(false);
