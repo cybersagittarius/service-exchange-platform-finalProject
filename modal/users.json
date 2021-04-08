@@ -49,7 +49,12 @@
             "userName": "mr",
             "email": "mr@mail.com",
             "passWord": "12345"
+        },
+        {
+            "id": 6
+        },
+        {
+            "id": 7
         }
-        
     ]
 }

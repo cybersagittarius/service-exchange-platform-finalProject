@@ -22,7 +22,7 @@ const checkUser = (body) => {
                     if(foundUser.passWord !==passWord){
                         reject(new Error('Password is wrong'))
                     }else{
-                        resolve('User is logged in!')
+                        resolve('Hurray!! User is logged in!')
                     }
                 }
             }
