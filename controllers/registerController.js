@@ -4,7 +4,9 @@ const fs = require('fs');
 const usersPath = path.join(__dirname, '..', 'modal', 'users.json')
 
 const saveUsers = (body) =>{
+
     return new Promise((resolve, reject) => {
+        
         fs.readFile(usersPath, (err, data)=>{
             if(err){
                 reject(err)
