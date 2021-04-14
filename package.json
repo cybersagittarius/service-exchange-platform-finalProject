@@ -1,11 +1,12 @@
 {
-  "name": "finalprojectmain",
+  "name": "final project backend",
   "version": "1.0.0",
-  "description": "created a new branch from master",
-  "main": "app.js",
+  "description": "backend branch for master",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
   "author": "SCC",
-  "license": "ISC"
+  "license": "ISC"  
 }
