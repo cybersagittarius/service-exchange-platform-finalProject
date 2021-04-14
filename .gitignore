@@ -1,4 +1,9 @@
 ./node_modules
+<<<<<<< HEAD
 /node_modules
 client/node_modules
 ./env
+=======
+node_modules
+client/node_modules
+>>>>>>> master
