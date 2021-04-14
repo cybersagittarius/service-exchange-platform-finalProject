@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const registerController = require('../controllers/registerController');
 
-const path = require('path');
-const fs = require('fs');
+// const path = require('path');
+// const fs = require('fs');
 
 const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
