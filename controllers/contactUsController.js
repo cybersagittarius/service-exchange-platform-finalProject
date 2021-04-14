@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const userPath = path.join(__dirname, '..', 'modal', 'users.json');
+const userPath = path.join(__dirname, '..', 'model', 'users.json');
 
 const getContactMSG = () =>{
 

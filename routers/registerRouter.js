@@ -5,7 +5,7 @@ const registerController = require('../controllers/registerController');
 const path = require('path');
 const fs = require('fs');
 
-const usersPath = path.join(__dirname, '..', 'modal', 'users.json')
+const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
 router.get('/', (req, res)=>{
     
