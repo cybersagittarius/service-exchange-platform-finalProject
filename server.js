@@ -1,10 +1,10 @@
 const express = require('express');
 const logger = require('morgan');
 
-const registerRouter = require('./routers/registerRouter');
-const loginRouter = require('./routers/loginRouter');
-const pwResetRouter = require('./routers/pwResetRouter');
-const contactUsRouter = require('./routers/contactUsRouter');
+const registerRouter = require('./routes/registerRouter');
+const loginRouter = require('./routes/loginRouter');
+const pwResetRouter = require('./routes/pwResetRouter');
+const contactUsRouter = require('./routes/contactUsRouter');
 
 const app = express();
 
