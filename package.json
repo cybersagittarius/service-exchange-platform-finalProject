@@ -1,7 +1,6 @@
 {
-  "name": "final project backend",
+  "name": "finalprojectmain",
   "version": "1.0.0",
-<<<<<<< HEAD
   "description": "created a backend branch from master",
   "main": "server.js",
   "scripts": {
@@ -17,16 +16,5 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0"
-  },
-  "devDependencies": {}
-=======
-  "description": "backend branch for master",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-
-  },
-  "author": "SCC",
-  "license": "ISC"  
->>>>>>> master
+  }
 }
