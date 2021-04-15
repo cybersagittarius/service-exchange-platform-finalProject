@@ -1,6 +1,8 @@
 //npm install --save react-background-slideshow
 //npm install node-sass --save
 
+//Sebastian was here
+
 import React from "react";
 import Header from "./Components/Header";
 import Main from "./Components/Main";
