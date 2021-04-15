@@ -3,11 +3,11 @@ const bcrypt = require('bcryptjs')
 
 const userSchema = new mongoose.Schema ({
     username: { type: String, required: true, unique: true, minlength: 3, trim: true },
-    password: { type: String, required: true, minlength: 8, maxlength: 12 },
-
+    password: { type: String, required: true },
 },
     {timestamps: true}
 )
+
 
 //pre middleware
 userSchema.pre('save', (next)=>{
@@ -17,7 +17,6 @@ userSchema.pre('save', (next)=>{
     if (this.isModified('password') || this.isNew) {
         bcrypt.getSalt(10, (saltError, salt) =>{
             if(saltError) {
-                //??
                 console.log('Error!')
                 return next(saltError)
             } else {
@@ -33,7 +32,7 @@ userSchema.pre('save', (next)=>{
             }
         })
     } else {
-        //?? why
+        //password is neither newly created nor modified, already exists
         return next()
     }
 })
