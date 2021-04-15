@@ -1,13 +1,15 @@
-const path = require('path');
-const fs = require('fs')
+const userModel = require('../models/userModel')
 
-const usersPath = path.join(__dirname, '..', 'model', 'users.json')
+// const path = require('path');
+// const fs = require('fs')
+
+// const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
 const checkUser = (body) => {
 
     return new Promise((resolve, reject)=>{
 
-        const { email, passWord } = body
+        const { username, password } = body
         
         fs.readFile(usersPath, (err, data)=>{
             if(err){

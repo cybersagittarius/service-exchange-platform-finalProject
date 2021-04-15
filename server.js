@@ -14,12 +14,15 @@ app.use(logger('dev'));
 app.use(cors());
 
 //set uri for database
-const uri = process.env.ATLAS_MONGO_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
+const uri = process.env.MONGODB_ATLAS_URI;
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 
 //connect to database
 const connection = mongoose.connection;
-connection.once('open', ()=>{
+connection.once('open', (err)=>{
+    if(err){
+        console.log('cannot open the connection!')
+    }
     console.log('MongoDB connection established successfully!')
 })
 
