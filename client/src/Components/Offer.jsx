@@ -1,38 +1,46 @@
 import React, { useState } from "react";
-import onClickOutside from "react-onclickoutside";
+import * as Icons from "react-icons/io5";
+/* import onClickOutside from "react-onclickoutside"; */
 // npm install react-onclickoutside --save
 // npm update --force
 
 function Offer({ title, items = [], multiSelect = false }) {
+
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
+  const [clear, setClear] = useState('');
+
   const toggle = () => setOpen(!open);
-  Offer.handleClickOutside = () => setOpen(false);
+  /* Offer.handleClickOutside = () => setOpen(false); */
+  /* const clickedSelection = {() => selection.target.value)} */
 
   function handleOnClick(item) {
-    if (!selection.some((current) => current.id === item.id)) {
+    if (!selection.some(current => current.id === item.id)) {
       if (!multiSelect) {
         setSelection([item]);
       } else if (multiSelect) {
         setSelection([...selection, item]);
       }
     } else {
-      let selectionAfterRemoval = selection;
+      let selectionAfterRemoval = selection; //clone
       selectionAfterRemoval = selectionAfterRemoval.filter(
-        (current) => current.id !== item.id
+        current => current.id !== item.id
       );
       setSelection([...selectionAfterRemoval]);
     }
   }
   function isItemInSelection(item) {
-    if (selection.find((current) => current.id === item.id)) {
+    if (selection.find(current => current.id === item.id)) {
       return true;
     }
     return false;
   }
+function clearUp () {
+  setSelection ([])
+}
 
   return (
-    <div className="dd-wrapper">
+    <form className= "dd-wrapper">
       <div
         tabIndex={0}
         className="dd-header"
@@ -40,32 +48,34 @@ function Offer({ title, items = [], multiSelect = false }) {
         onKeyPress={() => toggle(!open)}
         onClick={() => toggle(!open)}
       >
-        <div className="dd-header_title">
-          <p className="dd-header_title--bold">{title}</p>
+        <div className="dd-header_title ">
+          <p className="dd-header_title--bold btn btnCat dropdown-toggle">{title}</p>
+          <div className="dd-header_action" >
+          <p className="btn btnCat offerBtn" >{open ? <button className="clear" onClick={clearUp}><Icons.IoCloseSharp/></button> : " "}</p>
         </div>
-        <div className="dd-header_action">
-          <p>x{/* {open ? "Close" : "Open"} */}</p>
         </div>
+        
       </div>
       {open && (
-        <ul className="dd-list">
+        <ul className="dd-list dropdown-menu show">
           {items.map((item) => (
-            <li className="dd-list-item" key={item.id}>
+            <li className="dropdown-item dd-list-item" key={item.id}>
               <button type="button" onClick={() => handleOnClick(item)}>
                 <span>{item.value}</span>
-                <span>{isItemInSelection(item) && "Selected"}</span>
+                <span  className="spanY">{isItemInSelection(item) && <p className="y"><Icons.IoCloudDoneSharp/></p>}</span>
+                <span className="spanX">{isItemInSelection(item) && <p className="x"><Icons.IoCloseSharp/></p>}</span>
               </button>
             </li>
           ))}
         </ul>
       )}
-    </div>
+    </form>
   );
 }
-const clickOutsideConfig = {
+/* const clickOutsideConfig = {
   handleClickOutside: () => Offer.handleClickOutside,
-};
-export default onClickOutside(Offer, clickOutsideConfig);
+}; */
+export default Offer;
 
 /*{ <div>
       <div className="menu">

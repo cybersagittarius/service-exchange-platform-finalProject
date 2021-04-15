@@ -23,7 +23,7 @@ const Login = () => {
       >
         EN
       </a>
-      <div className="dropdown-menu linguaMenu" aria-labelledby="btnGroupDrop1">
+      <div className="dropdown-menu linguaMenu lingua" aria-labelledby="btnGroupDrop1">
         <a className="dropdown-item" href="#">
           DE
         </a>

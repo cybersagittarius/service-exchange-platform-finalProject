@@ -16,6 +16,21 @@ const Register = () => {
      const [alertEM, setAlertEM] = useState (false);  
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
+
+    const postNewUser = (data) =>{
+        console.log(data);
+
+        //fetch to send data to backend
+        fetch('http://localhost:4000/register', {
+            method: "POST",
+            headers: { 'Context-Type': 'application/json'},
+            body: JSON.stringify(data)
+            //backend will receive this in: req.body
+        })
+        .then(res=>res.json())
+        .then(newUserCreated => console.log(newUserCreated))
+        .catch(err=>console.log(err))
+    }
     
      const submitHandler = (e) => {
          e.preventDefault();  
@@ -100,15 +115,17 @@ const Register = () => {
 
      return (
         <>
-        <RegistrationForm submitHandler = { submitHandler }
-                          changeFirstName = { changeFirstName}
+        <RegistrationForm   
+                          postNewUser = { postNewUser }
+                          submitHandler = { submitHandler }
+                          changeFirstName = { changeFirstName }
                           changeLastName = { changeLastName }
                           changeEmail = { changeEmail }
                           changeUserName = { changeUserName }
                           changePassWord = { changePassWord }
                           changeConfirmPW = { changeConfirmPW } 
-                          changeCountry = {changeCountry} 
-                          changeRegion = {changeRegion}
+                          changeCountry = { changeCountry } 
+                          changeRegion = { changeRegion }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }

@@ -27,6 +27,7 @@ const ResetPWForm = (props) => {
                     <input
                       type="text"
                       name="email"
+                      value={props.email}
                       placeholder="your email account"
                       className="form-control"
                       onChange={props.changeEmail}
