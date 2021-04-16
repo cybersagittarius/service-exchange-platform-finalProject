@@ -1,5 +1,4 @@
 const userModel = require('../models/userModel')
-
 // const path = require('path');
 // const fs = require('fs')
 
@@ -9,9 +8,11 @@ const checkUser = (body) => {
 
     return new Promise((resolve, reject)=>{
 
-        const { username, password } = body
-        
-        fs.readFile(usersPath, (err, data)=>{
+        const { email, password } = body;
+
+        const user = userModel.find(item=> item.email === email);
+        //fs.readFile(usersPath, (err, data)=>{
+        if(!user) {
             if(err){
                 reject(err)
             }else{
@@ -21,7 +22,7 @@ const checkUser = (body) => {
                 if(!foundUser){
                     reject(new Error('No matching email'))
                 }else{
-                    if(foundUser.passWord !==passWord){
+                    if(foundUser.password !==password){
                         reject(new Error('Password is wrong'))
                     }else{
                         resolve('Hurray!! User is logged in!')

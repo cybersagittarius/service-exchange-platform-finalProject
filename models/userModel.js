@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema ({
     {timestamps: true}
 )
 
-
 //pre middleware
 userSchema.pre('save', (next)=>{
     //constructor
