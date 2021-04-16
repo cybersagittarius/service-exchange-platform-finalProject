@@ -46,3 +46,8 @@ app.listen(port, (err)=>{
         console.log(`Application/Server is now listening on port ${port}`);
     }
 })
+
+//Central Error Handling
+app.use(errorHandler = (err, req, res, next)=> {
+    res.status(err.status || 500).json({ error: err.message })
+})
