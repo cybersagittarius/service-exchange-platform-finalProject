@@ -11,8 +11,8 @@ const checkUser = (body) => {
         const { email, password } = body;
 
         const user = userModel.find(item=> item.email === email);
-        //fs.readFile(usersPath, (err, data)=>{
-        if(!user) {
+        fs.readFile(usersPath, (err, data)=>{
+        if(!user) 
             if(err){
                 reject(err)
             }else{
@@ -32,6 +32,7 @@ const checkUser = (body) => {
         })
     })
 }
+
 
 module.exports = {
     checkUser
