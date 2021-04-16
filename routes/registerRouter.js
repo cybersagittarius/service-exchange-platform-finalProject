@@ -7,33 +7,38 @@ const fs = require('fs');
 
 const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res, next)=>{
     
     console.log(req.body);
 
     fs.readFile(usersPath, (err, data)=>{
         if(err){
-            return err
+            next(err)
         }else{
             //incoming data through fetch
             let newData = JSON.parse(data)
             console.log(newData)
-            res.json(newData)   
+            res.json(newData)
+            next()   
         }
     })
+    next();
 })       
 
-router.post('/', (req, res)=>{
+router.post('/', (req, res, next)=>{
     const body=req.body;
 
     registerController.saveUsers(body)
     .then(response=>{
         res.send(response)
+        next()
     })
     .catch(error=>{
         console.log(error);
         res.send("Error in saving users");
+        next(error)
     })
 })
+
 
 module.exports = router; 
