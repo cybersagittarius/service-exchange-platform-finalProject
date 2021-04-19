@@ -20,7 +20,7 @@ const loginController = require('../controllers/loginController');
 // })
 
 //as explained by Rob, using async in a route does not guarantee the function would get to the error stage
-router.post('/', (req, res)=>{
+router.post('/', (req, res, next)=>{
     // const body = req.body;
     /*
     req.body = {
@@ -34,7 +34,7 @@ router.post('/', (req, res)=>{
     }    
 
     //in loginController data would be checked
-    loginController.checkUser(body)
+    loginController.checkLoginUser(body)
     .then(response=>{        
         res.json(response)
     })
@@ -42,6 +42,7 @@ router.post('/', (req, res)=>{
         console.log(error)
         res.send('wrong information')
     })
+    next();
 })
 
 module.exports = router;

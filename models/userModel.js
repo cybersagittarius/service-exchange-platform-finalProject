@@ -36,15 +36,15 @@ userSchema.pre('save', (next)=>{
     }
 })
 
-userSchema.methods.comparePassword = (password, callback) =>{
+userSchema.methods.comparePassword = (password, (next)=>{
     bcrypt.compare(password, this.password, (error, isMatch)=>{
         if(error) {
-            return callback(error)
+            return next(error)
         } else {
-            callback(null, isMatch)
+            next(null, isMatch)
         }
     })
-}
+})
 
 //this module will export User as the instance 'User' of userSchema
 module.exports = mongoose.model('User', userSchema);

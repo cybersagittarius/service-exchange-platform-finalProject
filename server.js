@@ -1,6 +1,7 @@
 const connectDB = require('./config/db')
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const customError = require('./config/customError')
 const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
@@ -13,11 +14,16 @@ dotenv.config({ path: './config/config.env' });
 const app = express();
 const port = process.env.PORT || 4000;
 
-app.use(express.json());
+app.use(cookieParser()); //parsing incoming cookies into req.cookies
+app.use(cors({
+    origin: [process.env.FRONTEND_ORIGIN || 'http://localhost:3000'],
+    //allow this origin to talk to the backend
+    credentials: true
+    //allow cookies to be sent to us
+}));
+app.use(express.json()); //parsing incoming body into req.body
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
-app.use(cookieParser());
-app.use(cors());
 
 //connect to DB
 connectDB();
@@ -27,7 +33,6 @@ const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const contactUsRouter = require('./routes/contactUsRouter');
-const connectDB = require('./config/db');
 
 //user routers as middlewares
 app.use('/register', registerRouter);
@@ -44,7 +49,7 @@ app.listen(port, (err)=>{
     }
 })
 
-//Central Error Handling
+//Central Error Handling for internal server error 
 app.use(errorHandler = (err, req, res, next)=> {
     res.status(err.status || 500).json({ error: err.message })
 })
