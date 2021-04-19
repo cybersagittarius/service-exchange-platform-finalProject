@@ -1,6 +1,8 @@
 const express = require('express');
 const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const connectDB = require('./config/db')
 const cors = require('cors');
 
 require('dotenv').config();
@@ -11,26 +13,18 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(cors());
 
-//set uri for database
-const uri = process.env.MONGODB_ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
-
-//connect to database
-const connection = mongoose.connection;
-connection.once('open', (err)=>{
-    if(err){
-        console.log('cannot open the connection!')
-    }
-    console.log('MongoDB connection established successfully!')
-})
+//connect to DB
+connectDB();
 
 //require routers
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const contactUsRouter = require('./routes/contactUsRouter');
+const connectDB = require('./config/db');
 
 //user routers as middlewares
 app.use('/register', registerRouter);

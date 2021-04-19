@@ -33,7 +33,7 @@ router.post('/', async (req, res)=>{
     }    
 
     //in loginController data would be checked
-    loginController.checkUser(body)
+    await loginController.checkUser(body)
     .then(response=>{        
         res.json(response)
     })
@@ -43,5 +43,4 @@ router.post('/', async (req, res)=>{
     })
 })
 
-app.use()
 module.exports = router;
