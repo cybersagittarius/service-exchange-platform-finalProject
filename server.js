@@ -1,11 +1,14 @@
+const connectDB = require('./config/db')
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-const connectDB = require('./config/db')
-const cors = require('cors');
 
-require('dotenv').config();
+dotenv.config({ path: './config/config.env' });
+//alternatively we can just require dotenv
+//require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 4000;
