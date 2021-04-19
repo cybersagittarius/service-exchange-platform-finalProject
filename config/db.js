@@ -18,7 +18,7 @@ const uri = process.env.MONGODB_ATLAS_URI;
 //implement async
 const connectDB = async () => {
     try {
-        const conn = await Mongoose.connect(process.env.MONGO_ATLAS_URI, {
+        const conn = await Mongoose.connect(uri, {
             useNewUrlParser: true,
             useFindAndModify: true,
             useCreateIndex: true,
