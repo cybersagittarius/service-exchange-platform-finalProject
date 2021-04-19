@@ -12,22 +12,22 @@ const checkLoginUser = (body) => {
         userModel.findOne({email: email}).exec((err, user)=> {
         if(err){
             reject(err)
-        } else if(!user){
+        }else if(!user){
                 reject(new Error('No matching email!'));
             }else{
                 user.comparePassword(password, (matchError, isMatch)=>{
                     if(matchError) {
                         reject(error)
-                    }else if(!isMatch){
-                    reject(new Error('No matching password!'))
-                    }else{
-                    resolve('Hurray!! User is logged in!')
+                        }else if(!isMatch){
+                        reject(new Error('No matching password!'))
+                            }else{
+                                resolve('Hurray!! User is logged in!')
+                            }
+                        })
                     }
                 })
-            }
-        })
-    })
-}
+            })
+        }
 
 // const checkUser = (body) => {
 
