@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const registerController = require('../controllers/registerController');
 
-const path = require('path');
-const fs = require('fs');
+// const path = require('path');
+// const fs = require('fs');
 
-const usersPath = path.join(__dirname, '..', 'model', 'users.json')
+// const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
 // router.get('/', (req, res, next)=>{
     
@@ -26,8 +26,17 @@ const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 // })       
 
 router.post('/', (req, res, next)=>{
-    const body=req.body;
-
+    const body= {
+        firstname: req.body.firstName,
+        lastname: req.body.lastName,
+        country: req.body.country,
+        region: req.body.region,
+        email: req.body.email,
+        username: req.body.userName,
+        password: req.body.passWord,
+        confirmpw: req.body.confirmPW,
+    }
+    
     registerController.saveUsers(body)
     .then(response=>{
         res.send(response)
@@ -35,10 +44,9 @@ router.post('/', (req, res, next)=>{
     })
     .catch(error=>{
         console.log(error);
-        res.send("Error in saving users");
+        //res.send("Error in saving users");
         next(error)
     })
 })
-
 
 module.exports = router; 
