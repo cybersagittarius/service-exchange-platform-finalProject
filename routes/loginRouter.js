@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoke');
 const loginController = require('../controllers/loginController');
 
 // const path = require('path');
@@ -41,7 +42,9 @@ router.post('/', (req, res)=>{
     .catch(error=>{
         console.log(error)
         res.send('wrong information')
-    })    
+    })
+    
+    
 })
 
 module.exports = router;

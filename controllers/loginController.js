@@ -33,6 +33,9 @@ const checkLoginUser = (body) => {
             })
         }
 
+        const checkToken = () =>{
+            
+        }
 // const checkUser = (body) => {
 
 //     return new Promise((resolve, reject)=>{
@@ -62,5 +65,5 @@ const checkLoginUser = (body) => {
 
 
 module.exports = {
-    checkLoginUser
+    checkLoginUser, checkToken
 }
