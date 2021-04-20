@@ -1,7 +1,5 @@
-const { Mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
-//set uri for database
-const uri = process.env.MONGODB_ATLAS_URI;
 
 //without async
 //mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
@@ -17,8 +15,10 @@ const uri = process.env.MONGODB_ATLAS_URI;
 
 //implement async
 const connectDB = async () => {
+    //set uri for database
+    const uri = process.env.MONGO_ATLAS_URI;
     try {
-        const conn = await Mongoose.connect(uri, {
+        const conn = await mongoose.connect(uri, {
             useNewUrlParser: true,
             useFindAndModify: true,
             useCreateIndex: true,
