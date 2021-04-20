@@ -9,18 +9,20 @@ const userSchema = new mongoose.Schema ({
     region: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true }, 
+    password: { type: String, required: true } 
 },
     {timestamps: true}
 )
 
-//pre middleware
-userSchema.pre('save', (next)=>{
+//pre middleware(
+//if we use this in a class, we DO NOT use arrow function, just use function()
+
+userSchema.pre('save', function (next) {
     //constructor
     const user = this
 
     if (this.isModified('password') || this.isNew) {
-        bcrypt.getSalt(10, (saltError, salt) =>{
+        bcrypt.genSalt(10, (saltError, salt) =>{
             if(saltError) {
                 console.log('Error!')
                 return next(saltError)
@@ -42,7 +44,7 @@ userSchema.pre('save', (next)=>{
     }
 })
 
-userSchema.methods.comparePassword = (password, next)=>{
+userSchema.methods.comparePassword = function (password, next) {
     bcrypt.compare(password, this.password, (error, isMatch)=>{
         if(error) {
             return next(error)
