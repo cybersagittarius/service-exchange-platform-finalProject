@@ -1,4 +1,5 @@
-const userModel = require('../models/userModel')
+const userModel = './models/userModel'
+const customError = require('../config/customError')
 // const path = require('path');
 // const fs = require('fs')
 // const usersPath = path.join(__dirname, '..', 'model', 'users.json')
@@ -8,12 +9,15 @@ const checkLoginUser = (body) => {
     return new Promise((resolve, reject)=>{
 
         const { email, password } = body;
-
+        // if (database.email === body.email)
+        // user is only a placeholder for the name, I can call it kitten if I want
         userModel.findOne({email: email}).exec((err, user)=> {
         if(err){
             reject(err)
         }else if(!user){
                 reject(new Error('No matching email!'));
+                //reject(customError('No matching email!'))
+                //this is where we can use the customError function
             }else{
                 user.comparePassword(password, (matchError, isMatch)=>{
                     if(matchError) {
@@ -34,10 +38,8 @@ const checkLoginUser = (body) => {
 //     return new Promise((resolve, reject)=>{
 
 //         const { email, password } = body;
-
-//         const user = users.find(item=> item.email === email);
+       
 //         fs.readFile(usersPath, (err, data)=>{
-//         if(!user) 
 //             if(err){
 //                 reject(err)
 //             }else{
