@@ -10,7 +10,6 @@ const mongoose = require('mongoose');
 dotenv.config({ path: './config/config.env' });
 //alternatively we can just require dotenv
 //require('dotenv').config();
-
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -40,6 +39,11 @@ app.use('/login', loginRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactUsRouter);
 
+//Central Error Handling for internal server error 
+app.use(errorHandler = (err, req, res)=> {
+    res.status(err.status || 500).json({ error: err.message })
+})
+
 app.listen(port, (err)=>{
     if(err){
         console.log(err);
@@ -47,9 +51,4 @@ app.listen(port, (err)=>{
     }else{
         console.log(`Application/Server is now listening on port ${port}`);
     }
-})
-
-//Central Error Handling for internal server error 
-app.use(errorHandler = (err, req, res, next)=> {
-    res.status(err.status || 500).json({ error: err.message })
 })
