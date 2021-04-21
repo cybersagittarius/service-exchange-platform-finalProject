@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 
 dotenv.config({ path: './config/config.env' });
 //alternatively we can just require dotenv
