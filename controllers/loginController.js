@@ -45,8 +45,9 @@ const checkUser = (body) => {
                                 const sendAToken = sendAccessToken(res, req, accesstoken);
                                 if(!sendRToken || !sendAToken){
                                     reject(error)
-                                    }
-                                if(sendRToken && sendAToken) {
+                                    }else if(!sendRToken && !sendAToken) {
+                                        reject(error)
+                                    } else {
                                      resolve(res.send({
                                     success: true
                                     })                                 
