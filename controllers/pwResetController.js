@@ -1,28 +1,28 @@
-const path = require('path');
-const fs = require('fs')
+const userModel = require('../models/userModel')
 
-const usersPath = path.join(__dirname, '..', 'model', 'users.json')
+const customError = require('../config/customError');
+// const path = require('path')
+// const fs = require('fs')
+
+// const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
 const checkEmail = (body)=>{
 
     return new Promise((resolve, reject)=>{
 
-        const { email } = body
+        const { email } = body;
 
-        fs.readFile(usersPath, (err, data)=>{
+        userModel.findOne({email: email}).exec((err, user)=>{
             if(err){
                 reject(err)
-            }else{
-                const foundEmail = JSON.parse(data).users.find(item=>{item.email === email});
-
-                if(!foundEmail){
-                    reject(new Error('No matching email found'))
+            }else if(!user){
+                reject(new Error('No matching error!'))
                 }else{
                     resolve('Please check your email for a password recovery link.')
                 }
             }
-        })
-    })
+        )}
+    )
 }
 
 module.exports = {
