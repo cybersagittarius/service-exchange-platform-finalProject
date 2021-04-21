@@ -45,7 +45,7 @@ const saveUsers = (body) =>{
     })   
 }
 
-
+module.exports = { saveUsers };
 
 // const saveUsers = (body) =>{
 
@@ -77,4 +77,3 @@ const saveUsers = (body) =>{
 //     })
 // }
 
-module.exports = { saveUsers };
