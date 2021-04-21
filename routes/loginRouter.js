@@ -34,7 +34,7 @@ router.post('/', (req, res)=>{
     }    
 
     //in loginController data would be checked
-    loginController.checkUserassignToken(body)
+    loginController.checkUser(body)
     .then(response=>{        
         res.json(response)
     })
