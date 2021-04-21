@@ -17,8 +17,9 @@ const Register = () => {
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
 
-    const postNewUser = (data) =>{
-        console.log(data);
+    const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW) =>{
+
+        const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW};
 
         //fetch to send data to backend
         fetch('http://localhost:4000/register', {
@@ -70,6 +71,8 @@ const Register = () => {
             }, 5000); 
             return false;
         }
+
+        postNewUser(firstName, lastName, country, region, email, userName, passWord, confirmPW);
 
          setFirstName("");
          setLastName("");
