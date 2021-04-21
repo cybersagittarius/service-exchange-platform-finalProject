@@ -11,7 +11,7 @@ dotenv.config({path: '../config/config.env'});
 // const fs = require('fs')
 // const usersPath = path.join(__dirname, '..', 'model', 'users.json')
 
-const checkUserassignToken = (body) => {
+const checkUser = (body) => {
 
     return new Promise((resolve, reject)=>{
 
@@ -32,17 +32,19 @@ const checkUserassignToken = (body) => {
                         }else if(!isMatch){
                         reject(new Error('No matching password!'))
                             }else{
-                                const tokenAssign = () =>{
-                                let token = jwt.sign({_id: _id}, process.env.JWT_SECRET)
-                                res.cookies('token', token, { httpOnly: true})
-                                res.json({
-                                    message: 'Login succeeded',
-                                    user: user,
-                                    token: 'Token generation succeeded'
-                                })
-                            }
-                                console.log('User logged in!');
-                                resolve(tokenAssign())                               
+                            //This is not a good idea, still better to put token function in a separate file
+
+                            //     const tokenAssign = () =>{
+                            //     let token = jwt.sign({_id: _id}, process.env.JWT_SECRET)
+                            //     res.cookies('token', token, { httpOnly: true})
+                            //     res.json({
+                            //         message: 'Login succeeded',
+                            //         user: user,
+                            //         token: 'Token generation succeeded'
+                            //     })
+                            // }
+                            //     console.log('User logged in!');
+                                resolve('User logged in !!')                               
                             }
                         })
                     }
@@ -79,5 +81,5 @@ const checkUserassignToken = (body) => {
 
 
 module.exports = {
-    checkUserassignToken
+    checkUser
 }
