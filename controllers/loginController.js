@@ -1,10 +1,9 @@
 const userModel = './models/userModel'
 
-const cookieParser = require('cookie-parser');
 const customError = require('../config/customError');
 const dotenv = require('dotenve');
-const jwt = require('jsonwebtoken');
 const path = require('path')
+const { createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken } = require('../token/tokens.js');
 
 dotenv.config({path: '../config/config.env'});
 
@@ -32,8 +31,37 @@ const checkUser = (body) => {
                         }else if(!isMatch){
                         reject(new Error('No matching password!'))
                             }else{
-                            //This is not a good idea, still better to put token function in a separate file
+                            
+                            const accesstoken = createAccessToken(user._id);
+                            const refreshtoken = createRefreshToken(user._id);    
+                            
+                            user.refreshtoken = refreshtoken;
 
+                            const saveDoc = db.collection.insertOne({refreshtoken: user.refreshtoken});
+                            if(!saveDoc) {
+                                reject(error)
+                            } else {
+                                const sendRToken = sendRefreshToken(res, refreshtoken);
+                                const sendAToken = sendAccessToken(res, req, accesstoken);
+                                if(!sendRToken || !sendAToken){
+                                    reject(error)
+                                    }
+                                if(sendRToken && sendAToken) {
+                                     resolve(res.send({
+                                    success: true
+                                    })                                 
+                                )}
+                            }
+                        }
+                    }                
+                )}            
+            })
+        })    
+    }
+
+    module.exports = { checkUser };                            
+
+                            //This is not a good idea, still better to put token function in a separate file
                             //     const tokenAssign = () =>{
                             //     let token = jwt.sign({_id: _id}, process.env.JWT_SECRET)
                             //     res.cookies('token', token, { httpOnly: true})
@@ -44,13 +72,10 @@ const checkUser = (body) => {
                             //     })
                             // }
                             //     console.log('User logged in!');
-                                resolve('User logged in !!')                               
-                            }
-                        })
-                    }
-                })
-            })             
-        }
+                                //resolve('User logged in !!')                               
+                        // }
+                        // })
+              
 
 // const checkUser = (body) => {
 
@@ -77,9 +102,3 @@ const checkUser = (body) => {
 //             }
 //         })
 //     })
-// }
-
-
-module.exports = {
-    checkUser
-}
