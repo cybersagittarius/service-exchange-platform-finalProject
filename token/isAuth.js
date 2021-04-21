@@ -7,7 +7,7 @@ const isAuth = (req) => {
     if(!authorisation) throw new Error('You need to login.');
 
     const token = authorisation.split(' ')[1];
-    const {userId }= verify(token, process.env.ACCESS_TOKEN);
+    const { userId }= verify(token, process.env.ACCESS_TOKEN);
     return userId;
 }
 
