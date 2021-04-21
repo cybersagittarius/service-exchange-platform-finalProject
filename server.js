@@ -4,6 +4,7 @@ const cors = require('cors');
 const customError = require('./config/customError')
 const dotenv = require('dotenv');
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
