@@ -21,7 +21,7 @@ const checkUser = (body) => {
         if(err){
             reject(err)
         }else if(!user){
-                reject(new Error('No matching email!'));
+                reject(new Error('No matching email in our db!'));
                 //reject(customError('No matching email!'))
                 //this is where we can use the customError function
             }else{
@@ -29,7 +29,7 @@ const checkUser = (body) => {
                     if(matchError) {
                         reject(error)
                         }else if(!isMatch){
-                        reject(new Error('No matching password!'))
+                        reject(new Error('No matching password with the email!'))
                             }else{
                             
                             const accesstoken = createAccessToken(user._id);
@@ -38,27 +38,31 @@ const checkUser = (body) => {
                             user.refreshtoken = refreshtoken;
 
                             const saveDoc = db.collection.insertOne({refreshtoken: user.refreshtoken});
-                            if(!saveDoc) {
-                                reject(error)
-                            } else {
-                                const sendRToken = sendRefreshToken(res, refreshtoken);
-                                const sendAToken = sendAccessToken(res, req, accesstoken);
-                                if(!sendRToken || !sendAToken){
-                                    reject(error)
-                                    }else if(!sendRToken && !sendAToken) {
-                                        reject(error)
-                                    } else {
-                                     resolve(res.send({
-                                    success: true
-                                    })                                 
-                                )}
+                            if(err){
+                                reject(err)
+                                }else if(!saveDoc) {
+                                    reject(new Error('problem saving the data!'))
+                                }else{
+                                    const sendRToken = sendRefreshToken(res, refreshtoken);
+                                    const sendAToken = sendAccessToken(res, req, accesstoken);
+                                        if(err){
+                                            reject(err)
+                                        }else if(!sendRToken || !sendAToken){
+                                            reject(new Error('either one of the token was not sent out'))
+                                        }else if(!sendRToken && !sendAToken) {
+                                            reject(new Error('neither token was sent out'));
+                                        }else{
+                                            resolve(res.send({
+                                            success: true
+                                        })                                 
+                                    )}
+                                }
                             }
-                        }
-                    }                
-                )}            
-            })
-        })    
-    }
+                        }                
+                    )}            
+                })
+            })    
+        }
 
     module.exports = { checkUser };                            
 
