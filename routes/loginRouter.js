@@ -42,9 +42,7 @@ router.post('/', (req, res)=>{
     .catch(error=>{
         console.log(error)
         res.send('wrong information')
-    })    
-
-    
+    })  
 })
 
 module.exports = router;

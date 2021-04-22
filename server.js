@@ -1,4 +1,4 @@
-const connectDB = require('./config/db')
+const connectDB = require('./config/dbConnect')
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const customError = require('./config/customError')
