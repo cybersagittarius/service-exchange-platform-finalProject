@@ -15,7 +15,7 @@ const saveUsers = (body) =>{
         const { password, confirmpw } = body;
         if (password !== confirmpw) {
             console.log('not a match!');
-            const message = 'Not maching pasword'
+            const message = 'password and the confirm password did not match!'
             reject(customError(message))
         } else {            
         const newUser = new userModel({
