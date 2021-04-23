@@ -22,12 +22,15 @@ userSchema.pre('save', function (next) {
     const user = this
 
     if (this.isModified('password') || this.isNew) {
-        bcrypt.genSalt(10, (saltError, salt) =>{
-            if(saltError) {
-                console.log('Error!')
-                return next(saltError)
-            } else {
-                bcrypt.hash(user.password, salt, (hashError, hash)=>{
+        // salt generator error is not our concern, neither will we have a solution that, it would be up to the code team to fix it
+        // therefore this section can go
+        
+        // bcrypt.genSalt(10, (saltError, salt) =>{
+        //     if(saltError) {
+        //         console.log('Error!')
+        //         return next(saltError)
+            // } else {
+                bcrypt.hash(user.password, 10, (hashError, hash)=>{
                     if(hashError) {
                         return next(hashError)                        
                     } 
@@ -36,8 +39,8 @@ userSchema.pre('save', function (next) {
                     //part of the syntax of middleware, which means to move on to the next function
                     next()
                 })
-            }
-        })
+        //     }
+        // })
     } else {
         //password is neither newly created nor modified, already exists
         return next()
