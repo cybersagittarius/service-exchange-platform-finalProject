@@ -4,7 +4,7 @@ const { sign } = require('jsonwebtoken');
 //Create tokens
 
 const createAccessToken = (userId) => {
-    return sign({ userID }, process.env.ACCESS_TOKEN, {
+    return sign({ userId }, process.env.ACCESS_TOKEN, {
         expiredsIn: '60m',
     });
 };
