@@ -1,7 +1,7 @@
 const userModel = './models/userModel'
 
 const customError = require('../config/customError');
-const dotenv = require('dotenve');
+const dotenv = require('dotenv');
 const path = require('path')
 const { createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken } = require('../token/tokens.js');
 
@@ -14,7 +14,7 @@ const checkUser = (body) => {
 
     return new Promise((resolve, reject)=>{
 
-        const { _id, email, password } = body;
+        const { id, email, password } = body;
         // if (database.email === body.email)
         // user is only a placeholder for the name, I can call it kitten if I want
         userModel.findOne({email: email}).exec((err, user)=> {
