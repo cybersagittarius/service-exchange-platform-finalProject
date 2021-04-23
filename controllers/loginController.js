@@ -14,7 +14,7 @@ const checkUser = (body) => {
 
     return new Promise((resolve, reject)=>{
 
-        const { id, email, password } = body;
+        const { email, password } = body;
         // if (database.email === body.email)
         // user is only a placeholder for the name, I can call it kitten if I want
         userModel.findOne({email: email}).exec((err, user)=> {
@@ -30,40 +30,40 @@ const checkUser = (body) => {
                         reject(error)
                         }else if(!isMatch){
                         reject(new Error('No matching password with the email!'))
-                            }else{
+                            }else{                            
+                                resolve(res.send({msg: "Welcome back!"}))
+                            // const accesstoken = createAccessToken(user._id);
+                            // const refreshtoken = createRefreshToken(user._id);    
                             
-                            const accesstoken = createAccessToken(user._id);
-                            const refreshtoken = createRefreshToken(user._id);    
-                            
-                            user.refreshtoken = refreshtoken;
+                            // user.refreshtoken = refreshtoken;
 
-                            const saveDoc = db.collection.insertOne({refreshtoken: user.refreshtoken});
-                            if(err){
-                                reject(err)
-                                }else if(!saveDoc) {
-                                    reject(new Error('problem saving the data!'))
-                                }else{
-                                    const sendRToken = sendRefreshToken(res, refreshtoken);
-                                    const sendAToken = sendAccessToken(res, req, accesstoken);
-                                        if(err){
-                                            reject(err)
-                                        }else if(!sendRToken || !sendAToken){
-                                            reject(new Error('either one of the token was not sent out'))
-                                        }else if(!sendRToken && !sendAToken) {
-                                            reject(new Error('neither token was sent out'));
-                                        }else{
-                                            resolve(res.send({
-                                            success: true
-                                        })                                 
-                                    )}
-                                }
+                            // const saveDoc = db.collection.insertOne({refreshtoken: user.refreshtoken});
+                            // if(err){
+                            //     reject(err)
+                            //     }else if(!saveDoc) {
+                            //         reject(new Error('problem saving the data!'))
+                            //     }else{
+                            //         const sendRToken = sendRefreshToken(res, refreshtoken);
+                            //         const sendAToken = sendAccessToken(res, req, accesstoken);
+                            //             if(err){
+                            //                 reject(err)
+                            //             }else if(!sendRToken || !sendAToken){
+                            //                 reject(new Error('either one of the token was not sent out'))
+                            //             }else if(!sendRToken && !sendAToken) {
+                            //                 reject(new Error('neither token was sent out'));
+                            //             }else{
+                            //                 resolve(res.send({
+                            //                 success: true
+                            //             })                                 
+                            //         )}
+                            //     }
                             }
                         }                
                     )}            
                 })
             })    
         }
-
+    
     module.exports = { checkUser };                            
 
                             //This is not a good idea, still better to put token function in a separate file
