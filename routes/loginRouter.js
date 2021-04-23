@@ -39,6 +39,7 @@ router.post('/', (req, res)=>{
     .then(response=>{        
         res.json(response)
     })
+    .then()
     .catch(error=>{
         console.log(error)
         res.send('wrong information')

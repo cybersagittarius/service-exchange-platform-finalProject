@@ -41,6 +41,11 @@ app.use('/login', loginRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactUsRouter);
 
+//Error Handling 
+app.use((req, res, next) => {
+    next(createError(404));
+});
+
 //Central Error Handling for internal server error 
 app.use(errorHandler = (err, req, res)=> {
     res.status(err.status || 500).json({ error: err.message })
