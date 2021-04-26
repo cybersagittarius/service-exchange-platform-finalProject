@@ -1,6 +1,8 @@
+const customError = require('../config/customError');
 const express = require('express');
 const router = express.Router();
 const loginController = require('../controllers/loginController');
+const token = require('../token/tokens');
 
 // const path = require('path');
 // const fs = require('fs');
@@ -20,7 +22,7 @@ const loginController = require('../controllers/loginController');
 // })
 
 //as explained by Rob, using async in a route does not guarantee the function would get to the error stage
-router.post('/', (req, res)=>{
+router.post('/', async (req, res)=>{
     // const body = req.body;
     /*
     req.body = {
@@ -29,21 +31,30 @@ router.post('/', (req, res)=>{
     }
     */
     const body = {
-        _id: id,
         email: req.body.email,
-        password: req.body.passWord
+        password: req.body.passWord,
     }    
 
     //in loginController data would be checked
-    loginController.checkUser(body)
-    .then(response=>{        
-        res.json(response)
+    await loginController.checkUser(body)
+    .then(()=>{
+        const { email } = body
+        token.tokenCreation(body)     
+        console.log("Token created!")
+        // response=>{        
+        // res.json(response)
     })
-    .then()
     .catch(error=>{
         console.log(error)
         res.send('wrong information')
-    })  
+    })
+    .finally((customError)=> {return customError})  
+
+    res.redirect('/secret');
+    // const { _id, email } = tokenBody
+    // let token = jwt.sign({ _id: tokenBody._id, email: tokenBody.email }, JWT_SECRET)
+
+    //give a token
 })
 
 module.exports = router;
