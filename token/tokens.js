@@ -2,28 +2,24 @@
 const jwt = require('jsonwebtoken');
 //const cookieParser = require('cookie-parser');
 
-const tokenCreation = (body) => {
-    //const { email } = body
-    let token = jwt.sign({ body }, process.env.JWT_SECRET)
+//this email is what is passed down from body.email in 
+const tokenCreation = (email) => {    
+    let token = jwt.sign({ email }, process.env.JWT_SECRET)
+   }
 
-    res.cookie('token', token, {httpOnly: true })
-    res.json({
-        message: 'Login successed',
-        token
-    })
-}
 
-const tokenCheck = (req, res, next) =>{
+const tokenCheck = async (req, res, next) =>{
     let token = req.cookies.token
 
     if(!token) {
         let error = new Error('You do not have a valid token!');
         return next(error)
     }
-
     try { 
-        const letUsVerify = jwt.verify(token, process.env.JWT_SECRET)
-        console.log(letUsVerify)
+        const letUsVerify = await jwt.verify(token, process.env.JWT_SECRET)
+        if(!letUsVerify){
+            console.log('Not verifying ......');
+        }
         next()
     }
     catch(error) {
