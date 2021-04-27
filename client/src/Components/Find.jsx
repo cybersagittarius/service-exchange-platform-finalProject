@@ -9,7 +9,7 @@ function Find() {
   const [country, setCountry] = useState(" ");
   const [region, setRegion] = useState(" ");
   const [offerSelection, setofferSelection] = useState([]);
- const [lookSelection, setlookSelection] = useState([]);
+  const [lookSelection, setlookSelection] = useState([]);
 
   const selectCountry = (e) => {
     setCountry(e);
