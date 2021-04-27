@@ -3,7 +3,6 @@ const userModel = './models/userModel'
 const customError = require('../config/customError');
 const dotenv = require('dotenv');
 const path = require('path')
-//const { createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken } = require('../token/tokens.js');
 
 dotenv.config({path: '../config/config.env'});
 
@@ -32,6 +31,15 @@ const checkUser = (body) => {
                         reject(new Error('No matching password with the email!'))
                             }else{                            
                                 resolve(res.send({msg: "Welcome back!"}))
+                            }
+                        }                
+                    )}            
+                })
+            })    
+        }
+    
+    module.exports = { checkUser };  
+
                             // const accesstoken = createAccessToken(user._id);
                             // const refreshtoken = createRefreshToken(user._id);    
                             
@@ -57,14 +65,14 @@ const checkUser = (body) => {
                             //             })                                 
                             //         )}
                             //     }
-                            }
-                        }                
-                    )}            
-                })
-            })    
-        }
+    //                         }
+    //                     }                
+    //                 )}            
+    //             })
+    //         })    
+    //     }
     
-    module.exports = { checkUser };                            
+    // module.exports = { checkUser };                            
 
                             //This is not a good idea, still better to put token function in a separate file
                             //     const tokenAssign = () =>{
