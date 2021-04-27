@@ -38,9 +38,12 @@ router.post('/', async (req, res)=>{
     //in loginController data would be checked
     await loginController.checkUser(body)
     .then(()=>{
-        const { email } = body
-        token.tokenCreation(body)     
+        token.tokenCreation(body.email)     
         console.log("Token created!")
+
+        res.cookie('token', token, {httpOnly: true }).json({
+        message: 'Login successed',
+        token
         // response=>{        
         // res.json(response)
     })
@@ -50,11 +53,11 @@ router.post('/', async (req, res)=>{
     })
     .finally((customError)=> {return customError})  
 
-    res.redirect('/secret');
-    // const { _id, email } = tokenBody
+        // const { _id, email } = tokenBody
     // let token = jwt.sign({ _id: tokenBody._id, email: tokenBody.email }, JWT_SECRET)
 
     //give a token
+    })
 })
 
-module.exports = router;
+module.exports = router
