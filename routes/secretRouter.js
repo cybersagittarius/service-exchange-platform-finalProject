@@ -9,7 +9,9 @@ router.get ('/', token.tokenCheck, (req, res, next) =>{
     })
     .then(res.redirect('/profile'))
     .catch((err) => console.log(err))
-} )
+
+    next();
+})
 
 module.exports = router 
 
