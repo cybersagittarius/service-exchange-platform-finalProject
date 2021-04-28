@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pwResetController = require('../controllers/pwResetController');
+const pwResetController = require('../controllers/emailControllers/pwResetController');
 
 // const path = require('path');
 // const fs = require('fs');
@@ -28,8 +28,7 @@ router.post('/', (req, res)=>{
     pwResetController.checkEmail(body)
     .then(response=>{
          res.send(response)
-    })
-    .then(pwResetController.sendPwResetEmail())
+    })    
     .catch(error=>{
      console.log(error);
      res.send("Oops! something went wrong")
