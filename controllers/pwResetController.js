@@ -20,12 +20,27 @@ const checkEmail = (body)=>{
                 reject(new Error('No matching error!'))
                 }else{
                     const token = crpto.randomBytes(20).toString('hex');
-                    user.update({
+                    resolve(user.update({
                         pwResetToken: token,
                         pwResetExpires: Date.now() + 3600000,
-                    });
+                    })                    
+                ) 
+            } return pwResetToken 
+        })
+    })
+}
 
-                    const transporter = nodemailer.createTransport({
+    const sendPwResetEmail = (pwResetToken) =>{
+
+            return new Promise((resolve, reject)=>{  
+                
+            const token = pwResetToken;
+
+            if(!token){
+                reject((err)=>console.log(err))
+            }else{    
+
+            const transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
                             user: `${process.env.EMAIL_ADDRESS}`,
@@ -51,12 +66,16 @@ const checkEmail = (body)=>{
                             }
                         })
                     }
-                });
-                    //resolve('Please check your email for a password recovery link.')
-            })     
-        }
+                
+                })
+                    // resolve('Please check your email for a password recovery link.') 
+            }
 
-
+        
 module.exports = {
-    checkEmail    
+    checkEmail, sendPwResetEmail    
 }
+                
+
+
+
