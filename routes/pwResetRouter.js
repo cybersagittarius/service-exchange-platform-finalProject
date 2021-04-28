@@ -29,6 +29,7 @@ router.post('/', (req, res)=>{
     .then(response=>{
          res.send(response)
     })
+    .then(pwResetController.sendPwResetEmail())
     .catch(error=>{
      console.log(error);
      res.send("Oops! something went wrong")
