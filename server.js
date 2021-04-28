@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 dotenv.config({ path: './config/config.env' });
+
 //alternatively we can just require dotenv
 //require('dotenv').config();
 const app = express();
@@ -55,7 +56,6 @@ app.listen(port, (err)=>{
 
 //Error Handling for 400 
 app.use((req, res, next) => {
-    //next(createError(404));
     next(customError('test error'))
 });
 
