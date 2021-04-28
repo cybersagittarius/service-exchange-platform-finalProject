@@ -22,7 +22,7 @@ const token = require('../token/tokens');
 // })
 
 //as explained by Rob, using async in a route does not guarantee the function would get to the error stage
-router.post('/', async (req, res)=>{
+router.post('/', (req, res)=>{
     // const body = req.body;
     /*
     req.body = {
@@ -36,7 +36,7 @@ router.post('/', async (req, res)=>{
     }    
 
     //in loginController data would be checked
-    await loginController.checkUser(body)
+    loginController.checkUser(body)
     .then(()=>{
         token.tokenCreation(body.email)     
         console.log("Token created!")
