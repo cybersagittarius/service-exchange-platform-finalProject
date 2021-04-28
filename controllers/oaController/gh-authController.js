@@ -48,9 +48,10 @@ let githubStrategy = new GitHubStrategy({
 
     User.findOrCreate({ githubId: profile.id }, (err, user) => {
         return callback(err, user)
-        })
-    }
-)
+            })
+        }
+    )
+    passport.use(githubStrategy);
 } 
 
 module.exports = { githubStrategy }
