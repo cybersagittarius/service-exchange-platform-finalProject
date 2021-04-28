@@ -34,7 +34,7 @@ const checkEmail = (body)=>{
                     });
 
                     const mailOptions = {
-                        from: 'cybersagittarius@gmail.com', 
+                        from: 'poohbear@gmail.com', 
                         to: `${user.email}`, 
                         subject: 'Link to Reset Password',
                         text: 'fill out later'

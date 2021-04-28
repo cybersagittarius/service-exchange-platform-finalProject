@@ -23,16 +23,16 @@ const pwResetController = require('../controllers/pwResetController');
 
 router.post('/', (req, res)=>{
     
-    // const body = req.body;
+    const body = req.body.email;
 
-    // pwResetController.checkEmail(body)
-    // .then(response=>{
-    //     res.send(response)
-    // })
-    // .catch(error=>{
-    //     console.log(error);
-    //     res.send("Oops! something went wrong")
-    // })
+    pwResetController.checkEmail(body)
+    .then(response=>{
+         res.send(response)
+    })
+    .catch(error=>{
+     console.log(error);
+     res.send("Oops! something went wrong")
+    })
 })
 
 module.exports = router
