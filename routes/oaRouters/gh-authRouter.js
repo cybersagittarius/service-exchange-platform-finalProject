@@ -5,7 +5,7 @@ const router = express.Router();
 const path = require('path');
 const passport = require('passport')
 
-const ghController = require('../../controllers/oaController/gh-authController')
+const ghController = require('../../controllers/oaControllers/gh-authController')
 
 dotenv.config({path: '../config/config.env'})
 
