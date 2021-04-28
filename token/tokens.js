@@ -30,8 +30,6 @@ const tokenCheck = async (req, res, next) =>{
 module.exports = { tokenCreation, tokenCheck }
 
 
-
-
 //Create tokens
 
 // const createAccessToken = (userId) => {
