@@ -32,7 +32,7 @@ connectDB();
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 const secretRouter = require('./routes/secretRouter');
-const profileRouter = require('./routes/profileRouter');
+//const profileRouter = require('./routes/profileRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const contactUsRouter = require('./routes/contactUsRouter');
 
@@ -40,19 +40,9 @@ const contactUsRouter = require('./routes/contactUsRouter');
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/secret', secretRouter);
-app.use('/profile', profileRouter);
+//app.use('/profile', profileRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactUsRouter);
-
-//Error Handling 
-app.use((req, res, next) => {
-    next(createError(404));
-});
-
-//Central Error Handling for internal server error 
-app.use(errorHandler = (err, req, res)=> {
-    res.status(err.status || 500).json({ error: err.message })
-})
 
 app.listen(port, (err)=>{
     if(err){
@@ -62,3 +52,16 @@ app.listen(port, (err)=>{
         console.log(`Application/Server is now listening on port ${port}`);
     }
 })
+
+//Error Handling for 400 
+app.use((req, res, next) => {
+    //next(createError(404));
+    next(customError('test error'))
+});
+
+//Central Error Handling for internal server error 
+app.use(errorHandler = (err, req, res)=> {
+    res.status(err.status || 500).json({ error: err.message })
+})
+
+
