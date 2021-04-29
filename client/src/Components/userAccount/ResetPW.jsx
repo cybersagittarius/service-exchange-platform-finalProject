@@ -5,20 +5,20 @@ const ResetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
 
-  const postEmail = (email) =>{
-    data = { email }
+  // const postEmail = (email) =>{
+  //   data = { email }
 
-    //fetch data to send it to backend
-    fetch('http://localhost:4000/reset_password', {
-      method: "POST",
-      headers: {'Context-Type': 'application/json'},
-      body: JSON.stringify(data)
-      //in backend the data will be received in req.body
-    })
-    .then(res=>res.json())
-    .then(emailReceived=>console.log(emailReceived))
-    .catch(err=>console.log(err))
-  }
+  //   //fetch data to send it to backend
+  //   fetch('http://localhost:4000/reset_password', {
+  //     method: "POST",
+  //     headers: {'Context-Type': 'application/json'},
+  //     body: JSON.stringify(data)
+  //     //in backend the data will be received in req.body
+  //   })
+  //   .then(res=>res.json())
+  //   .then(emailReceived=>console.log(emailReceived))
+  //   .catch(err=>console.log(err))
+  // }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ const ResetPW = () => {
       return false;
     }
 
-    postEmail(email); 
+    // postEmail(email); 
     
     setEmail("");
   };
@@ -46,7 +46,7 @@ const ResetPW = () => {
   return (
     <>
       <ResetPWForm
-        postEmail = { postEmail }
+        // postEmail = { postEmail }
         submitHandler = { submitHandler }
         changeEmail = { changeEmail }
         email = { email }

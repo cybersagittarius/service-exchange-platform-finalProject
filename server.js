@@ -38,6 +38,7 @@ const pwResetRouter = require('./routes/pwResetRouter');
 const contactUsRouter = require('./routes/contactUsRouter');
 
 //user routers as middlewares
+//not going to implement social media account auth in this projects, but there are ready codes in oaRouters and oaControllers
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/secret', secretRouter);
