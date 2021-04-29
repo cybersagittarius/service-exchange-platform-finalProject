@@ -12,7 +12,10 @@ const Register = () => {
 
      const [country, setCountry] = useState(""); //for RegionCountrySelector package
      const [region, setRegion] = useState(""); //for RegionCountrySelector pack
-   
+    
+     const [preview, setPreview] = useState("");
+     const [savedImage, setSavedImage] = useState("");
+
      const [alertEM, setAlertEM] = useState (false);  
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
@@ -78,7 +81,10 @@ const Register = () => {
          setEmail("");
          setUserName("");
          setPassWord("");
-         setConfirmPW("");             
+         setConfirmPW("");
+         
+         setPreview(null);
+         setSavedImage(null);    
     }    
 
     const changeFirstName = (e) => {
@@ -112,6 +118,22 @@ const Register = () => {
     const changeRegion = (val) => {
         setRegion(val)
     }
+    const onClose = () => {
+        setPreview(null);
+        setSavedImage(preview);    
+      }
+    
+    const onCrop = (preview) => {
+        setPreview(preview);
+        setSavedImage(null);
+      }
+    
+    const onBeforeFileLoad = (e) => {
+        if(e.target.files[0].size >=80000) {
+          alert("File is too big! The maximal file size is 80 KB");
+          e.target.value="";
+        }
+    }
 
      return (
         <>
@@ -136,7 +158,14 @@ const Register = () => {
                           confirmPW = { confirmPW }
                           alertEM = { alertEM }
                           alertPW = { alertPW }
-                          alertPWCheck = { alertPWCheck }                   
+                          alertPWCheck = { alertPWCheck }  
+                          
+                          //props passing to grandchild of Avatar
+                          onClose = { onClose }
+                          onCrop = { onCrop }
+                          onBeforeFileLoad ={ onBeforeFileLoad }
+                          preview={ preview }
+                          savedImage={ savedImage }
                           />      
         </>
     )

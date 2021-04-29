@@ -8,19 +8,19 @@ const Login = () => {
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
 
-  // const postReturnedUser = (data) => {
-  //   console.log(data);
+  const postReturnedUser = (data) => {
+    console.log(data);
 
-  //   /// FETCH TO SEND DATA TO BACKEND
-  //   fetch('http://localhost:4000/login', {
-  //       method: "POST",
-  //       headers: { 'Context-Type': 'application/json' },
-  //       body: JSON.stringify(data)  // backend will receive this in: req.body
-  //   })
-  //   .then(res => res.json())
-  //   .then(returnedUserCreated => console.log(returnedUserCreated))
-  //   .catch(err => alert('An error!'))
-  // }
+    /// FETCH TO SEND DATA TO BACKEND
+    fetch('http://localhost:4000/login', {
+        method: "POST",
+        headers: { 'Context-Type': 'application/json' },
+        body: JSON.stringify(data)  // backend will receive this in: req.body
+    })
+    .then(res => res.json())
+    .then(returnedUserCreated => console.log(returnedUserCreated))
+    .catch(err => alert('An error!'))
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
