@@ -1,10 +1,12 @@
 import React from "react"
-
+import SkillsMenu from '../../SkillsMenu'
+import items from '../../../assets/js/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 
 //3rd party package
 import RegionCountrySelector from "../selector/RegionCountrySelector";
+import AvatarUploader from "../upload-edit/AvatarUploader";
 
 const RegistrationForm = (props) => {
   return (
@@ -119,6 +121,32 @@ const RegistrationForm = (props) => {
                       onChange={props.changeConfirmPW}
                       required
                     />
+                  </div>
+
+                 <div className="form-group col-lg-8">
+                    <label>
+                      Choose Your Avatar: Maximal File Size is 80 KB
+                    </label>
+
+                    <AvatarUploader
+                      onClose={props.onClose}
+                      onCrop={props.onCrop}
+                      onBeforeFileLoad={props.onBeforeFileLoad}
+                      preview={props.preview}
+                      savedImage={props.savedImage}
+                    />
+                  </div>
+                  
+                  <div className="form-group col-lg-4">
+                    <label>
+                      Skills I can offer
+                    </label>
+                    <SkillsMenu 
+                      // title="I'm looking for" 
+                      items={ items } 
+                      multiSelect
+                      selection={props.offerSelection}
+                      handleSelection={props.changeOfferSelection}/>                    
                   </div>
 
                   <div className="form-group col-lg-3">

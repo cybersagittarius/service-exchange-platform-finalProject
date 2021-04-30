@@ -5,20 +5,20 @@ import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 
 //import FontAweSomeIcon and library modules, then set up your own icon library to avoid overloading with other unused icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { library } from "@fortawesome/fontawesome-svg-core";
 
-import {
-  faGoogle,
-  faFacebook,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+// import {
+//   faGoogle,
+//   faFacebook,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
 
-library.add(
-  faGoogle,
-  faFacebook,
-  faTwitter,
-);
+// library.add(
+//   faGoogle,
+//   faFacebook,
+//   faTwitter,
+// );
 
 const LoginForm = (props) => {
   return (
@@ -110,9 +110,9 @@ const LoginForm = (props) => {
                     </div>
 
                     <h6 className="col-lg-12 mt-2 text-center">
-                      Or you can log in with
+                      If you have not already registered with us, register and join us! 
                     </h6>
-                    
+{/*                     
                     <div className="form-check form-group mx-auto" aria-label="buttonExample"> 
                       <button 
                         type="button" 
@@ -143,7 +143,7 @@ const LoginForm = (props) => {
                         <a href="#"></a>
                         <FontAwesomeIcon icon={["fab", "twitter"]} size="1x" />
                       </button>
-                      </div>                   
+                      </div>                    */}
                     </div>                  
                 </fieldset>
               </form>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import RegistrationForm from './forms/RegistrationForm'
 
 const Register = () => {
@@ -12,7 +13,12 @@ const Register = () => {
 
      const [country, setCountry] = useState(""); //for RegionCountrySelector package
      const [region, setRegion] = useState(""); //for RegionCountrySelector pack
-   
+    
+     const [preview, setPreview] = useState("");
+     const [savedImage, setSavedImage] = useState("");
+
+     const [offerSelection, setOfferSelection] = useState([]);
+
      const [alertEM, setAlertEM] = useState (false);  
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
@@ -22,7 +28,7 @@ const Register = () => {
         const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW};
 
         //fetch to send data to backend
-        fetch('http://localhost:4000/register', {
+        fetch('http://localhost:3000/register', {
             method: "POST",
             headers: { 'Context-Type': 'application/json'},
             body: JSON.stringify(data)
@@ -81,7 +87,12 @@ const Register = () => {
          setEmail("");
          setUserName("");
          setPassWord("");
-         setConfirmPW("");             
+         setConfirmPW("");
+         
+         setPreview(null);
+         setSavedImage(null);
+         
+         setOfferSelection([]);
     }    
 
     const changeFirstName = (e) => {
@@ -116,6 +127,28 @@ const Register = () => {
         setRegion(val)
     }
 
+    const onClose = () => {
+        setPreview(null);
+        setSavedImage(preview);    
+      }
+    
+    const onCrop = (preview) => {
+        setPreview(preview);
+        setSavedImage(null);
+      }
+    
+    const onBeforeFileLoad = (e) => {
+        if(e.target.files[0].size >=80000) {
+          alert("File is too big! The maximal file size is 80 KB");
+          e.target.value="";
+        }
+    }
+    
+    const changeOfferSelection = (selection) => {
+        setOfferSelection(selection);
+        }    
+
+
      return (
         <>
         <RegistrationForm   
@@ -129,6 +162,7 @@ const Register = () => {
                           changeConfirmPW = { changeConfirmPW } 
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
+                          changeOfferSelection = { changeOfferSelection }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }
@@ -137,9 +171,17 @@ const Register = () => {
                           region = { region }
                           passWord = { passWord }
                           confirmPW = { confirmPW }
+                          offerSelection = { offerSelection }
                           alertEM = { alertEM }
                           alertPW = { alertPW }
-                          alertPWCheck = { alertPWCheck }                   
+                          alertPWCheck = { alertPWCheck }  
+                          
+                          //props passing to grandchild of Avatar
+                          onClose = { onClose }
+                          onCrop = { onCrop }
+                          onBeforeFileLoad ={ onBeforeFileLoad }
+                          preview= { preview }
+                          savedImage= { savedImage }
                           />      
         </>
     )
