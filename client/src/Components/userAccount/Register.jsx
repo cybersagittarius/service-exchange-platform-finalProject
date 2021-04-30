@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import RegistrationForm from './forms/RegistrationForm'
 
 const Register = () => {
@@ -16,6 +17,8 @@ const Register = () => {
      const [preview, setPreview] = useState("");
      const [savedImage, setSavedImage] = useState("");
 
+     const [offerSelection, setOfferSelection] = useState([]);
+
      const [alertEM, setAlertEM] = useState (false);  
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
@@ -24,7 +27,7 @@ const Register = () => {
         console.log(data);
 
         //fetch to send data to backend
-        fetch('http://localhost:4000/register', {
+        fetch('http://localhost:3000/register', {
             method: "POST",
             headers: { 'Context-Type': 'application/json'},
             body: JSON.stringify(data)
@@ -84,7 +87,9 @@ const Register = () => {
          setConfirmPW("");
          
          setPreview(null);
-         setSavedImage(null);    
+         setSavedImage(null);
+         
+         setOfferSelection([]);
     }    
 
     const changeFirstName = (e) => {
@@ -118,6 +123,7 @@ const Register = () => {
     const changeRegion = (val) => {
         setRegion(val)
     }
+
     const onClose = () => {
         setPreview(null);
         setSavedImage(preview);    
@@ -134,6 +140,11 @@ const Register = () => {
           e.target.value="";
         }
     }
+    
+    const changeOfferSelection = (selection) => {
+        setOfferSelection(selection);
+        }    
+
 
      return (
         <>
@@ -148,6 +159,7 @@ const Register = () => {
                           changeConfirmPW = { changeConfirmPW } 
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
+                          changeOfferSelection = { changeOfferSelection }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }
@@ -156,6 +168,7 @@ const Register = () => {
                           region = { region }
                           passWord = { passWord }
                           confirmPW = { confirmPW }
+                          offerSelection = { offerSelection }
                           alertEM = { alertEM }
                           alertPW = { alertPW }
                           alertPWCheck = { alertPWCheck }  
@@ -164,8 +177,8 @@ const Register = () => {
                           onClose = { onClose }
                           onCrop = { onCrop }
                           onBeforeFileLoad ={ onBeforeFileLoad }
-                          preview={ preview }
-                          savedImage={ savedImage }
+                          preview= { preview }
+                          savedImage= { savedImage }
                           />      
         </>
     )

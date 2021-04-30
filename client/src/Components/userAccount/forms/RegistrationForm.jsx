@@ -1,5 +1,6 @@
 import React from "react"
-
+import SkillsMenu from '../../SkillsMenu'
+import items from '../../../assets/js/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 
@@ -122,7 +123,7 @@ const RegistrationForm = (props) => {
                     />
                   </div>
 
-                 <div className="form-group col-lg-12">
+                 <div className="form-group col-lg-8">
                     <label>
                       Choose Your Avatar: Maximal File Size is 80 KB
                     </label>
@@ -136,9 +137,16 @@ const RegistrationForm = (props) => {
                     />
                   </div>
                   
-                  <div>
-
-                    
+                  <div className="form-group col-lg-4">
+                    <label>
+                      Skills I can offer
+                    </label>
+                    <SkillsMenu 
+                      // title="I'm looking for" 
+                      items={ items } 
+                      multiSelect
+                      selection={props.offerSelection}
+                      handleSelection={props.changeOfferSelection}/>                    
                   </div>
 
                   <div className="form-group col-lg-3">
