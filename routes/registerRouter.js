@@ -35,6 +35,8 @@ router.post('/', (req, res, next)=>{
         username: req.body.userName,
         password: req.body.passWord,
         confirmpw: req.body.confirmPW,
+        avatar: req.body.savedImage,
+        skills: req.body.offerSelection
     }
     
     registerController.saveUsers(body)

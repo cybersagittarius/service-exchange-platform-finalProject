@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config({path: '../config/config.env'});
+
 const sendPwResetEmail = (token) =>{              
 
     const transporter = nodemailer.createTransport({

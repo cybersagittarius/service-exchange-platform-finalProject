@@ -26,6 +26,8 @@ const saveUsers = (body) =>{
             email: body.email,
             username: body.username,
             password: body.password, 
+            avatar: body.avatar,
+            skills: body.skills
         })
         
         newUser.save()
