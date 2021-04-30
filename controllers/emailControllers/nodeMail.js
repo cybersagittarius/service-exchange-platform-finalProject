@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config({path: '../config/config.env'});
+const nodemailer = require('nodemailer');
 
 const sendPwResetEmail = (token) =>{              
 

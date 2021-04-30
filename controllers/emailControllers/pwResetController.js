@@ -1,8 +1,8 @@
 const userModel = require('../../models/userModel')
 const crypto = require('crypto');
 const customError = require('../../config/customError');
-const nodemailer = require('nodemailer');
-const sendEmail = require('./nodeMail');
+//const sendEmail = require('./nodeMail');
+const sendEmail = require('./sendGrid');
 
 // const path = require('path')
 // const fs = require('fs')
