@@ -129,7 +129,8 @@ const RegistrationForm = (props) => {
                     </label>
 
                     <AvatarUploader
-                      onClose={props.onClose}
+                      // input name="avatar" type='file' accept='image/*'
+                      // onClose={props.onClose}
                       onCrop={props.onCrop}
                       onBeforeFileLoad={props.onBeforeFileLoad}
                       preview={props.preview}

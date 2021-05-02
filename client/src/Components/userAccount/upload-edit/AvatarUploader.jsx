@@ -6,6 +6,8 @@ import React from "react";
 import Avatar from "react-avatar-edit";
 
 export const AvatarUploader = (props) => {
+  console.log('Avatar!!')
+  console.log(props)
   // const [preview, setPreview] = useState("");
   // const [savedImage, setSavedImage] = useState("");
   // const [sourceImage, setSourceImage] = useState("");
@@ -34,11 +36,12 @@ export const AvatarUploader = (props) => {
           width={350}
           height={250}
           onCrop={props.onCrop}
-          onClose={props.onClose}
+          // onClose={props.onClose}
+          // onClose={err=>{console.log('onClose is removed after testing')}}
           onBeforeFileLoad={props.onBeforeFileLoad}
         />
         <br />
-        {props.preview ? <img src={props.preview} alt="Preview" /> : null}
+        {/* {props.preview ? <img src={props.preview} alt="Preview" /> : null} */}
         {props.savedImage ? (
           <img src={props.savedImage} alt="savedImages" />
         ) : null}

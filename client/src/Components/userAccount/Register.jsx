@@ -23,18 +23,26 @@ const Register = () => {
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
 
-    const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW) =>{
 
-        const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW};
+
+    const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection) =>{
+
+        const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection};
+
+        console.log(data);    
 
         //fetch to send data to backend
-        fetch('http://localhost:3000/register', {
+        fetch('http://localhost:4000/register', {
             method: "POST",
-            headers: { 'Context-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
             //backend will receive this in: req.body
         })
-        .then(res=>res.json())
+        .then(res=>{ 
+            console.log('res received', res)
+            
+            return res.json()
+        })
         .then(newUserCreated => console.log(newUserCreated))
         .catch(err=>console.log(err))
     }
@@ -78,21 +86,21 @@ const Register = () => {
             return false;
         }
 
-        postNewUser(firstName, lastName, country, region, email, userName, passWord, confirmPW);
+        postNewUser(firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection);
 
-         setFirstName("");
-         setLastName("");
-         setCountry("");
-         setRegion("");
-         setEmail("");
-         setUserName("");
-         setPassWord("");
-         setConfirmPW("");
+        //  setFirstName("");
+        //  setLastName("");
+        //  setCountry("");
+        //  setRegion("");
+        //  setEmail("");
+        //  setUserName("");
+        //  setPassWord("");
+        //  setConfirmPW("");
          
-         setPreview(null);
-         setSavedImage(null);
+        //  setPreview(null);
+        //  setSavedImage(null);
          
-         setOfferSelection([]);
+        //  setOfferSelection([]);
     }    
 
     const changeFirstName = (e) => {
@@ -127,17 +135,20 @@ const Register = () => {
         setRegion(val)
     }
 
-    const onClose = () => {
-        setPreview(null);
-        setSavedImage(preview);    
-      }
+    // const onClosing = () => {  
+    //     console.log('onClose works!')      
+    //     setPreview(null);
+    //     setSavedImage(preview);    
+    //   }
     
     const onCrop = (preview) => {
+        console.log('onCrop works')
         setPreview(preview);
-        setSavedImage(null);
-      }
-    
+        setSavedImage(preview);
+      }    
+      
     const onBeforeFileLoad = (e) => {
+        console.log('onBeforeFile works!')
         if(e.target.files[0].size >=80000) {
           alert("File is too big! The maximal file size is 80 KB");
           e.target.value="";
@@ -147,7 +158,6 @@ const Register = () => {
     const changeOfferSelection = (selection) => {
         setOfferSelection(selection);
         }    
-
 
      return (
         <>
@@ -162,7 +172,7 @@ const Register = () => {
                           changeConfirmPW = { changeConfirmPW } 
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
-                          changeOfferSelection = { changeOfferSelection }
+                          changeOfferSelection = { changeOfferSelect }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }
@@ -177,7 +187,8 @@ const Register = () => {
                           alertPWCheck = { alertPWCheck }  
                           
                           //props passing to grandchild of Avatar
-                          onClose = { onClose }
+                          // take onClose off to deactivate it
+                          // onClose = { onClose }
                           onCrop = { onCrop }
                           onBeforeFileLoad ={ onBeforeFileLoad }
                           preview= { preview }
