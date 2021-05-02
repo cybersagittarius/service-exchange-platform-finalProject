@@ -172,7 +172,7 @@ const Register = () => {
                           changeConfirmPW = { changeConfirmPW } 
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
-                          changeOfferSelection = { changeOfferSelect }
+                          changeOfferSelection = { changeOfferSelection }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }
