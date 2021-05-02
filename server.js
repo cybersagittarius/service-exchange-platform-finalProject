@@ -46,6 +46,11 @@ app.use('/secret', secretRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactUsRouter);
 
+//a simple test to make sure server works
+// app.get('/', (req, res)=>{
+//     res.json({"pooh": "bear"})
+// })
+
 app.listen(port, (err)=>{
     if(err){
         console.log(err);
@@ -61,7 +66,9 @@ app.use((req, res, next) => {
 });
 
 //Central Error Handling for internal server error 
-app.use(errorHandler = (err, req, res)=> {
+//added next to make sure whatever error is forwarded
+app.use(errorHandler = (err, req, res, next)=> {
+    console.log(err, 'Fxxking ERR!!')
     res.status(err.status || 500).json({ error: err.message })
 })
 
