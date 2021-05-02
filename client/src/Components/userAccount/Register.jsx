@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from './configure-files/axios'
 
 import RegistrationForm from './forms/RegistrationForm'
 
@@ -25,24 +26,25 @@ const Register = () => {
 
     const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection) =>{
 
-        const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection};
+        const capturedData = {firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection};
 
-        console.log(data);    
+        console.log(capturedData);    
 
         //fetch to send data to backend
-        fetch('http://localhost:4000/register', {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-            //backend will receive this in: req.body
-        })
-        .then(res=>{ 
-            console.log('res received', res)
-            
-            return res.json()
+        // fetch('http://localhost:4000/register', {
+        //     method: "POST",
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(data)
+        //     //backend will receive this in: req.body
+        // })
+        axios.post('/register', capturedData)
+        .then(response=>{ 
+            console.log('res received', response.data)
+            return response.json()
         })
         .then(newUserCreated => console.log(newUserCreated))
-        .catch(err=>console.log(err))
+        // in case the API responded, we will have the error inside error.response.data 
+        .catch(error=>console.log(error.response && error.response.data))
     }
     
      const submitHandler = (e) => {
@@ -131,7 +133,7 @@ const Register = () => {
 
     const changeRegion = (val) => {
         setRegion(val)
-    }
+    }    
 
     // const onClosing = () => {  
     //     console.log('onClose works!')      
@@ -155,12 +157,11 @@ const Register = () => {
     
     const changeOfferSelection = (selection) => {
         setOfferSelection(selection);
-        }    
-
+        }
+    
      return (
         <>
-        <RegistrationForm   
-                          postNewUser = { postNewUser }
+        <RegistrationForm                           
                           submitHandler = { submitHandler }
                           changeFirstName = { changeFirstName }
                           changeLastName = { changeLastName }
@@ -191,7 +192,7 @@ const Register = () => {
                           onBeforeFileLoad ={ onBeforeFileLoad }
                           preview= { preview }
                           savedImage= { savedImage }
-                          />      
+                />      
         </>
     )
 }

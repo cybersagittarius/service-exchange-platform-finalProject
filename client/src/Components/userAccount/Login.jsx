@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from './configure-files/axios'
+
 import LoginForm from "./forms/LoginForm";
 
 const Login = () => {
@@ -9,19 +11,28 @@ const Login = () => {
   const [alertPW, setAlertPW] = useState(false);
 
   const postReturnedUser = (email, passWord) => {
-    const data = {email, passWord}
+    const capturedData = {email, passWord}
     //console.log(data);
 
     /// FETCH TO SEND DATA TO BACKEND
-    fetch('http://localhost:4000/login', {
-        method: "POST",
-        headers: { 'Context-Type': 'application/json' },
-        body: JSON.stringify(data)  // backend will receive this in: req.body
+    // fetch('http://localhost:4000/login', {
+    //     method: "POST",
+    //     headers: { 'Context-Type': 'application/json' },
+    //     body: JSON.stringify(data)  // backend will receive this in: req.body
+    // })
+    axios.post('/login', capturedData)
+    .then(response=>{ 
+      console.log('res received'); //response.data)
+      response.json()
     })
-    .then(res => res.json())
-    .then(returnedUserCreated => console.log(returnedUserCreated))
-    .catch(err => alert('An error!'))
-  }
+    .then(oldUserFound => console.log(oldUserFound))
+    // in case the API responded, we will have the error inside error.response.data 
+    .catch(error=>console.log(error.response && error.response.data))
+    }
+  //   .then(res => res.json())
+  //   .then(returnedUserCreated => console.log(returnedUserCreated))
+  //   .catch(err => alert('An error!'))
+  // }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -89,7 +100,6 @@ const Login = () => {
   return (
     <>
       <LoginForm
-        postReturnedUser = { postReturnedUser }
         submitHandler = { submitHandler }
         changeEmail = { changeEmail }
         changePW = { changePW }
