@@ -39,8 +39,7 @@ const Register = () => {
             //backend will receive this in: req.body
         })
         .then(res=>{ 
-            console.log('res received', res)
-            
+            console.log('res received', res)            
             return res.json()
         })
         .then(newUserCreated => console.log(newUserCreated))
