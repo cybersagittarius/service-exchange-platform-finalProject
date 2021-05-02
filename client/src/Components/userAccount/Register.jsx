@@ -23,8 +23,6 @@ const Register = () => {
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
 
-
-
     const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection) =>{
 
         const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection};
@@ -172,7 +170,7 @@ const Register = () => {
                           changeConfirmPW = { changeConfirmPW } 
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
-                          changeOfferSelection = { changeOfferSelect }
+                          changeOfferSelection = { changeOfferSelection }
                           firstName = { firstName }
                           lastName = { lastName }
                           email = { email }
