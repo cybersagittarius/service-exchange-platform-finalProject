@@ -26,6 +26,8 @@ const registerController = require('../controllers/registerController');
 // })       
 
 router.post('/', (req, res, next)=>{
+    //this console.log shall be removed after testing and debugging
+    console.log('I am being called?')
     const body= {
         firstname: req.body.firstName,
         lastname: req.body.lastName,
