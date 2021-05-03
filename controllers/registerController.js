@@ -1,81 +1,22 @@
-const customError = require('../config/customError.js');
-// const fs = require('fs');
-// const usersPath = path.join(__dirname, '..', 'model', 'users.json')const dotenv = require('dotenv');
-const userModel = require('../models/userModel.js');
+const express = require('express');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+//const auth = require(' ');
+console.log('no users!')
 
-const saveUsers = (body) =>{
+const User = require('../models/userModel');
+
+const registerUser = async(req, res, next) => {
+    //destructuring the req.body
+  const user = new User(req.body)
+    await user.save()
     
-    return new Promise((resolve, reject) => {
-        
-        //const { firstname, lastname, country, region, email, username, password, confirmpasswordpassword} = body
-        
-        //1. compare if this user already exists
-        //2. if not, save this user
-        //3. hash the password        
-        const { password, confirmpw } = body;
-        if (password !== confirmpw) {
-            console.log('not a match!');
-            const message = 'password and the confirm password did not match!'
-            reject(customError(message))
-        } else {            
-        const newUser = new userModel({
-            firstname: body.firstname,
-            lastname: body.lastname,
-            country: body.country,
-            region: body.region,
-            email: body.email,
-            username: body.username,
-            password: body.password, 
-            avatar: body.avatar,
-            skills: body.skills
-        })
-        
-        newUser.save()
-        .then(response=>{
-            resolve({'success': true, 'msg': 'New user saved!'})
-        })
-        .catch(err=>{
-            reject(err);
-        })
-    }
-            /*if(err){
-                
-            }else{
-                
-            }
-            next()*/            
-    })   
-}
+    const payload = {user: {id: user.id, name: user.firstname}}    
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: 360000})      
+      
+    res.status(200).json({token, user});      
+    
+  
+} 
 
-module.exports = { saveUsers };
-
-// const saveUsers = (body) =>{
-
-//     return new Promise((resolve, reject) => {
-        
-//         fs.readFile(usersPath, (err, data)=>{
-//             if(err){
-//                 reject(err)
-//             }else{
-//                 //incoming data through fetch
-//                 let newData = JSON.parse(data)
-//                 console.log(newData)
-                
-//                 newData.users.push({
-//                     id: newData.users.length+1, 
-//                     ...body
-//                 })
-                
-//             //使用四个空格缩进
-//             fs.writeFile(usersPath, JSON.stringify(newData, null, 4), (errWrite)=>{
-//                 if(errWrite){
-//                     reject(errWrite)
-//                 }else{
-//                     resolve({'success': true, 'msg': 'User was saved'})
-//                 }
-//             })
-//             }
-//         })
-//     })
-// }
-
+module.exports = registerUser

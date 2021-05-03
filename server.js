@@ -2,13 +2,11 @@ const connectDB = require('./config/dbConnect')
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const customError = require('./config/customError')
-const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const path = require('path');
 
-dotenv.config({ path: './config/config.env' });
+require('dotenv').config()
 
 //alternatively we can just require dotenv
 //require('dotenv').config();
@@ -31,7 +29,7 @@ connectDB();
 
 //require routers
 const registerRouter = require('./routes/registerRouter');
-const loginRouter = require('./routes/loginRouter');
+const loginRouter = require('./routes/loginRouterOriginal');
 const secretRouter = require('./routes/secretRouter');
 //const profileRouter = require('./routes/profileRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
@@ -43,7 +41,7 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/secret', secretRouter);
 //app.use('/profile', profileRouter);
-app.use('/logout', logoutRouter);
+//app.use('/logout', logoutRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactUsRouter);
 
