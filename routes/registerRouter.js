@@ -41,6 +41,14 @@ router.post('/', (req, res, next)=>{
         skills: req.body.offerSelection
     }
     
+    //separate avatar out to handle the storage to MongoDB
+    const {avatar, ...bodyRest} = body
+    //this is only for testing
+    console.log (bodyRest)
+
+    const result = await cloudinary.upload.upload( avatar )
+    const userNew = await User({ ...userData, avatar_url: result.secure_url })
+        
     registerController.saveUsers(body)
     .then(response=>{
         res.send(response)
