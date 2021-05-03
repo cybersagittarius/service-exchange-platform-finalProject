@@ -43,6 +43,7 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/secret', secretRouter);
 //app.use('/profile', profileRouter);
+app.use('/logout', logoutRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactUsRouter);
 
