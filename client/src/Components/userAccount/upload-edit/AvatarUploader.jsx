@@ -33,8 +33,9 @@ export const AvatarUploader = (props) => {
     <>
       <div>
         <Avatar
-          width={350}
-          height={250}
+          className="form-control"
+          width={321}
+          height={210}
           onCrop={props.onCrop}
           // onClose={props.onClose}
           // onClose={err=>{console.log('onClose is removed after testing')}}
