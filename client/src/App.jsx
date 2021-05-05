@@ -12,10 +12,12 @@ import Login from "./Components/userAccount/Login";
 import Register from "./Components/userAccount/Register";
 import ResetPW from "./Components/userAccount/ResetPW";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { SearchProvider } from './Components/context/SearchContext';
 import "bootstrap/dist/css/bootstrap.min.css";
 
  const App = () => {
   return (
+    <SearchProvider>
     <Router>
       <div className="wrapper">
         <Header />
@@ -30,6 +32,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
         <Route exact path="/reset_password" component={ResetPW} />
       </Switch>
     </Router>
+    </SearchProvider>
   );
 };
 

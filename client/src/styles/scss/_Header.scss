@@ -9,8 +9,13 @@
   background: rgb(245, 245, 245);
  /*  @include flexCenter(row, rgb(245, 245, 245)); */
   z-index: 9999;
+  @media only screen and (max-width: 841px) {
+/* height: 93px;
+ *//* background: red; */
+  }
+  
 }
 
 .btnFindDiv {
-  margin-left: 9px;
+  margin-left: 31px;
 }
