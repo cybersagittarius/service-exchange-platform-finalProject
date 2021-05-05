@@ -54,14 +54,16 @@ const RegistrationForm = (props) => {
                     />
                   </div>
 
-                  <div className="form-group col-lg-12">
+                  <div className="form-group col-lg-10">
                     <label>Country</label>
+                    
                     <RegionCountrySelector
                       country={props.country}
                       region={props.region}
                       setParentCountry={(val) => props.changeCountry(val)}
                       setParentRegion={(val) => props.changeRegion(val)}
                     />
+                    
                   </div>
 
                   <div className="form-group col-lg-7">
@@ -123,11 +125,11 @@ const RegistrationForm = (props) => {
                     />
                   </div>
 
-                 <div className="form-group col-lg-8">
+                 <div className="form-group col-lg-4">
                     <label>
-                      Choose Your Avatar: Maximal File Size is 80 KB
+                      Avatar: Maximal File Size is 80 KB
                     </label>
-
+                        
                     <AvatarUploader
                       // input name="avatar" type='file' accept='image/*'
                       // onClose={props.onClose}
@@ -136,21 +138,28 @@ const RegistrationForm = (props) => {
                       preview={props.preview}
                       savedImage={props.savedImage}
                     />
+                    
                   </div>
                   
+                  <div className="form-group col-lg-3">
+                  </div> 
+
                   <div className="form-group col-lg-4">
                     <label>
                       Skills I can offer
                     </label>
+                    
                     <SkillsMenu 
                       // title="I'm looking for" 
+                      className="form-control"
                       items={ items } 
                       multiSelect
                       selection={props.offerSelection}
                       handleSelection={props.changeOfferSelection}/>                    
+                    
                   </div>
 
-                  <div className="form-group col-lg-3">
+                  <div className="form-group col-lg-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-primary btn-sm">
                       Submit
                     </button>
