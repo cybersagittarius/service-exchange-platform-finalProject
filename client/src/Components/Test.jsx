@@ -4,7 +4,7 @@ import axios from 'axios'
 const Test = () => {
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5Mjg0OTNjMzZhZjc2ZDBhNmIxMTc5IiwibmFtZSI6IlNoaWJhIn0sImlhdCI6MTYyMDIxNDkzMiwiZXhwIjoxNjIwNTc0OTMyfQ.8sruuvVMkHdncxPCuglhD2P13oJ-oXw2yhg3xz9epHU"
 
-    const config = { headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}`}}
+    const config = { headers: [{"Content-Type": "application/json", "Authorization": `Bearer ${token}`}]}
 
     console.log(config)
 
