@@ -16,7 +16,6 @@ const LoginAndRegister = () => {
   return (
     <>
     <div className="btn-group" role="group">
-      <Link to="/login">
       <Link to="/landing_page/login">
         <button className="btn log">
           <a href="#">Login</a>
