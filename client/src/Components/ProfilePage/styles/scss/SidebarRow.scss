@@ -1,0 +1,26 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.sidebarRow {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebarRow:hover {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.sidebarRow>p {
+    margin-left: 30px;
+    font-family: $fontFamily;
+}
+
+.sidebarRow>.MuiSvgIcon-root {
+    height: 23px;
+
+
+
+}
