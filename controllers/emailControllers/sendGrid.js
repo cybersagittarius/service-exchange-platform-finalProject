@@ -1,14 +1,14 @@
-const dotenv = require('dotenv');
-dotenv.config({path: '../config/config.env'});
 const sgMail = require('@sendgrid/mail');
+
+require('dotenv').config()
 
 const sendPwResetEmail = (token) => {
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const msg = {
-  to: 'cyberyoma@hotmail.com', // Change to your recipient
-  from: 'hidomi@gmail.com', // Change to your verified sender
+  to: 'cxx@hotmail.com', // Change to your recipient
+  from: 'hxx@gmail.com', // Change to your verified sender
   subject: 'Sending with SendGrid is Fun',
   text: 'and easy to do anywhere, even with Node.js',
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',

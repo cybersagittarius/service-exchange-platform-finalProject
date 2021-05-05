@@ -14,15 +14,19 @@ import ResetPW from "./Components/userAccount/ResetPW";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Test from "./Components/Test";
+
  const App = () => {
   return (
     <Router>
       <div className="wrapper">
         <Header />
-        <Main />       
+        <Main />  
+        <Test />      
         <About />
         <Team />
         <Footer />
+       
       </div>
       <Switch>
         <Route exact path="/login" component={Login} />

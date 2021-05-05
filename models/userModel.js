@@ -1,25 +1,27 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
-const userSchema = new mongoose.Schema ({
+const userCredentialSchema = new mongoose.Schema ({
 
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
-    // country: { type: String, required: true },
-    // region: { type: String, required: true },
-    // email: { type: String, required: true, unique: true },
-    // username: { type: String, required: true, unique: true },
+    country: { type: String, required: true },
+    region: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    username: { type: String, required: true },
     password: { type: String, required: true }, 
     // avatar: { data: Buffer, contentType: String, required: true},
     // skills: { type: String, required: true },
-},
+
+},  {toObject: { virtuals: true }},
+    {toJSON: {virtuals: true}},
     {timestamps: true}
 )
 
 //pre middleware(
 //if we use this in a class, we DO NOT use arrow function, just use function()
 
-userSchema.pre('save', function (next) {
+userCredentialSchema.pre('save', function (next) {
     //constructor
     const user = this
 
@@ -49,7 +51,7 @@ userSchema.pre('save', function (next) {
     }
 })
 
-userSchema.methods.comparePassword = function (password, next) {
+userCredentialSchema.methods.comparePassword = function (password, next) {
     bcrypt.compare(password, this.password, (error, isMatch)=>{
         if(error) {
             return next(error)
@@ -59,5 +61,8 @@ userSchema.methods.comparePassword = function (password, next) {
     })
 }
 
+userCredentialSchema.virtual('fullname').get(function(){
+    return `${this.firstname} ${this.lastname}`
+})
 //this module will export User as the instance 'User' of userSchema
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('user', userCredentialSchema);

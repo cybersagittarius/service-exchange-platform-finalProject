@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const customError = require('./config/customError')
 const express = require('express');
+//const helmet = require('helmet');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
@@ -24,26 +25,33 @@ app.use(express.json()); //parsing incoming body into req.body
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
 
+//protect and secure the headers 
+//app.use(helmet());
+//app.use(noCache()); //disable client side caching 
+
 //connect to DB
 connectDB();
 
 //require routers
 const registerRouter = require('./routes/registerRouter');
-const loginRouter = require('./routes/loginRouterOriginal');
-const secretRouter = require('./routes/secretRouter');
+const loginRouter = require('./routes/loginRouter');
+const secretRouter = require('./routes/secretRouterOriginal');
 //const profileRouter = require('./routes/profileRouter');
-const pwResetRouter = require('./routes/pwResetRouter');
-const contactUsRouter = require('./routes/contactUsRouter');
+//const pwResetRouter = require('./routes/pwResetRouter');
+const contactRouter = require('./routes/contactRouter');
+const deleteRouter = require('./routes/deleteRouter');
+
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, but there are ready codes in oaRouters and oaControllers
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-app.use('/secret', secretRouter);
+//app.use('/secret', secretRouter);
+app.use('/delete', deleteRouter);
 //app.use('/profile', profileRouter);
 //app.use('/logout', logoutRouter);
-app.use('/reset_password', pwResetRouter);
-app.use('/contact', contactUsRouter);
+//app.use('/reset_password', pwResetRouter);
+app.use('/contact', contactRouter);
 
 //a simple test to make sure server works
 // app.get('/', (req, res)=>{
