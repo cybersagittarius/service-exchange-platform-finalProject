@@ -5,8 +5,8 @@ const ResetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
 
-  const postEmail = (data) =>{
-    console.log(data);
+  const postEmail = (email) =>{
+    data = { email }
 
     //fetch data to send it to backend
     fetch('http://localhost:4000/reset_password', {
@@ -33,6 +33,9 @@ const ResetPW = () => {
       }, 5000);
       return false;
     }
+
+    postEmail(email); 
+    
     setEmail("");
   };
 

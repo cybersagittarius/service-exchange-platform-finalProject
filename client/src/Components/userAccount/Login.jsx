@@ -8,8 +8,9 @@ const Login = () => {
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
 
-  const postReturnedUser = (data) => {
-    console.log(data);
+  const postReturnedUser = (email, passWord) => {
+    const data = {email, passWord}
+    //console.log(data);
 
     /// FETCH TO SEND DATA TO BACKEND
     fetch('http://localhost:4000/login', {
@@ -50,6 +51,9 @@ const Login = () => {
     rememberMe === true
       ? saveOnLocal(email, passWord)
       : console.log("No email nor password saved in the browser");
+
+      
+    postReturnedUser(email, passWord);
 
     setEmail("");
     setPassWord("");
