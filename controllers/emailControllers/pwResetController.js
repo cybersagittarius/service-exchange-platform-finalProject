@@ -13,7 +13,7 @@ const resetEmail = async(req, res, next) => {
 
         const email = req.body.email;
 
-        userModel.findOne({email}).exec((err, user)=>{
+        userModel.findOne({email: email}).exec((err, user)=>{
             if(err){
                 res.send(401).json({msg: "Erro!"})
             }else if(!user){
