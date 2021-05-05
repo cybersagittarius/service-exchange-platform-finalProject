@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="btn-group" role="group">
-      <Link to="/landing_page/login">
+      <Link to="/login">
         <button className="btn log">
           <a href="#">Login</a>
         </button>
       </Link>
-      <Link to="/landing_page/register">
+      <Link to="/register">
         <button className="btn log">
           <a href="#">Register</a>
         </button>

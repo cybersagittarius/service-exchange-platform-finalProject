@@ -1,0 +1,30 @@
+/* @include media-breakpoint-up(xs) { ... }
+@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... } */
+.sidebarRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebarRow:hover {
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.sidebarRow > p {
+  margin-left: 30px;
+  font-family: "Oswald", sans-serif;
+}
+
+.sidebarRow > .MuiSvgIcon-root {
+  height: 23px;
+}
+/*# sourceMappingURL=SidebarRow.css.map */
