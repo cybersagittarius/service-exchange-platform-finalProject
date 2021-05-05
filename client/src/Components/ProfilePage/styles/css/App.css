@@ -1,8 +1,6 @@
-@import "./variables";
-
 body {
-  box-sizing: content-box;
-  /* box-sizing: border-box; */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
@@ -11,7 +9,8 @@ body {
 }
 
 .box-gallery {
-  top: 58px;
+  top: 83px;
   margin-bottom: 70px;
   z-index: -1;
 }
+/*# sourceMappingURL=App.css.map */

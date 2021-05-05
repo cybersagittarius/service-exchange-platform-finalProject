@@ -13,13 +13,13 @@ const Login = () => {
 
     /// FETCH TO SEND DATA TO BACKEND
     fetch('http://localhost:4000/login', {
-        method: "POST",
-        headers: { 'Context-Type': 'application/json' },
-        body: JSON.stringify(data)  // backend will receive this in: req.body
+      method: "POST",
+      headers: { 'Context-Type': 'application/json' },
+      body: JSON.stringify(data)  // backend will receive this in: req.body
     })
-    .then(res => res.json())
-    .then(returnedUserCreated => console.log(returnedUserCreated))
-    .catch(err => alert('An error!'))
+      .then(res => res.json())
+      .then(returnedUserCreated => console.log(returnedUserCreated))
+      .catch(err => alert('An error!'))
   }
 
   const submitHandler = (e) => {
@@ -50,7 +50,7 @@ const Login = () => {
     rememberMe === true
       ? saveOnLocal(email, passWord)
       : console.log("No email nor password saved in the browser");
-      
+
     setEmail("");
     setPassWord("");
     setRememberMe(false);
@@ -86,16 +86,16 @@ const Login = () => {
   return (
     <>
       <LoginForm
-        postReturnedUser = { postReturnedUser }
-        submitHandler = { submitHandler }
-        changeEmail = { changeEmail }
-        changePW = { changePW }
-        changeRM = { changeRM }
-        email = { email }
-        passWord = { passWord }
-        rememberMe = { rememberMe }
-        alertEM = { alertEM }
-        alertPW = { alertPW }
+        postReturnedUser={postReturnedUser}
+        submitHandler={submitHandler}
+        changeEmail={changeEmail}
+        changePW={changePW}
+        changeRM={changeRM}
+        email={email}
+        passWord={passWord}
+        rememberMe={rememberMe}
+        alertEM={alertEM}
+        alertPW={alertPW}
       />
     </>
   );
