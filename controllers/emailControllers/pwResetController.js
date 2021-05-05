@@ -15,7 +15,7 @@ const resetEmail = async(req, res, next) => {
 
         userModel.findOne({email}).exec((err, user)=>{
             if(err){
-                res.send(401).json({msg: "No email found!"})
+                res.send(401).json({msg: "Erro!"})
             }else if(!user){
                 res.send(401).json({msg: "No email found!"})
                 }else{
@@ -34,6 +34,7 @@ const resetEmail = async(req, res, next) => {
                     })                   
                 }                  
             )}
-        }
+        })
+    }
     
 module.exports = resetEmail
