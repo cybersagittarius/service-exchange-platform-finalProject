@@ -57,4 +57,55 @@
             "id": 7
         }
     ]
+},
+
+{
+    "firstname": "Akita",
+    "lastname": "Dog",
+    "email": "akita@gmail.com",    
+    "password": "123",
+    "username": "AkitaDog",
+    "country": "Japan",
+    "region": "Akita"
 }
+
+{
+    "firstname": "Shiba",
+    "lastname": "Dog",
+    "email": "shiba@gmail.com",    
+    "password": "123",
+    "username": "ShibaDog",
+    "country": "Japan",
+    "region": "Shiba"
+}
+
+{
+    "firstname": "Snoopy",
+    "lastname": "Dog",
+    "email": "snoopy@gmail.com",    
+    "password": "123",
+    "username": "SnoopyDog",
+    "country": "USA",
+    "region": "Minnesota"
+}
+
+{
+    "firstname": "Pooh",
+    "lastname": "Bear",
+    "email": "pooh@gmail.com",    
+    "password": "123",
+    "username": "PoohBear",
+    "country": "UK",
+    "region": "Hundreds-acre-woods"
+}
+
+{
+    "firstname": "Paddington",
+    "lastname": "Bear",
+    "email": "paddington@gmail.com",    
+    "password": "123",
+    "username": "PaddingtonBear",
+    "country": "Peru",
+    "region": "Hundreds-mountains"
+}
+
