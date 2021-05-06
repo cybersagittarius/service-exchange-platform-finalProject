@@ -4,11 +4,11 @@ import RegistrationForm from './forms/RegistrationForm'
 
 const Register = () => {
      
-     const [firstName, setFirstName] = useState("");
-     const [lastName, setLastName] = useState(""); 
+     const [firstname, setFirstName] = useState("");
+     const [lastname, setLastName] = useState(""); 
      const [email, setEmail] = useState("");     
-     const [userName, setUserName] = useState("");
-     const [passWord, setPassWord] = useState("");
+     const [username, setUserName] = useState("");
+     const [password, setPassWord] = useState("");
      const [confirmPW, setConfirmPW] = useState(""); 
 
      const [country, setCountry] = useState(""); //for RegionCountrySelector package
@@ -25,9 +25,9 @@ const Register = () => {
 
 
 
-    const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection) =>{
+    const postNewUser = (firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection) =>{
 
-        const data = {firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection};
+        const data = {firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection};
 
         console.log(data);    
 
@@ -56,9 +56,9 @@ const Register = () => {
         //source: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a (section 6)
         
         const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/
-        const isEmValid = emailValidator.test(email);        
+        const isEmailValid = emailValidator.test(email);        
         
-        if(!isEmValid ){
+        if(!isEmailValid ){
             setAlertEM(true)
             setTimeout(() => {
                 setAlertEM(false)
@@ -77,7 +77,7 @@ const Register = () => {
             return false;                    
         }        
        
-        if ((isEmValid && isPwValid) && (passWord!==confirmPW)) {
+        if ((isEmailValid && isPwValid) && (password!==confirmPW)) {
             setAlertPWCheck(true)
             setTimeout(() => {
                 setAlertPWCheck(false)
@@ -85,7 +85,7 @@ const Register = () => {
             return false;
         }
 
-        postNewUser(firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection);
+        postNewUser(firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection);
 
         //  setFirstName("");
         //  setLastName("");
@@ -172,13 +172,13 @@ const Register = () => {
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
                           changeOfferSelection = { changeOfferSelection }
-                          firstName = { firstName }
-                          lastName = { lastName }
+                          firstname = { firstname }
+                          lastname = { lastname }
                           email = { email }
-                          userName = { userName }
+                          username = { username }
                           country = { country }
                           region = { region }
-                          passWord = { passWord }
+                          password = { password }
                           confirmPW = { confirmPW }
                           offerSelection = { offerSelection }
                           alertEM = { alertEM }

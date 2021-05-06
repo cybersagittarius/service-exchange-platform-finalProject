@@ -32,7 +32,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="text"
                       name="firstName"
-                      value={props.firstName}
+                      value={props.firstname}
                       placeholder="your first name"
                       className="form-control"
                       onChange={props.changeFirstName}
@@ -46,7 +46,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="text"
                       name="lastName"
-                      value={props.lastName}
+                      value={props.lastname}
                       placeholder="your last name"
                       className="form-control"
                       onChange={props.changeLastName}
@@ -84,7 +84,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="text"
                       name="username"
-                      value={props.userName}
+                      value={props.username}
                       placeholder="unique, no space"
                       className="form-control"
                       onChange={props.changeUserName}
@@ -101,7 +101,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="password"
                       name="password"
-                      value={props.passWord}
+                      value={props.password}
                       placeholder="Please ensure you follow the password setting request"
                       className="form-control"
                       onChange={props.changePassWord}
