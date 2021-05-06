@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AEaA;;;;2CAI2C;AFd3C,AAAA,KAAK,GAAC,KAAK,CAAC;EACR,KAAK,EAAE,KAAK;CAEf",
+    "sources": [
+        "Feed.scss",
+        "_variables.scss",
+        "_mixins.scss"
+    ],
+    "names": [],
+    "file": "Feed.css"
+}
