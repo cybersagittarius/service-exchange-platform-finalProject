@@ -1,18 +1,26 @@
-import React from 'react'
-import axios from 'axios'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+
 
 const Test = () => {
+
+    const [message, setMessage] = useState({});
+    
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5Mjg0OTNjMzZhZjc2ZDBhNmIxMTc5IiwibmFtZSI6IlNoaWJhIn0sImlhdCI6MTYyMDIxNDkzMiwiZXhwIjoxNjIwNTc0OTMyfQ.8sruuvVMkHdncxPCuglhD2P13oJ-oXw2yhg3xz9epHU"
 
-    const config = { headers: [{"Content-Type": "application/json", "Authorization": `Bearer ${token}`}]}
+    useEffect(() => {
+           const config = { headers: {"Content-Type": "application/json"},
+            }
+            // const request = await axios.get('http://localhost:4000/delete')
+            //setMessage(request)            
 
-    console.log(config)
+            axios.delete(`http://localhost:4000/delete`, config) 
+            .then(res => { 
+            console.log(res); 
+            console.log(res.data);       
+            })    
+     }, [])
 
-    axios.delete('http://localhost:4000/delete', null, config)
-    .then(res => {
-        console.log(res);
-        console.log(res.data);
-    })  
 
     return (
         <div>

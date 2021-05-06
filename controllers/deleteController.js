@@ -5,9 +5,9 @@ const deleteUser = async(req, res, next)=>{
       console.log(req.body)
    try{
        const user = await User.findOneAndDelete({id: req.user._id})//important! id:_id
-        res.json({msg: `The user has been deleted`})
+        res.json({msg: `The user ${ req.user.name } has been deleted`})
     } catch(err){
-    next(err.message)  
+    next(err.message)     
   }    
 }
 
