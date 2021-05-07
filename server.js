@@ -85,6 +85,7 @@ app.use((req, res, next) => {
 //Central Error Handling for internal server error 
 //added next to make sure whatever error is forwarded
 app.use(errorHandler = (err, req, res, next)=> {  
+    console.log(err);
     res.status(err.status || 500).json({ error: err.message })
 })
 
