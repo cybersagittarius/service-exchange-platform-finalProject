@@ -1,24 +1,17 @@
 import React, { useState } from "react";
+import axios from "axios";
 import ResetPWForm from "./forms/ResetPWForm";
 
 const ResetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
 
-  // const postEmail = (email) =>{
-  //   data = { email }
-
-  //   //fetch data to send it to backend
-  //   fetch('http://localhost:4000/reset_password', {
-  //     method: "POST",
-  //     headers: {'Context-Type': 'application/json'},
-  //     body: JSON.stringify(data)
-  //     //in backend the data will be received in req.body
-  //   })
-  //   .then(res=>res.json())
-  //   .then(emailReceived=>console.log(emailReceived))
-  //   .catch(err=>console.log(err))
-  // }
+  const postEmail = (email) =>{
+     const data = { email }
+    axios.post('http://localhost:4000/reset_password', data)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+   }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,9 +27,9 @@ const ResetPW = () => {
       return false;
     }
 
-    // postEmail(email); 
+    postEmail(email); 
     
-    setEmail("");
+    //setEmail("");
   };
 
   const changeEmail = (e) => {
@@ -58,3 +51,16 @@ const ResetPW = () => {
 };
 
 export default ResetPW;
+
+
+//   //fetch data to send it to backend
+  //   fetch('http://localhost:4000/reset_password', {
+  //     method: "POST",
+  //     headers: {'Context-Type': 'application/json'},
+  //     body: JSON.stringify(data)
+  //     //in backend the data will be received in req.body
+  //   })
+  //   .then(res=>res.json())
+  //   .then(emailReceived=>console.log(emailReceived))
+  //   .catch(err=>console.log(err))
+  //

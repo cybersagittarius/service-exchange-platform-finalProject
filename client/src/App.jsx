@@ -20,12 +20,12 @@ import Test from "./Components/Test";
   return (
     <Router>
       <div className="wrapper">
-        {/* <Header />
-        <Main />   */}
+        <Header />
+        <Main />  
         <Test />      
-        {/* <About />
+        <About />
         <Team />
-        <Footer /> */}
+        <Footer />
        
       </div>
       <Switch>

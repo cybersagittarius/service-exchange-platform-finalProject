@@ -55,9 +55,9 @@
         },
         {
             "id": 7
-        }
-    ]
-},
+        },
+    
+
 
 {
     "firstname": "Akita",
@@ -67,7 +67,7 @@
     "username": "AkitaDog",
     "country": "Japan",
     "region": "Akita"
-}
+},
 
 {
     "firstname": "Shiba",
@@ -77,7 +77,7 @@
     "username": "ShibaDog",
     "country": "Japan",
     "region": "Shiba"
-}
+},
 
 {
     "firstname": "Snoopy",
@@ -87,7 +87,7 @@
     "username": "SnoopyDog",
     "country": "USA",
     "region": "Minnesota"
-}
+},
 
 {
     "firstname": "Pooh",
@@ -97,7 +97,7 @@
     "username": "PoohBear",
     "country": "UK",
     "region": "Hundreds-acre-woods"
-}
+},
 
 {
     "firstname": "Paddington",
@@ -107,5 +107,7 @@
     "username": "PaddingtonBear",
     "country": "Peru",
     "region": "Hundreds-mountains"
+}
+    ]
 }
 

@@ -80,7 +80,7 @@ const LoginForm = (props) => {
                         name="passWord"
                         placeholder="password"
                         className="form-control"
-                        value={props.passWord}
+                        value={props.password}
                         onChange={props.changePW}
                         required
                       />
@@ -110,7 +110,7 @@ const LoginForm = (props) => {
                     </div>
 
                     <h6 className="col-lg-12 mt-2 text-center">
-                      If you have not already registered with us, register and join us! 
+                      If you have not already registered with us, register and <a>join us</a>! 
                     </h6>
 {/*                     
                     <div className="form-check form-group mx-auto" aria-label="buttonExample"> 

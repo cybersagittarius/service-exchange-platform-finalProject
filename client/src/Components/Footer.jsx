@@ -10,6 +10,7 @@ const Footer = () => {
         <li className="btn btnFooter">
           <a href="#aboutUs">About us</a>
         </li>
+
         <li className="btn btnFooter">
           <a href="#contact">Contact us</a>
         </li>

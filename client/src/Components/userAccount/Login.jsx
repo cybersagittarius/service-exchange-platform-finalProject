@@ -1,26 +1,23 @@
 import { useState } from "react";
+import axios from "axios";
 import LoginForm from "./forms/LoginForm";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [passWord, setPassWord] = useState("");
+  const [password, setPassWord] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
 
-  const postReturnedUser = (email, passWord) => {
-    const data = {email, passWord}
+  const postReturnedUser = (email, password) => {
+    const data = { email, password }
     //console.log(data);
 
     /// FETCH TO SEND DATA TO BACKEND
-    fetch('http://localhost:4000/login', {
-        method: "POST",
-        headers: { 'Context-Type': 'application/json' },
-        body: JSON.stringify(data)  // backend will receive this in: req.body
-    })
-    .then(res => res.json())
-    .then(returnedUserCreated => console.log(returnedUserCreated))
-    .catch(err => alert('An error!'))
+    ///axios does not need res.json at all!!!!!!!!!!!!!
+    axios.post('http://localhost:4000/login', data)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
   }
 
   const submitHandler = (e) => {
@@ -37,40 +34,40 @@ const Login = () => {
       return false;
     }
 
-    const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/;
-    const isPwValid = pwValidator.test(passWord);
+    // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/;
+    // const isPwValid = pwValidator.test(password);
 
-    if (!isPwValid) {
-      setAlertPW(true);
-      setTimeout(() => {
-        setAlertPW(false);
-      }, 5000);
-      return false;
-    }
+    // if (!isPwValid) {
+    //   setAlertPW(true);
+    //   setTimeout(() => {
+    //     setAlertPW(false);
+    //   }, 5000);
+    //   return false;
+    // }
 
     rememberMe === true
-      ? saveOnLocal(email, passWord)
+      ? saveOnLocal(email, password)
       : console.log("No email nor password saved in the browser");
       
-    postReturnedUser(email, passWord);
+    postReturnedUser(email, password);
 
-    setEmail("");
-    setPassWord("");
-    setRememberMe(false);
+    // setEmail("");
+    // setPassWord("");
+    // setRememberMe(false);
   };
 
-  const saveOnLocal = (email, passWord) => {
+  const saveOnLocal = (email, password) => {
     let data = JSON.parse(localStorage.getItem("user"));
 
     if (data == null) {
-      data = { email, passWord };
+      data = { email, password };
     } else {
       data.email = email;
-      data.passWord = passWord;
+      data.password = password;
     }
 
     localStorage.setItem("user", JSON.stringify(data));
-    console.log(data);
+    //console.log(data);
   };
 
   //set change handlers at the parent level
@@ -95,7 +92,7 @@ const Login = () => {
         changePW = { changePW }
         changeRM = { changeRM }
         email = { email }
-        passWord = { passWord }
+        password = { password }
         rememberMe = { rememberMe }
         alertEM = { alertEM }
         alertPW = { alertPW }

@@ -6,22 +6,27 @@ const Test = () => {
 
     const [message, setMessage] = useState({});
     
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5Mjg0OTNjMzZhZjc2ZDBhNmIxMTc5IiwibmFtZSI6IlNoaWJhIn0sImlhdCI6MTYyMDIxNDkzMiwiZXhwIjoxNjIwNTc0OTMyfQ.8sruuvVMkHdncxPCuglhD2P13oJ-oXw2yhg3xz9epHU"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…5NDZ9.hf7j-k_jVAMRJxT3VWDS-Lz4sKDPvV7IclQbWrv1GK4"
 
     useEffect(() => {
-           const config = { headers: {"Content-Type": "application/json"},
-            }
+        //    const config = { headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "http://localhost:3000/", 
+        //    "Access-Control-Allow-Credentials": true},
+        //     }
             // const request = await axios.get('http://localhost:4000/delete')
-            //setMessage(request)            
+            //setMessage(request)
+
+        const config = { headers: {"Authorization": token, 
+                                   "Access-Control-Allow-Credentials": true}
+                        }
 
             axios.delete(`http://localhost:4000/delete`, config) 
-            .then(res => { 
-            console.log(res); 
+            .then(res => {
+            console.log(res);             
             console.log(res.data);       
-            })    
+            })
+            .catch(err=>console.log(err))    
      }, [])
-
-
+ 
     return (
         <div>
             <h1>What a doggy day!</h1>

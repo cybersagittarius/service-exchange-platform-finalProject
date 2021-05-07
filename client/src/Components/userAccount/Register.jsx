@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import RegistrationForm from './forms/RegistrationForm'
 
@@ -24,27 +25,20 @@ const Register = () => {
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
 
 
-
-    const postNewUser = (firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection) =>{
+    const postNewUser = (firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection) => {
 
         const data = {firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection};
 
-        console.log(data);    
-
-        //fetch to send data to backend
-        fetch('http://localhost:4000/register', {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-            //backend will receive this in: req.body
-        })
+        console.log(data);   
+        
+        axios.post('http://localhost:4000/register', data)
         .then(res=>{ 
-            console.log('res received', res)            
-            return res.json()
+            console.log('res received', res.data)
         })
         .then(newUserCreated => console.log(newUserCreated))
-        .catch(err=>console.log(err))
-    }
+        // in case the API responded, we will have the error inside error.response.data 
+        .catch(err => console.log(err.response && err.response.data))
+        }     
     
      const submitHandler = (e) => {
          e.preventDefault();  
@@ -67,7 +61,7 @@ const Register = () => {
         }
         
         const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
-        const isPwValid = pwValidator.test(passWord);
+        const isPwValid = pwValidator.test(password);
 
         if(!isPwValid){
             setAlertPW(true)
@@ -86,20 +80,7 @@ const Register = () => {
         }
 
         postNewUser(firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection);
-
-        //  setFirstName("");
-        //  setLastName("");
-        //  setCountry("");
-        //  setRegion("");
-        //  setEmail("");
-        //  setUserName("");
-        //  setPassWord("");
-        //  setConfirmPW("");
-         
-        //  setPreview(null);
-        //  setSavedImage(null);
-         
-        //  setOfferSelection([]);
+       
     }    
 
     const changeFirstName = (e) => {
@@ -198,3 +179,32 @@ const Register = () => {
 }
 
 export default Register
+
+ //  setFirstName("");
+        //  setLastName("");
+        //  setCountry("");
+        //  setRegion("");
+        //  setEmail("");
+        //  setUserName("");
+        //  setPassWord("");
+        //  setConfirmPW("");
+         
+        //  setPreview(null);
+        //  setSavedImage(null);
+         
+        //  setOfferSelection([]);
+
+
+ //fetch to send data to backend
+    //     fetch('http://localhost:4000/register', {
+    //         method: "POST",
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify(data)
+    //         //backend will receive this in: req.body
+    //     })
+    //     .then(res=>{ 
+    //         console.log('res received', res)            
+    //         return res.json()
+    //     })
+    //     .then(newUserCreated => console.log(newUserCreated))
+    //     .catch(err=>console.log(err))
