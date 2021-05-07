@@ -1,46 +1,37 @@
 import { useState } from "react";
 import axios from './configure-files/axios'
+//import axios from 'axios'
 
 import LoginForm from "./forms/LoginForm";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [passWord, setPassWord] = useState("");
+  const [password, setPassWord] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
 
-  const postReturnedUser = (email, passWord) => {
-    const capturedData = {email, passWord}
+  const postReturnedUser = (email, password) => {
+    const data = { email, password }
     //console.log(data);
 
     /// FETCH TO SEND DATA TO BACKEND
-    // fetch('http://localhost:4000/login', {
-    //     method: "POST",
-    //     headers: { 'Context-Type': 'application/json' },
-    //     body: JSON.stringify(data)  // backend will receive this in: req.body
-    // })
-    axios.post('/login', capturedData)
-    .then(response=>{ 
-      console.log('res received'); //response.data)
-      response.json()
-    })
+    ///axios does not need res.json at all!!!!!!!!!!!!!
+    axios.post('http://localhost:4000/login', data)
+    .then(res => console.log(res.data))
     .then(oldUserFound => console.log(oldUserFound))
-    // in case the API responded, we will have the error inside error.response.data 
+    //try this to compare with line 26
     .catch(error=>console.log(error.response && error.response.data))
-    }
-  //   .then(res => res.json())
-  //   .then(returnedUserCreated => console.log(returnedUserCreated))
-  //   .catch(err => alert('An error!'))
-  // }
-
+    //.catch(err => console.log(err))
+  }
+   
   const submitHandler = (e) => {
     e.preventDefault();
 
     const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/;
-    const isEmValid = emailValidator.test(email);
+    const isEmailValid = emailValidator.test(email);
 
-    if (!isEmValid) {
+    if (!isEmailValid) {
       setAlertEM(true);
       setTimeout(() => {
         setAlertEM(false);
@@ -49,7 +40,7 @@ const Login = () => {
     }
 
     const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/;
-    const isPwValid = pwValidator.test(passWord);
+    const isPwValid = pwValidator.test(password);
 
     if (!isPwValid) {
       setAlertPW(true);
@@ -60,24 +51,24 @@ const Login = () => {
     }
 
     rememberMe === true
-      ? saveOnLocal(email, passWord)
+      ? saveOnLocal(email, password)
       : console.log("No email nor password saved in the browser");
       
-    postReturnedUser(email, passWord);
+    postReturnedUser(email, password);
 
     setEmail("");
     setPassWord("");
     setRememberMe(false);
   };
 
-  const saveOnLocal = (email, passWord) => {
+  const saveOnLocal = (email, password) => {
     let data = JSON.parse(localStorage.getItem("user"));
 
     if (data == null) {
-      data = { email, passWord };
+      data = { email, password };
     } else {
       data.email = email;
-      data.passWord = passWord;
+      data.password = password;
     }
 
     localStorage.setItem("user", JSON.stringify(data));
@@ -105,7 +96,7 @@ const Login = () => {
         changePW = { changePW }
         changeRM = { changeRM }
         email = { email }
-        passWord = { passWord }
+        password = { password }
         rememberMe = { rememberMe }
         alertEM = { alertEM }
         alertPW = { alertPW }
