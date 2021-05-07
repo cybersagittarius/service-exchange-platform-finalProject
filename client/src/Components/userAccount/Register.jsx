@@ -5,11 +5,11 @@ import RegistrationForm from './forms/RegistrationForm'
 
 const Register = () => {
      
-     const [firstName, setFirstName] = useState("");
-     const [lastName, setLastName] = useState(""); 
+     const [firstname, setFirstName] = useState("");
+     const [lastname, setLastName] = useState(""); 
      const [email, setEmail] = useState("");     
-     const [userName, setUserName] = useState("");
-     const [passWord, setPassWord] = useState("");
+     const [username, setUserName] = useState("");
+     const [password, setPassWord] = useState("");
      const [confirmPW, setConfirmPW] = useState(""); 
 
      const [country, setCountry] = useState(""); //for RegionCountrySelector package
@@ -24,29 +24,22 @@ const Register = () => {
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
 
-    const postNewUser = (firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection) =>{
+     const postNewUser = (firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection) => {
 
-        const capturedData = {firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection};
+        const data = {firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection};
 
-        console.log(capturedData);    
+        console.log(data);
 
-        //fetch to send data to backend
-        // fetch('http://localhost:4000/register', {
-        //     method: "POST",
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        //     //backend will receive this in: req.body
-        // })
-        axios.post('/register', capturedData)
-        .then(response=>{ 
-            console.log('res received', response.data)
-            return response.json()
+        axios.post('http://localhost:4000/register', data)
+        //we do not need res.json in axios at all
+        .then(res=>{ 
+            console.log('res received', res.data)
         })
         .then(newUserCreated => console.log(newUserCreated))
         // in case the API responded, we will have the error inside error.response.data 
-        .catch(error=>console.log(error.response && error.response.data))
-    }
-    
+        .catch(err => console.log(err.response && err.response.data))
+        } 
+
      const submitHandler = (e) => {
          e.preventDefault();  
         
@@ -68,7 +61,7 @@ const Register = () => {
         }
         
         const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
-        const isPwValid = pwValidator.test(passWord);
+        const isPwValid = pwValidator.test(password);
 
         if(!isPwValid){
             setAlertPW(true)
@@ -78,7 +71,7 @@ const Register = () => {
             return false;                    
         }        
        
-        if ((isEmValid && isPwValid) && (passWord!==confirmPW)) {
+        if ((isEmValid && isPwValid) && (password!==confirmPW)) {
             setAlertPWCheck(true)
             setTimeout(() => {
                 setAlertPWCheck(false)
@@ -86,7 +79,7 @@ const Register = () => {
             return false;
         }
 
-        postNewUser(firstName, lastName, country, region, email, userName, passWord, confirmPW, savedImage, offerSelection);
+        postNewUser(firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection);
 
         //  setFirstName("");
         //  setLastName("");
@@ -172,13 +165,13 @@ const Register = () => {
                           changeCountry = { changeCountry } 
                           changeRegion = { changeRegion }
                           changeOfferSelection = { changeOfferSelection }
-                          firstName = { firstName }
-                          lastName = { lastName }
+                          firstname = { firstname }
+                          lastname = { lastname }
                           email = { email }
-                          userName = { userName }
+                          username = { username }
                           country = { country }
                           region = { region }
-                          passWord = { passWord }
+                          password = { password }
                           confirmPW = { confirmPW }
                           offerSelection = { offerSelection }
                           alertEM = { alertEM }
