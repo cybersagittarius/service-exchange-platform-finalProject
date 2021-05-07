@@ -10,6 +10,7 @@ const userCredentialSchema = new mongoose.Schema ({
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true },
     password: { type: String, required: true }, 
+    avatar_url : { type: String, require: true},
     // avatar: { data: Buffer, contentType: String, required: true},
     // skills: { type: String, required: true },
 
