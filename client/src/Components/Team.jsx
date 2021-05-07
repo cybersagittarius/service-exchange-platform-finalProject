@@ -42,7 +42,7 @@ const Team = () => {
 
   return (
     <section className="team section">
-      <div id="contact" className="title">
+      <div id="aboutUs" className="title">
         <h2>our team</h2>
       </div>
       <div className="section-center">
