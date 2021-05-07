@@ -63,7 +63,6 @@ const handleEmail = () => {
             <form id="contact" onSubmit={(e) => formSubmit(e)} method="POST">
              <h3>Leave Us a message</h3>
             <div className="form-group">
-            {/* <img src={img} alt="Contact us" className="contactImg"/> */}
             <div className="d-flex justify-content-end">
                 <ButtonMU
                   buttonVariant={"text"}

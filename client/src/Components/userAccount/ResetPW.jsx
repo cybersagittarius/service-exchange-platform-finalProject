@@ -5,8 +5,9 @@ const ResetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
 
-  const postEmail = (email) =>{
-    data = { email }
+  const postEmail = (data) =>{
+    // data = { email }
+    console.log(data);
 
     //fetch data to send it to backend
     fetch('http://localhost:4000/reset_password', {

@@ -7,11 +7,11 @@ import Main from "./Main";
 import About from "./About";
 import Team from "./Team";
 import Footer from "./Footer";
+import Contact from './Contact';
 //npm install react-router-dom
 import Login from "./userAccount/Login";
 import Register from "./userAccount/Register";
 import ResetPW from "./userAccount/ResetPW";
-import Contact from "./Contact";
 import { Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -30,6 +30,7 @@ const LandingPage = () => {
                 <Route exact path="/landing_page/register" component={Register} />
                 <Route exact path="/landing_page/reset_password" component={ResetPW} />
                 <Route exact path="/landing_page/contact" component={Contact} />
+              
             </Switch>
         </>
     );
