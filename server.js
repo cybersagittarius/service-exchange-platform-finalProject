@@ -25,6 +25,16 @@ app.use(express.json()); //parsing incoming body into req.body
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
 
+// const referrer_domain = "http://localhost:3000"
+// //check for the referrer domain
+// app.all('/*', function(req, res, next) {
+//   if(req.headers.referer.indexOf(referrer_domain) == -1){
+//     res.send('Invalid Request')
+//   }
+
+//   next();
+// });
+
 //protect and secure the headers 
 //app.use(helmet());
 //app.use(noCache()); //disable client side caching 
@@ -35,9 +45,9 @@ connectDB();
 //require routers
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
-const secretRouter = require('./routes/secretRouterOriginal');
+//const secretRouter = require('./routes/secretRouterOriginal');
 //const profileRouter = require('./routes/profileRouter');
-//const pwResetRouter = require('./routes/pwResetRouter');
+//const pwResetRouter = require('./routes/pwResetRouter')
 const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
 
