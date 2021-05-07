@@ -5,7 +5,6 @@ require('dotenv').config();
 const cloudinary = require('cloudinary').v2
 //const auth = require('../token/auth');
 
-
     // firstname: { type: String, required: true },
     // lastname: { type: String, required: true },
     // country: { type: String, required: true },
@@ -29,7 +28,7 @@ const registerUser = async(req, res, next) => {
     if(findUser) {
       return res.status(400).json({errors: [{msg: "email already registered"}]})
     }
-     //console.log(req.body.savedImage)
+     //not upload(user.savedImage) here, it has to come from the req.body
      const result = await cloudinary.uploader.upload(req.body.savedImage)
      user.avatar_url = result.secure_url
      await user.save()
