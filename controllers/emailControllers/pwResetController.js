@@ -19,10 +19,10 @@ const resetEmail = async(req, res, next) => {
             }else if(!user){
                 res.send(401).json({msg: "No email found!"})
                 }else{
-                    const token = await crypto.randomBytes(10).toString('hex');
+                    const token = crypto.randomBytes(10).toString('hex');
 
                     //call send mail controller here
-                    await sendEmail(token).then(response => {
+                    sendEmail(token).then(response => {
                         user.update({
                             pwResetToken: token,
                             //this is equivalent to an hour
