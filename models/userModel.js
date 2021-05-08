@@ -8,7 +8,7 @@ const userCredentialSchema = new mongoose.Schema ({
     country: { type: String, required: true },
     region: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    username: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
     password: { type: String, required: true }, 
     avatar_url : { type: String, require: true},
     // avatar: { data: Buffer, contentType: String, required: true},
@@ -65,5 +65,6 @@ userCredentialSchema.methods.comparePassword = function (password, next) {
 userCredentialSchema.virtual('fullname').get(function(){
     return `${this.firstname} ${this.lastname}`
 })
+
 //this module will export User as the instance 'User' of userSchema
 module.exports = mongoose.model('user', userCredentialSchema);
