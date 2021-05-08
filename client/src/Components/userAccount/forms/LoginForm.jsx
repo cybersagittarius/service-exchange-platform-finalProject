@@ -109,8 +109,12 @@ const LoginForm = (props) => {
                       </Link>
                     </div>
 
-                    <h6 className="col-lg-12 mt-2 text-center">
-                      If you have not already registered with us, register and <a>join us</a>! 
+                    <h6 className="col-lg-12 mx-auto text-center">
+                      If you have not already registered with us, register and
+                      <br /> 
+                      <Link to="/register">
+                        <h6><a href="#" className="mt-3 btn btn-primary btn-sm"> join us</a></h6>     
+                      </Link>                       
                     </h6>
 {/*                     
                     <div className="form-check form-group mx-auto" aria-label="buttonExample"> 
