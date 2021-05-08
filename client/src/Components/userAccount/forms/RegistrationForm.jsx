@@ -123,21 +123,24 @@ const RegistrationForm = (props) => {
                     />
                   </div>
 
-                 <div className="form-group col-lg-8">
+                 <div className="form-group col-lg-4">
                     <label>
                       Choose Your Avatar: Maximal File Size is 80 KB
                     </label>
 
-                    <AvatarUploader
+                    <AvatarUploader 
                       // input name="avatar" type='file' accept='image/*'
                       // onClose={props.onClose}
                       onCrop={props.onCrop}
                       onBeforeFileLoad={props.onBeforeFileLoad}
                       preview={props.preview}
-                      savedImage={props.savedImage}
-                    />
+                      savedImage={props.savedImage} 
+                      />                   
                   </div>
                   
+                  <div className="form-group col-lg-3">                 
+                  </div>
+
                   <div className="form-group col-lg-4">
                     <label>
                       Skills I can offer
@@ -147,27 +150,22 @@ const RegistrationForm = (props) => {
                       items={ items } 
                       multiSelect
                       selection={props.offerSelection}
-                      handleSelection={props.changeOfferSelection}/>                    
+                      handleSelection={props.changeOfferSelection}
+                      />                    
                   </div>
 
                   <div className="form-group col-lg-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-primary btn-sm">
                       Submit
                     </button>
-                  </div>
-
-                  {/* <div className="form-group col-lg-3">
-                    <button type="submit" className="btn btn-primary btn-sm">
-                      Submit
-                    </button>
-                  </div> */}
+                  </div>                
                   
                   <div className="form-group col-lg-9">
                     {props.alertEM && (
                       <MyAlert
                         alertType={"warning"}
                         alertHeading={"Error!"}
-                        alertMessage={"Please Enter A Valid Email "}
+                        alertMessage={"Please Enter A Valid Email"}
                       />
                     )}
                     {props.alertPW && (
