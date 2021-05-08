@@ -37,7 +37,7 @@ const Register = () => {
         })
         .then(newUserCreated => console.log(newUserCreated))
         // in case the API responded, we will have the error inside error.response.data 
-        .catch(err => console.log(err.response && err.response.data))
+        .catch(err => console.log(err && err.response && err.response.data))
         }     
     
      const submitHandler = (e) => {
@@ -80,7 +80,6 @@ const Register = () => {
         // }
 
         postNewUser(firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection);
-       
     }    
 
     const changeFirstName = (e) => {
