@@ -150,11 +150,18 @@ const RegistrationForm = (props) => {
                       handleSelection={props.changeOfferSelection}/>                    
                   </div>
 
-                  <div className="form-group col-lg-3">
+                  <div className="form-group col-lg-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-primary btn-sm">
                       Submit
                     </button>
                   </div>
+
+                  {/* <div className="form-group col-lg-3">
+                    <button type="submit" className="btn btn-primary btn-sm">
+                      Submit
+                    </button>
+                  </div> */}
+                  
                   <div className="form-group col-lg-9">
                     {props.alertEM && (
                       <MyAlert
