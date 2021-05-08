@@ -33,7 +33,7 @@ export const AvatarUploader = (props) => {
     <>
       <div>
         <Avatar
-          width={350}
+          width={270}
           height={250}
           onCrop={props.onCrop}
           // onClose={props.onClose}
