@@ -5,7 +5,7 @@ const customError = require('./config/customError')
 const express = require('express');
 //const helmet = require('helmet');
 const logger = require('morgan');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 require('dotenv').config()
 
@@ -88,5 +88,3 @@ app.use(errorHandler = (err, req, res, next)=> {
     console.log(err);
     res.status(err.status || 500).json({ error: err.message })
 })
-
-
