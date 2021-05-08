@@ -127,7 +127,7 @@ const RegistrationForm = (props) => {
 
                  <div className="form-group col-lg-4">
                     <label>
-                      Avatar: Maximal File Size is 80 KB
+                      Avatar: Maximal Upload File Size 80 KB
                     </label>
                         
                     <AvatarUploader
