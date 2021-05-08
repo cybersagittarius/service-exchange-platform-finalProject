@@ -49,16 +49,16 @@ const Register = () => {
         //No whitespaces. use https://regexr.com/ and https://regex101.com/ for writing up and testing regex
         //source: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a (section 6)
         
-        const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/
-        const isEmailValid = emailValidator.test(email);        
+        // const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/
+        // const isEmailValid = emailValidator.test(email);        
         
-        if(!isEmailValid ){
-            setAlertEM(true)
-            setTimeout(() => {
-                setAlertEM(false)
-            }, 5000); 
-            return false;           
-        }
+        // if(!isEmailValid ){
+        //     setAlertEM(true)
+        //     setTimeout(() => {
+        //         setAlertEM(false)
+        //     }, 5000); 
+        //     return false;           
+        // }
         
         const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
         const isPwValid = pwValidator.test(password);
@@ -71,13 +71,13 @@ const Register = () => {
             return false;                    
         }        
        
-        if ((isEmailValid && isPwValid) && (password!==confirmPW)) {
-            setAlertPWCheck(true)
-            setTimeout(() => {
-                setAlertPWCheck(false)
-            }, 5000); 
-            return false;
-        }
+        // if ((isEmailValid && isPwValid) && (password!==confirmPW)) {
+        //     setAlertPWCheck(true)
+        //     setTimeout(() => {
+        //         setAlertPWCheck(false)
+        //     }, 5000); 
+        //     return false;
+        // }
 
         postNewUser(firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection);
        
