@@ -44,7 +44,6 @@ const ResetPW = () => {
         changeEmail = { changeEmail }
         email = { email }
         alertEM = { alertEM }
-
       />
     </>
   );
