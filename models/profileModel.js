@@ -7,7 +7,7 @@ const profileSchema = new mongoose.Schema({
     region: { type: String, required: true }, 
     username: { type: String, required: true },   
     avatar: { type: String, required: true},
-    skills: { type: String, required: true },
+    //skills: { type: [ ], required: true },
 }, 
     {
     timestamps: true
