@@ -60,16 +60,16 @@ const Register = () => {
         //     return false;           
         // }
         
-        const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
-        const isPwValid = pwValidator.test(password);
+        // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
+        // const isPwValid = pwValidator.test(password);
 
-        if(!isPwValid){
-            setAlertPW(true)
-            setTimeout(() => {
-                setAlertPW(false)
-            }, 5000); 
-            return false;                    
-        }        
+        // if(!isPwValid){
+        //     setAlertPW(true)
+        //     setTimeout(() => {
+        //         setAlertPW(false)
+        //     }, 5000); 
+        //     return false;                    
+        // }        
        
         // if ((isEmailValid && isPwValid) && (password!==confirmPW)) {
         //     setAlertPWCheck(true)
