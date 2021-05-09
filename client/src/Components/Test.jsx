@@ -26,7 +26,6 @@ const Test = async() => {
             .catch(err=>console.log(err))  
           
      //}, [])
-
          
     //  axios.post('http://localhost:4000/register', data)
     //  .then(res=>{ 
