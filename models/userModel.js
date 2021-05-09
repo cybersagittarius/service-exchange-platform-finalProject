@@ -11,9 +11,9 @@ const userCredentialSchema = new mongoose.Schema ({
     username: { type: String, required: true },
     password: { type: String, required: true }, 
     avatar_url : { type: String },
-    skills: { type: [ ] },
-
-},  {toObject: { virtuals: true }},
+    skills: [],
+},  
+    {toObject: { virtuals: true }},
     {toJSON: {virtuals: true}},
     {timestamps: true}
 )
