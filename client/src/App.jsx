@@ -22,7 +22,7 @@ import Test from "./Components/Test";
       <div className="wrapper">
         <Header />
         <Main />  
-        <Test />      
+        {/* <Test />       */}
         <About />
         <Team />
         <Footer />
