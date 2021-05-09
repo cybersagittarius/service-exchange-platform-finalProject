@@ -31,6 +31,11 @@ const registerUser = async(req, res, next) => {
      //not upload(user.savedImage) here, it has to come from the req.body
      const result = await cloudinary.uploader.upload(req.body.savedImage)
      user.avatar_url = result.secure_url
+     console.log(req.body.offerSelection)
+
+     //this line does not work 
+     const offerSelection = [];   
+     user.skills = offerSelection.push(req.body.offerSelection)
      await user.save()
   }
   catch(err){
