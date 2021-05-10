@@ -1,9 +1,9 @@
 //npm install node-sass --save
 import React from "react";
-import Header from "./Components/Header";
-import Feed from "./Components/Feed";
-import Sidebar from "./Components/Sidebar";
-import Footer from "./Components/Footer";
+import ProfileHeader from "./ProfileComponents/ProfileHeader";
+import Card from "./ProfileComponents/Card";
+import Footer from "../Footer";
+import './styles/scss/Profile.scss'
 
 //npm install react-router-dom
 
@@ -14,10 +14,10 @@ const ProfilePage = () => {
   return (
     <Router>
       <div className="wrapper">
-        <Header />
+        <ProfileHeader />
         <div className="app_body">
-          <Sidebar />
-          <Feed />
+          <Card />
+
         </div>
       </div>
       <Footer />

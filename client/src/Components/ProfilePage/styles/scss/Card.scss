@@ -1,0 +1,146 @@
+@import "../../../../styles/scss/variables";
+
+.Card {
+    margin-top: 70px;
+    margin-left: 30px;
+    width: 95%;
+    height: 500px;
+    background: $bgColor;
+    border-radius: 10px;
+    box-shadow: 0px 1px 10px 1px black;
+}
+
+.upper-container {
+    height: 110px;
+    background-image: url("https://images7.alphacoders.com/546/thumb-350-546100.jpg");
+
+}
+
+.upper-container .user-name {
+    z-index: 1;
+    left: 350px;
+    top: 140px;
+    position: absolute;
+}
+
+.upper-container h3 {
+    color: $bgColor;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.image-container img {
+    background: $bgColor;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 5px;
+    transform: translate(140px, 30px);
+}
+
+
+
+img {
+    border: 2px solid black;
+}
+
+.lower-container {
+    margin-top: 60px;
+    height: 300px;
+    background: $bgColor;
+    text-align: center;
+    font-family: $fontFamily;
+
+
+}
+
+.flex-grid {
+    align-content: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.user-information {
+    margin-top: 3rem;
+    margin-left: 2rem;
+    width: 30%;
+    height: 200px;
+    background: $bgColor;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px 1px black;
+}
+
+.user-information:hover {
+    animation: ease-in-out;
+    transition-duration: 0.5s;
+    transform: scale(1.1);
+}
+
+.about-container {
+    margin: 0 2rem;
+    padding: 15px;
+    width: 60%;
+    height: 300px;
+    background: $bgColor;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px 1px black;
+
+}
+
+.about-container:hover {
+    animation: ease-in-out;
+    transition-duration: 0.5s;
+    transform: scale(1.1);
+}
+
+.lower-container h4,
+p {
+    color: $mainColor;
+    margin: 5;
+    padding: 5;
+}
+
+
+.user-information h4 {
+    color: $mainColor;
+    font-weight: 350;
+    font-size: 1.2rem;
+}
+
+.lower-container h4 {
+    margin: 0.3rem;
+
+    color: $mainColor;
+    font-weight: 250;
+    font-size: 0.9rem;
+    text-align: justify;
+}
+
+.lower-container p {
+    margin: 0.3rem;
+    font-family: sans-serif;
+    color: rgb(163, 163, 163);
+    font-weight: 250;
+    font-size: 0.9rem;
+    text-align: justify;
+}
+
+.contact-user {
+    margin: 0.5rem;
+    color: black;
+    font: bold;
+    background-color: white;
+    border: 2px solid red;
+    padding: 0.5rem;
+    border-radius: 8px;
+    animation: ease-in-out;
+    transition-duration: 0.5s;
+
+
+}
+
+.contact-user:hover {
+    background-image: linear-gradient(to left, white, grey);
+    transform: scale(1.1);
+    border: none;
+}
