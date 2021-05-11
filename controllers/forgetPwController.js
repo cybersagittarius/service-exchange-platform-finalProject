@@ -15,7 +15,8 @@ const resetEmail = async(req, res, next) => {
             let findUser = await User.findOne({email: user.email})
 
                 if(!findUser) {
-                    return res.status(400).json({msg: "no email found!"})
+                    //so far tht best res.json way to return error message and status 
+                    return res.json({msg: "no email found!", status: 400})
                 }
                 if(findUser) {
                 const token = crypto.randomBytes(10).toString('hex');
