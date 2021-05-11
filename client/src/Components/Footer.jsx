@@ -11,7 +11,7 @@ const Footer = () => {
           <a href="#aboutUs">About us</a>
         </li>
         <li className="btn btnFooter">
-        <Link to="landing_page/contact">
+        <Link to="/contact">
           Contact us
           </Link>
         </li>

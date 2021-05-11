@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenu from "./SkillsMenu";
-import items from "../assets/js/itemsSkills.js";
-import { SearchContext } from './context/SearchContext';
+import items from "../assets/data/itemsSkills.js";
+import { SearchContext } from '../context/SearchContext';
+// import Visitor from '../Components/searchOutcome/Visitor';
+import {Link} from 'react-router-dom';
 
 
 function FindMenu() {
@@ -11,9 +13,11 @@ function FindMenu() {
 
   const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handlelookSelection} = useContext(SearchContext)
 
-  const handleFind = () => {
-    //This function send info to the backend
-  };
+
+  // const handleFind = () => {
+  //   //This function send info to the backend
+  // };
+ 
 
   const showHide =() => {
     
@@ -56,14 +60,15 @@ function FindMenu() {
         />
       </div>
       <div className="btnFindDiv">
+      <Link to="/visitor">
         <button
-          onclick={handleFind}
+          // onClick={handleFind}
           type="submit"
           value="search"
-          className="btnFind"
-        >
+          className="btnFind"> 
           Find
         </button>
+        </Link>
       </div>
     </form>
 
@@ -101,7 +106,7 @@ function FindMenu() {
         </div>
         <div className="btnFindDiv">
           <button
-            onclick={handleFind}
+            // onclick={handleFind}
             type="submit"
             value="search"
             className="btnFind"

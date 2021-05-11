@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "./img/two-way-cross.png";
+import Logo from "../assets/img/two-way-cross.png";
 import { Link } from "react-router-dom";
 
 import BackgroundSlideshow from "react-background-slideshow";
-import Image2 from "./img/priscilla-du-preez.jpg";
-import Image3 from "./img/heylagostechie.jpg";
-import Image4 from "./img/alexis-brown-omea.jpg";
+import Image2 from "../assets/img/priscilla-du-preez.jpg";
+import Image3 from "../assets/img/heylagostechie.jpg";
+import Image4 from "../assets/img/alexis-brown-omea.jpg";
 
 function Main() {
   return (
@@ -30,7 +30,7 @@ function Main() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Link to="/login"> Join </Link>
+            <Link to="/register"> Join </Link>
           </button>
         </main>
       </div>

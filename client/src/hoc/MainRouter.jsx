@@ -13,6 +13,7 @@ export default function MainRouter() {
                     <Redirect to="/landing_page" />
                 </Route>
                 <Route path="/landing_page" component={LandingPage}></Route>
+              
                 <PrivateRoute path="/profile" component={ProfilePage}></PrivateRoute>
             </Switch>
         </Router>

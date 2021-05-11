@@ -100,7 +100,7 @@ const handleEmail = () => {
                 onChange = {(e) => onChange(e)}
                  placeholder="Please write a message*" rows="5"/>
             </div>
-              <button type="submit" className="btn btn-primary btn-md">
+              <button type="submit" className="btn btn-primary btn-lg">
                   Submit
               </button>
               {loading ? <Spinner animation="border" role="status"/> : handleEmail()}

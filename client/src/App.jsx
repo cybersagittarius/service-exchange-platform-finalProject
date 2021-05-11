@@ -3,7 +3,7 @@
 import React from "react";
 import MainRouter from './hoc/MainRouter';
 //npm install react-router-dom
-import { SearchProvider } from './Components/context/SearchContext';
+import { SearchProvider } from './context/SearchContext';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
