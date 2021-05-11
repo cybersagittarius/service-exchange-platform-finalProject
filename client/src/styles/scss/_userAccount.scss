@@ -14,12 +14,13 @@ code {
 }
 
 .div-center {
-  position: absolute;
+  position: fixed;
   top: 73px;
   z-index: 999;
   font-family: $fontFamily;
   font-size: 13px;
   color: $mainColor;
+  z-index: 1000;
 }
 
 .form-control {
@@ -30,22 +31,28 @@ code {
 }
 
 .backRegister>.div-center {
-  width: 50%;
+  width: 60%;
   height: auto;  
   background-color: $bgColor;
   overflow: scroll;  
   left: 0;
   right: 0;
   margin: auto;  
+  @media only screen and (max-width: 537px){
+    width: 80%;
+  }
 }
 
 .backLogin>.div-center {   
-  width: 40%;
+  width: 60%;
   height: auto;
   background-color: $bgColor;
   right: 0;
   left: 0;
   margin: auto;
+  @media only screen and (max-width: 537px){
+    width: 80%;
+  }
 }
 
 .backResetPW>.div-center {

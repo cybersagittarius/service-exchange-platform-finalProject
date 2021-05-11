@@ -23,8 +23,8 @@
     font-family: $fontFamily;
     font-weight: 400;
     font-style: normal;
-    margin-top: 13px;
-    margin-left: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 #btnGroupDrop:hover {
     color: $lightGrayOnHover;
@@ -58,6 +58,10 @@ a:hover {
     height: 23px;
     margin-left: 285px
 }
+.log {
+    margin-left:5px;
+    margin-right:5px;
+}
 .log a {
     font-family: $fontFamily;
     color: $mainColor
@@ -73,6 +77,10 @@ a:hover {
     display: flex;
     flex-direction: row;
     align-content: center;
+    }
+
+.btn {
+    padding: 0px !important;
 }
 .lingua.show {
     text-align: center;
@@ -80,3 +88,10 @@ a:hover {
     max-width: 25px !important;
   
 }
+/* nav ul {
+    display: none;
+}
+@media (max-width: 580px) {
+   nav select {display: none; }
+     nav ul {display: inline-block;}
+} */
