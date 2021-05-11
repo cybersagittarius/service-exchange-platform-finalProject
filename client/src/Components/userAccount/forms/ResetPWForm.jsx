@@ -1,7 +1,14 @@
+import React, { useRef, useEffect } from "react";
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU"
 
 const ResetPWForm = (props) => {
+  const emailRef = useRef()
+
+  useEffect(()=> {
+    emailRef.current.focus();
+  }, [])
+  
   return (
     <>
       <div className="backResetPW">
@@ -25,9 +32,10 @@ const ResetPWForm = (props) => {
                     </label>
 
                     <input
-                      type="text"
+                      type="email"
                       name="email"
                       value={props.email}
+                      ref={emailRef}
                       placeholder="your email account"
                       className="form-control"
                       onChange={props.changeEmail}

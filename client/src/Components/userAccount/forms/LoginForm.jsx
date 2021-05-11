@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import MyAlert from "../layout/Alert";
@@ -21,6 +21,12 @@ import ButtonMU from "../layout/ButtonMU";
 // );
 
 const LoginForm = (props) => {
+  const emailRef = useRef()
+
+  useEffect(()=> {
+    emailRef.current.focus();
+  }, [])
+
   return (
     <>
       <div className="backLogin">
@@ -62,8 +68,9 @@ const LoginForm = (props) => {
                       <label>Your Email</label>
 
                       <input
-                        type="text"
+                        type="email"
                         name="email"
+                        ref={emailRef}
                         placeholder="email"
                         className="form-control"
                         value={props.email}
