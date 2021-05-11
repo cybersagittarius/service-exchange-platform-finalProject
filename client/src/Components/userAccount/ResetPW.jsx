@@ -10,7 +10,7 @@ const ResetPW = () => {
      const data = { email }
     axios.post('http://localhost:4000/reset_password', data)
     .then(res => console.log(res.data))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err.message))
    }
 
   const submitHandler = (e) => {
