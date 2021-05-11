@@ -1,31 +1,47 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const Test = async() => {
+const Test = () => {
 
     //const [message, setMessage] = useState({});
-    
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoicG9vaEBnbWFpbC5jb20ifSwiaWF0IjoxNjIwNTc4MTEyLCJleHAiOjE2MjA1Nzg3MTJ9.bATM_A5qOVupROR7V_0hR8f9Nle6WT5-YE3plWZ8Zc4"
+    //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…4MjJ9.QaKOqk_NbehqO1UpQ8N1tZM19ToMLzcGW4khtso-sSE
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…4MjJ9.QaKOqk_NbehqO1UpQ8N1tZM19ToMLzcGW4khtso-sSE'
 
-    //useEffect(() => {
-        //    const config = { headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "http://localhost:3000/", 
-        //    "Access-Control-Allow-Credentials": true},
-        //     }
-            // const request = await axios.get('http://localhost:4000/delete')
-            //setMessage(request)
-    
+    useEffect(() => {
+           const config = { headers: { "Authorization": `Bearer  ${token}`, 
+                             "Content-Type": "application/json", 
+                            // "Access-Control-Allow-Origin": "http://localhost:3000/delete", 
+                             "Access-Control-Allow-Credentials": true },
+                }
 
-        const config = { headers: {"Authorization": token }}
-                                   //"Access-Control-Allow-Credentials": true}
+                const bodyParameters = {
+                    key: "value"
+                 };
+
+            const request = axios.delete('http://localhost:4000/delete', bodyParameters, config)
+                            .then(res => {
+                                    console.log(res)          
+                                    // console.log('res received', res.data);       
+                                    })
+                            .catch(err=>console.log(err.message))  
+
+            // setMessage(request)
+    }, [])
+
+        // const config = { headers: {"Authorization": `Bearer ${token}`, 
+        //                            "Access-Control-Allow-Credentials": true,
+        //                            "Content-Type": "application/json"
+        //                         }
+        //                     }
                        
-        await axios.delete('http://localhost:4000/delete', config) 
-            .then(res => {
-            //console.log(res)          
-            console.log('res received', res.data);       
-            })
-            .catch(err=>console.log(err))  
+        // axios.delete('http://localhost:4000/delete', config) 
+        //     .then(res => {
+        //     //console.log(res)          
+        //     console.log('res received', res.data);       
+        //     })
+        //     .catch(err=>console.log(err))  
           
-     //}, [])
+     
          
     //  axios.post('http://localhost:4000/register', data)
     //  .then(res=>{ 
