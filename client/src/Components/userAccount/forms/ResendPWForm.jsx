@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU"
 
-const ResetPWForm = (props) => {
+const ResendPWForm = (props) => {
   const emailRef = useRef()
 
   useEffect(()=> {
@@ -65,4 +65,4 @@ const ResetPWForm = (props) => {
   );
 };
 
-export default ResetPWForm;
+export default ResendPWForm;

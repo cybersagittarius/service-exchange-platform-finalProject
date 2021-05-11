@@ -111,7 +111,7 @@ const LoginForm = (props) => {
                     </div>
 
                     <div className="form-check form-group mx-auto col-lg-5">
-                      <Link to="/reset_password">
+                      <Link to="/resend_password">
                         <a href="#"> Forgot Your Password?</a>     
                       </Link>
                     </div>

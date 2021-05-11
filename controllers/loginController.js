@@ -12,10 +12,8 @@ const loginUser = async (req, res, next) => {
   const user = { email, password };
 
   console.log(user)
-
   // const user = new User(req.body)
   // const { email, password } = user
-
   try {
     let findUser = await User.findOne({ email: user.email });
     if (!findUser) {

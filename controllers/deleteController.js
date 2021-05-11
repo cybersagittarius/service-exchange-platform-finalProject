@@ -2,7 +2,7 @@ const User = require('../models/userModel')
 const express = require('express')
 
 const deleteUser = async(req, res, next) => { 
-      console.log(req.body)     
+      console.log(req.headers)     
 
    try {
        const user = await User.findOneAndDelete({id: req.user._id})//important! id:_id

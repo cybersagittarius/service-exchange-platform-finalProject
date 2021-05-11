@@ -6,6 +6,7 @@ const express = require('express');
 //const helmet = require('helmet');
 const logger = require('morgan');
 const mongoose = require('mongoose')
+const auth = require('./middleware/auth')
 
 require('dotenv').config()
 
@@ -48,6 +49,7 @@ const loginRouter = require('./routes/loginRouter');
 //const secretRouter = require('./routes/secretRouterOriginal');
 //const profileRouter = require('./routes/profileRouter');
 const forgetPwRouter = require('./routes/forgetPwRouter')
+//const resetPwRouter = require('./controllers/resetPwRouter');
 const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
 
@@ -57,10 +59,11 @@ const deleteRouter = require('./routes/deleteRouter');
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 //app.use('/secret', secretRouter);
-app.use('/delete', deleteRouter);
+app.use('/delete', auth, deleteRouter);
 //app.use('/profile', profileRouter);
 //app.use('/logout', logoutRouter);
-app.use('/reset_password', forgetPwRouter);
+app.use('/resend_password', forgetPwRouter);
+//app.use('/reset_password, resetPwRouter);
 app.use('/contact', contactRouter);
 
 //a simple test to make sure server works

@@ -6,7 +6,7 @@ const sendEmail = require('../utilities/sendGrid');
 
 const User = require('../models/userModel')
 
-const resetEmail = async(req, res, next) => {    
+const resentEmail = async(req, res, next) => {    
 
     const user = req.body   
     console.log(user.email)    
@@ -31,9 +31,8 @@ const resetEmail = async(req, res, next) => {
                         pwResetExpires: Date.now() + 3600000,
                     })
                 })
-                .then(res.json({ msg: "everything is fine, a token was created", status: 200 }))  
-                .catch(err=>err.message)            
-            
+                .then(res.json({ msg: "everything is fine, an email was sent to you", status: 200 }))  
+                .catch(err=>err.message)              
         } 
     }
         catch(err){
@@ -54,9 +53,7 @@ const resetEmail = async(req, res, next) => {
             //             (err.message);
             //         });
            
-            // }
-         
+            // }        
     
-    
-module.exports = resetEmail
+module.exports = resentEmail
 

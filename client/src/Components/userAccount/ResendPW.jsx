@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ResetPWForm from "./forms/ResetPWForm";
+import ResendPWForm from "./forms/ResendPWForm";
 
-const ResetPW = () => {
+const ResendPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
 
   const postEmail = (email) =>{
      const data = { email }
-    axios.post('http://localhost:4000/reset_password', data)
+    axios.post('http://localhost:4000/resend_password', data)
     .then(res => console.log(res.data))
     .catch(err => console.log(err.message))
    }
@@ -38,7 +38,7 @@ const ResetPW = () => {
 
   return (
     <>
-      <ResetPWForm
+      <ResendPWForm
         // postEmail = { postEmail }
         submitHandler = { submitHandler }
         changeEmail = { changeEmail }
@@ -49,7 +49,7 @@ const ResetPW = () => {
   );
 };
 
-export default ResetPW;
+export default ResendPW;
 
 
 //   //fetch data to send it to backend
