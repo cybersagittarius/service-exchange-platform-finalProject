@@ -47,7 +47,7 @@ const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
 //const secretRouter = require('./routes/secretRouterOriginal');
 //const profileRouter = require('./routes/profileRouter');
-//const pwResetRouter = require('./routes/pwResetRouter')
+const forgetPwRouter = require('./routes/forgetPwRouter')
 const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
 
@@ -60,7 +60,7 @@ app.use('/login', loginRouter);
 app.use('/delete', deleteRouter);
 //app.use('/profile', profileRouter);
 //app.use('/logout', logoutRouter);
-//app.use('/reset_password', pwResetRouter);
+app.use('/reset_password', forgetPwRouter);
 app.use('/contact', contactRouter);
 
 //a simple test to make sure server works
