@@ -81,6 +81,7 @@ dropdown-item a:focus {
 }
 
 option {
+  width:170px;
   margin-top: 5px;
   margin-bottom: 5px;
   font-family: $fontFamily !important;
@@ -90,7 +91,7 @@ option {
 
 select {
   margin-left: 19px;
-  width: 130px;
+  width: 110px;
   font-size: 13px !important;
   font-family: $fontFamily !important;
   color: $mainColor !important;
@@ -98,9 +99,23 @@ select {
   border: none;
   outline: none;
 }
+option:checked {
+  background-color: -moz-html-cellhighlight !important;
+  color: -moz-html-cellhighlighttext !important;
+}
+// option::after {
+//   display: none !important;
+//   background-color: transparent !important;
+// }
+// option::before {
+//   display: none !important;
+//   background-color: transparent !important;
+// }
 .dd-wrapper {
-  height: 30px;
-  margin-left: 10px;
+  // height: 30px;
+  // margin-left: 10px;
+  height: 25px;
+margin-left: 24px;
   margin-right: 10px;
   position: relative;
 }
@@ -129,6 +144,11 @@ select {
   text-align: left;
   padding-top: 0rem;
 }
+// .dd-listSmall {
+//   position: absolute;
+//   top: 0px;
+// left: 82px;
+// }
 
 .dd-list button {
   width: 117px;
@@ -254,9 +274,18 @@ select {
 }
 .smallFindMenu {
   @media only screen and (max-width: 537px){
-    display: block;
+    
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-top: 13px;
+    margin-left: 13px;
   }
   @media only screen and (min-width: 537px){
     display: none;
   }
+}
+.burger{
+  border: none !important;
+  background-color: transparent !important;
 }

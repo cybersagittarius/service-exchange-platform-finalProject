@@ -1,9 +1,7 @@
-import React from 'react';
-import { createContext , useState } from 'react';
+import React, { useState } from 'react';
+import SearchContext from "./SearchContext"
 
-export const SearchContext = createContext();
-
-export const SearchProvider = (props) => {
+const SearchProvider = (props) => {
 
     const [country, setCountry] = useState(" ");
     const [region, setRegion] = useState(" ");
@@ -27,12 +25,12 @@ export const SearchProvider = (props) => {
       };
 
     return (
-        <div>
-        <SearchContext.Provider value={country, region,offerSelection, lookSelection,selectCountry, selectRegion,  handleOfferSelection,handlelookSelection}>
+        <>
+        <SearchContext.Provider value={{country, region,offerSelection, lookSelection,selectCountry, selectRegion,  handleOfferSelection,handlelookSelection}}>
         {props.children}
         </SearchContext.Provider>
-        </div>
+        </>
     )
 }
 
-
+export default SearchProvider;

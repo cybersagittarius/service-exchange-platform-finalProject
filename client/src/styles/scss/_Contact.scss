@@ -3,8 +3,9 @@
 #contact{
     position:fixed;
     top: 73px;
-    left: 15%;
-    width: 70vw;
+    left: 0px;
+    right: 0px;
+    width: 60%;
     // max-width: var(--max-width);
     // margin-left:13px;
     // margin-right: 13px;
@@ -17,7 +18,7 @@
     font-family: $fontFamily;
     font-size: 13px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    height: 75vh;
+    height: auto;
     z-index: 999;
     &h3{
         font-weight: 400;
@@ -31,5 +32,8 @@
                 }   
                    
     }
+    @media only screen and (max-width: 537px){
+        width: 80%;
+      }
 
 }

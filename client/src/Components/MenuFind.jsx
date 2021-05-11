@@ -1,15 +1,41 @@
 import React, { useState, useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenu from "./SkillsMenu";
-import items from "../assets/js/itemsSkills.js";
-import { SearchContext } from './context/SearchContext';
+import items from "../assets/data/itemsSkills";
+import SearchContext from '../context/SearchContext';
+import { Link } from 'react-router-dom'
+
 
 
 function FindMenu() {
 
   const[show, setShow] = useState("none");
 
-  const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handlelookSelection} = useContext(SearchContext)
+  // const [country, setCountry] = useState(" ");
+  //   const [region, setRegion] = useState(" ");
+    
+  //   const [offerSelection, setofferSelection] = useState([]);
+  //   const [lookSelection, setlookSelection] = useState([]);
+
+  //   const selectCountry = (e) => {
+  //       setCountry(e);
+  //     };
+    
+  //     const selectRegion = (e) => {
+  //       setRegion(e);
+  //     };
+    
+  //     const handleOfferSelection = (selection) => {
+  //       setofferSelection(selection);
+  //     };
+    
+  //     const handlelookSelection = (selection) => {
+  //       setlookSelection(selection);
+  //     };
+  
+const context = useContext(SearchContext);
+
+  const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handlelookSelection} = context
 
   const handleFind = () => {
     //This function send info to the backend
@@ -56,21 +82,23 @@ function FindMenu() {
         />
       </div>
       <div className="btnFindDiv">
+        <Link to="/visitors">
         <button
-          onclick={handleFind}
+          // onclick={handleFind}
           type="submit"
           value="search"
           className="btnFind"
         >
           Find
         </button>
+        </Link>
       </div>
     </form>
 
      <div className="form smallFindMenu" >
 
-     <button onClick={showHide}>
-        <i class="fas fa-bars"></i>
+     <button onClick={showHide} className="burger">
+     <i class="fas fa-bars"></i>
       </button>
 
     <div className="DDFindMenu" style={{display:show}}>
