@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
+//ideally we remove the essential data out and have the essential data here as a reference from another collection which holds essential data
 const userCredentialSchema = new mongoose.Schema ({
 
     firstname: { type: String, required: true },
@@ -10,8 +11,9 @@ const userCredentialSchema = new mongoose.Schema ({
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true },
     password: { type: String, required: true }, 
-    avatar_url : { type: String },
-    skills: [],
+    avatar_url : { type: String, required: true },
+    skills: {type: [], required: true},
+    description: {type: String},    
 },  
     {toObject: { virtuals: true }},
     {toJSON: {virtuals: true}},
