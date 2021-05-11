@@ -1,12 +1,12 @@
-import Find from "./Find";
-import Lingua from "./Lingua";
+import MenuFind from "./MenuFind";
+import MenuLoginAndRegister from "./MenuLoginAndRegister";
 
 const Header = () => {
    return (
     <>
       <div className="find">
-        <Find/>
-        <Lingua />
+        <MenuFind/>
+        <MenuLoginAndRegister />
       </div>
     </>
   );
