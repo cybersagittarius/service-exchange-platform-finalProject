@@ -64,9 +64,9 @@ const userCredentialSchema = new mongoose.Schema ({
 //     })
 // }
 
-userCredentialSchema.virtual('fullname').get(function(){
-    return `${this.firstname} ${this.lastname}`
-})
+// userCredentialSchema.virtual('fullname').get(function(){
+//     return `${this.firstname} ${this.lastname}`
+// })
 
 //this module will export User as the instance 'User' of userSchema
 module.exports = mongoose.model('user', userCredentialSchema);
