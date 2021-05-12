@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "./configure-files/axios"
 
-import ResetPWForm from "./forms/ResetPWForm";
+import ForgetPWForm from "./forms/ForgetPWForm";
 
-const ResetPW = () => {
+const ForgetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
 
@@ -11,7 +11,7 @@ const ResetPW = () => {
 
     const data = { email }
 
-   axios.post('http://localhost:4000/reset_password', data)
+   axios.post('http://localhost:4000/forget_password', data)
    .then(res => console.log(res.data))
    .then(oldEmailFound => console.log(oldEmailFound))
   // in case the API responded, we will have the error inside error.response.data 
@@ -44,7 +44,7 @@ const ResetPW = () => {
 
   return (
     <>
-      <ResetPWForm
+      <ForgetPWForm
         postEmail = { postEmail }
         submitHandler = { submitHandler }
         changeEmail = { changeEmail }
@@ -55,4 +55,4 @@ const ResetPW = () => {
     );
   };
 
-export default ResetPW;
+export default ForgetPW;
