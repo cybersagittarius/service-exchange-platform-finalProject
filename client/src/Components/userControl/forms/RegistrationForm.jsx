@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import SkillsMenu from '../../SkillsMenu'
 import items from '../../../assets/data/itemsSkills'
 import MyAlert from "../layout/Alert";
@@ -9,6 +9,13 @@ import RegionCountrySelector from "../selector/RegionCountrySelector";
 import AvatarUploader from "../upload-edit/AvatarUploader";
 
 const RegistrationForm = (props) => {
+
+  const firstnameRef = useRef()
+
+  useEffect(()=> {
+    firstnameRef.current.focus();
+  }, [])
+
   return (
     <>
       <div className="backRegister">
@@ -32,6 +39,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="text"
                       name="firstname"
+                      ref={firstnameRef}
                       value={props.firstname}
                       placeholder="your first name"
                       className="form-control"
