@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SearchProvider from '../../context/SearchProvider';
 import MainPage from '../Main'
 import LandingPage from '../LandingPage';
-import LoginPage from '../userAccount/Login';
-import RegisterPage from '../userAccount/Register';
+import LoginPage from '../userControl/Login';
+import RegisterPage from '../userControl/Register';
 import ContactPage from '../Contact';
 import VisitorsPage from '../Visitors';
 import NotFoundPage from '../NotFound'
