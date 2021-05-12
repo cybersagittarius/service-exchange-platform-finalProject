@@ -22,21 +22,7 @@ const loginUser = async (req, res, next) => {
         return res.status(400).send(err.message)
         //res.status(400).json({ errors: { msg: "Invalid Passwords" } });
       } 
-      
-      const payload = { user: { id: user._id, email: user.email } };
-
-      const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "10m",
-    });
-
-  res.status(200).json({ token, email, msg: "Welcome back!" });
-    }
-  } catch (err) {
-    //next(err.message) only give us error message without the error detail
-    console.log(err);
-    next(err);
-  } 
-
+module.exports = loginUser;
 //   const payload = { user: { id: user._id, email: user.email } };
 
 //   const token = await jwt.sign(payload, process.env.JWT_SECRET, {
@@ -46,7 +32,7 @@ const loginUser = async (req, res, next) => {
 // res.status(200).json({ token, email, msg: "Welcome back!" });
 };
 
-module.exports = loginUser;
+
 
 //const { email, password } = req.body
 
