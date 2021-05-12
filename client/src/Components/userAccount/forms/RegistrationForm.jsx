@@ -1,6 +1,6 @@
 import React from "react"
 import SkillsMenu from '../../SkillsMenu'
-import items from '../../../assets/js/itemsSkills'
+import items from '../../../assets/data/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 
