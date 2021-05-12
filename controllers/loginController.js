@@ -1,21 +1,18 @@
-const User = require("../models/userModel");
+const Essential = require("../models/essentialModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const express = require("express");
 
 const loginUser = async (req, res, next) => {
 
-  console.log(req.body);
-
-  const [email, password] = [req.body.email, req.body.password];
-
+  //const [email, password] = [req.body.email, req.body.password];
+  const {email, password} = req.body
   const user = { email, password };
 
-  console.log(user)
   // const user = new User(req.body)
   // const { email, password } = user
   try {
-    let findUser = await User.findOne({ email: user.email });
+    let findUser = await Essential.findOne({ email: user.email });
     if (!findUser) {
       return res.status(400).json({ errors: [{ msg: "no user found!" }] });
     }
@@ -23,19 +20,21 @@ const loginUser = async (req, res, next) => {
       const isMatch = await bcrypt.compare(password, findUser.password);
       if (!isMatch) {
         return res.status(400).json({ errors: [{ msg: "Invalid Passwords" }] });
-      }
-    }
-  } catch (err) {
-    //next(err.message) only give us error message without the error detail
-    return next(err);
-  }
-  const payload = { user: { id: user._id, email: user.email } };
+      } 
+      
+      const payload = { user: { id: user._id, email: user.email } };
 
-  const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: "10m",
+      const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "10m",
   });
 
   res.status(200).json({ token, email, msg: "Welcome back!" });
+    }
+  } catch (err) {
+    //next(err.message) only give us error message without the error detail
+    console.log(err);
+    return next(err);
+  } 
 };
 
 module.exports = loginUser;

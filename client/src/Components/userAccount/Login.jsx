@@ -17,7 +17,7 @@ const Login = () => {
     ///axios does not need res.json at all!!!!!!!!!!!!!
     axios.post('http://localhost:4000/login', data)
     .then(res => console.log(res.data))
-    .catch(err => console.log(err))
+    .catch(err => console.log('Error!', err))
   }
 
   const submitHandler = (e) => {
