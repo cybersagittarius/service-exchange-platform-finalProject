@@ -10,7 +10,7 @@ import Footer from "./Components/Footer";
 //npm install react-router-dom
 import Login from "./Components/userAccount/Login";
 import Register from "./Components/userAccount/Register";
-import ResendPW from "./Components/userAccount/ResendPW";
+import ForgetPW from "./Components/userAccount/ForgetPW";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -31,7 +31,7 @@ import Test from "./Components/Test";
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/resend_password" component={ResendPW} />
+        <Route exact path="/forget_password" component={ForgetPW} />
         {/* <Route exact path="/reset_password" component={ResetPW} /> */}
       </Switch>
     </Router>
