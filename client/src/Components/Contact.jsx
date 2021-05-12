@@ -35,7 +35,7 @@ setLoading(true);
 try {
     const config = {
         headers: {
-            'Content Type': 'apllication/json'
+            'Content Type': 'application/json'
         }
     };
     const body = JSON.stringify(newMessage);
