@@ -9,6 +9,7 @@ import VisitorsPage from '../Visitors';
 import NotFoundPage from '../NotFound'
 import Footer from '../Footer'
 import Header from '../Header'
+import ForgetPW from '../userControl/ForgetPW';
 
 
 const Routes = () => ( 
@@ -20,6 +21,7 @@ const Routes = () => (
                 <Route path="/" exact component={LandingPage}/>
                 <Route path="/login" exact component={LoginPage}/>
                 <Route path="/register" exact component={RegisterPage}/>
+                <Route path="/forget_password" exact component={ForgetPW}/>
                 <Route path="/contact" exact component={ContactPage}/>
                 <Route path="/visitors" exact component={VisitorsPage}/>
                 <Route component={NotFoundPage}/>
