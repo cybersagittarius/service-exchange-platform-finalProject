@@ -19,7 +19,7 @@ const registerUser = async(req, res, next) => {
    try{
     let findUser = await User.findOne({email: email})
     if(findUser) {
-      return res.status(400).json({error: [{msg: "email already registered"}]})
+      return res.status(400).json({error: {msg: "email already registered"}})
     }
      //not upload(user.savedImage) here, it has to come from the req.body
      const user = new User({email, skills, ...userData});  
@@ -47,9 +47,7 @@ const registerUser = async(req, res, next) => {
   }
   catch(err){
     return next(err)
-  }
-  
-  
+  }  
     
 } 
 
