@@ -1,10 +1,10 @@
 const express = require('express')
-const crypto = require('crypto');
+const jwt = require('jsonwebtoken')
 //const sendEmail = require('./nodeMail');
 require('dotenv').config();
 const sendEmail = require('../utilities/sendGrid');
 
-const User = require('../models/userModel')
+const Essential = require('../models/essentialModel')
 
 const resentEmail = async(req, res, next) => {    
 
@@ -12,24 +12,27 @@ const resentEmail = async(req, res, next) => {
     console.log(user.email)    
       
         try{
-            let findUser = await User.findOne({email: user.email})
+            let findUser = await Essential.findOne({email: user.email})
 
                 if(!findUser) {
                     //so far tht best res.json way to return error message and status 
                     return res.json({msg: "no email found!", status: 400})
                 }
                 if(findUser) {
-                const token = crypto.randomBytes(10).toString('hex');
+                const payload = { user: { id: findUser._id, email: findUser.email } };
+
+                const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+                expiresIn: '1h'});
+                    //crypto.randomBytes(10).toString('hex');
                 console.log('a token was created', token)                           
 
                 //sendEmail has to be a promise by itself otherwise .then will not work
                 sendEmail(token)
-                .then(response => {
-                    user.update({
-                        pwResetToken: token,
-                        //this is equivalent to an hour
-                        pwResetExpires: Date.now() + 3600000,
-                    })
+                .then(async(response) => {
+
+                    findUser.pwchangetoken = token;
+                    await findUser.save()       
+    
                 })
                 .then(res.json({ msg: "everything is fine, an email was sent to you", status: 200 }))  
                 .catch(err=>err.message)              
