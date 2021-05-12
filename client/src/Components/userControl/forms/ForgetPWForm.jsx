@@ -1,7 +1,7 @@
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU"
 
-const ResetPWForm = (props) => {
+const ForgetPWForm = (props) => {
   return (
     <>
       <div className="backResetPW">
@@ -57,4 +57,4 @@ const ResetPWForm = (props) => {
   );
 };
 
-export default ResetPWForm;
+export default ForgetPWForm;
