@@ -1,9 +1,11 @@
 import MyAlert from "../layout/Alert";
-import ButtonMU from "../layout/ButtonMU"
+import ButtonMU from "../layout/ButtonMU";
+import MainPage from '../../Main';
 
 const ResetPWForm = (props) => {
   return (
     <>
+    <MainPage/>
       <div className="backResetPW">
         <div className="card div-center">
           <div className="container">

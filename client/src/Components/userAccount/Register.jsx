@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import RegistrationForm from './forms/RegistrationForm'
+import RegistrationForm from './forms/RegistrationForm';
+import MainPage from '../Main';
 
 const Register = () => {
      
@@ -115,6 +116,7 @@ const Register = () => {
 
      return (
         <>
+        <MainPage/>
         <RegistrationForm   
                           postNewUser = { postNewUser }
                           submitHandler = { submitHandler }

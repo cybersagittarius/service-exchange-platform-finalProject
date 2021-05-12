@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenu from "./SkillsMenu";
 import items from "../assets/data/itemsSkills.js";
-import { SearchContext } from '../context/SearchContext';
+import SearchContext  from '../context/SearchContext';
 // import Visitor from '../Components/searchOutcome/Visitor';
 import {Link} from 'react-router-dom';
 

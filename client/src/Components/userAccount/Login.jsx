@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoginForm from "./forms/LoginForm";
+import MainPage from '../Main';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -85,6 +86,7 @@ const Login = () => {
 
   return (
     <>
+    <MainPage/>
       <LoginForm
         postReturnedUser={postReturnedUser}
         submitHandler={submitHandler}

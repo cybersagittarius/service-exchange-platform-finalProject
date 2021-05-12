@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import axios from 'axios';
+import MainPage from './Main';
 import ButtonMU from './userAccount/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
 const Contact = () => {
@@ -60,6 +61,7 @@ const handleEmail = () => {
 }
         return (
             <>
+            <MainPage/>
             <form id="contact" onSubmit={(e) => formSubmit(e)} method="POST">
              <h3>Leave Us a message</h3>
             <div className="form-group">
