@@ -55,15 +55,17 @@ const deleteRouter = require('./routes/deleteRouter');
 
 
 //user routers as middlewares
-//not going to implement social media account auth in this projects, but there are ready codes in oaRouters and oaControllers
+//not going to implement social media account auth in this projects, 
+//but there are ready codes in oaRouters and oaControllers
+
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 //app.use('/secret', secretRouter);
 app.use('/delete', auth, deleteRouter);
 //app.use('/profile', profileRouter);
 //app.use('/logout', logoutRouter);
-app.use('/resend_password', forgetPwRouter);
-//app.use('/reset_password, resetPwRouter);
+app.use('/forget_password', forgetPwRouter);
+//app.use('/reset_password', resetPwRouter);
 app.use('/contact', contactRouter);
 
 //a simple test to make sure server works
