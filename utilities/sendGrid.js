@@ -12,7 +12,7 @@ const msg = {
   text: `There is link to reset your password`,
   html: `
         <strong>and easy to do anywhere, even with Node.js</strong>
-        <a href="http://localhost:4000/resetPassword/${token}"> Click Here to Change Password </a>
+        <a href="http://localhost:4000/reset_password/${token}"> Click Here to Change Password </a>
         `,
 }
 // sgMail
