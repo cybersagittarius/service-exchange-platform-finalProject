@@ -167,7 +167,7 @@ const RegistrationForm = (props) => {
                     </button>
                   </div>                
                   
-                  <div className="form-group col-lg-9">
+                  <div className="form-group col-lg-12">
                     {props.alertEM && (
                       <MyAlert
                         alertType={"warning"}

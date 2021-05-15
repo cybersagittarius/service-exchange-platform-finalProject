@@ -41,7 +41,7 @@ const LoginForm = (props) => {
                 />
               </div>
 
-              <div className="row">
+              {/* <div className="row">
                 <div className="col-lg-12">
                   {props.alertEM && (
                     <MyAlert
@@ -58,7 +58,7 @@ const LoginForm = (props) => {
                     />
                   )}
                 </div>
-              </div>
+              </div> */}
 
               <form onSubmit={props.submitHandler}>
                 <fieldset>
@@ -101,7 +101,7 @@ const LoginForm = (props) => {
                         onChange={props.changeRM}
                         //in theory onClick should be used but Chrome prefers onChange here
                       />
-                      <label> Remember Me </label>
+                      <label>Remember Me</label>
                     </div>
 
                     <div className="form-check form-group col-lg-3">
@@ -123,7 +123,40 @@ const LoginForm = (props) => {
                         <h6><a href="#" className="mt-3 btn btn-primary btn-sm"> join us</a></h6>     
                       </Link>                       
                     </h6>
-{/*                     
+                    <div className="row">
+
+                <div className="col-lg-12">
+                  {props.alertEM && (
+                    <MyAlert
+                      alertType={"warning"}
+                      alertHeading={"Error!"}
+                      alertMessage={"Please Enter A Valid Email "}
+                    />
+                  )}
+                  {props.alertPW && (
+                    <MyAlert
+                      alertType={"danger"}
+                      alertHeading={"Incorrect!"}
+                      alertMessage={"Please Enter A Valid Password "}
+                    />
+                  )}
+                </div>
+              </div>
+              </div>                  
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default LoginForm;
+
+{/*                 
+                        
                     <div className="form-check form-group mx-auto" aria-label="buttonExample"> 
                       <button 
                         type="button" 
@@ -155,15 +188,4 @@ const LoginForm = (props) => {
                         <FontAwesomeIcon icon={["fab", "twitter"]} size="1x" />
                       </button>
                       </div>                    */}
-                    </div>                  
-                </fieldset>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default LoginForm;
+                    
