@@ -40,6 +40,7 @@ const registerUser = async(req, res, next) => {
      //const userNew = await User({ ...userData, avatar_url: result.secure_url })
 
      //user info, no sensitive data shall be included
+     //const payload = { user: { id: user._id, email: user.email } };
      const payload = { essential: { id: essential._id, email: essential.email } };
      const token = jwt.sign(payload, process.env.JWT_SECRET, {
        expiresIn: 360000,
