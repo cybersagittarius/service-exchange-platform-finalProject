@@ -6,7 +6,7 @@ const sendEmail = require('../utilities/sendGrid');
 
 const Essential = require('../models/essentialModel')
 
-const resentEmail = async(req, res, next) => {    
+const forgetPwEmail = async(req, res, next) => {    
 
     const user = req.body   
     console.log(user.email)    
@@ -36,12 +36,14 @@ const resentEmail = async(req, res, next) => {
                 })
                 .then(res.json({ msg: "everything is fine, an email was sent to you", status: 200 }))  
                 .catch(err=>err.message)              
-        } 
-    }
+            } 
+        }
         catch(err){
             return next(err.message)
         }
     }
+    
+module.exports = forgetPwEmail
         
             //call send mail controller here
             // sendEmail(token)
@@ -58,5 +60,5 @@ const resentEmail = async(req, res, next) => {
            
             // }        
     
-module.exports = resentEmail
+
 
