@@ -13,15 +13,32 @@ const loginUser = async (req, res, next) => {
   //const { email, password } = user
   try {
     let findUser = await Essential.findOne({ email: user.email });
+
     if (!findUser) {
       return res.status(400).json({ errors: { msg: "no user found!" } });
     }
+
     if (findUser) {
       const isMatch = await bcrypt.compare(password, findUser.password);
       if (!isMatch) {
         return res.status(400).send(err.message)
         //res.status(400).json({ errors: { msg: "Invalid Passwords" } });
       } 
+        const payload = { user: { id: user._id, email: user.email } };
+
+        const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "10m",
+      })
+
+          res.status(200).json({ token, email, msg: "Welcome back!" });
+      } 
+  }
+  catch (err) {
+      return next(err);
+      }  
+  }
+
+
 module.exports = loginUser;
 //   const payload = { user: { id: user._id, email: user.email } };
 
@@ -30,7 +47,7 @@ module.exports = loginUser;
 // });
 
 // res.status(200).json({ token, email, msg: "Welcome back!" });
-};
+
 
 
 
