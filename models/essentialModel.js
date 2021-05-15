@@ -10,30 +10,21 @@ const EssentialSchema = new mongoose.Schema ({
     timestamp: true
 })
 
+//pre middleware here cannot use an arrow function, has to take function()
     EssentialSchema.pre('save', function (next) {
         //constructor
         const user = this
     
         if (this.isModified('password') || this.isNew) {
-            // salt generator error is not our concern, neither will we have a solution that, it would be up to the code team to fix it
-            // therefore this section can go
-            
-            // bcrypt.genSalt(10, (saltError, salt) =>{
-            //     if(saltError) {
-            //         console.log('Error!')
-            //         return next(saltError)
-                // } else {
-                    bcrypt.hash(user.password, 10, (hashError, hash)=>{
-                        if(hashError) {
-                            return next(hashError)                        
-                        } 
+                bcrypt.hash(user.password, 10, (hashError, hash)=>{
+                    if(hashError) {
+                        return next(hashError)                        
+                    } 
     
-                        user.password = hash;
+                    user.password = hash;
                         //part of the syntax of middleware, which means to move on to the next function
-                        next()
-                    })
-            //     }
-            // })
+                    next()
+                })           
         } else {
             //password is neither newly created nor modified, already exists
             return next()
