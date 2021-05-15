@@ -3,6 +3,8 @@ require('dotenv').config()
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
+//const link = `${req.protocol}://localhost:4000/reset_password/${token}`;
+
 const sendPwResetEmail = (token) => {
 
 const msg = {
