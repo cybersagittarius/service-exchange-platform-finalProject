@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from './configure-files/axios'
-//import axios from 'axios'
+//import axios from './configure-files/axios'
+import axios from 'axios'
 
 import LoginForm from "./forms/LoginForm";
 
