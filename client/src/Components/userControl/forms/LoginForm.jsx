@@ -42,8 +42,8 @@ const LoginForm = (props) => {
                 />
               </div>
 
-              <div className="row">
-                <div className="col-lg-12">
+              {/* <div className="row">
+                <div className="col-lg-10">
                   {props.alertEM && (
                     <MyAlert
                       alertType={"warning"}
@@ -59,7 +59,7 @@ const LoginForm = (props) => {
                     />
                   )}
                 </div>
-              </div>
+              </div> */}
 
               <form onSubmit={props.submitHandler}>
                 <fieldset>
@@ -115,7 +115,7 @@ const LoginForm = (props) => {
                       <Link to="/forget_password">
                         <a href="#"> Forgot Your Password?</a>     
                       </Link>
-                    </div>
+                    </div>                   
 
                     <h6 className="col-lg-12 mx-auto text-center">
                       If you have not already registered with us, register and
@@ -124,7 +124,27 @@ const LoginForm = (props) => {
                         <h6><a href="#" className="mt-3 btn btn-primary btn-sm"> join us</a></h6>     
                       </Link>                       
                     </h6>
-{/*                     
+
+                <div className="row">
+                  <div className="col-lg-12">
+                    {props.alertEM && (
+                      <MyAlert
+                        alertType={"warning"}
+                        alertHeading={"Error!"}
+                        alertMessage={"Please Enter A Valid Email "}
+                      />
+                    )}
+                    {props.alertPW && (
+                      <MyAlert
+                        alertType={"danger"}
+                        alertHeading={"Incorrect!"}
+                        alertMessage={"Please Enter A Valid Password "}
+                      />
+                    )}
+                  </div>
+                </div>
+
+            {/*                 
                     <div className="form-check form-group mx-auto" aria-label="buttonExample"> 
                       <button 
                         type="button" 
