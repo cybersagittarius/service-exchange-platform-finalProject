@@ -2,6 +2,7 @@ const Essential = require("../models/essentialModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const express = require("express");
+//const session = request('express-session');
 
 const loginUser = async (req, res, next) => {
 
