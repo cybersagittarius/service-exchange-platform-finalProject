@@ -4,6 +4,6 @@ const profileController = require('../controller/profileController')
 
 router.get('/').get(profileController)
 
-router.route('/').patch(profileController)
+router.route('/').put(profileController)
 
 module.exports = router;

@@ -2,12 +2,8 @@ const express = require('express')
 const router = express.Router()
 const findController = require('../controllers/findController')
 
-router.post('/', (req, res, next)=>{
-    const body = {
+router.route('/').get(findController)
         
-
-    }
-})
-
+router.route('/').post(findController)
 
 module.export = router
