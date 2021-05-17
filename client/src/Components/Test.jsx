@@ -10,20 +10,26 @@ const Test = () => {
 
     useEffect(() => {
 
-            const authAxios = axios.create({
+            const authDelete = axios.create({
                 baseURL: url,
                 headers: { Authorization: `Bearer ${token}`},                
             })
          
-            authAxios.delete(`/delete`)
-                            .then(res => {
-                                    console.log(res.data)          
-                                    // console.log('res received', res.data);       
-                                    })
-                            .catch(err=>console.log(err.message))  
+            const deleteUser = async () =>{
+                const result = await authDelete.get(`/deleteUser`)
+                console.log(result.data);
+            } 
+
+            }
+
+                            // .then(res => {
+                            //         console.log(res.data)          
+                            //         // console.log('res received', res.data);       
+                            //         })
+                            // .catch(err=>console.log(err.message))  
 
             // setMessage(request)
-    }, []) 
+    }, []) }
     
     
     return (
