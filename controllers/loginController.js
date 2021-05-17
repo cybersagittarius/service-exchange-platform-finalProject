@@ -50,7 +50,6 @@ module.exports = loginUser;
 
 
 
-
 //const { email, password } = req.body
 
 // User.findOne({email: email}).exec((err, user)=> {
