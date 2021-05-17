@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1];
     
     if(!token){ 
-        console.log('I am here!')
+        console.log('I am not there!')
         return res.status(401).json({msg: "no token, authorisation denied"});
     } 
     try{
