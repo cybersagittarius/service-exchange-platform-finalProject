@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 //import axios from './configure-files/axios'
 import axios from 'axios'
+import searchContext from '../../context/SearchContext'
 
 import LoginForm from "./forms/LoginForm";
 
@@ -11,6 +12,10 @@ const Login = () => {
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
 
+   //we bring in the store at this point
+   const context = useContext(searchContext)
+   const {setUserInfo} = context
+
   const postReturnedUser = (email, password) => {
     const data = { email, password }
     //console.log(data);
@@ -18,7 +23,7 @@ const Login = () => {
     /// FETCH TO SEND DATA TO BACKEND
     ///axios does not need res.json at all!!!!!!!!!!!!!
     axios.post('http://localhost:4000/login', data)
-    .then(res => console.log(res.data))
+    .then(res => setUserInfo(res.data.token))
     .then(oldUserFound => console.log(oldUserFound))
     //try this to compare with line 26
     .catch(error=>console.log(error.response && error.response.data))
