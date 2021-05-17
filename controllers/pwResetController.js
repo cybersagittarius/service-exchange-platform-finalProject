@@ -1,5 +1,4 @@
 const express = require('express')
-const auth = require('../middleware/auth')
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth')
 require('dotenv').config();
@@ -26,8 +25,8 @@ const resetPw = async(req, res, next)=>{
       }
    catch(err){
            return next(err)
-            }
-      }
+        }
+    }
 }
 
 module.exports = resetPw
@@ -44,7 +43,6 @@ module.exports = resetPw
 //5th if you don't find the user then return status 400 saying wrong tokenb
 
 //6th if you find the user then return with everything is fine
-
 
 //extra thing I wrote for practice
 // console.log(req.body)
