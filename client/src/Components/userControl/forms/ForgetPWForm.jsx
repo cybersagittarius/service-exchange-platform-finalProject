@@ -12,7 +12,7 @@ const ForgetPWForm = (props) => {
 
   return (
     <>
-      <div className="backResetPW">
+      <div className="backForgetPW">
         <div className="card div-center">
           <div className="container">
             <div className="card-body">
