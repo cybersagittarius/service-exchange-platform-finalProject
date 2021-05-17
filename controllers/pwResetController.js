@@ -10,8 +10,9 @@ const resetPw = async(req, res, next)=>{
    if(!auth) {
        res.redirect(301, '/')
    } else {
-
-   const token = req.params.token;
+     
+   //req.body.token or req.params.token?
+   const token = req.body.token;
    const pw = req.newpassword;
    try{       
       let findToken = await Essential.findOneAndUpdate({pwchangetoken: token}, {password: pw});
