@@ -49,23 +49,24 @@ const loginRouter = require('./routes/loginRouter');
 //const secretRouter = require('./routes/secretRouterOriginal');
 //const profileRouter = require('./routes/profileRouter');
 const forgetPwRouter = require('./routes/forgetPwRouter')
-//const resetPwRouter = require('./controllers/resetPwRouter');
+const pwResetRouter = require('./routes/pwResetRouter');
 const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
-
+// const logoutRouter = require('./routes/logoutRouter')
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
 //but there are ready codes in oaRouters and oaControllers
 
+//logout is done at the frontend therefore we do not need the backend code to do so
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 //app.use('/secret', secretRouter);
-app.use('/delete', auth, deleteRouter);
+app.use('/delete', deleteRouter);
 //app.use('/profile', profileRouter);
-//app.use('/logout', logoutRouter);
+// app.use('/logout', logoutRouter);
 app.use('/forget_password', forgetPwRouter);
-//app.use('/reset_password', resetPwRouter);
+app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactRouter);
 
 //a simple test to make sure server works
