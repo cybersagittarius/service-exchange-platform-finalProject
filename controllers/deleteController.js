@@ -1,4 +1,6 @@
 const User = require('../models/userModel')
+const Essential = require('../models/essentialModel')
+
 const express = require('express')
 
 const deleteUser = async(req, res, next) => { 
@@ -6,6 +8,8 @@ const deleteUser = async(req, res, next) => {
 
    try {
        const user = await User.findOneAndDelete({id: req.user._id})//important! id:_id
+       const essential = await Essential.findOneAndDelete({id: req.user._id})
+
         res.json({msg: `The user ${ req.user.name } has been deleted`})
     } catch(err){
     next(err.message) 
