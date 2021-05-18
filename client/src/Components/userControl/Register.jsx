@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 //import axios from './configure-files/axios'
 import axios from "axios"
+import searchContext from '../../context/SearchContext'
 
 import RegistrationForm from './forms/RegistrationForm'
 
@@ -25,20 +26,19 @@ const Register = () => {
      const [alertPW, setAlertPW] = useState (false);
      const [alertPWCheck, setAlertPWCheck] = useState (false);  
 
+     //we bring in the store at this point
+     const context = useContext(searchContext)
+     const {setUserInfo} = context
+
      const postNewUser = (firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection) => {
 
         const data = {firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection};
 
-        console.log(data);
-
         axios.post('http://localhost:4000/register', data)
         //we do not need res.json in axios at all
-        .then(res=>{ 
-            console.log('res received', res.data)
-        })
-        .then(newUserCreated => console.log(newUserCreated))
+        .then(res => setUserInfo({token: res.data.token, user: res.data.user}))    
         // in case the API responded, we will have the error inside error.response.data 
-        .catch(err => console.log(err.response && err.response.data))
+        .catch(err => console.log(err.res && err.res.data))
         } 
 
      const submitHandler = (e) => {
@@ -50,35 +50,35 @@ const Register = () => {
         //No whitespaces. use https://regexr.com/ and https://regex101.com/ for writing up and testing regex
         //source: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a (section 6)
         
-        const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/
-        const isEmValid = emailValidator.test(email);        
+        // const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/
+        // const isEmValid = emailValidator.test(email);        
         
-        if(!isEmValid ){
-            setAlertEM(true)
-            setTimeout(() => {
-                setAlertEM(false)
-            }, 5000); 
-            return false;           
-        }
+        // if(!isEmValid ){
+        //     setAlertEM(true)
+        //     setTimeout(() => {
+        //         setAlertEM(false)
+        //     }, 5000); 
+        //     return false;           
+        // }
         
-        const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
-        const isPwValid = pwValidator.test(password);
+        // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
+        // const isPwValid = pwValidator.test(password);
 
-        if(!isPwValid){
-            setAlertPW(true)
-            setTimeout(() => {
-                setAlertPW(false)
-            }, 5000); 
-            return false;                    
-        }        
+        // if(!isPwValid){
+        //     setAlertPW(true)
+        //     setTimeout(() => {
+        //         setAlertPW(false)
+        //     }, 5000); 
+        //     return false;                    
+        // }        
        
-        if ((isEmValid && isPwValid) && (password!==confirmPW)) {
-            setAlertPWCheck(true)
-            setTimeout(() => {
-                setAlertPWCheck(false)
-            }, 5000); 
-            return false;
-        }
+        // if ((isEmValid && isPwValid) && (password!==confirmPW)) {
+        //     setAlertPWCheck(true)
+        //     setTimeout(() => {
+        //         setAlertPWCheck(false)
+        //     }, 5000); 
+        //     return false;
+        // }
 
         postNewUser(firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection);
 
