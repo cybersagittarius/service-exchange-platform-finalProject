@@ -6,29 +6,25 @@ require('dotenv').config();
 const Essential = require('../models/essentialModel')
 
 const resetPw = async(req, res, next)=>{
-   const auth = auth();
-   if(!auth) {
-       res.redirect(301, '/')
-   } else {
-     
+        
    //req.body.token or req.params.token?
    const token = req.body.token;
    const pw = req.newpassword;
    try{       
-      let findToken = await Essential.findOneAndUpdate({pwchangetoken: token}, {password: pw});
-      if(!findToken) {
+      let findToken = await Essential.find({pwchangetoken: token});
+      if(findToken) {
+          res.redirect(200, '/reset_password')
+          await Essential.findOneAndUpdate({pwchangetoken: token}, {password: pw});
+          res.status(200).json({msg: 'password updated successfully!'})  
+        }else {          
           res.redirect(401, '/')  
           res.status(401).json({msg: 'token is not valid'})
-        }else {
-          res.redirect(200, '/reset_password')
-          res.status(401).json({msg: 'password updated successfully!'})
         }
       }
    catch(err){
            return next(err)
         }
     }
-}
 
 module.exports = resetPw
 
