@@ -18,7 +18,7 @@ const resetPw = async(req, res, next)=>{
           res.status(200).json({msg: 'password updated successfully!'})  
         }else {          
           await res.redirect(401, '/')  
-          res.status(401).json({msg: 'token is not valid'})
+          res.status(401).json({msg: 'token is invalid'})
         }
       }
    catch(err){
