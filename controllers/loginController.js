@@ -22,23 +22,21 @@ const loginUser = async (req, res, next) => {
     if (findUser) {
       const isMatch = await bcrypt.compare(password, findUser.password);
       if (!isMatch) {
-        return res.status(400).send(err.message)
+        return res.status(400).json({ errors: {msg: "invalid password"}})
         //res.status(400).json({ errors: { msg: "Invalid Passwords" } });
       } 
         const payload = { user: { id: user._id, email: user.email } };
 
         const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-        expiresIn: "10m",
+        expiresIn: "1h",
       })
-
-          res.status(200).json({ token, email, msg: "Welcome back!" });
+        return res.status(200).json({ token, email, msg: "Welcome back!" });
       } 
   }
   catch (err) {
       return next(err);
       }  
   }
-
 
 module.exports = loginUser;
 //   const payload = { user: { id: user._id, email: user.email } };
