@@ -17,7 +17,7 @@ const Routes = () => (
     <SearchProvider> 
         <Router>
             <Header/>
-                <MainPage/>
+                {/* <MainPage/> */}
                 <Switch>
                 <Route path="/" exact component={LandingPage}/>
                 <Route path="/login" exact component={LoginPage}/>
