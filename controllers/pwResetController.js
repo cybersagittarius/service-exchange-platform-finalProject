@@ -11,10 +11,10 @@ const resetPw = async(req, res, next)=>{
    const token = req.body.token;
    const pw = req.newpassword;
    try{       
-      let findToken = await Essential.find({pwchangetoken: token});
+      let findToken = await Essential.findOne({pwchangetoken: token});
       if(findToken) {
           res.redirect(200, '/reset_password')
-          await Essential.findOneAndUpdate({pwchangetoken: token}, {password: pw});
+          await Essential.updateOne({password: pw});
           res.status(200).json({msg: 'password updated successfully!'})  
         }else {          
           res.redirect(401, '/')  
