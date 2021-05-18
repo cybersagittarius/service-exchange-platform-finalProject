@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 //import axios from "./configure-files/axios"
 import axios from 'axios'
 
@@ -16,7 +16,7 @@ const ForgetPW = () => {
    .then(res => console.log(res.data))
    .then(oldEmailFound => console.log(oldEmailFound))
   // in case the API responded, we will have the error inside error.response.data 
-    .catch(error=>console.log(error.response && error.response.data))
+    .catch(error=>console.log(error.res && error.res.data))
     .catch(err => console.log(err))
   } 
 
