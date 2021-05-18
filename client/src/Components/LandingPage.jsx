@@ -8,12 +8,17 @@ import Team from "./Team";
 //npm install react-router-dom
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Test from './Test'
+import Logout from "./userControl/Logout";
+
 const LandingPage = () => {
     return (
         <>
             <div className="wrapper">
                 {/* <Header /> */}
                 <Main />
+                <Test />
+                <Logout />
                 <About />
                 <Team />
              </div>
