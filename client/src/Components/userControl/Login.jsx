@@ -23,37 +23,34 @@ const Login = () => {
     /// FETCH TO SEND DATA TO BACKEND
     ///axios does not need res.json at all!!!!!!!!!!!!!
     axios.post('http://localhost:4000/login', data)
-    .then(res => setUserInfo(res.data.token))
-    .then(oldUserFound => console.log(oldUserFound))
-    //try this to compare with line 26
-    .catch(error=>console.log(error.response && error.response.data))
-    //.catch(err => console.log(err))
-  }
-   
+    .then(res => setUserInfo({token: res.data.token, user: res.data.user}))    
+    .catch(error=>console.log(error.res && error.res.data))    
+    }
+  
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/;
-    const isEmailValid = emailValidator.test(email);
+    // const emailValidator = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/;
+    // const isEmailValid = emailValidator.test(email);
 
-    if (!isEmailValid) {
-      setAlertEM(true);
-      setTimeout(() => {
-        setAlertEM(false);
-      }, 5000);
-      return false;
-    }
+    // if (!isEmailValid) {
+    //   setAlertEM(true);
+    //   setTimeout(() => {
+    //     setAlertEM(false);
+    //   }, 5000);
+    //   return false;
+    // }
 
-    const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/;
-    const isPwValid = pwValidator.test(password);
+    // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/;
+    // const isPwValid = pwValidator.test(password);
 
-    if (!isPwValid) {
-      setAlertPW(true);
-      setTimeout(() => {
-        setAlertPW(false);
-      }, 5000);
-      return false;
-    }
+    // if (!isPwValid) {
+    //   setAlertPW(true);
+    //   setTimeout(() => {
+    //     setAlertPW(false);
+    //   }, 5000);
+    //   return false;
+    // }
 
     rememberMe === true
       ? saveOnLocal(email, password)
