@@ -37,7 +37,7 @@ const PwResetForm = (props) => {
                         ref={passwordRef}
                         placeholder="password"
                         className="form-control"
-                        value={props.newpassword}
+                        value={props.newPassword}
                         onChange={props.changeNewPW}
                         required
                       />
