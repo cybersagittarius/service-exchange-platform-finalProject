@@ -7,7 +7,7 @@ const SearchProvider = (props) => {
     const [region, setRegion] = useState(" ");
     const [offerSelection, setofferSelection] = useState([]);
     const [lookSelection, setlookSelection] = useState([]);
-    const [userInfo, setUserInfo] = useState(' ');
+    const [userInfo, setUserInfo] = useState({});
 
     const selectCountry = (e) => {
         setCountry(e);
