@@ -10,7 +10,7 @@ import NotFoundPage from '../NotFound'
 import Footer from '../Footer'
 import Header from '../Header'
 import ForgetPW from '../userControl/ForgetPW';
-import PwReset from '../userControl/PwReset copy';
+import PwReset from '../userControl/PwReset_copy';
 
 
 const Routes = () => ( 

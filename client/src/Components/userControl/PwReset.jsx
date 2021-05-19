@@ -46,7 +46,7 @@ const PwReset = () => {
         }
 
         const url = `http://localhost:4000/`
-                const authAxios = axios.create({
+        const authAxios = axios.create({
                 baseURL: url,
                 headers: { Authorization: `Bearer ${userInfo}`, 
                            "Content-Type": "application/json" },  
@@ -80,7 +80,6 @@ const PwReset = () => {
         </>
     )
 }
-
 
 export default PwReset
 
