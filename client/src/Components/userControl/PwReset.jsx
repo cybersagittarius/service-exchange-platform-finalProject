@@ -27,7 +27,7 @@ const PwReset = () => {
         e.preventDefault();
 
         // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
-        // const isPwValid = pwValidator.test(newpassword);
+        // const isPwValid = pwValidator.test(newPassword);
 
         // if(!isPwValid){
         //     setAlertPW(true)
@@ -45,7 +45,7 @@ const PwReset = () => {
             return false;
         }
 
-        const url = `http://localhost:4000`
+        const url = `http://localhost:4000/`
                 const authAxios = axios.create({
                 baseURL: url,
                 headers: { Authorization: `Bearer ${userInfo}`, 
@@ -55,10 +55,10 @@ const PwReset = () => {
 
         const updatePW = async ()=>{
                 try{
-                    const result = await authAxios.post('/reset_password')
+                    const result = await authAxios.post('/reset_password/')
                     console.log(result.data)
                 } catch(err)
-                {console.log(err.message)}
+                { console.log(err.message) }
             }
             updatePW();           
     }
