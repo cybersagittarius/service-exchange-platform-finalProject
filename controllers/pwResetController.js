@@ -43,11 +43,19 @@ const pwResetCheck = async(req, res, next) =>{
 
 const pwReset = async(req, res, next) => {
     //we just use the email for this session, afterwards we should destroy the session
+    //previously we got req.session.email as undefined was becase we must have with Credentials: true in axios in the frontend, 
+    //like this    const authAxios = axios.create({
+                // baseURL: url,
+                // headers: { "Content-Type": "application/json",},     
+                // withCredentials: true                    
+                // }) 
+
    let email = req.session.email
     console.log('email',email)
     console.log('session',req.session)
     const pw = req.body.newPassword;
     
+    //we added useFindAndModify: false based on the advice from MongoDB
     Essential.findOneAndUpdate({email: email}, {password: pw, pwchangetoken: null},{useFindAndModify: false})
     .then(response=>{
       req.session.destroy((err)=>{
@@ -60,6 +68,8 @@ const pwReset = async(req, res, next) => {
     }).catch(error=>{
       return next(error)
     })
+  }
+  module.exports = { pwResetCheck, pwReset }
 
     // const updatePW = await Essential.findOneAndUpdate({email: email}, {password: pw, pwchangetoken: ''})
 
@@ -75,9 +85,9 @@ const pwReset = async(req, res, next) => {
     //       }
     //     })
     // }
-}
 
-module.exports = { pwResetCheck, pwReset }
+
+
 
 //1st create route for check the token
 
