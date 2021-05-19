@@ -26,7 +26,7 @@ const Routes = () => (
                 <Route path="/reset_password" exact component={PwReset}/> 
                 <Route path="/contact" exact component={ContactPage}/>
                 <Route path="/visitors" exact component={VisitorsPage}/>
-                <Route component={NotFoundPage}/>
+                <Route path="/not_found" exact component={NotFoundPage}/>
             </Switch>            
             <Footer/>
         </Router>
