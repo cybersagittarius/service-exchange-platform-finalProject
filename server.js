@@ -10,10 +10,9 @@ const auth = require('./middleware/auth')
 
 require('dotenv').config()
 
-//alternatively we can just require dotenv
-//require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 4000;
+
 app.use(session({
     secret: 'this is my secret.',
     resave: false,
@@ -30,14 +29,12 @@ app.use(express.json()); //parsing incoming body into req.body
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
 
-
 // const referrer_domain = "http://localhost:3000"
 // //check for the referrer domain
 // app.all('/*', function(req, res, next) {
 //   if(req.headers.referer.indexOf(referrer_domain) == -1){
 //     res.send('Invalid Request')
 //   }
-
 //   next();
 // });
 
@@ -71,7 +68,6 @@ app.use('/login', loginRouter);
 //app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/reset_password', pwResetRouter);
-
 
 // app.use('/logout', logoutRouter);
 
