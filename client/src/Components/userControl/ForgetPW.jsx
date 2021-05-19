@@ -10,14 +10,15 @@ const ForgetPW = () => {
 
   const postEmail = (email) =>{
 
-    const data = { email }
+  const data = { email }
 
    axios.post('http://localhost:4000/forget_password', data)
-   .then(res => console.log(res.data))
-   .then(oldEmailFound => console.log(oldEmailFound))
+   .then(res => {
+     console.log(res.data)
+     alert('A link has been sent to your email account!') 
+    })
   // in case the API responded, we will have the error inside error.response.data 
-    .catch(error=>console.log(error.res && error.res.data))
-    .catch(err => console.log(err))
+    .catch(error=>console.log(error.res && error.res.data))  
   } 
 
   const submitHandler = (e) => {
