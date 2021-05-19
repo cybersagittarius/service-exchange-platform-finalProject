@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const EssentialSchema = new mongoose.Schema ({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    pwchangetoken: {type: String}
+    pwchangetoken: { type: String }
 }, 
     {
     timestamp: true

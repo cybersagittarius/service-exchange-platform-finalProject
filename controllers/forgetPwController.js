@@ -21,18 +21,18 @@ const forgetPwEmail = async(req, res, next) => {
                 if(findUser) {
                 const payload = { user: { id: findUser._id, email: findUser.email } };
 
-                const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-                expiresIn: '1h'});
+                const token = jwt.sign(payload, process.env.JWT_SECRET, {
+                expiresIn: '30m'});
                     //crypto.randomBytes(10).toString('hex');
                 console.log('a token was created', token)                           
 
                 //sendEmail has to be a promise by itself otherwise .then will not work
+                
                 sendEmail(token)
                 .then(async(response) => {
 
                     findUser.pwchangetoken = token;
-                    await findUser.save()       
-    
+                    await findUser.save()    
                 })
                 .then(res.json({ msg: "everything is fine, an email was sent to you", status: 200 }))  
                 .catch(err=>err.message)              

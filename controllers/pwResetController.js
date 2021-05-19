@@ -1,32 +1,83 @@
-const express = require('express')
-const jwt = require('jsonwebtoken');
-const auth = require('../middleware/auth')
+
+const jwt = require('jsonwebtoken')
+const customerError = require('../config/customError')
 require('dotenv').config();
 
 const Essential = require('../models/essentialModel')
 
-const resetPw = async(req, res, next)=>{
-        
-   //req.body.token or req.params.token?
-   const token = req.body.token;
-   const pw = req.newpassword;
-   try{       
-      let findToken = await Essential.findOne({pwchangetoken: token});
-      if(findToken) {
-          await res.redirect(200, '/reset_password')
-          await Essential.updateOne({password: pw});
-          res.status(200).json({msg: 'password updated successfully!'})  
-        }else {          
-          await res.redirect(401, '/')  
-          res.status(401).json({msg: 'token is invalid'})
-        }
+const pwResetCheck = async(req, res, next) =>{
+  console.log(req.body)
+  
+  const token = req.body.token
+  //we do not need to use session here because we are using body.token
+  // req.session.token = token
+  
+  if(!token){
+      return res.status(401).json({msg: "no token"})
+  }else{
+      
+      
+      try{
+        const verified = jwt.verify(token, process.env.JWT_SECRET)
+      if(!verified){   
+                // res.redirect is not working here, only works at server.js
+                // res.redirect('/not_found');
+                return res.status(400).json({ error: { msg: "token not verified!" } })
+          }else{     
+              const findUser = await Essential.findOne({pwchangetoken: token});
+              if (!findUser){
+                // res.redirect('/');
+                return res.status(400).json({ error: { msg: "user not found!" } }) 
+                } else {
+                  console.log(findUser.email)
+                req.session.email = findUser.email
+                  console.log('session',req.session)
+                return res.status(200).json({ success: {msg: 'token is valid!'}})
+              }
+            }      
+      }catch(err){
+        next(err)
       }
-   catch(err){
-           return next(err)
-        }
     }
+  }
 
-module.exports = resetPw
+const pwReset = async(req, res, next) => {
+    //we just use the email for this session, afterwards we should destroy the session
+   let email = req.session.email
+    console.log('email',email)
+    console.log('session',req.session)
+    const pw = req.body.newPassword;
+    
+    Essential.findOneAndUpdate({email: email}, {password: pw, pwchangetoken: null},{useFindAndModify: false})
+    .then(response=>{
+      req.session.destroy((err)=>{
+              if(err){
+                return next(err)
+              } else {
+                return res.status(200).json({ success: { msg: "password updated!" } })
+              }
+            })
+    }).catch(error=>{
+      return next(error)
+    })
+
+    // const updatePW = await Essential.findOneAndUpdate({email: email}, {password: pw, pwchangetoken: ''})
+
+    //   if(!updatePW) {
+    //     //or I can import the customerError to be used here for a more specific idea
+    //         return next(customerError('There is an error'))
+    //   } else {
+    //     req.session.destroy((err)=>{
+    //       if(err){
+    //         return next(err)
+    //       } else {
+    //         return res.status(200).json({ success: { msg: "password updated!" } })
+    //       }
+    //     })
+    // }
+}
+
+module.exports = { pwResetCheck, pwReset }
 
 //1st create route for check the token
 
@@ -42,6 +93,8 @@ module.exports = resetPw
 //6th if you find the user then return with everything is fine
 
 //extra thing I wrote for practice
+
+// const alternative = async(req, res, next) =>{
 // console.log(req.body)
 
 // const token = req.body.token
@@ -50,12 +103,27 @@ module.exports = resetPw
 //     return res.status(401).json({msg: "no token"})
 // }else{
 //     const verified = await jwt.verify(token, process.env.JWT_SECRET)
-//     req.user = verified.user
+    
+//     try{
+//     if(!verified){   
+//               // res.redirect is not working here, only works at server.js
+//               // res.redirect('/not_found');
+//               return res.status(200).json({ error: { msg: "token not verified!" } })
+//         }else{     
+//             const findUser = await Essential.findOne({pwchangetoken: token});
+//             if (!findUser){
+//               // res.redirect('/');
+//               return res.status(200).json({ error: { msg: "user not found!" } }) 
+//             } else {
+//               // res.redirect('/reset_password');
+//               const newPW = req.body.newPassword;
+//               await Essential.findOneAndUpdate({email: findUser.email }, {password: newPW})
 
-//     if(verified){
-        
-//         res.redirect('/reset_password')
-//         }else{
-//         res.status(401).json({msg: 'token is not valid!'})
-//         return next(err); 
+//               return res.status(200).json({ success: { msg: "password updated!" } });
+//             }
+//           }      
+//     }catch(err){
+//       next(err)
 //     }
+//   }
+// }

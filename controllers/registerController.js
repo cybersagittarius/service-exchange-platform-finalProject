@@ -1,13 +1,10 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-//const { check, validationResult } = require('express-validator');
 require('dotenv').config();
 const cloudinary = require('cloudinary').v2
-//const auth = require('../token/auth');
 
 const User = require('../models/userModel');
 const Essential = require('../models/essentialModel')
-// const check = check('firstname', 'firstname is required').not().isEmpty()
 
 const registerUser = async(req, res, next) => {
   //get an new instance because this is for registration
@@ -15,10 +12,9 @@ const registerUser = async(req, res, next) => {
     const {password, email, offerSelection:skills, ...userData} = req.body;
    //const {firstname, lastname, country, region, email, username } = user
    //console.log(req.body);
-   console.log(skills)
-   try {
-     let findUser = await User.findOne({ email: email });
-     if (findUser) {
+  try {
+     let checkUser = await User.findOne({ email: email });
+     if (checkUser) {
        return res
          .status(400)
          .json({ error: { msg: "email already registered" } });
@@ -41,14 +37,15 @@ const registerUser = async(req, res, next) => {
 
      //user info, no sensitive data shall be included
      //const payload = { user: { id: user._id, email: user.email } };
-     const payload = { essential: { id: essential._id, email: essential.email } };
+     const payload = { user: { id: user._id, email: user.email, username: user.username } };
+    //  const payload = { essential : { id: essential._id, email: essential.email } };
      const token = jwt.sign(payload, process.env.JWT_SECRET, {
        expiresIn: 360000,
      });
 
      //res.sendStatus stops after the status being sent, does not send out json
      //next is not needed because res is already used to send out info we need
-     res.status(200).json({ token: token });
+     res.status(200).json({ token, user });
    } catch (err) {
      return next(err);
    }      

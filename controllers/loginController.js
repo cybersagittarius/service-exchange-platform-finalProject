@@ -1,4 +1,5 @@
 const Essential = require("../models/essentialModel");
+const User = require('../models/userModel');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const express = require("express");
@@ -13,30 +14,32 @@ const loginUser = async (req, res, next) => {
   // const user = new User(req.body)
   //const { email, password } = user
   try {
-    let findUser = await Essential.findOne({ email: user.email });
+    let findEssentialUser = await Essential.findOne({ email: user.email });
 
-    if (!findUser) {
+    if (!findEssentialUser) {
       return res.status(400).json({ errors: { msg: "no user found!" } });
     }
 
-    if (findUser) {
-      const isMatch = await bcrypt.compare(password, findUser.password);
+    if (findEssentialUser) {
+      const isMatch = await bcrypt.compare(password, findEssentialUser.password);
       if (!isMatch) {
-        return res.status(400).json({ errors: {msg: "invalid password"}})
+        res.status(400).json({ errors: {msg: "invalid password"}})
         //res.status(400).json({ errors: { msg: "Invalid Passwords" } });
-      } 
-        const payload = { user: { id: user._id, email: user.email } };
-
-        const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-        expiresIn: "1h",
-      })
-        return res.status(200).json({ token, email, msg: "Welcome back!" });
-      } 
-  }
-  catch (err) {
+      }  
+        
+      let findUser = await User.findOne({email: user.email})
+      
+        const payload = { user: { id: findUser._id, email: findUser.email, username: findUser.username } };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+          expiresIn: "1h",
+        })
+        res.status(200).json({ token, user: findUser});
+      }
+    } catch (err) {
       return next(err);
       }  
   }
+
 
 module.exports = loginUser;
 //   const payload = { user: { id: user._id, email: user.email } };

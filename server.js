@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const customError = require('./config/customError')
 const express = require('express');
-//const helmet = require('helmet');
+const session = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 const auth = require('./middleware/auth')
@@ -14,7 +14,11 @@ require('dotenv').config()
 //require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 4000;
-
+app.use(session({
+    secret: 'this is my secret.',
+    resave: false,
+    saveUninitialized: true
+}))
 app.use(cookieParser()); //parsing incoming cookies into req.cookies
 app.use(cors({
     origin: [process.env.FRONTEND_ORIGIN || 'http://localhost:3000'],
@@ -25,6 +29,7 @@ app.use(cors({
 app.use(express.json()); //parsing incoming body into req.body
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
+
 
 // const referrer_domain = "http://localhost:3000"
 // //check for the referrer domain
@@ -44,30 +49,31 @@ app.use(logger('dev'));
 connectDB();
 
 //require routers
-const registerRouter = require('./routes/registerRouter');
-const loginRouter = require('./routes/loginRouter');
-//const secretRouter = require('./routes/secretRouterOriginal');
-//const profileRouter = require('./routes/profileRouter');
-const forgetPwRouter = require('./routes/forgetPwRouter')
-const pwResetRouter = require('./routes/pwResetRouter');
 const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
-// const logoutRouter = require('./routes/logoutRouter')
+const forgetPwRouter = require('./routes/forgetPwRouter')
+const loginRouter = require('./routes/loginRouter');
+//const profileRouter = require('./routes/profileRouter');
+const pwResetRouter = require('./routes/pwResetRouter');
+const registerRouter = require('./routes/registerRouter');
+
+//const logoutRouter = require('./routes/logoutRouter')
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
 //but there are ready codes in oaRouters and oaControllers
 
 //logout is done at the frontend therefore we do not need the backend code to do so
-app.use('/register', registerRouter);
-app.use('/login', loginRouter);
-//app.use('/secret', secretRouter);
-app.use('/delete', deleteRouter);
-//app.use('/profile', profileRouter);
-// app.use('/logout', logoutRouter);
-app.use('/forget_password', forgetPwRouter);
-app.use('/reset_password', pwResetRouter);
 app.use('/contact', contactRouter);
+app.use('/delete', deleteRouter);
+app.use('/forget_password', forgetPwRouter);
+app.use('/login', loginRouter);
+//app.use('/profile', profileRouter);
+app.use('/register', registerRouter);
+app.use('/reset_password', pwResetRouter);
+
+
+// app.use('/logout', logoutRouter);
 
 //a simple test to make sure server works
 // app.get('/', (req, res)=>{
