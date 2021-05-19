@@ -56,8 +56,13 @@ const pwReset = async(req, res, next) => {
     const pw = req.body.newPassword;
     
     //we added useFindAndModify: false based on the advice from MongoDB
-    Essential.findOneAndUpdate({email: email}, {password: pw, pwchangetoken: null},{useFindAndModify: false})
-    .then(response=>{
+    Essential.findOne({email: email})
+    .then(async (user)=>{
+      
+      //take advantage of the password hash premiddleware in the model to hash newly changed password
+      user.password = pw;
+      user.pwchangetoken = null;
+      await user.save()
       req.session.destroy((err)=>{
               if(err){
                 return next(err)
