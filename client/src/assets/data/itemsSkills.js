@@ -1,27 +1,27 @@
 const items = [
   {
     id: 1,
-    value: "Animals",
+    value: "Animal Care",
   },
   {
     id: 2,
-    value: "Archeology",
+    value: "Applied Chemistry",
   },
   {
     id: 3,
-    value: "Astronamy",
+    value: "Archeology",
   },
   {
     id: 4,
-    value: "Biology",
+    value: "Astronomy",
   },
   {
     id: 5,
-    value: "Books",
+    value: "Aviation",
   },
   {
     id: 6,
-    value: "Chemistry",
+    value: "Biology",
   },
   {
     id: 7,
@@ -29,7 +29,7 @@ const items = [
   },
   {
     id: 8,
-    value: "Design",
+    value: "Economics",
   },
   {
     id: 9,
@@ -41,83 +41,95 @@ const items = [
   },
   {
     id: 11,
-    value: "Food",
+    value: "European Languages",
   },
   {
     id: 12,
-    value: "Geography",
+    value: "Fortune Telling",
   },
   {
     id: 13,
-    value: "History",
+    value: "Geography",
   },
   {
     id: 14,
-    value: "IT",
+    value: "History",
   },
   {
     id: 15,
-    value: "House",
+    value: "Interior/Exterior Design",
   },
   {
     id: 16,
-    value: "Languages",
+    value: "IT - Data Science",
   },
   {
     id: 17,
-    value: "Leisure Activities",
+    value: "IT - Fullstack Web Development",
   },
   {
     id: 18,
-    value: "Mathematics",
+    value: "IT - Programming Langauges",
   },
   {
     id: 19,
-    value: "Mechanics",
+    value: "IT - Sys Admin",
   },
   {
     id: 20,
-    value: "Medical scrience",
+    value: "Leisure Activities",
   },
   {
     id: 21,
-    value: "Philosophy",
+    value: "Mathematics",
   },
   {
     id: 22,
-    value: "Music",
+    value: "Mechanics",
   },
   {
     id: 23,
-    value: "Philosophy",
+    value: "Medical Science",
   },
   {
     id: 24,
-    value: "Physics",
+    value: "Medieval/Modern Literature",
   },
   {
     id: 25,
-    value: "Plants",
+    value: "Music",
   },
   {
     id: 26,
-    value: "Psychology",
+    value: "Nutrition",
   },
   {
     id: 27,
-    value: "Science",
+    value: "Philosophy",
   },
   {
     id: 28,
-    value: "Spirituality",
+    value: "Physics",
   },
   {
     id: 29,
-    value: "Social studies",
+    value: "Psychology",
   },
   {
     id: 30,
+    value: "Social Studies",
+  },
+  {
+    id: 31,
+    value: "Spirituality",
+  },
+  {
+    id: 32,
     value: "Sport",
+  },
+  {
+    id: 33,
+    value: "Web Design",
   },
 ];
 
