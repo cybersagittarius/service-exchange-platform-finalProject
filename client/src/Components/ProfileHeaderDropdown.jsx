@@ -1,19 +1,16 @@
 import React, { useState, activeMenu } from 'react';
-import '../styles/scss/HeaderDropdown.scss'
+import '../styles/scss/HeaderDropdown.scss';
+import { Link } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 
-
-import { ReactComponent as CaretIcon } from './icons/caret-down.svg';
-import { ReactComponent as ArrowRightIcon } from './icons/arrow-right-circle.svg';
-import { ReactComponent as ArrowLeftIcon } from './icons/arrow-left-circle.svg';
-
+import { FcDataConfiguration, FcLeft, FcServices, FcHome } from "react-icons/fc";
 
 /*npm i react-transition-group */
 function HeaderDropdown() {
     return (
         <Navbar>
 
-            <NavItem icon={<CaretIcon />}>
+            <NavItem icon={<FcDataConfiguration />}>
                 <DropdownMenu />
             </NavItem>
 
@@ -61,8 +58,8 @@ function DropdownMenu() {
                 classNames="menu-primary"
                 onEnter={calcHeight}>
                 <div className="menu">
-                    <DropdownItem>My profile</DropdownItem>
-                    <DropdownItem leftIcon={<ArrowRightIcon />} goToMenu="settings">Settings</DropdownItem>
+                    <DropdownItem leftIcon={<FcHome />} goToMenu="profile">My profile</DropdownItem>
+                    <DropdownItem leftIcon={<FcServices />} goToMenu="settings">Settings</DropdownItem>
                 </div>
             </CSSTransition>
             <CSSTransition
@@ -71,12 +68,10 @@ function DropdownMenu() {
                 timeout={500}
                 classNames="menu-secondary">
                 <div className="menu">
-                    <DropdownItem leftIcon={<ArrowLeftIcon />} goToMenu="main" />
-                    <DropdownItem>Change password</DropdownItem>
-                    <DropdownItem>Change description</DropdownItem>
-                    <DropdownItem>Change avatar</DropdownItem>
-                    <DropdownItem></DropdownItem>
-                    <DropdownItem></DropdownItem>
+                    <DropdownItem leftIcon={<FcLeft />} goToMenu="main" />
+                    <DropdownItem> Change description</DropdownItem>
+                    <DropdownItem> <Link to="/ChangeDetails">Change details</Link></DropdownItem>
+
                 </div>
             </CSSTransition>
 

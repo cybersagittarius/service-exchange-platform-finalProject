@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-
 import * as Icons from "react-icons/io5";
-import DisplayedSelection from "./DisplayedSelection";
 /* import onClickOutside from "react-onclickoutside"; */
 // npm install react-onclickoutside --save
 // npm update --force
 
-function SkillsMenu({ title, items = [], multiSelect = false, listOfSelection, selection , handleSelection}) {
+function SkillsMenu({ title, items = [], multiSelect = false, selection , handleSelection}) {
   const [open, setOpen] = useState(false);
 
   const toggle = () => setOpen(!open);
@@ -40,6 +38,7 @@ function SkillsMenu({ title, items = [], multiSelect = false, listOfSelection, s
   
 
   return (
+    
     <form className="dd-wrapper">
       <div
         tabIndex={0}
@@ -49,27 +48,31 @@ function SkillsMenu({ title, items = [], multiSelect = false, listOfSelection, s
         onClick={() => toggle(!open)}
       >
         <div className="dd-header_title ">
-          <p className="dd-header_title--bold btn btnCat dropdown-toggle">
+          <p className="dd-header_title--bold dropdown-toggle">
             {title}
           </p>
-          <div className="dd-header_action">
+          { <div className="dd-header_action">
             <p className="btn btnCat offerBtn">
-              {selection.length > 0 ? (
-                <button className="clear" onClick={clearUp}>
-                  <Icons.IoCloseSharp />
-                </button>
-              ) : (
-                " "
-              )}
+              
             </p>
-          </div>
+          </div> }
         </div>
       </div>
       {open && (
         <ul className="dd-list dropdown-menu show">
-          <div className="selection">
-            <DisplayedSelection listOfSelection={selection} />
-          </div>
+        <div className="listX">
+        <ul className="selectionList">
+          {selection.map((item) => {
+            return <li key={item.id}>{item.value}</li>;
+          })}
+        </ul>
+        {selection.length > 0 ? <button className="clear" onClick={clearUp}>
+                  <Icons.IoCloseSharp />
+                </button> : (
+                " "
+              )}
+      </div>
+          
           {items.map((item) => (
             <li className="dropdown-item dd-list-item" key={item.id}>
               <button type="button" onClick={() => handleOnClick(item)}>
@@ -78,13 +81,6 @@ function SkillsMenu({ title, items = [], multiSelect = false, listOfSelection, s
                   {isItemInSelection(item) && (
                     <p className="y">
                       <Icons.IoCloudDoneSharp />
-                    </p>
-                  )}
-                </span>
-                <span className="spanX">
-                  {isItemInSelection(item) && (
-                    <p className="x">
-                      <Icons.IoCloseSharp />
                     </p>
                   )}
                 </span>

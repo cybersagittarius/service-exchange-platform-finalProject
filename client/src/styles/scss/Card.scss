@@ -1,18 +1,18 @@
-@import "../../../../styles/scss/variables";
+@import "variables.scss";
 
 .Card {
     margin-top: 70px;
     margin-left: 30px;
     width: 95%;
     height: 500px;
-    background: $bgColor;
+    background: white;
     border-radius: 10px;
     box-shadow: 0px 1px 10px 1px black;
 }
 
 .upper-container {
     height: 110px;
-    background-image: url("https://images7.alphacoders.com/546/thumb-350-546100.jpg");
+    background-image: url("https://www.synprodo.de/media/1001/light-grey-background-pattern-i1-1.jpg");
 
 }
 
@@ -24,18 +24,18 @@
 }
 
 .upper-container h3 {
-    color: $bgColor;
-    font-weight: 500;
-    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1.7rem;
 }
 
 .image-container img {
-    background: $bgColor;
-    width: 150px;
-    height: 150px;
+    background: white;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
-    padding: 5px;
-    transform: translate(140px, 30px);
+    padding: 6px;
+    transform: translate(130px, 20px);
 }
 
 
@@ -47,7 +47,7 @@ img {
 .lower-container {
     margin-top: 60px;
     height: 300px;
-    background: $bgColor;
+    background: white;
     text-align: center;
     font-family: $fontFamily;
 
@@ -93,54 +93,19 @@ img {
     transform: scale(1.1);
 }
 
-.lower-container h4,
-p {
-    color: $mainColor;
-    margin: 5;
-    padding: 5;
-}
-
-
-.user-information h4 {
+.lower-container h4 {
+    margin: 0.3rem;
     color: $mainColor;
     font-weight: 350;
     font-size: 1.2rem;
-}
-
-.lower-container h4 {
-    margin: 0.3rem;
-
-    color: $mainColor;
-    font-weight: 250;
-    font-size: 0.9rem;
-    text-align: justify;
+    text-align: center;
 }
 
 .lower-container p {
-    margin: 0.3rem;
-    font-family: sans-serif;
-    color: rgb(163, 163, 163);
-    font-weight: 250;
-    font-size: 0.9rem;
-    text-align: justify;
-}
-
-.contact-user {
     margin: 0.5rem;
-    color: black;
-    font: bold;
-    background-color: white;
-    border: 2px solid red;
-    padding: 0.5rem;
-    border-radius: 8px;
-    animation: ease-in-out;
-    transition-duration: 0.5s;
-
-
-}
-
-.contact-user:hover {
-    background-image: linear-gradient(to left, white, grey);
-    transform: scale(1.1);
-    border: none;
+    font-family: sans-serif;
+    color: gray;
+    font-weight: 350;
+    font-size: 1rem;
+    text-align: justify;
 }

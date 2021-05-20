@@ -148,7 +148,7 @@ const RegistrationForm = (props) => {
                         alertMessage={"Inconsistent Password!"}
                       />
                     )}
-                  </div>                 
+                  </div>
                 </div>
               </form>
             </div>

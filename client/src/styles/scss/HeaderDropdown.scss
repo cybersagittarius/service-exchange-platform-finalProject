@@ -1,28 +1,11 @@
-@import "../../../../styles/scss/variables";
-
-body {
-
-    font-family: $fontFamily;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: $fontFamily;
-}
-
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-}
-
-
+@import "variables.scss";
 
 .navbar {
     background-color: $bgColor;
+    z-index: 1;
+    right: 4rem;
+
+    position: absolute;
 
 }
 
@@ -33,7 +16,7 @@ ul {
 }
 
 .nav-item {
-    width: calc(var(--nav--size)*0.8);
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,12 +25,10 @@ ul {
 /* Icon Button */
 
 .icon-button {
-    --button--size: calc(var(--nav--size)*0.5);
-    width: var(--button--size);
-    height: var(--button--size);
-    background-color: grey;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: white;
     border-radius: 50%;
-    padding: 5px;
     margin: 2px;
     display: flex;
     align-items: center;

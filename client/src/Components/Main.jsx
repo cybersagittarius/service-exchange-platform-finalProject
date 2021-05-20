@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "./img/two-way-cross.png";
 import { Link } from "react-router-dom";
 
+import Logo from "../assets/images/two-way-cross.png";
 import BackgroundSlideshow from "react-background-slideshow";
-import Image2 from "./img/priscilla-du-preez.jpg";
-import Image3 from "./img/heylagostechie.jpg";
-import Image4 from "./img/alexis-brown-omea.jpg";
+import Image2 from "../assets/images/priscilla-du-preez.jpg";
+import Image3 from "../assets/images/heylagostechie.jpg";
+import Image4 from "../assets/images/alexis-brown-omea.jpg";
 
 function Main() {
   return (
@@ -16,12 +16,11 @@ function Main() {
       images={[Image2, Image3, Image4]}/>
       <div>
         <main className="main">
-          <h1>
-            Two
             <span>
               <img src={Logo} className="logo" alt="" />
             </span>
-            Way Street
+            <h1>
+            Two Way Street
           </h1>
           <p>Service Exchange Platform - get new skills for FREE!!</p>
           <button
@@ -30,7 +29,7 @@ function Main() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Link to="/login"> Join </Link>
+            <Link to="/register"> Join </Link>
           </button>
         </main>
       </div>

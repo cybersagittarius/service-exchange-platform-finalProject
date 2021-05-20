@@ -28,8 +28,8 @@ function Card() {
                     <div className="user-information">
 
                         <h4>{about}</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dicta est rerum similique, eveniet dolor.</p>
-                        <button className="contact-user">Contact User</button>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa iusto debitis tempora tenetur ad quae mollitia vel repellat libero sint dolore vitae velit, nihil unde, facere ab voluptas deleniti ipsum.</p>
+
                     </div>
                     <div className="about-container">
 

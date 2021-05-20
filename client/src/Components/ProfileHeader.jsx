@@ -1,5 +1,6 @@
-import Find from "../../Find";
+import Find from "./MenuFind";
 import HeaderDropdown from "./ProfileHeaderDropdown";
+
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <div className="find">
         <Find />
         <HeaderDropdown />
+
 
       </div>
     </>
