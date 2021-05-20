@@ -14,7 +14,8 @@ const userCredentialSchema = new mongoose.Schema ({
     avatar_url : { type: String, required: true },
     skills: {type: [Object], required: true},
     description: {type: String},
-    hobby: {type: [ ]}    
+    hobby: {type: [ ]}, 
+    receive_email: { type: Boolean, required: true }    
 },  
     {toObject: { virtuals: true }},
     {toJSON: {virtuals: true}},
