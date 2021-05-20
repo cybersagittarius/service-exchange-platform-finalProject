@@ -7,6 +7,7 @@ const SearchProvider = (props) => {
     const [region, setRegion] = useState(" ");
     const [offerSelection, setofferSelection] = useState([]);
     const [lookSelection, setlookSelection] = useState([]);
+    const [userInfo, setUserInfo] = useState({});
 
     const selectCountry = (e) => {
         setCountry(e);
@@ -26,7 +27,7 @@ const SearchProvider = (props) => {
 
     return (
         <>
-        <SearchContext.Provider value={{country, region,offerSelection, lookSelection,selectCountry, selectRegion,  handleOfferSelection,handlelookSelection}}>
+        <SearchContext.Provider value={{country, region, offerSelection, lookSelection,selectCountry, selectRegion, handleOfferSelection, handlelookSelection, userInfo, setUserInfo}}>
         {props.children}
         </SearchContext.Provider>
         </>

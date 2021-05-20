@@ -22,7 +22,7 @@
         "_mixins.scss",
         "_Team.scss",
         "_variables.scss",
-        "_userAccount.scss"
+        "_userControl.scss"
     ],
     "names": [],
     "file": "mainStyle.css"

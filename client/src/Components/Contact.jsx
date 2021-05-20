@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import axios from 'axios';
-import ButtonMU from './userAccount/layout/ButtonMU';
+import ButtonMU from './userControl/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
 const Contact = () => {
     //states
@@ -35,7 +35,7 @@ setLoading(true);
 try {
     const config = {
         headers: {
-            'Content Type': 'apllication/json'
+            'Content Type': 'application/json'
         }
     };
     const body = JSON.stringify(newMessage);
@@ -55,9 +55,17 @@ contactData.message = "";
    setLoading(false); 
 }
     };
-const handleEmail = () => {
+const handleEmail = () => {  
+
     return <p>{responseMessage}</p>
-}
+} 
+
+    const nameRef = useRef()
+
+    useEffect(()=> {
+      nameRef.current.focus();
+    }, [])
+
         return (
             <>
             <form id="contact" onSubmit={(e) => formSubmit(e)} method="POST">
@@ -65,10 +73,12 @@ const handleEmail = () => {
             <div className="form-group">
             <div className="d-flex justify-content-end">
                 <ButtonMU
-                  buttonVariant={"text"}
+                  buttonVariant={"outlined"}
                   buttonColor={"primary"}
-                  buttonSize={"small"}
+                  buttonSize={"small"}                  
                 />
+              <br/>  
+              <br/>
               </div>
                 {/* <label htmlFor="name">Name*</label> */}
                 <input 
@@ -76,6 +86,7 @@ const handleEmail = () => {
                 className="form-control"
                 type="text"
                 name="name"
+                ref={nameRef}
                 value={name}
                 onChange={(e) => onChange(e)}
                 placeholder="Enter Your Name*" required/>

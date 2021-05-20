@@ -12,7 +12,7 @@ export const ButtonMU = ({ buttonVariant, buttonColor, buttonSize }) => {
       <Link to="/">
         <Button variant={buttonVariant} color={buttonColor} size={buttonSize}>
           {" "}
-          X{" "}
+         X{" "}
         </Button>
       </Link>
     </div>
