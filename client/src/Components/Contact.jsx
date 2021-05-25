@@ -1,6 +1,7 @@
 import React, {useRef, useEffect, useState} from 'react';
 import axios from 'axios';
-import ButtonMU from './userControl/layout/ButtonMU';
+import MainPage from './Main';
+import ButtonMU from './userAccount/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
 const Contact = () => {
     //states
@@ -68,6 +69,7 @@ const handleEmail = () => {
 
         return (
             <>
+            <MainPage/>
             <form id="contact" onSubmit={(e) => formSubmit(e)} method="POST">
              <h3>Leave Us a message</h3>
             <div className="form-group">
@@ -80,7 +82,7 @@ const handleEmail = () => {
               <br/>  
               <br/>
               </div>
-                {/* <label htmlFor="name">Name*</label> */}
+                <label htmlFor="name">Name*</label>
                 <input 
                 id="name"
                 className="form-control"
@@ -92,7 +94,7 @@ const handleEmail = () => {
                 placeholder="Enter Your Name*" required/>
             </div>
             <div className="form-group">
-                {/* <label htmlFor="email">Email*</label> */}
+                <label htmlFor="email">Email*</label>
                 <input 
                 id="email"
                 type="email"
@@ -102,19 +104,24 @@ const handleEmail = () => {
                 placeholder="Email*" required className="form-control"/>
             </div>
             <div className="form-group">
-                {/* <label htmlFor="message">Message</label> */}
+                <label htmlFor="message">Message*</label>
                 <textarea 
                 id="message"
                 className="form-control"
                 name="message"
                 value={message}
                 onChange = {(e) => onChange(e)}
-                 placeholder="Please write a message*" rows="5"/>
+                 placeholder="Please write a message*" 
+                 rows="5"
+                     required
+                 />
             </div>
-              <button type="submit" className="btn btn-primary btn-md">
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary btn-block">
                   Submit
               </button>
               {loading ? <Spinner animation="border" role="status"/> : handleEmail()}
+              </div>
             </form>
             </>
             

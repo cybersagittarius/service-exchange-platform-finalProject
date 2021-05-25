@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from 'react'
 import MyAlert from "../layout/Alert";
-import ButtonMU from "../layout/ButtonMU"
+import ButtonMU from "../layout/ButtonMU";
+import MainPage from '../../Main';
 
 const ForgetPWForm = (props) => {
 
@@ -12,6 +13,8 @@ const ForgetPWForm = (props) => {
 
   return (
     <>
+    <MainPage/>
+
       <div className="backForgetPW">
         <div className="card div-center">
           <div className="container">

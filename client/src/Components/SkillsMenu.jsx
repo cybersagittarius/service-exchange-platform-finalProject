@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Icons from "react-icons/io5";
-/* import onClickOutside from "react-onclickoutside"; */
+ import onClickOutside from "react-onclickoutside";
 // npm install react-onclickoutside --save
 // npm update --force
 

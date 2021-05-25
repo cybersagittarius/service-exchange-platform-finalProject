@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenu from "./SkillsMenu";
-import items from "../assets/data/itemsSkills";
-import SearchContext from '../context/SearchContext';
-import { Link } from 'react-router-dom'
+import items from "../assets/data/itemsSkills.js";
+import SearchContext  from '../context/SearchContext';
+// import Visitor from '../Components/searchOutcome/Visitor';
+import {Link} from 'react-router-dom';
 
 
-
-function FindMenu() {
+function FindMenu(props) {
 
   const[show, setShow] = useState("none");
 
@@ -37,9 +37,11 @@ const context = useContext(SearchContext);
 
   const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handlelookSelection} = context
 
-  const handleFind = () => {
-    //This function send info to the backend
-  };
+
+  // const handleFind = () => {
+  //   //This function send info to the backend
+  // };
+ 
 
   const showHide =() => {
     
@@ -71,27 +73,30 @@ const context = useContext(SearchContext);
           multiSelect
           selection={lookSelection}
           handleSelection={handlelookSelection}
+          required
         />
       </div>
+     
       <div className="countryAndRegion">
-        <CountryDropdown value={country} onChange={(e) => selectCountry(e)} />
+        <CountryDropdown value={country} onChange={(e) => selectCountry(e)} required />
         <RegionDropdown
           country={country}
           value={region}
           onChange={(e) => selectRegion(e)}
+          required
         />
       </div>
       <div className="btnFindDiv">
-        <Link to="/visitors">
+      <Link to ="/search">
         <button
-          // onclick={handleFind}
+          // onClick={handleFind}
           type="submit"
           value="search"
-          className="btnFind"
-        >
+          className="btnFind"> 
           Find
         </button>
         </Link>
+    
       </div>
     </form>
 
@@ -128,14 +133,16 @@ const context = useContext(SearchContext);
           />
         </div>
         <div className="btnFindDiv">
+        <Link to="/search">
           <button
-            onclick={handleFind}
-            type="submit"
-            value="search"
-            className="btnFind"
-          >
-            Find
+            // onclick={handleFind}
+  type="submit"
+  value="search"
+  className="btnFind">
+   Find
+           
           </button>
+          </Link>
         </div>
       </form>
     </div>

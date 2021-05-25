@@ -6,10 +6,12 @@ const Footer = () => {
     <div className="footer">
       <ul>
         <li className="btn btnFooter">
-          <a href="#home">Home</a>
+        <Link to ="/"> <a href="#home">
+        Home</a></Link>
+       
         </li>
         <li className="btn btnFooter">
-          <a href="#aboutUs">About us</a>
+        <a href="#aboutUs">About Us</a>
         </li>
         <li className="btn btnFooter">
         <Link to="/contact">

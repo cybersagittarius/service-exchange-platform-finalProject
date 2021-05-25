@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import SearchContext from "./SearchContext"
+import React, {useState} from 'react';
+import SearchContext from './SearchContext';
 
-const SearchProvider = (props) => {
+ const SearchProvider = (props) => {
 
     const [country, setCountry] = useState(" ");
     const [region, setRegion] = useState(" ");
