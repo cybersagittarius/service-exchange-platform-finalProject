@@ -13,12 +13,13 @@
 .dropdown-menu.show {
     min-width: 126px !important;
 }
-
-
 .dropdown-toggle {
     font-size: 13px;
     color: $mainColor;
 }
+//  .btnGroupDrop::after {
+//      display: none;
+//  }
 #btnGroupDrop {
     font-family: $fontFamily;
     font-weight: 400;
@@ -38,7 +39,6 @@
     transform: translate(128.286px, 36.4286px) !important;
 }
 .dropdown-menu {
-    
     font: 13px;
 }
 a {
@@ -71,14 +71,19 @@ a:hover {
     text-decoration: none;
 }
 .btn-group {
-    position: absolute;
-    right: 10px;  
-    margin-left: 10px;
+    margin-right: 20px;
     display: flex;
     flex-direction: row;
     align-content: center;
     }
-
+.LogRegLarge{
+    margin-right:0px;
+    display: flex;
+    flex-direction: row;
+    @media only screen and (max-width: 763px){
+          display:none;
+        }
+      }
 .btn {
     padding: 0px !important;
 }
@@ -86,12 +91,5 @@ a:hover {
     text-align: center;
     min-width: 10px !important; 
     max-width: 25px !important;
-  
-}
-/* nav ul {
-    display: none;
-}
-@media (max-width: 580px) {
-   nav select {display: none; }
-     nav ul {display: inline-block;}
-} */
+  }
+

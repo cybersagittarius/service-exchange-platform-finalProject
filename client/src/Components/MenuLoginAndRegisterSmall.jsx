@@ -16,18 +16,8 @@ const LoginAndRegister = () => {
 
   return (
     <>
-    <div className="btn-group" role="group">
-      <Link to="/login">
-        <button className="btn log">
-          <a href="#">Login</a>
-        </button>
-      </Link>
-      <Link to="/register">
-        <button className="btn log">
-          <a href="#">Register</a>
-        </button>
-      </Link>
-      <a
+    <div className="btn-group LogRegSmall" role="group">
+    <a
         id="btnGroupDrop"
         type="button"
         className="dropdown-toggle laguages"
@@ -55,6 +45,18 @@ const LoginAndRegister = () => {
         </a>
       </div>
     </div>
+    <br />
+      <Link to="/login">
+        <button className="btn log">
+          <a href="#">Login</a>
+        </button>
+      </Link>
+      <Link to="/register">
+        <button className="btn log">
+          <a href="#">Register</a>
+        </button>
+      </Link>
+       <br />
     </>
   );
 };

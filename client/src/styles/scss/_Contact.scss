@@ -3,18 +3,15 @@
 #contact{
     position:fixed;
     top: 73px;
+    margin: auto;
+    width: 80%;
     left: 0px;
     right: 0px;
     width: 60%;
-    // max-width: var(--max-width);
-    // margin-left:13px;
-    // margin-right: 13px;
-    // margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: $bgColor;
-    // filter: blur(1px);
     font-family: $fontFamily;
     font-size: 13px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -32,8 +29,10 @@
                 }   
                    
     }
-    @media only screen and (max-width: 537px){
-        width: 80%;
+    // @media only screen and (max-width: 537px){
+    //     width: 80%;
+    //   }
+      @media only screen and (max-width: 763px){
+          top: 92px;
       }
-
 }
