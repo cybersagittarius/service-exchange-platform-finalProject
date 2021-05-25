@@ -3,4 +3,4 @@ import Routes from "./Components/Routing/Routes";
 
 import "./styles/scss/mainStyle.scss";
 
-ReactDOM.render(<Routes />, document.getElementById("root"));
+ReactDOM.render(<Routes/>, document.getElementById("root"));

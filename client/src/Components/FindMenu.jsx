@@ -3,11 +3,12 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenu from "./SkillsMenu";
 import items from "../assets/data/itemsSkills.js";
 import SearchContext  from '../context/SearchContext';
+import Alert from './userAccount/layout/Alert'; 
 // import Visitor from '../Components/searchOutcome/Visitor';
 import {Link} from 'react-router-dom';
 
 
-function FindMenu() {
+function FindMenu(props) {
 
   const[show, setShow] = useState("none");
 
@@ -49,18 +50,21 @@ function FindMenu() {
           multiSelect
           selection={lookSelection}
           handleSelection={handlelookSelection}
+          required
         />
       </div>
+     
       <div className="countryAndRegion">
-        <CountryDropdown value={country} onChange={(e) => selectCountry(e)} />
+        <CountryDropdown value={country} onChange={(e) => selectCountry(e)} required />
         <RegionDropdown
           country={country}
           value={region}
           onChange={(e) => selectRegion(e)}
+          required
         />
       </div>
       <div className="btnFindDiv">
-      <Link to="/visitor">
+      <Link to ="/visitor">
         <button
           // onClick={handleFind}
           type="submit"
@@ -69,6 +73,7 @@ function FindMenu() {
           Find
         </button>
         </Link>
+    
       </div>
     </form>
 
@@ -105,14 +110,16 @@ function FindMenu() {
           />
         </div>
         <div className="btnFindDiv">
+        <Link to="/visitor">
           <button
             // onclick={handleFind}
-            type="submit"
-            value="search"
-            className="btnFind"
-          >
-            Find
+  type="submit"
+  value="search"
+  className="btnFind">
+   Find
+           
           </button>
+          </Link>
         </div>
       </form>
     </div>

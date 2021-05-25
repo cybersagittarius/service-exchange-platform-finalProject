@@ -67,12 +67,12 @@ const handleEmail = () => {
             <div className="form-group">
             <div className="d-flex justify-content-end">
                 <ButtonMU
-                  buttonVariant={"text"}
+                  buttonVariant={"outlined"}
                   buttonColor={"primary"}
                   buttonSize={"small"}
                 />
               </div>
-                {/* <label htmlFor="name">Name*</label> */}
+                <label htmlFor="name">Name*</label>
                 <input 
                 id="name"
                 className="form-control"
@@ -83,7 +83,7 @@ const handleEmail = () => {
                 placeholder="Enter Your Name*" required/>
             </div>
             <div className="form-group">
-                {/* <label htmlFor="email">Email*</label> */}
+                <label htmlFor="email">Email*</label>
                 <input 
                 id="email"
                 type="email"
@@ -93,19 +93,24 @@ const handleEmail = () => {
                 placeholder="Email*" required className="form-control"/>
             </div>
             <div className="form-group">
-                {/* <label htmlFor="message">Message</label> */}
+                <label htmlFor="message">Message*</label>
                 <textarea 
                 id="message"
                 className="form-control"
                 name="message"
                 value={message}
                 onChange = {(e) => onChange(e)}
-                 placeholder="Please write a message*" rows="5"/>
+                 placeholder="Please write a message*" 
+                 rows="5"
+                     required
+                 />
             </div>
-              <button type="submit" className="btn btn-primary btn-lg">
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary btn-block">
                   Submit
               </button>
               {loading ? <Spinner animation="border" role="status"/> : handleEmail()}
+              </div>
             </form>
             </>
             

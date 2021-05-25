@@ -31,6 +31,7 @@ function Main() {
             rel="noopener noreferrer"
           >
             <Link to="/register"> Join </Link>
+
           </button>
         </main>
       </div>
