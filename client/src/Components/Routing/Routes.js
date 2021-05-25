@@ -8,7 +8,7 @@ import ResetPassword from '../userAccount/ResetPW';
 import RegisterPage from '../userAccount/Register';
 import ContactPage from '../Contact';
 import FooterPage from '../Footer';
-import VisitorPage from '../Visitor';
+import SearchPage from '../Search';
 import NotFoundPage from '../NotFound';
 
 
@@ -23,7 +23,7 @@ const Routes = () => (
 <Route  path="/reset_password" exact component={ResetPassword}/>
 <Route  path="/register" exact component={RegisterPage}/>
 <Route  path="/contact" exact component={ContactPage}/>
-<Route  path="/visitor" exact component={VisitorPage}/>
+<Route  path="/search" exact component={SearchPage}/>
 <Route component={NotFoundPage}/>
             </Switch>
         <HeaderPage/>

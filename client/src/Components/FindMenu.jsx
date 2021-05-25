@@ -3,7 +3,6 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenu from "./SkillsMenu";
 import items from "../assets/data/itemsSkills.js";
 import SearchContext  from '../context/SearchContext';
-import Alert from './userAccount/layout/Alert'; 
 // import Visitor from '../Components/searchOutcome/Visitor';
 import {Link} from 'react-router-dom';
 
@@ -64,7 +63,7 @@ function FindMenu(props) {
         />
       </div>
       <div className="btnFindDiv">
-      <Link to ="/visitor">
+      <Link to ="/search">
         <button
           // onClick={handleFind}
           type="submit"
@@ -110,7 +109,7 @@ function FindMenu(props) {
           />
         </div>
         <div className="btnFindDiv">
-        <Link to="/visitor">
+        <Link to="/search">
           <button
             // onclick={handleFind}
   type="submit"

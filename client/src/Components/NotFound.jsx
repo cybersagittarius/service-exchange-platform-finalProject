@@ -1,3 +1,5 @@
+// IT'S NOT RESPONSIVE
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
@@ -15,7 +17,7 @@ const NotFound = () => {
            <h6>We are coming soon!!!</h6>
 
            <div className="btn go-back">
-           <Link to="/visitor">
+           <Link to="/search">
            <Button variant="outline-danger" size="lg"  block>Back</Button>
            </Link>
            </div>

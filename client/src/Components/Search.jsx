@@ -3,10 +3,9 @@ import {Link} from 'react-router-dom';
 import usersGuest from '../assets/data/usersData';
 import {FiChevronRight, FiChevronLeft} from 'react-icons/fi';
 import SearchContext  from '../context/SearchContext';
-// import Users from './UsersUI';
 
 
-const Visitor = () => {
+const Search = () => {
   const [users, setUsers] = useState(usersGuest);
   const [index, setIndex] = useState(0);
 
@@ -85,4 +84,4 @@ setIndex((oldIndex) => {
   );
 };
 
-export default Visitor
+export default Search
