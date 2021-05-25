@@ -2,6 +2,7 @@ import {useState} from 'react';
 import axios from 'axios';
 import ButtonMU from './userAccount/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
+import Main from './Main'
 const Contact = () => {
     //states
      const [contactData,setContactData] = useState({
@@ -60,6 +61,7 @@ const handleEmail = () => {
 }
         return (
             <>
+            <Main/>
             <form id="contact" onSubmit={(e) => formSubmit(e)} method="POST">
              <h3>Leave Us a message</h3>
             <div className="form-group">
@@ -105,9 +107,9 @@ const handleEmail = () => {
               </button>
               {loading ? <Spinner animation="border" role="status"/> : handleEmail()}
             </form>
-            </>
             
-    )
+            </>
+ )
 }
 
 export default Contact

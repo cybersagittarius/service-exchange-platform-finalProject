@@ -5,9 +5,11 @@ const Footer = () => {
   return (
     <div className="footer">
       <ul>
+      <Link to="/">
         <li className="btn btnFooter">
-          <a href="#home">Home</a>
+          Home
         </li>
+        </Link>
         <li className="btn btnFooter">
           <a href="#aboutUs">About us</a>
         </li>

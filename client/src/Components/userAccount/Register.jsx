@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import RegistrationForm from './forms/RegistrationForm'
+import Main from '../Main'
 
 const Register = () => {
      
@@ -115,6 +116,7 @@ const Register = () => {
 
      return (
         <>
+        <Main/>
         <RegistrationForm   
                           postNewUser = { postNewUser }
                           submitHandler = { submitHandler }

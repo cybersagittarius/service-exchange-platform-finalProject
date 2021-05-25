@@ -14,7 +14,7 @@ import Footer from '../Footer'
 const Routes = () => ( 
     <SearchProvider> 
         <Router>
-            <Header/>
+            
                 <Switch>
                 <Route path="/" exact component={LandingPage}/>
                 <Route path="/login" exact component={LoginPage}/>
@@ -23,6 +23,7 @@ const Routes = () => (
                 <Route path="/visitors" exact component={VisitorsPage}/>
                 <Route component={NotFound}/>
             </Switch>
+            <Header/>
             <Footer/>
         </Router>
     </SearchProvider>
