@@ -5,8 +5,8 @@ import SearchContext from './SearchContext';
 
     const [country, setCountry] = useState(" ");
     const [region, setRegion] = useState(" ");
-    const [offerSelection, setofferSelection] = useState([]);
-    const [lookSelection, setlookSelection] = useState([]);
+    const [offerSelection, setOfferSelection] = useState([]);
+    const [lookSelection, setLookSelection] = useState([]);
     const [userInfo, setUserInfo] = useState({});
 
     const selectCountry = (e) => {
@@ -27,7 +27,7 @@ import SearchContext from './SearchContext';
 
     return (
         <>
-        <SearchContext.Provider value={{country, region, offerSelection, lookSelection,selectCountry, selectRegion, handleOfferSelection, handlelookSelection, userInfo, setUserInfo}}>
+        <SearchContext.Provider value={{country, region, offerSelection, lookSelection,selectCountry, selectRegion, handleOfferSelection, handleLookSelection, userInfo, setUserInfo}}>
         {props.children}
         </SearchContext.Provider>
         </>

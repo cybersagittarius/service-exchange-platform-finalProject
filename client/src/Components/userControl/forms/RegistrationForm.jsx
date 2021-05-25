@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react"
-import SkillsMenu from '../../SkillsMenu'
+import SkillsMenu from '../../SkillsMenuLarge'
 import items from '../../../assets/data/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
