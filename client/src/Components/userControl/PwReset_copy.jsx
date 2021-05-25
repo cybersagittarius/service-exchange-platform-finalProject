@@ -69,10 +69,10 @@ const PwReset = (props) => {
     }
 
     useEffect(() => {
-        console.log('useffect')
+        console.log('useEffect')
         const checkToken = async() =>{
             try{
-                console.log('checktoken')
+                console.log('checkToken')
                 const result = await authAxios.post('reset_password/token',{
                     token: token
                 })

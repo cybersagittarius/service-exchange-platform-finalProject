@@ -11,6 +11,7 @@ import Footer from '../Footer'
 import Header from '../Header'
 import ForgetPW from '../userControl/ForgetPW';
 import PwReset from '../userControl/PwReset_copy';
+import Chat from '../chat/Chat';
 
 
 const Routes = () => ( 
@@ -27,6 +28,7 @@ const Routes = () => (
                 <Route path="/contact" exact component={ContactPage}/>
                 <Route path="/visitors" exact component={VisitorsPage}/>
                 <Route path="/not_found" exact component={NotFoundPage}/>
+                {/* <Route path="/chat" exact component={Chat} /> */}
             </Switch>            
             <Footer/>
         </Router>

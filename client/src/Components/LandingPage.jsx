@@ -5,6 +5,7 @@ import React from "react";
 import Main from "./Main";
 import About from "./About";
 import Team from "./Team";
+import Chat from "./chat/Chat"
 //npm install react-router-dom
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,11 +16,11 @@ const LandingPage = () => {
     return (
         <>
             <div className="wrapper">
-                {/* <Header /> */}
                 <Main />
-                <Test />
-                <Logout />
-                <About />
+                {/* <Test />
+                <Logout /> */}
+                {/* <Chat /> */}
+                <About />                
                 <Team />
              </div>
            
