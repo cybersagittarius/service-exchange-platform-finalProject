@@ -1,41 +1,26 @@
 import React, { useState, useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
-import SkillsMenu from "./SkillsMenu";
-import items from "../assets/data/itemsSkills.js";
-import SearchContext  from '../context/SearchContext';
+import SkillsMenuLarge from "./SkillsMenuLarge";
+import SkillsMenuSmall from "./SkillsMenuSmall";
+import MenuLoginAndRegisterSmall from './MenuLoginAndRegisterSmall'
+import items from "../assets/data/itemsSkills";
+import SearchContext from '../context/SearchContext';
 // import Visitor from '../Components/searchOutcome/Visitor';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+import onClickOutside from "react-onclickoutside";
 
 function FindMenu(props) {
 
   const[show, setShow] = useState("none");
+  // const [open, setOpen] = useState(false);
 
-  // const [country, setCountry] = useState(" ");
-  //   const [region, setRegion] = useState(" ");
-    
-  //   const [offerSelection, setofferSelection] = useState([]);
-  //   const [lookSelection, setlookSelection] = useState([]);
 
-  //   const selectCountry = (e) => {
-  //       setCountry(e);
-  //     };
-    
-  //     const selectRegion = (e) => {
-  //       setRegion(e);
-  //     };
-    
-  //     const handleOfferSelection = (selection) => {
-  //       setofferSelection(selection);
-  //     };
-    
-  //     const handlelookSelection = (selection) => {
-  //       setlookSelection(selection);
-  //     };
-  
+  // FindMenu.handleClickOutside = () => setOpen(false)
+   
 const context = useContext(SearchContext);
 
-  const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handlelookSelection} = context
+  const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handleLookSelection} = context
 
 
   // const handleFind = () => {
@@ -46,34 +31,30 @@ const context = useContext(SearchContext);
   const showHide =() => {
     
     if(show === "none") {
-      setShow("block")
+      setShow("block") 
     }
     else {
       setShow("none")
     }
   }
 
+   
   return (
     <>
+    <Link to="/"><span className="logo">
+    <i class="fab fa-staylinked fa-2x"></i>
+         </span></Link>
+    
+         
     <form className="form largeFindMenu">
    
       <div className="skillsMenus">
-        {/* <SkillsMenu
-        title="I Can Offer"
-        items={items}
-        multiSelect
-        selection={offerSelection}
-        handleSelection={handleOfferSelection}
-      /> */}
-
-      
-        <SkillsMenu
+         <SkillsMenuLarge
           title="I'm Looking For"
           items={items}
           multiSelect
           selection={lookSelection}
-          handleSelection={handlelookSelection}
-          required
+          handleSelection={handleLookSelection}
         />
       </div>
      
@@ -101,37 +82,32 @@ const context = useContext(SearchContext);
     </form>
 
      <div className="form smallFindMenu" >
-
+       
      <button onClick={showHide} className="burger">
-     <i class="fas fa-bars"></i>
+     <i class="fas fa-bars fa-2x"></i>
       </button>
 
-    <div className="DDFindMenu" style={{display:show}}>
-      <form>
+    <div style={{display:show}}>
+      <form className="DDFindMenu">
+        
         <div className="skillsMenus" >
-          {/* <SkillsMenu
-          title="I Can Offer"
-          items={items}
-          multiSelect
-          selection={offerSelection}
-          handleSelection={handleOfferSelection}
-        /> */}
-          <SkillsMenu
+           <MenuLoginAndRegisterSmall/>
+           <SkillsMenuSmall
             title="I'm Looking For"
             items={items}
             multiSelect
             selection={lookSelection}
-            handleSelection={handlelookSelection}
+            handleSelection={handleLookSelection}
           />
-        </div>
-        <div className="countryAndRegion">
           <CountryDropdown value={country} onChange={(e) => selectCountry(e)} />
+          
           <RegionDropdown
             country={country}
             value={region}
             onChange={(e) => selectRegion(e)}
           />
-        </div>
+          </div>
+        
         <div className="btnFindDiv">
         <Link to="/search">
           <button
@@ -148,8 +124,14 @@ const context = useContext(SearchContext);
     </div>
       
     </div>
+    
     </>
   );
-}
+  
+};
 
-export default FindMenu;
+// const clickOutsideConfig = {
+//   handleClickOutside: ()=> FindMenu.handleClickOutside,
+// };
+ 
+export default FindMenu

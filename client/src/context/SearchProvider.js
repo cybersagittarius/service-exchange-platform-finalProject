@@ -18,11 +18,11 @@ import SearchContext from './SearchContext';
       };
     
       const handleOfferSelection = (selection) => {
-        setofferSelection(selection);
+        setOfferSelection(selection);
       };
     
-      const handlelookSelection = (selection) => {
-        setlookSelection(selection);
+      const handleLookSelection = (selection) => {
+        setLookSelection(selection);
       };
 
     return (

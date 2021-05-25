@@ -7,7 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.DDFindMenu {
+  position: relative;
+  left:5px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -21,6 +24,12 @@ code {
   font-size: 13px;
   color: $mainColor;
   z-index: 1000;
+  // @media only screen and (max-width: 763px){
+  //   top: 73px;
+  // }
+  @media only screen and (max-width: 763px) {
+    top: 92px;
+}
 }
 
 .form-control {
@@ -41,6 +50,10 @@ code {
   @media only screen and (max-width: 537px){
     width: 80%;
   }
+  @media only screen and (max-width: 763px){
+    top: 92px;
+  }
+  
 }
 
 .backLogin>.div-center {   
@@ -53,6 +66,7 @@ code {
   @media only screen and (max-width: 537px){
     width: 80%;
   }
+ 
 }
 
 .backForgetPW>.div-center{

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SearchProvider from '../../context/SearchProvider';
-import MainPage from '../Main'
+import Main from '../Main'
 import LandingPage from '../LandingPage';
 import LoginPage from '../userControl/Login';
 import RegisterPage from '../userControl/Register';
@@ -19,7 +19,7 @@ const Routes = () => (
     <SearchProvider> 
         <Router>
             <Header/>
-                {/* <MainPage/> */}
+                {/* <Main/> */}
                 <Switch>
                 <Route path="/" exact component={LandingPage}/>
                 <Route path="/login" exact component={LoginPage}/>

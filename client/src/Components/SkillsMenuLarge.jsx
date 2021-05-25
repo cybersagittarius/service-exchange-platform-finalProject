@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import * as Icons from "react-icons/io5";
- import onClickOutside from "react-onclickoutside";
+import onClickOutside from "react-onclickoutside"; 
 // npm install react-onclickoutside --save
 // npm update --force
 
 function SkillsMenu({ title, items = [], multiSelect = false, selection , handleSelection}) {
+
   const [open, setOpen] = useState(false);
 
   const toggle = () => setOpen(!open);
 
-  /* SkillsMenu.handleClickOutside = () => setOpen(false); */
+  SkillsMenu.handleClickOutside = () => setOpen(false);
 
-  function handleOnClick(item) {
+   function handleOnClick(item) {
     if (!selection.some((current) => current.id === item.id)) {
       if (!multiSelect) {
         handleSelection([item])
@@ -32,8 +33,14 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
     }
     return false;
   }
-  function clearUp() {
-    handleSelection([])
+  
+  function clearUp(id) {
+    let selectionAfterRemoval =[...selection]; //clone
+    selectionAfterRemoval = selectionAfterRemoval.filter(
+      (current) => current.id !== id
+    );
+    handleSelection([...selectionAfterRemoval])
+    //handleSelection([])
   }
   
 
@@ -58,22 +65,23 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
           </div> }
         </div>
       </div>
-      {open && (
-        <ul className="dd-list dropdown-menu show">
-        <div className="listX">
+
+      { selection.length > 0 && ( 
+  <div className="listLarge">
         <ul className="selectionList">
           {selection.map((item) => {
-            return <li key={item.id}>{item.value}</li>;
+            return <li key={item.id}>{item.value}{selection.length > 0 ? <button className="clear" onClick={() => clearUp(item.id)}>
+            <Icons.IoCloseSharp />
+          </button> : (
+          " "
+        )} </li>;
           })}
         </ul>
-        {selection.length > 0 ? <button className="clear" onClick={clearUp}>
-                  <Icons.IoCloseSharp />
-                </button> : (
-                " "
-              )}
-      </div>
-          
-          {items.map((item) => (
+  </div>                
+)}
+      {open && (
+        <ul className="largeMenu dd-list dropdown-menu show">
+           {items.map((item) => (
             <li className="dropdown-item dd-list-item" key={item.id}>
               <button type="button" onClick={() => handleOnClick(item)}>
                 {<span>{item.value}</span>}
@@ -92,7 +100,9 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
     </form>
   );
 };
-/* const clickOutsideConfig = {
+
+const clickOutsideConfig = {
   handleClickOutside: () => SkillsMenu.handleClickOutside,
-}; */
-export default SkillsMenu/* onClickOutside(SkillsMenu, clickOutsideConfig) */
+
+};
+export default onClickOutside(SkillsMenu, clickOutsideConfig) 

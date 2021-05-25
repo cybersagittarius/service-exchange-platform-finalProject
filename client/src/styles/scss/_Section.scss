@@ -1,7 +1,13 @@
 .about {
   margin-top: 72px;
   font-family: $fontFamily;
+  display: flex;
+  flex-direction: column;
   @include flexCenter(row, var(--clr-grey-light));
+  @media only screen and (max-width: 537px){
+    position: absolute;
+    top: 385px;
+  }
 }
 
 h5 {
@@ -16,7 +22,6 @@ h5 {
 }
 
 .about-card {
-  // width: 35%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   margin: 0.4rem;
   z-index: -1;
@@ -29,7 +34,7 @@ h5 {
   flex-direction: column;
   justify-content: center;
   align-items: center; */
-  @include flexCenter(column, none) margin: 2rem; 
+  @include flexCenter(column, none); margin: 2rem; 
 }
 
 .about-card-title {
