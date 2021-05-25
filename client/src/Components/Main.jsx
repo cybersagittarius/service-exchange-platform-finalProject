@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "../assets/img/two-way-cross.png";
 import { Link } from "react-router-dom";
 
 import Logo from "../assets/images/two-way-cross.png";

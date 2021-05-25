@@ -3,7 +3,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
-import Image from '../assets/img/work-in.png';
+import Image from '../assets/images/work-in.png';
 
 const NotFound = () => {
     return (
