@@ -46,7 +46,7 @@ const About = () => {
         </Card>
         </CardDeck>
     </div>
-    <Team/> 
+   
     </>
      );
 };

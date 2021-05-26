@@ -20,9 +20,9 @@ const context = useContext(SearchContext);
   const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handleLookSelection} = context
 
 
-  // const handleFind = () => {
-  //   //This function send info to the backend
-  // };
+  const handleFind = () => {
+    //This function send info to the backend
+  };
  
 
   const showHide =() => {
