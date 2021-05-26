@@ -40,9 +40,9 @@ setIndex((oldIndex) => {
         <h4><span>You are looking for/</span>  {lookSelection[0].value}</h4>
         <h4><span>Country/</span> {country}</h4> 
         <h4><span>Region/</span> {region}</h4>
-    <Link to="/register">
+    {/* <Link to="/register">
       <button className="btn btn-outline-danger btn-block">Join</button>
-    </Link>
+    </Link> */}
 </div>
     <div className="underline"></div>
 
@@ -78,9 +78,12 @@ setIndex((oldIndex) => {
           <FiChevronRight onClick={nextSlide}/>
         </button>
     </div>
+    {/* <Link to="/register">
+     <button className="btn btn-outline-danger btn-block">Join</button>
+   </Link> */}
     </section>
      
-   
+    
   );
 };
 
