@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import team from "../assets/data/data";
+import team from "../assets/data/teamData";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const Team = () => {
@@ -41,7 +41,7 @@ const Team = () => {
   }, [index]);
 
   return (
-    <section className="team section">
+    <section className="team section card">
       <div id="aboutUs" className="title">
         <h2>our team</h2>
       </div>

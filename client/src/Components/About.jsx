@@ -1,11 +1,14 @@
 import React from "react";
+import Team from './Team'
+
 import { Card, CardDeck } from "react-bootstrap";
 import { FaRegCompass, FaMedapps } from "react-icons/fa";
 
 const About = () => {
   return (
+    <>
     <div id="aboutUs" className="about">     
-      <CardDeck  style={{textAlign:"center"}} className="about-card-deck">       
+      <CardDeck  style={{textAlign:"center",marginTop:"1rem"}} className="about-card-deck">       
         <Card style={{lineHeight:"32px"}} className="about-card">
           <Card.Body className="about-card-body">
             <FaRegCompass className="icons" />
@@ -41,9 +44,11 @@ const About = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-      </CardDeck>
+        </CardDeck>
     </div>
-  );
+   
+    </>
+     );
 };
 
 export default About;

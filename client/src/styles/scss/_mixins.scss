@@ -11,8 +11,14 @@
     align-items: center;
     justify-content: center;
 }
-/* @include media-breakpoint-up(xs) { ... }
-@include media-breakpoint-up(sm) { ... }
-@include media-breakpoint-up(md) { ... }
-@include media-breakpoint-up(lg) { ... }
-@include media-breakpoint-up(xl) { ... } */
+
+@mixin redButtons() {
+border-radius: 2px;
+  padding: 5px;
+//   margin-top: 7px;
+  width: 42px;
+  font-size: 13px;
+  color: white;
+  background-color: $redButton;
+  border: none;
+}
