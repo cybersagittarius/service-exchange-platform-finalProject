@@ -41,7 +41,7 @@ const Team = () => {
   }, [index]);
 
   return (
-    <section className="team section">
+    <section className="team section card">
       <div id="aboutUs" className="title">
         <h2>our team</h2>
       </div>

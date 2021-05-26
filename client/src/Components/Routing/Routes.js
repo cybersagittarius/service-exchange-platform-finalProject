@@ -1,36 +1,39 @@
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SearchProvider from '../../context/SearchProvider';
-import HeaderPage from '../Header';
-// import MainPage from '../Main';
+import Main from '../Main'
 import LandingPage from '../LandingPage';
-import LoginPage from '../userAccount/Login';
-import ResetPassword from '../userAccount/ResetPW';
-import RegisterPage from '../userAccount/Register';
+import LoginPage from '../userControl/Login';
+import RegisterPage from '../userControl/Register';
 import ContactPage from '../Contact';
-import FooterPage from '../Footer';
+import VisitorsPage from '../Visitors';
+import NotFoundPage from '../NotFound'
+import Footer from '../Footer'
+import Header from '../Header'
 import SearchPage from '../Search';
-import NotFoundPage from '../NotFound';
+import ForgetPWPage from '../userControl/ForgetPW';
+import PwResetPage from '../userControl/PwReset_copy';
+import ChatPage from '../chat/Chat';
 
 
-
-const Routes = () => (
-    <SearchProvider>
+const Routes = () => ( 
+    <SearchProvider> 
         <Router>
-        {/* <MainPage/> */}
-            <Switch>
-<Route  path="/" exact component={LandingPage}/>
-<Route  path="/login" exact component={LoginPage}/>
-<Route  path="/reset_password" exact component={ResetPassword}/>
-<Route  path="/register" exact component={RegisterPage}/>
-<Route  path="/contact" exact component={ContactPage}/>
-<Route  path="/search" exact component={SearchPage}/>
-<Route component={NotFoundPage}/>
-            </Switch>
-        <HeaderPage/>
-        <FooterPage/>
+        <Header/>
+                <Switch>
+                <Route path="/" exact component={LandingPage}/>
+                <Route path="/login" exact component={LoginPage}/>
+                <Route path="/register" exact component={RegisterPage}/>
+                <Route path="/forget_password" exact component={ForgetPWPage}/>
+                <Route path="/reset_password/:token" exact component={PwResetPage}/> 
+                <Route path="/contact" exact component={ContactPage}/>
+                <Route path="/visitors" exact component={VisitorsPage}/>
+                <Route path="/not_found" exact component={NotFoundPage}/>
+                <Route path="/search" exact component={SearchPage}/>
+                <Route path="/chat" exact component={ChatPage} />
+            </Switch>            
+            <Footer/>
         </Router>
     </SearchProvider>
-    )
-
-
+)
 export default Routes
+

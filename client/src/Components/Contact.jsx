@@ -1,8 +1,9 @@
-import {useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import axios from 'axios';
-import MainPage from './Main';
-import ButtonMU from './userAccount/layout/ButtonMU';
+import ButtonMU from './userControl/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
+import Main from './Main'
+
 const Contact = () => {
     //states
      const [contactData,setContactData] = useState({
@@ -36,7 +37,7 @@ setLoading(true);
 try {
     const config = {
         headers: {
-            'Content Type': 'apllication/json'
+            'Content Type': 'application/json'
         }
     };
     const body = JSON.stringify(newMessage);
@@ -56,12 +57,20 @@ contactData.message = "";
    setLoading(false); 
 }
     };
-const handleEmail = () => {
+const handleEmail = () => {  
+
     return <p>{responseMessage}</p>
-}
+} 
+
+    const nameRef = useRef()
+
+    useEffect(()=> {
+      nameRef.current.focus();
+    }, [])
+
         return (
             <>
-            <MainPage/>
+            <Main/>
             <form id="contact" onSubmit={(e) => formSubmit(e)} method="POST">
              <h3>Leave Us a message</h3>
             <div className="form-group">
@@ -69,8 +78,10 @@ const handleEmail = () => {
                 <ButtonMU
                   buttonVariant={"outlined"}
                   buttonColor={"primary"}
-                  buttonSize={"small"}
+                  buttonSize={"small"}                  
                 />
+              <br/>  
+              <br/>
               </div>
                 <label htmlFor="name">Name*</label>
                 <input 
@@ -78,6 +89,7 @@ const handleEmail = () => {
                 className="form-control"
                 type="text"
                 name="name"
+                ref={nameRef}
                 value={name}
                 onChange={(e) => onChange(e)}
                 placeholder="Enter Your Name*" required/>
@@ -112,9 +124,9 @@ const handleEmail = () => {
               {loading ? <Spinner animation="border" role="status"/> : handleEmail()}
               </div>
             </form>
-            </>
             
-    )
+            </>
+ )
 }
 
 export default Contact
