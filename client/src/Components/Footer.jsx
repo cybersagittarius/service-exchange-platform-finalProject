@@ -7,11 +7,13 @@ const Footer = () => {
       <ul>
       <Link to="/">
         <li className="btn btnFooter">
-          Home
+        <Link to ="/"> <a href="#home">
+        Home</a></Link>
+       
         </li>
         </Link>
         <li className="btn btnFooter">
-          <a href="#aboutUs">About us</a>
+        <a href="#aboutUs">About Us</a>
         </li>
         <li className="btn btnFooter">
         <Link to="/contact">

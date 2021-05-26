@@ -8,7 +8,7 @@ const About = () => {
   return (
     <>
     <div id="aboutUs" className="about">     
-      <CardDeck  style={{textAlign:"center"}} className="about-card-deck">       
+      <CardDeck  style={{textAlign:"center",marginTop:"1rem"}} className="about-card-deck">       
         <Card style={{lineHeight:"32px"}} className="about-card">
           <Card.Body className="about-card-body">
             <FaRegCompass className="icons" />
@@ -46,7 +46,7 @@ const About = () => {
         </Card>
         </CardDeck>
     </div>
-    <Team/> 
+   
     </>
      );
 };

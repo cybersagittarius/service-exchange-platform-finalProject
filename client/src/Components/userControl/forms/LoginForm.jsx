@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import Main from '../../Main'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 
 //import FontAweSomeIcon and library modules, then set up your own icon library to avoid overloading with other unused icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { library } from "@fortawesome/fontawesome-svg-core";
 
-import {
-  faGoogle,
-  faFacebook,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+// import {
+//   faGoogle,
+//   faFacebook,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
 
-library.add(
-  faGoogle,
-  faFacebook,
-  faTwitter,
-);
+// library.add(
+//   faGoogle,
+//   faFacebook,
+//   faTwitter,
+// );
 
 const LoginForm = (props) => {
+
+  const emailRef = useRef()
+
+  useEffect(()=> {
+    emailRef.current.focus();
+  }, [])
+
   return (
     <>
+    <Main />
       <div className="backLogin">
         <div className="div-center">
           <div className="container">
@@ -35,8 +44,8 @@ const LoginForm = (props) => {
                 />
               </div>
 
-              <div className="row">
-                <div className="col-lg-12">
+              {/* <div className="row">
+                <div className="col-lg-10">
                   {props.alertEM && (
                     <MyAlert
                       alertType={"warning"}
@@ -52,7 +61,7 @@ const LoginForm = (props) => {
                     />
                   )}
                 </div>
-              </div>
+              </div> */}
 
               <form onSubmit={props.submitHandler}>
                 <fieldset>
@@ -64,6 +73,7 @@ const LoginForm = (props) => {
                       <input
                         type="text"
                         name="email"
+                        ref={emailRef}
                         placeholder="email"
                         className="form-control"
                         value={props.email}
@@ -77,10 +87,10 @@ const LoginForm = (props) => {
                       <br />
                       <input
                         type="password"
-                        name="passWord"
+                        name="password"
                         placeholder="password"
                         className="form-control"
-                        value={props.passWord}
+                        value={props.password}
                         onChange={props.changePW}
                         required
                       />
@@ -104,15 +114,39 @@ const LoginForm = (props) => {
                     </div>
 
                     <div className="form-check form-group mx-auto col-lg-5">
-                      <Link to="/reset_password">
+                      <Link to="/forget_password">
                         <a href="#"> Forgot Your Password?</a>     
                       </Link>
-                    </div>
+                    </div>                   
 
-                    <h6 className="col-lg-12 mt-2 text-center">
-                      Or you can log in with
+                    <h6 className="col-lg-12 mx-auto text-center">
+                      If you have not already registered with us, register and
+                      <br /> 
+                      <Link to="/register">
+                        <h6><a href="#" className="mt-3 btn btn-primary btn-sm"> join us</a></h6>     
+                      </Link>                       
                     </h6>
-                    
+
+                <div className="row">
+                  <div className="col-lg-12">
+                    {props.alertEM && (
+                      <MyAlert
+                        alertType={"warning"}
+                        alertHeading={"Error!"}
+                        alertMessage={"Please Enter A Valid Email "}
+                      />
+                    )}
+                    {props.alertPW && (
+                      <MyAlert
+                        alertType={"danger"}
+                        alertHeading={"Incorrect!"}
+                        alertMessage={"Please Enter A Valid Password "}
+                      />
+                    )}
+                  </div>
+                </div>
+
+            {/*                 
                     <div className="form-check form-group mx-auto" aria-label="buttonExample"> 
                       <button 
                         type="button" 
@@ -143,7 +177,7 @@ const LoginForm = (props) => {
                         <a href="#"></a>
                         <FontAwesomeIcon icon={["fab", "twitter"]} size="1x" />
                       </button>
-                      </div>                   
+                      </div>                    */}
                     </div>                  
                 </fieldset>
               </form>

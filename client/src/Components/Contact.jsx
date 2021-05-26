@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import axios from 'axios';
-import ButtonMU from './userAccount/layout/ButtonMU';
+import ButtonMU from './userControl/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
 import Main from './Main'
 
@@ -37,7 +37,7 @@ setLoading(true);
 try {
     const config = {
         headers: {
-            'Content Type': 'apllication/json'
+            'Content Type': 'application/json'
         }
     };
     const body = JSON.stringify(newMessage);
@@ -57,9 +57,17 @@ contactData.message = "";
    setLoading(false); 
 }
     };
-const handleEmail = () => {
+const handleEmail = () => {  
+
     return <p>{responseMessage}</p>
-}
+} 
+
+    const nameRef = useRef()
+
+    useEffect(()=> {
+      nameRef.current.focus();
+    }, [])
+
         return (
             <>
             <Main/>
@@ -68,23 +76,26 @@ const handleEmail = () => {
             <div className="form-group">
             <div className="d-flex justify-content-end">
                 <ButtonMU
-                  buttonVariant={"text"}
+                  buttonVariant={"outlined"}
                   buttonColor={"primary"}
-                  buttonSize={"small"}
+                  buttonSize={"small"}                  
                 />
+              <br/>  
+              <br/>
               </div>
-                {/* <label htmlFor="name">Name*</label> */}
+                <label htmlFor="name">Name*</label>
                 <input 
                 id="name"
                 className="form-control"
                 type="text"
                 name="name"
+                ref={nameRef}
                 value={name}
                 onChange={(e) => onChange(e)}
                 placeholder="Enter Your Name*" required/>
             </div>
             <div className="form-group">
-                {/* <label htmlFor="email">Email*</label> */}
+                <label htmlFor="email">Email*</label>
                 <input 
                 id="email"
                 type="email"
@@ -94,19 +105,24 @@ const handleEmail = () => {
                 placeholder="Email*" required className="form-control"/>
             </div>
             <div className="form-group">
-                {/* <label htmlFor="message">Message</label> */}
+                <label htmlFor="message">Message*</label>
                 <textarea 
                 id="message"
                 className="form-control"
                 name="message"
                 value={message}
                 onChange = {(e) => onChange(e)}
-                 placeholder="Please write a message*" rows="5"/>
+                 placeholder="Please write a message*" 
+                 rows="5"
+                     required
+                 />
             </div>
-              <button type="submit" className="btn btn-primary btn-md">
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary btn-block">
                   Submit
               </button>
               {loading ? <Spinner animation="border" role="status"/> : handleEmail()}
+              </div>
             </form>
             
             </>

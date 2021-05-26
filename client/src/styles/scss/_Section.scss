@@ -1,4 +1,6 @@
 .about {
+  margin-top: 72px;
+  font-family: $fontFamily;
   display: flex;
   flex-direction: column;
   @include flexCenter(row, var(--clr-grey-light));
@@ -21,14 +23,14 @@ h5 {
   z-index: -1;
 }
 
-.about-card:hover {
-  background: var(--clr-orange-light);
-  cursor: pointer;
-  color: var(--clr-white);
-}
+
 
 .about-card-body {
-  @include flexCenter(column, none) margin: 2rem;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  @include flexCenter(column, none); margin: 2rem; 
 }
 
 .about-card-title {
@@ -36,15 +38,12 @@ h5 {
   margin-top: 0.8rem;
 }
 
-.about-card-title span {
-  font-size: 1.5rem;
-  font-weight: 900;
-  margin-right: 0.5rem;
-}
+
 
 .about-card-text {
   font-family: $fontFamily;
-  font-size: 12px;
+  font-size: 1rem;
+  font-weight: 300;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }

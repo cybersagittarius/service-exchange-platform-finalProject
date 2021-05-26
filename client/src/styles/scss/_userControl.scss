@@ -17,7 +17,7 @@ code {
 }
 
 .div-center {
-  position: fixed;
+  position: absolute;
   top: 73px;
   z-index: 999;
   font-family: $fontFamily;
@@ -35,7 +35,7 @@ code {
 .form-control {
   font-family: $fontFamily;
   font-size: 13px;
-  font-weight:300;
+  font-weight: 300;
   color: $mainColor;
 }
 
@@ -43,6 +43,7 @@ code {
   width: 60%;
   height: auto;  
   background-color: $bgColor;
+  overflow: scroll;  
   left: 0;
   right: 0;
   margin: auto;  
@@ -68,8 +69,17 @@ code {
  
 }
 
-.backResetPW>.div-center {
+.backForgetPW>.div-center{
   width: 40%;
+  height: auto;
+  background-color: $bgColor;
+  left: 0;
+  right: 0; 
+  margin: auto;
+};
+
+.backResetPW>.div-center {
+  width: 30%;
   height: auto;
   background-color: $bgColor;
   left: 0;

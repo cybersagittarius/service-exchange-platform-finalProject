@@ -3,13 +3,13 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenuLarge from "./SkillsMenuLarge";
 import items from "../assets/data/itemsSkills";
 import SearchContext from '../context/SearchContext';
+// import Visitor from '../Components/searchOutcome/Visitor';
 import { Link } from 'react-router-dom';
 import SmallFindMenu from './SmallFindMenu'
 
 
 
-
-function FindMenu() {
+function FindMenu(props) {
 
   const[show, setShow] = useState("none");
  
@@ -19,9 +19,11 @@ const context = useContext(SearchContext);
 
   const{country,region,offerSelection, lookSelection,selectCountry,selectRegion,  handleOfferSelection,handleLookSelection} = context
 
+
   const handleFind = () => {
     //This function send info to the backend
   };
+ 
 
   const showHide =() => {
     
@@ -54,25 +56,27 @@ const context = useContext(SearchContext);
           handleSelection={handleLookSelection}
         />
       </div>
+     
       <div className="countryAndRegion">
-        <CountryDropdown value={country} onChange={(e) => selectCountry(e)} />
+        <CountryDropdown value={country} onChange={(e) => selectCountry(e)} required />
         <RegionDropdown
           country={country}
           value={region}
           onChange={(e) => selectRegion(e)}
+          required
         />
       </div>
       <div className="btnFindDiv">
-        <Link to="/visitors">
+      <Link to ="/search">
         <button
-          // onclick={handleFind}
+          // onClick={handleFind}
           type="submit"
           value="search"
-          className="btnFind"
-        >
+          className="btnFind"> 
           Find
         </button>
         </Link>
+    
       </div>
     </form>
         

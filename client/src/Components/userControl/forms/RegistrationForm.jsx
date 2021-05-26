@@ -1,14 +1,25 @@
-import React from "react"
-
+import React, { useRef, useEffect } from "react"
+import SkillsMenu from '../../SkillsMenuLarge'
+import items from '../../../assets/data/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
+import Main from '../../Main'
 
 //3rd party package
 import RegionCountrySelector from "../selector/RegionCountrySelector";
+import AvatarUploader from "../upload-edit/AvatarUploader";
 
 const RegistrationForm = (props) => {
+
+  const firstnameRef = useRef()
+
+  useEffect(()=> {
+    firstnameRef.current.focus();
+  }, [])
+
   return (
     <>
+    <Main />
       <div className="backRegister">
         <div className="card div-center">
           <div className="container">
@@ -29,8 +40,9 @@ const RegistrationForm = (props) => {
 
                     <input
                       type="text"
-                      name="firstName"
-                      value={props.firstName}
+                      name="firstname"
+                      ref={firstnameRef}
+                      value={props.firstname}
                       placeholder="your first name"
                       className="form-control"
                       onChange={props.changeFirstName}
@@ -43,8 +55,8 @@ const RegistrationForm = (props) => {
 
                     <input
                       type="text"
-                      name="lastName"
-                      value={props.lastName}
+                      name="lastname"
+                      value={props.lastname}
                       placeholder="your last name"
                       className="form-control"
                       onChange={props.changeLastName}
@@ -52,14 +64,16 @@ const RegistrationForm = (props) => {
                     />
                   </div>
 
-                  <div className="form-group col-lg-12">
+                  <div className="form-group col-lg-10">
                     <label>Country</label>
+                    
                     <RegionCountrySelector
                       country={props.country}
                       region={props.region}
                       setParentCountry={(val) => props.changeCountry(val)}
                       setParentRegion={(val) => props.changeRegion(val)}
                     />
+                    
                   </div>
 
                   <div className="form-group col-lg-7">
@@ -82,7 +96,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="text"
                       name="username"
-                      value={props.userName}
+                      value={props.username}
                       placeholder="unique, no space"
                       className="form-control"
                       onChange={props.changeUserName}
@@ -99,7 +113,7 @@ const RegistrationForm = (props) => {
                     <input
                       type="password"
                       name="password"
-                      value={props.passWord}
+                      value={props.password}
                       placeholder="Please ensure you follow the password setting request"
                       className="form-control"
                       onChange={props.changePassWord}
@@ -121,7 +135,41 @@ const RegistrationForm = (props) => {
                     />
                   </div>
 
+                 <div className="form-group col-lg-4">
+                    <label>
+                      Avatar: Maximal Upload File Size 80 KB
+                    </label>
+                        
+                    <AvatarUploader
+                      // input name="avatar" type='file' accept='image/*'
+                      // onClose={props.onClose}
+                      onCrop={props.onCrop}
+                      onBeforeFileLoad={props.onBeforeFileLoad}
+                      preview={props.preview}
+                      savedImage={props.savedImage}
+                    />
+                    
+                  </div>
+                  
                   <div className="form-group col-lg-3">
+                  </div> 
+
+                  <div className="form-group col-lg-4">
+                    <label>
+                      Skills I can offer
+                    </label>
+                    
+                    <SkillsMenu 
+                      // title="I'm looking for" 
+                      className="form-control"
+                      items={ items } 
+                      multiSelect
+                      selection={props.offerSelection}
+                      handleSelection={props.changeOfferSelection}/>                    
+                    
+                  </div>
+
+                  <div className="form-group col-lg-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-primary btn-sm">
                       Submit
                     </button>
