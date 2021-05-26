@@ -37,7 +37,7 @@ function Main() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Link to="/register"> Join </Link>
+            <Link to="/register"> JOIN </Link>
           </button>
         </main>
       </div>
