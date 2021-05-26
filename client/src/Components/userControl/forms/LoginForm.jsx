@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import Main from '../../Main'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 
@@ -30,6 +31,7 @@ const LoginForm = (props) => {
 
   return (
     <>
+    <Main />
       <div className="backLogin">
         <div className="div-center">
           <div className="container">

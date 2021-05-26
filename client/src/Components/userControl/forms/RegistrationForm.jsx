@@ -3,6 +3,7 @@ import SkillsMenu from '../../SkillsMenuLarge'
 import items from '../../../assets/data/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
+import Main from '../../Main'
 
 //3rd party package
 import RegionCountrySelector from "../selector/RegionCountrySelector";
@@ -18,6 +19,7 @@ const RegistrationForm = (props) => {
 
   return (
     <>
+    <Main />
       <div className="backRegister">
         <div className="card div-center">
           <div className="container">
