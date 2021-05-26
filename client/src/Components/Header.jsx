@@ -1,4 +1,4 @@
-import FindMenu from "./FindMenu";
+import FindMenu from "./MenuFind";
 import LoginAndRegister from "./LoginAndRegister";
 
 const Header = () => {
