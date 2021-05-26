@@ -18,8 +18,7 @@ import Chat from '../chat/Chat';
 const Routes = () => ( 
     <SearchProvider> 
         <Router>
-            <Header/>
-                {/* <Main/> */}
+        <Header/>
                 <Switch>
                 <Route path="/" exact component={LandingPage}/>
                 <Route path="/login" exact component={LoginPage}/>

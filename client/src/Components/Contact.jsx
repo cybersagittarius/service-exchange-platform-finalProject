@@ -3,6 +3,7 @@ import axios from 'axios';
 import ButtonMU from './userControl/layout/ButtonMU';
 import Spinner from 'react-bootstrap/Spinner';
 import Main from './Main'
+
 const Contact = () => {
     //states
      const [contactData,setContactData] = useState({

@@ -44,16 +44,7 @@ const LoginAndRegister = () => {
         <a className="dropdown-item" href="#">
           DE
         </a>
-        <a className="dropdown-item" href="#">
-          PT
-        </a>
-        <a className="dropdown-item" href="#">
-          ES
-        </a>
-        <a className="dropdown-item" href="#">
-          ZH
-        </a>
-      </div>
+        </div>
     </div>
     </>
   );
