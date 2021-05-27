@@ -4,9 +4,14 @@ const cors = require('cors');
 const customError = require('./config/customError')
 const express = require('express');
 const session = require('express-session');
+//const http = require('http')
 const logger = require('morgan');
 const mongoose = require('mongoose')
+
 const auth = require('./middleware/auth')
+
+// const http  = require('http').createServer(app);
+// const io = require('sociket.io')(http)
 
 require('dotenv').config()
 
@@ -50,11 +55,13 @@ const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
 const forgetPwRouter = require('./routes/forgetPwRouter')
 const loginRouter = require('./routes/loginRouter');
-//const profileRouter = require('./routes/profileRouter');
+const profileRouter = require('./routes/profileRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const registerRouter = require('./routes/registerRouter');
+const chatRouter = require('./routes/chatRouter');
+// const fullSearchRouter = require('/routes/fullSearchRouter');
+// const limitedSearchRouter = require('/routes/limitedSearchRouter')
 
-//const logoutRouter = require('./routes/logoutRouter')
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
@@ -65,18 +72,19 @@ app.use('/contact', contactRouter);
 app.use('/delete', deleteRouter);
 app.use('/forget_password', forgetPwRouter);
 app.use('/login', loginRouter);
-//app.use('/profile', profileRouter);
+app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/reset_password', pwResetRouter);
-
-// app.use('/logout', logoutRouter);
+app.use('/chat', chatRouter)
+// app.use('/search', fullSearchRouter);
+// app.use('/visitors', limitedSearchRouter);
 
 //a simple test to make sure server works
 // app.get('/', (req, res)=>{
 //     res.json({"pooh": "bear"})
 // })
 
-app.listen(port, (err)=>{
+const http = app.listen(port, (err)=>{
     if(err){
         console.log(err);
         return err;
