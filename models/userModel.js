@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 //ideally we remove the essential data out and have the essential data here as a reference from another collection which holds essential data
 const userCredentialSchema = new mongoose.Schema ({
 
@@ -12,15 +11,18 @@ const userCredentialSchema = new mongoose.Schema ({
     username: { type: String, required: true },
     //password: { type: String, required: true }, 
     avatar_url : { type: String, required: true },
-    skills: {type: [Object], required: true},
+    skills: {type: [{ id: Number, value: String }], required: true},
     description: {type: String},
     hobby: {type: [ ]}, 
-    receive_email: { type: Boolean, required: true }    
+    // receive_email: { type: Boolean, required: true }    
 },  
     {toObject: { virtuals: true }},
     {toJSON: {virtuals: true}},
     {timestamps: true}
 )
+
+//this module will export User as the instance 'User' of userSchema
+module.exports = mongoose.model('user', userCredentialSchema);
 
 //pre middleware(
 //if we use this in a class, we DO NOT use arrow function, just use function()
@@ -69,5 +71,3 @@ const userCredentialSchema = new mongoose.Schema ({
 //     return `${this.firstname} ${this.lastname}`
 // })
 
-//this module will export User as the instance 'User' of userSchema
-module.exports = mongoose.model('user', userCredentialSchema);
