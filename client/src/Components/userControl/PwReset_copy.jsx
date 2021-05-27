@@ -70,7 +70,9 @@ const PwReset = (props) => {
         updatePW();
         
         setNewPassword("");
-        setConfirmNewPW("");        
+        setConfirmNewPW("");   
+        
+        props.history.push('/login')
     }
 
     useEffect(() => {
@@ -108,7 +110,6 @@ const PwReset = (props) => {
         </>
     )
 }
-
 
 export default PwReset
 
