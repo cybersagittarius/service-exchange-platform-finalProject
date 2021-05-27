@@ -31,8 +31,7 @@ const PwReset = (props) => {
 
     const changeConfirmNewPW = (e) =>{
         setConfirmNewPW(e.target.value)
-    }; 
-    
+    };     
         
     const updatePW = async () => {
             try{
