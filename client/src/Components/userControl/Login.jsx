@@ -52,9 +52,9 @@ const Login = () => {
     //   return false;
     // }
 
-    rememberMe === true
-      ? saveOnLocal(email, password)
-      : console.log("No email nor password saved in the browser");
+    // rememberMe === true
+    //   ? saveOnLocal(userInfo.email, userInfo.token)
+    //   : console.log("No email nor token saved in the browser");
       
     postReturnedUser(email, password);
 
@@ -62,6 +62,18 @@ const Login = () => {
     setPassWord("");
     setRememberMe(false);
   };
+
+//   const saveOnLocal = (key, initialValue) => {
+//     const [value, setValue] = use
+
+//   useEffect(()=>{
+
+
+
+//   }, []) 
+
+//   saveOnLocal()
+// }
 
   const saveOnLocal = (email, password) => {
     let data = JSON.parse(localStorage.getItem("user"));
