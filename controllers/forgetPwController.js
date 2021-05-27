@@ -15,7 +15,7 @@ const forgetPwEmail = async(req, res, next) => {
             let findUser = await Essential.findOne({email: user.email})
 
                 if(!findUser) {
-                    //so far tht best res.json way to return error message and status 
+                    //so far tht best res.json way to return error message and status                    
                     return res.json({msg: "no email found!", status: 400})
                 }
                 if(findUser) {
