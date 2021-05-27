@@ -19,7 +19,8 @@ const connectDB = async () => {
     try {
         const conn = await mongoose.connect(uri, {
             useNewUrlParser: true,
-            useFindAndModify: true,
+            //userFindAndModify was set to true at first, but this was deprecated by MongoDB. Now it should be set to false
+            useFindAndModify: false,
             useCreateIndex: true,
             useUnifiedTopology: true
         });
