@@ -29,9 +29,9 @@ setIndex((oldIndex) => {
       return index;
     });
       };
-      console.log(lookSelection)
-      console.log(country)
-      console.log(region)
+      // console.log(lookSelection)
+      // console.log(country)
+      // console.log(region)
 
   return (
     
@@ -40,11 +40,9 @@ setIndex((oldIndex) => {
         <h4><span>You are looking for/</span>  {lookSelection[0].value}</h4>
         <h4><span>Country/</span> {country}</h4> 
         <h4><span>Region/</span> {region}</h4>
-    {/* <Link to="/register">
-      <button className="btn btn-outline-danger btn-block">Join</button>
-    </Link> */}
+    
 </div>
-    <div className="underline"></div>
+    {/* <div className="underline"></div> */}
 
     <div className="section-center">
     {users.map((user,userIndex)=>{
