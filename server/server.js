@@ -8,8 +8,6 @@ const session = require('express-session');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 
-const auth = require('./middleware/auth')
-
 // const http  = require('http').createServer(app);
 // const io = require('sociket.io')(http)
 
