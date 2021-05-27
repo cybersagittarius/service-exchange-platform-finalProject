@@ -2,6 +2,7 @@ import React from 'react';
 import SkillsMenuSmall from "./SkillsMenuSmall";
 import MenuLoginAndRegisterSmall from './MenuLoginAndRegisterSmall'
 import onClickOutside from "react-onclickoutside";
+import {Link} from 'react-router-dom';
 
 function SmallFindMenu ({showHide, setShow, show, items, lookSelection, handleLookSelection, CountryDropdown,country, selectCountry, RegionDropdown, region, selectRegion, handleFind }) {
 
@@ -38,6 +39,7 @@ function SmallFindMenu ({showHide, setShow, show, items, lookSelection, handleLo
             </div>
           
           <div className="btnFindDiv">
+          <Link to="/search">
             <button
               onclick={handleFind}
               type="submit"
@@ -46,6 +48,7 @@ function SmallFindMenu ({showHide, setShow, show, items, lookSelection, handleLo
             >
               Find
             </button>
+            </Link>
           </div>
         </form>
       </div>

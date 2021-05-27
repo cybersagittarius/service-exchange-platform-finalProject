@@ -4,7 +4,6 @@ import LandingPage from '../LandingPage';
 import LoginPage from '../userControl/Login';
 import RegisterPage from '../userControl/Register';
 import ContactPage from '../Contact';
-import VisitorsPage from '../Visitors';
 import NotFoundPage from '../NotFound'
 import Footer from '../Footer'
 import Header from '../Header'
@@ -25,7 +24,6 @@ const Routes = () => (
                 <Route path="/forget_password" exact component={ForgetPWPage}/>
                 <Route path="/reset_password/:token" exact component={PwResetPage}/> 
                 <Route path="/contact" exact component={ContactPage}/>
-                <Route path="/visitors" exact component={VisitorsPage}/>
                 <Route path="/not_found" exact component={NotFoundPage}/>
                 <Route path="/search" exact component={SearchPage}/>
                 <Route path="/chat" exact component={ChatPage} />

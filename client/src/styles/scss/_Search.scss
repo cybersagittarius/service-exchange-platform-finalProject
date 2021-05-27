@@ -1,34 +1,35 @@
 @import 'variables';
           
 .section{
-    margin-top: 5rem;
+    margin-top: 5.5rem;
     color: $mainColor;
     font-family: $fontFamily;
+    // border: 2px solid red;
 
     & .show-category{
-    width: 80vw;
+    width: 50vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transform: translate(12%,12%);
+    margin-left: .5rem;
+    // transform: translate(12%,12%);
+    // border: 2px solid blue;
     & span{
        font-family: $fontFamily;
     font-weight: 300;
 
     }
-     & .btn{
-        margin-right: 3rem;
-        margin-bottom: 0.2rem;
-     }
+    
     }
-    & .underline{
-        width: 80vw;
-        border-bottom: 2px solid $mainColor;
-        transform: translate(12%,12%);
+    // & .underline{
+    //     width: 80vw;
+    //     border-bottom: 2px solid $mainColor;
+    //     transform: translate(12%,12%);
         
-          } 
+    //       } 
  & .section-center {
- 
+//  border: 2px solid purple;
+//  width: 100vw;
     & .user-img {
         border-radius: 50%;
         margin-top: 1rem;
@@ -49,29 +50,25 @@
                 }
    @media screen and (max-width:768px){
        .section{
-        & .show-category{
-            width: 75vw;
-            display: flex;
-            align-items:center;
-            justify-content: space-between;
-            transform: translate(12%,12%);
-            & span, h4,h6{
-               font-family: $fontFamily;
-            font-weight: 300;
-            font-size: .75rem;
-        
-            }
-             & .btn{
-                margin-right: 4rem;
-                margin-bottom: 0.2rem;
-             }
-            }
-            & .underline{
-                width: 80vw;
-                border-bottom: 2px solid $mainColor;
-                transform: translate(8%,8%);
+        // & .show-category{
+        //     width: 75vw;
+        //     display: flex;
+        //     align-items:center;
+        //     justify-content: space-between;
+        //     transform: translate(12%,12%);
+
+        //     & span, h4,h6{
+        //        font-family: $fontFamily;
+        //     font-weight: 300;
+        //     font-size: .75rem;
+        //     }
+        // }
+            // & .underline{
+            //     width: 80vw;
+            //     border-bottom: 2px solid $mainColor;
+            //     transform: translate(8%,8%);
                 
-                  } 
+            //       } 
                   & .user-img{
                       width: 150px;
                       height: 150px;
