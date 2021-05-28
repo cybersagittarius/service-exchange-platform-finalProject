@@ -57,9 +57,9 @@ const profileRouter = require('./routes/profileRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const registerRouter = require('./routes/registerRouter');
 const chatRouter = require('./routes/chatRouter');
+// const itemSkillsRouter = require('./routes/itemSkillsRouter');
 // const fullSearchRouter = require('/routes/fullSearchRouter');
 // const limitedSearchRouter = require('/routes/limitedSearchRouter')
-
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
@@ -74,6 +74,7 @@ app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/chat', chatRouter)
+// app.use('/itemSkills', itemSkillsRouter);
 // app.use('/search', fullSearchRouter);
 // app.use('/visitors', limitedSearchRouter);
 
