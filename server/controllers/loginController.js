@@ -28,8 +28,10 @@ const loginUser = async (req, res, next) => {
       }  
         
       let findUser = await User.findOne({email: user.email})
-      
-        const payload = { user: { id: findUser._id, email: findUser.email, username: findUser.username } };
+
+        //in the previous version, id, not _id(assgined by Mongo) was used. To be consistent using mongo generated id,
+        //I changed id: findUser._id to _id: findUser._id    
+        const payload = { user: { _id: findUser._id, email: findUser.email, username: findUser.username } };
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: "1h",
         })
