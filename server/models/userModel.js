@@ -22,7 +22,7 @@ const userCredentialSchema = new mongoose.Schema ({
 },  
     {toObject: { virtuals: true }},
     {toJSON: {virtuals: true}},
-    {timestamps: true}
+    {timestamps: true},
 )
 
 //this module will export User as the instance 'User' of userSchema
