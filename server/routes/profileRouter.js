@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 const profileController = require('../controllers/profileController')
 
-router.route('/').get(auth, profileController)
+//router.route('/').get(auth, profileController)
 
 //patch is better, to update just one field
 //get req body to update the different fields
