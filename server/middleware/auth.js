@@ -7,6 +7,7 @@ const auth = (req, res, next) => {
 
     const authHeader = req.headers['authorization'] //there's a bearer token in here
     const token = authHeader && authHeader.split(' ')[1];
+    console.log(token);
     
     if(!token){ 
         console.log('I am not there!')
