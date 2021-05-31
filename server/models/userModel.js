@@ -15,14 +15,14 @@ const userCredentialSchema = new mongoose.Schema ({
     //originally skills look like this.
     //skills: {type: [{ id: Number, value: String }], required: true},
     //now we outsource subschema to tell MongoDB NOT to assgin an id to the object inside skill array
-    skills: { type: [ skillSubSchema ], required: true},
-    description: {type: String},
-    hobby: {type: [ ]}, 
+    skills: { type: [ skillSubSchema ], required: true },
+    description: { type: String },
+    // hobby: {type: [ ], }, 
     // receive_email: { type: Boolean, required: true }    
 },  
-    {toObject: { virtuals: true }},
-    {toJSON: {virtuals: true}},
-    {timestamps: true},
+    { toObject: { virtuals: true } },
+    { toJSON: {virtuals: true} },
+    { timestamps: true },
 )
 
 //this module will export User as the instance 'User' of userSchema
