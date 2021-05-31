@@ -29,15 +29,12 @@ setIndex((oldIndex) => {
       return index;
     });
       };
-      //  console.log(lookSelection)
-      //  console.log(country)
-      // console.log(region)
+     
 
   return (
     
   <section className="users section">
           <div  className="show-category">
-        {/* <h4><span>You are looking for/</span>  {lookSelection.length >0 && lookSelection[0].value}</h4> */}
         <h4>You are looking for/<span>{lookSelection.length >0 && lookSelection.map((select)=>{
           const {id,value} = select;
           return <ol>{select.value}</ol>
@@ -74,9 +71,7 @@ setIndex((oldIndex) => {
           <FiChevronRight onClick={nextSlide}/>
         </button>
     </div>
-    {/* <Link to="/register">
-     <button className="btn btn-outline-danger btn-block">Join</button>
-   </Link> */}
+   
     </section>
      
     
