@@ -1,8 +1,11 @@
 .about {
-  margin-top: 72px;
+  // height: 100vh;
+  // margin-top: 72px;
+  margin-top: 322px;
   font-family: $fontFamily;
   display: flex;
   flex-direction: column;
+  // transform: translate(0,20%);
   @include flexCenter(row, var(--clr-grey-light));
  }
 
@@ -13,14 +16,16 @@ h5 {
 }
 
 .about-card-deck {
+
   flex-direction: row;
   width: 100vw;
+  // border: 2px solid red;
 }
 
 .about-card {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   margin: 0.4rem;
-  z-index: -1;
+  // z-index: -1;
 }
 
 
@@ -53,3 +58,21 @@ h5 {
   font-size: 2rem;
 }
 
+@media screen and (max-width:768px){
+  .about{
+    height: 100vh;
+  //  border: 2px solid red;
+   margin-top:-5rem;
+  }
+    // margin-top: 72px;
+   // font-family: $fontFamily;
+    // display: flex;
+    // flex-direction: column;
+    // transform: translate(0,20%);
+    // @include flexCenter(row, var(--clr-grey-light));
+  //  & .about-card-deck{
+   //   height: 30vh;
+     // border: 2px solid purple;
+    //}
+ // }
+}

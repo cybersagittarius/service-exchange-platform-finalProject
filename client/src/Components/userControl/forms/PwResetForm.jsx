@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
+import Main from '../../Main';
 import MyAlert from '../layout/Alert';
 import ButtonMU from '../layout/ButtonMU';
 
@@ -12,6 +13,7 @@ const PwResetForm = (props) => {
 
     return (
         <>
+          <Main />
             <div className="backResetPW">
                 <div className="div-center">
                     <div className="container">

@@ -31,9 +31,21 @@ const PwReset = (props) => {
 
     const changeConfirmNewPW = (e) =>{
         setConfirmNewPW(e.target.value)
-    };
+    }; 
     
-    const submitHandler = (e) => {
+        
+    const updatePW = async () => {
+            try{
+
+                const result = await authAxios.post('/reset_password/',{
+                    newPassword: newPassword //check that the key is the same as in the backend
+                })
+                console.log(result.data)
+            } catch(err)
+                { console.log(err.message) }
+            }
+
+        const submitHandler = (e) => {
         e.preventDefault();
 
         // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
@@ -53,19 +65,12 @@ const PwReset = (props) => {
                 setAlertPWCheck(false)
             }, 5000);
             return false;
-        }
+        }        
 
-        const updatePW = async ()=>{
-                try{
-
-                    const result = await authAxios.post('/reset_password/',{
-                        newPassword: newPassword //check that the key is the same as in the backend
-                    })
-                    console.log(result.data)
-                } catch(err)
-                { console.log(err.message) }
-            }
-            updatePW();           
+        updatePW();
+        
+        setNewPassword("");
+        setConfirmNewPW("");        
     }
 
     useEffect(() => {

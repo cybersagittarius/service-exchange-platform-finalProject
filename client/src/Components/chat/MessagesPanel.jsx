@@ -1,6 +1,8 @@
 import React, { useState } from 'react'; 
 import { Message } from './Message';
 
+// props from Chat.jsx onSendMessage={handleSendMessage} channel={channel}
+
 export const MessagesPanel = (props) => {
     console.log(props)
     const [input_value, setInput_value] = useState('') 
