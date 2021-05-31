@@ -5,7 +5,7 @@ import searchContext from '../../context/SearchContext'
 
 import LoginForm from "./forms/LoginForm";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -61,6 +61,8 @@ const Login = () => {
     setEmail("");
     setPassWord("");
     setRememberMe(false);
+
+    props.history.push('/profile')
   };
 
 //   const saveOnLocal = (key, initialValue) => {

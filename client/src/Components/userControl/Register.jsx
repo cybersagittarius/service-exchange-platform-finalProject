@@ -5,7 +5,7 @@ import searchContext from '../../context/SearchContext'
 
 import RegistrationForm from './forms/RegistrationForm'
 
-const Register = () => {
+const Register = (props) => {
      
      const [firstname, setFirstName] = useState("");
      const [lastname, setLastName] = useState(""); 
@@ -95,6 +95,8 @@ const Register = () => {
         //  setSavedImage(null);
          
         //  setOfferSelection([]);
+
+        props.history.push('/profile');
     }    
 
     const changeFirstName = (e) => {
