@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const skillSubSchema = require('skillSubSchema');
 
 const itemSkillSchema = new mongoose.Schema({
-    itemSkills: {type: [{ id: Number, value: String}], 
+    itemSkills: {type: [skillSubSchema], 
                  require: true }, 
 },
     {timestamps: true}
