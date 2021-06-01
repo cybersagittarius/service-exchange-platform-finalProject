@@ -21,14 +21,14 @@ h1 {
   // font-size: 361% !important;
   font-size: 5rem;
   @media only screen and (max-width: 537px){
-    font-size: 199% !important;
+    font-size: 253% !important;
     margin-left: 13px;
     margin-right: 13px;
     text-align: center;
   }
-  @media only screen and (max-width: 537px){
-    color: $mainColor;
-  }
+  // @media only screen and (max-width: 537px){
+  //   color: $mainColor;
+  // }
 }
 
 .home {
@@ -55,7 +55,7 @@ h1::after {
   text-align: center;
   text-shadow: 5px 10px 15px rgba(0,0,0,0.5);
   @media only screen and (max-width: 537px){
-    color: $mainColor;
+    // color: $mainColor;
     font-size: 12px;
     margin-left: 20px;
     margin-right: 20px;
