@@ -2,12 +2,11 @@ import React from 'react';
 import SkillsMenuSmall from "./SkillsMenuSmall";
 import MenuLoginAndRegisterSmall from './MenuLoginAndRegisterSmall'
 import onClickOutside from "react-onclickoutside";
-import {Link} from 'react-router-dom';
 
-function SmallFindMenu ({showHide, setShow, show, items, lookSelection, handleLookSelection, CountryDropdown,country, selectCountry, RegionDropdown, region, selectRegion, handleFind }) {
+function FindMenuSmall ({showHide, setShow, show, items, lookSelection, handleLookSelection, CountryDropdown,country, selectCountry, RegionDropdown, region, selectRegion, handleFind, goSearch, setShowSkillsSelection }) {
 
 
-    SmallFindMenu.handleClickOutside = () => setShow("none");
+  FindMenuSmall.handleClickOutside = () => setShow("none");
 
     return (
         <>
@@ -39,16 +38,14 @@ function SmallFindMenu ({showHide, setShow, show, items, lookSelection, handleLo
             </div>
           
           <div className="btnFindDiv">
-          <Link to="/search">
             <button
-              onclick={handleFind}
-              type="submit"
+              onClick={goSearch}
+              type="button"
               value="search"
               className="btnFind"
             >
               Find
             </button>
-            </Link>
           </div>
         </form>
       </div>
@@ -60,7 +57,7 @@ function SmallFindMenu ({showHide, setShow, show, items, lookSelection, handleLo
 }
 
 const clickOutsideConfig = {
-handleClickOutside: ()=> SmallFindMenu.handleClickOutside,
+handleClickOutside: ()=> FindMenuSmall.handleClickOutside,
 };
 
-export default onClickOutside(SmallFindMenu, clickOutsideConfig);
+export default onClickOutside(FindMenuSmall, clickOutsideConfig);

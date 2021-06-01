@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import * as Icons from "react-icons/io5";
 import onClickOutside from "react-onclickoutside"; 
+import {useLocation} from 'react-router-dom'
 // npm install react-onclickoutside --save
 // npm update --force
 
-function SkillsMenu({ title, items = [], multiSelect = false, selection , handleSelection}) {
+function SkillsMenu({ title, items = [], multiSelect = false, selection , handleSelection, showSkillsSelection,setShowSkillsSelection}) {
 
   const [open, setOpen] = useState(false);
 
   const toggle = () => setOpen(!open);
 
   SkillsMenu.handleClickOutside = () => setOpen(false);
+  const location = useLocation()
 
    function handleOnClick(item) {
+
+    //console.log(location);
+    if(location.pathname === "/" && showSkillsSelection !== "block"){
+      setShowSkillsSelection("block")
+    }
+
     if (!selection.some((current) => current.id === item.id)) {
       if (!multiSelect) {
         handleSelection([item])
@@ -67,18 +75,18 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
       </div>
 
       { selection.length > 0 && ( 
-  <div className="listLarge">
-        <ul className="selectionList">
-          {selection.map((item) => {
-            return <li key={item.id}>{item.value}{selection.length > 0 ? <button className="clear" onClick={() => clearUp(item.id)}>
-            <Icons.IoCloseSharp />
-          </button> : (
-          " "
-        )} </li>;
-          })}
-        </ul>
-  </div>                
-)}
+        <div className="listLarge">
+              <ul className="selectionList" style={{ display: showSkillsSelection }} >
+                {selection.map((item) => {
+                  return <li key={item.id}>{item.value}{selection.length > 0 ? <button className="clear" onClick={() => clearUp(item.id)}>
+                  <Icons.IoCloseSharp />
+                </button> : (
+                " "
+              )} </li>;
+                })}
+              </ul>
+        </div>                
+      )}
       {open && (
         <ul className="largeMenu dd-list dropdown-menu show">
            {items.map((item) => (
