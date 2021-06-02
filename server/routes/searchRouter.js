@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const findController = require('../controllers/findController')
-
-
+const searchController = require('../controllers/searchController')
         
-router.route('/').post(findController)
+router.route('/').post(searchController)
 
 module.export = router
