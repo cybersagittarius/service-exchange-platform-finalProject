@@ -29,21 +29,20 @@ setIndex((oldIndex) => {
       return index;
     });
       };
-      // console.log(lookSelection)
-      // console.log(country)
-      // console.log(region)
+     
 
   return (
     
   <section className="users section">
-  <div className="show-category">
-        <h4><span>You are looking for/</span>  {lookSelection[0].value}</h4>
-        <h4><span>Country/</span> {country}</h4> 
-        <h4><span>Region/</span> {region}</h4>
-    
-</div>
-    {/* <div className="underline"></div> */}
-
+          <div  className="show-category">
+        <h4>You are looking for/<span>{lookSelection.length >0 && lookSelection.map((select)=>{
+          const {id,value} = select;
+          return <ol>{select.value}</ol>
+        })}</span></h4>
+  
+       <h4>Country/<span>{country}</span> </h4> 
+        <h4>Region/<span>{region}</span> </h4>
+</div> 
     <div className="section-center">
     {users.map((user,userIndex)=>{
         const {id,name,image,skills,desc} = user
@@ -61,10 +60,6 @@ setIndex((oldIndex) => {
 <h4>{name}</h4>
 <h6 className="skills"><span>{skills}</span></h6>
 <p className="text">{desc}</p>
-{/* 
-<Link to="/notfound">
-    <button className="btn btn-outline-danger btn-block">More Info</button>
-</Link> */}
 </article>
 
         )
@@ -76,9 +71,7 @@ setIndex((oldIndex) => {
           <FiChevronRight onClick={nextSlide}/>
         </button>
     </div>
-    {/* <Link to="/register">
-     <button className="btn btn-outline-danger btn-block">Join</button>
-   </Link> */}
+   
     </section>
      
     

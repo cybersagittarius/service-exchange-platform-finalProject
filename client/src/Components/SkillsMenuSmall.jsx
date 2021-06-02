@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import * as Icons from "react-icons/io5";
-import onClickOutside from "react-onclickoutside"; 
+import onClickOutside from "react-onclickoutside";
+import { useLocation } from "react-router-dom"; 
+
 // npm install react-onclickoutside --save
 // npm update --force
 
-function SkillsMenu({ title, items = [], multiSelect = false, selection , handleSelection}) {
+function SkillsMenu({ title, items = [], multiSelect = false, selection , handleSelection, showSkillsSelection, setShowSkillsSelection}) {
 
   const [open, setOpen] = useState(false);
 
@@ -12,7 +14,12 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
 
   SkillsMenu.handleClickOutside = () => setOpen(false); 
 
+  const location = useLocation();
+
   function handleOnClick(item) {
+    if (location.pathname === "/" && showSkillsSelection === "block") {
+      setShowSkillsSelection("block");
+    }
     if (!selection.some((current) => current.id === item.id)) {
       if (!multiSelect) {
         handleSelection([item])
@@ -53,6 +60,7 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
         role="button"
         onKeyPress={() => toggle(!open)}
         onClick={() => toggle(!open)}
+        
       >
         <div className="dd-header_title ">
           <p className="dd-header_title--bold dropdown-toggle">
@@ -68,7 +76,7 @@ function SkillsMenu({ title, items = [], multiSelect = false, selection , handle
 
       { selection.length > 0 && ( 
   <div className="listSmall">
-        <ul className="selectionList">
+        <ul className="selectionList" style={{ display: showSkillsSelection }}>
           {selection.map((item) => {
             return <li key={item.id}>{item.value}{selection.length > 0 ? <button className="clear" onClick={() => clearUp(item.id)}>
             <Icons.IoCloseSharp />
