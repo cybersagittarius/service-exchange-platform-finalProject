@@ -6,7 +6,7 @@ const auth = (req, res, next) => {
     console.log(req.headers)
 
     const authHeader = req.headers['authorization'] //there's a bearer token in here
-    const token = authHeader && authHeader.split(' ')[1];
+    const token = authHeader //&& authHeader.split(' ')[1];
     console.log(token);
     
     if(!token){ 
