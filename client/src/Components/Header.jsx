@@ -1,5 +1,5 @@
 
-import MenuFind from "./MenuFind";
+import FindMenuLarge from "./FindMenuLarge";
 import MenuLoginAndRegisterLarge from "./MenuLoginAndRegisterLarge";
 
 
@@ -8,7 +8,7 @@ const Header = () => {
    return (
     <>
       <div className="find">
-        <MenuFind/>
+        <FindMenuLarge/>
         <MenuLoginAndRegisterLarge />
       </div>
     </>
