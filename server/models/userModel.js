@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const skillSubSchema = require('./skillSubSchema')
 
 //ideally we remove the essential data out and have the essential data here as a reference from another collection which holds essential data
 const userCredentialSchema = new mongoose.Schema ({
@@ -13,9 +12,8 @@ const userCredentialSchema = new mongoose.Schema ({
     //password: { type: String, required: true }, 
     avatar_url : { type: String, required: true },
     //originally skills look like this.
-    //skills: {type: [{ id: Number, value: String }], required: true},
-    //now we outsource subschema to tell MongoDB NOT to assgin an id to the object inside skill array
-    skills: { type: [ skillSubSchema ], required: true },
+    skills: {type: [{ id: Number, value: String }], required: true},    
+    
     description: { type: String },
     // hobby: {type: [ ], }, 
     // receive_email: { type: Boolean, required: true }    
