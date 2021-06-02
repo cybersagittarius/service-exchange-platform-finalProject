@@ -41,12 +41,12 @@ function DropdownMenu() {
 
     function DropdownItem(props) {
         return (
-            <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+            <div className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
                 <span className="icon-button">{props.leftIcon}</span>
                 {props.children}
                 <span className="icon-right">{props.rightIcon}</span>
 
-            </a>
+            </div>
         );
     }
     return (
@@ -58,7 +58,7 @@ function DropdownMenu() {
                 classNames="menu-primary"
                 onEnter={calcHeight}>
                 <div className="menu">
-                    <DropdownItem leftIcon={<FcHome />} goToMenu="profile">My profile</DropdownItem>
+                    <DropdownItem leftIcon={<FcHome />} goToMenu="profile"><Link to="/profile">My profile</Link></DropdownItem>
                     <DropdownItem leftIcon={<FcServices />} goToMenu="settings">Settings</DropdownItem>
                 </div>
             </CSSTransition>
@@ -69,8 +69,8 @@ function DropdownMenu() {
                 classNames="menu-secondary">
                 <div className="menu">
                     <DropdownItem leftIcon={<FcLeft />} goToMenu="main" />
-                    <DropdownItem> Change description</DropdownItem>
-                    <DropdownItem> <Link to="/ChangeDetails">Change details</Link></DropdownItem>
+                    <DropdownItem ><Link to="/profile/change_details">Change details</Link></DropdownItem>
+                    <DropdownItem> <Link to="/profile/change_password">Change password</Link></DropdownItem>
 
                 </div>
             </CSSTransition>
@@ -83,7 +83,7 @@ function NavItem(props) {
     const [open, setOpen] = useState(false);
     return (
         <li className="nav-item">
-            <a href="#" className="icon-button" onClick={() => setOpen(!open)}> {props.icon} </a>
+            <button className="icon-button" onClick={() => setOpen(!open)}> {props.icon} </button>
             {open && props.children}
         </li>
     );

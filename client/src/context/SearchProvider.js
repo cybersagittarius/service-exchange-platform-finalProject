@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import SearchContext from "./SearchContext"
+import SearchContext from "./SearchContext";
+
 
 const SearchProvider = (props) => {
 

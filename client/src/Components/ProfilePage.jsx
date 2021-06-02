@@ -1,7 +1,8 @@
-import React from "react";
-import ProfileHeader from "./ProfileHeader";
+import React, { useContext } from "react";
+import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
+import SearchContext from "../context/SearchContext"
 import '../styles/scss/Profile.scss'
 
 //npm install react-router-dom
@@ -9,18 +10,21 @@ import '../styles/scss/Profile.scss'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ProfilePage = () => {
-    return (
-        <Router>
-            <div className="wrapper">
-                <ProfileHeader />
-                <div className="app_body">
-                    <Card />
+const ProfilePage = (props) => {
 
-                </div>
-            </div>
-            <Footer />
-        </Router>
+    const context = useContext(SearchContext)
+    const { userInfo } = context
+
+
+
+
+    return (
+
+        <div className="app_body">
+            {userInfo.token ? <Card aboutUs={userInfo.user.description} skills={userInfo.user.skills} /> : props.history.push("/")}
+
+
+        </div>
     );
 };
 

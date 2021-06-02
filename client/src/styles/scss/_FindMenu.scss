@@ -26,23 +26,27 @@
     height: auto; 
   }*/
 }
+
 .countryAndRegion {
   @media only screen and (max-width: 841px) {
     display: flex;
     flex-direction: column;
     align-content: felx-start;
-      }
+  }
 }
+
 .skillsMenus {
-    display:flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+
   @media only screen and (max-width: 622px) {
     display: flex;
     flex-direction: column;
     align-content: felx-start;
-    
+
   }
 }
+
 .inp {
   height: 23px;
   font-size: 12px;
@@ -50,7 +54,7 @@
   font-style: italic;
 }
 
-.btn-check:focus + .btn,
+.btn-check:focus+.btn,
 .btn:focus {
   box-shadow: none;
 }
@@ -81,7 +85,7 @@ dropdown-item a:focus {
 }
 
 option {
-  width:170px;
+  width: 170px;
   margin-top: 5px;
   margin-bottom: 5px;
   font-family: $fontFamily !important;
@@ -99,10 +103,12 @@ select {
   border: none;
   outline: none;
 }
+
 option:checked {
   background-color: -moz-html-cellhighlight !important;
   color: -moz-html-cellhighlighttext !important;
 }
+
 // option::after {
 //   display: none !important;
 //   background-color: transparent !important;
@@ -115,7 +121,7 @@ option:checked {
   // height: 30px;
   // margin-left: 10px;
   height: 25px;
-margin-left: 24px;
+  margin-left: 24px;
   margin-right: 10px;
   position: relative;
 }
@@ -144,6 +150,7 @@ margin-left: 24px;
   text-align: left;
   padding-top: 0rem;
 }
+
 // .dd-listSmall {
 //   position: absolute;
 //   top: 0px;
@@ -172,9 +179,11 @@ margin-left: 24px;
   flex-direction: row;
   position: left;
 }
-.dropdown-toggle{
-    weight:122,58px;
+
+.dropdown-toggle {
+  weight: 122, 58px;
 }
+
 .dropdown-toggle::after {
   display: inline-block;
   width: 0.5em;
@@ -193,10 +202,12 @@ margin-left: 24px;
   border-bottom-width: 0.1em;
   border-left-width: 0px;
   transform: rotateZ(45deg);
+
   @media only screen and (max-width: 622px) {
-      display: none;
+    display: none;
   }
 }
+
 .btn-success {
   background-color: transparent !important;
   border-color: transparent !important;
@@ -242,6 +253,7 @@ margin-left: 24px;
   background-color: $bgColor;
   border: none;
 }
+
 .selection {
   font-family: $fontFamily;
   font-size: 12px;
@@ -250,6 +262,7 @@ margin-left: 24px;
   top: 0;
   z-index: 1;
 }
+
 .selectionList {
   font-size: 12px;
   list-style-type: disc;
@@ -259,6 +272,7 @@ margin-left: 24px;
   margin-bottom: 12px;
   z-index: 1;
 }
+
 .listX {
   display: flex;
   flex-direction: row;
@@ -267,25 +281,29 @@ margin-left: 24px;
 .laguages::after {
   display: none;
 }
-.largeFindMenu{
-  @media only screen and (max-width: 537px){
-    display:none;
+
+.largeFindMenu {
+  @media only screen and (max-width: 537px) {
+    display: none;
   }
 }
+
 .smallFindMenu {
-  @media only screen and (max-width: 537px){
-    
+  @media only screen and (max-width: 537px) {
+
     display: flex;
     flex-direction: column;
     align-self: flex-start;
     margin-top: 13px;
     margin-left: 13px;
   }
-  @media only screen and (min-width: 537px){
+
+  @media only screen and (min-width: 537px) {
     display: none;
   }
 }
-.burger{
+
+.burger {
   border: none !important;
   background-color: transparent !important;
 }

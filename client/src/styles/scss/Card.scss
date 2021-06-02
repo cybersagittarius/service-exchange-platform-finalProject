@@ -4,7 +4,7 @@
     margin-top: 70px;
     margin-left: 30px;
     width: 95%;
-    height: 500px;
+    min-height: 500px;
     background: white;
     border-radius: 10px;
     box-shadow: 0px 1px 10px 1px black;
@@ -38,15 +38,14 @@
     transform: translate(130px, 20px);
 }
 
-
-
 img {
     border: 2px solid black;
 }
 
 .lower-container {
-    margin-top: 60px;
-    height: 300px;
+    margin-top: 5rem;
+    margin-bottom: 7rem;
+    min-height: 300px;
     background: white;
     text-align: center;
     font-family: $fontFamily;
@@ -74,6 +73,12 @@ img {
     animation: ease-in-out;
     transition-duration: 0.5s;
     transform: scale(1.1);
+}
+
+.link-button {
+    width: 3rem;
+    height: 3rem;
+
 }
 
 .about-container {
@@ -108,4 +113,28 @@ img {
     font-weight: 350;
     font-size: 1rem;
     text-align: justify;
+}
+
+.div-center-details {
+
+    font-family: $fontFamily;
+    font-size: 13px;
+    color: $mainColor;
+    border: none;
+}
+
+.form-row-details {
+    display: flex;
+    flex-direction: row;
+    color: red;
+}
+
+.card-body-details {
+    flex-direction: row;
+}
+
+.description {
+    width: 50rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
 }

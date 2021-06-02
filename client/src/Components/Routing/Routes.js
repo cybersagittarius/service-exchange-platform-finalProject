@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import PrivateRoute from './PrivateRoute';
 import SearchProvider from '../../context/SearchProvider';
 import MainPage from '../Main'
 import LandingPage from '../LandingPage';
@@ -11,7 +10,6 @@ import NotFound from '../NotFound';
 import Footer from '../Footer';
 import Header from '../Header';
 import ProfilePage from '../ProfilePage';
-import ChangeDetails from '../ChangeDetails';
 import ForgetPW from '../userControl/ForgetPW';
 import PwReset from '../userControl/PwReset_copy';
 
@@ -28,9 +26,9 @@ const Routes = () => (
                 <Route path="/forget_password" exact component={ForgetPW}/>
                 <Route path="/reset_password/:token" exact component={PwReset}/> 
                 <Route path="/contact" exact component={ContactPage}/>
-                <PrivateRoute path="/profile" exact component={ProfilePage}/>
+                <Route path="/profile" component={ProfilePage}/>           
                 <Route path="/visitors" exact component={VisitorsPage}/>
-                <Route path="/change_details" exact component={ChangeDetails}/>
+                {/* <Route path="/change_details" exact component={ChangeDetails}/> */}
                 <Route component={NotFound}/>
             </Switch>            
             <Footer/>
