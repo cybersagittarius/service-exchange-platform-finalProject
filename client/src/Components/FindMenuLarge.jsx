@@ -26,7 +26,7 @@ function FindMenu() {
   } = context;
 
   const goSearch = () => {
-    // show("none");
+    showHide();
     setShowSkillsSelection("none");
     history.push("/search");
   };
