@@ -2,11 +2,13 @@ import React from 'react';
 import SkillsMenuSmall from "./SkillsMenuSmall";
 import MenuLoginAndRegisterSmall from './MenuLoginAndRegisterSmall'
 import onClickOutside from "react-onclickoutside";
+import {useLocation} from 'react-router-dom'
 
-function FindMenuSmall ({showHide, setShow, show, items, lookSelection, handleLookSelection, CountryDropdown,country, selectCountry, RegionDropdown, region, selectRegion, handleFind, goSearch, setShowSkillsSelection }) {
+function FindMenuSmall ({showHide, setShow, show, items, lookSelection, handleLookSelection, CountryDropdown,country, selectCountry, RegionDropdown, region, selectRegion, goSearch, setShowSkillsSelection, showSkillsSelection }) {
 
 
   FindMenuSmall.handleClickOutside = () => setShow("none");
+  
 
     return (
         <>
@@ -15,9 +17,9 @@ function FindMenuSmall ({showHide, setShow, show, items, lookSelection, handleLo
        <button onClick={showHide} className="burger">
        <i class="fas fa-bars fa-2x"></i>
         </button>
-  
+   
       <div style={{display:show}}>
-        <form className="DDFindMenu">
+          <form className="DDFindMenu">
           
           <div className="skillsMenus" >
              <MenuLoginAndRegisterSmall/>
@@ -27,7 +29,10 @@ function FindMenuSmall ({showHide, setShow, show, items, lookSelection, handleLo
               multiSelect
               selection={lookSelection}
               handleSelection={handleLookSelection}
-            />
+              showSkillsSelection={showSkillsSelection}
+              setShowSkillsSelection={setShowSkillsSelection}
+              
+              />
             <CountryDropdown value={country} onChange={(e) => selectCountry(e)} />
             
             <RegionDropdown
@@ -43,6 +48,8 @@ function FindMenuSmall ({showHide, setShow, show, items, lookSelection, handleLo
               type="button"
               value="search"
               className="btnFind"
+              onClick={showHide}
+              
             >
               Find
             </button>

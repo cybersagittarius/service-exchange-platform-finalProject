@@ -26,6 +26,7 @@ function FindMenu() {
   } = context;
 
   const goSearch = () => {
+    // show("none");
     setShowSkillsSelection("none");
     history.push("/search");
   };
@@ -78,6 +79,7 @@ function FindMenu() {
             type="button"
             value="search"
             className="btnFind"
+            // style={{display:showSkillsSelection}}
           >
             Find
           </button>
@@ -99,6 +101,7 @@ function FindMenu() {
         selectRegion={selectRegion}
         goSearch={goSearch}
         setShowSkillsSelection={setShowSkillsSelection}
+        showSkillsSelection={showSkillsSelection}
       />
     </>
   );
