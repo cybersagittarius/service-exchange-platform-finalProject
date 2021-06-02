@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 //without async
 //mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
@@ -15,6 +16,8 @@ const mongoose = require("mongoose");
 //implement async
 const connectDB = async () => {
     //set uri for database
+    
+    //const uri = xxxxxxx 
     const uri = process.env.MONGO_ATLAS_URI;
     try {
         const conn = await mongoose.connect(uri, {
