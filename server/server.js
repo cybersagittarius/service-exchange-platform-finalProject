@@ -21,6 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
+
 app.use(cookieParser()); //parsing incoming cookies into req.cookies
 app.use(cors({
     origin: [process.env.FRONTEND_ORIGIN || 'http://localhost:3000'],
@@ -59,7 +60,7 @@ const registerRouter = require('./routes/registerRouter');
 const chatRouter = require('./routes/chatRouter');
 const itemSkillsSeedRouter = require('./routes/itemSkillsSeedRouter')
 // const itemSkillsRouter = require('./routes/itemSkillsRouter');
-// const searchRouter = require('/routes/searchRouter');
+const searchRouter = require('./routes/searchRouter');
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
@@ -76,8 +77,8 @@ app.use('/reset_password', pwResetRouter);
 app.use('/chat', chatRouter)
 app.use('/itemSkillsSeed', itemSkillsSeedRouter)
 // app.use('/itemSkills', itemSkillsRouter);
-// app.use('/search', fullSearchRouter);
-// app.use('/visitors', limitedSearchRouter);
+app.use('/search', searchRouter);
+
 
 //a simple test to make sure server works
 // app.get('/', (req, res)=>{
