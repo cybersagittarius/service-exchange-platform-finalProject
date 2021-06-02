@@ -6,7 +6,7 @@ const express = require('express');
 const session = require('express-session');
 //const http = require('http')
 const logger = require('morgan');
-const mongoose = require('mongoose')
+//const mongoose = require('mongoose')
 
 // const http  = require('http').createServer(app);
 // const io = require('sociket.io')(http)
@@ -53,13 +53,13 @@ const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
 const forgetPwRouter = require('./routes/forgetPwRouter')
 const loginRouter = require('./routes/loginRouter');
-const profileRouter = require('./routes/profileRouter');
+// const profileRouter = require('./routes/profileRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const registerRouter = require('./routes/registerRouter');
 const chatRouter = require('./routes/chatRouter');
+const itemSkillsSeedRouter = require('./routes/itemSkillsSeedRouter')
 // const itemSkillsRouter = require('./routes/itemSkillsRouter');
-// const fullSearchRouter = require('/routes/fullSearchRouter');
-// const limitedSearchRouter = require('/routes/limitedSearchRouter')
+// const searchRouter = require('/routes/searchRouter');
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
@@ -70,10 +70,11 @@ app.use('/contact', contactRouter);
 app.use('/delete', deleteRouter);
 app.use('/forget_password', forgetPwRouter);
 app.use('/login', loginRouter);
-app.use('/profile', profileRouter);
+// app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/chat', chatRouter)
+app.use('/itemSkillsSeed', itemSkillsSeedRouter)
 // app.use('/itemSkills', itemSkillsRouter);
 // app.use('/search', fullSearchRouter);
 // app.use('/visitors', limitedSearchRouter);
