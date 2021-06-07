@@ -10,14 +10,14 @@ const profileUser= async (req, res, next) => {
   // email is not to be modified
 
   console.log(req.user)
-  
+  console.log(req.body)
   try {
     //id: user._id. req.user._id, instead of req.user.id is used, because in login controller the payload takes _id as one part of the jwt generator                                        
-    const user = await User.findByIdAndUpdate(req.user._id, req.body, {new: true}) 
+    const user = await User.findByIdAndUpdate(req.user.id, req.body, {new: true}) 
     //const user = await User.findOneAndUpdate({id: req.user._id}, {new: true})      
 
     if (!user) {
-      return res.status(400).json({ errors: { msg: "no user found!" } });
+      return res.status(400).json({ errors: {msg: "no user found!"} });
     }
 
     res.status(200).json(user)    
