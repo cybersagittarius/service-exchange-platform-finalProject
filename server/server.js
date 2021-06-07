@@ -54,7 +54,7 @@ const contactRouter = require('./routes/contactRouter');
 const deleteRouter = require('./routes/deleteRouter');
 const forgetPwRouter = require('./routes/forgetPwRouter')
 const loginRouter = require('./routes/loginRouter');
-// const profileRouter = require('./routes/profileRouter');
+const profileRouter = require('./routes/profileRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const registerRouter = require('./routes/registerRouter');
 const chatRouter = require('./routes/chatRouter');
@@ -71,7 +71,7 @@ app.use('/contact', contactRouter);
 app.use('/delete', deleteRouter);
 app.use('/forget_password', forgetPwRouter);
 app.use('/login', loginRouter);
-// app.use('/profile', profileRouter);
+app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/reset_password', pwResetRouter);
 app.use('/chat', chatRouter)
