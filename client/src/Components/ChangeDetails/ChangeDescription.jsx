@@ -2,13 +2,14 @@ import React, { useRef, useEffect, useState, useContext } from 'react';
 import searchContext from '../../context/SearchContext';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 
 const ChangeDescription = () => {
-
+    const history = useHistory()
     const context = useContext(searchContext)
-    const { userInfo } = context
+    const { userInfo, setUserInfo } = context
 
     console.log(userInfo)
     //states
@@ -16,9 +17,6 @@ const ChangeDescription = () => {
 
         description: userInfo.user.description
     });
-    const [responseDescription, setResponseDescription] = useState(userInfo.user.description);
-    const [loading, setLoading] = useState(false);
-
 
     const { description } = contactData;
 
@@ -27,41 +25,28 @@ const ChangeDescription = () => {
         setContactData({ ...contactData, [e.target.name]: e.target.value })
     }
 
+    const postNewDescription = (description) => {
+
+        const data = { description };
+        const config = { headers: { authorization: userInfo.token } }
+        axios.patch('http://localhost:4000/profile', data, config)
+            //we do not need res.json in axios at all
+            .then(res => {
+                console.log(res.data)
+                setUserInfo({ ...userInfo, user: res.data })
+                history.push("/profile")
+            })
+            // in case the API responded, we will have the error inside error.response.data 
+            .catch(err => console.log(err.res && err.res.data))
+    }
+
 
     //Submit event handler
-    const formSubmit = async e => {
-        e.preventDefault();
-        setLoading(true);
-        // create user object
-        const newDescription = {
-            description
-        };
-        //post to backend
-        /*  try {
-             const config = {
-                 headers: {
-                     'Content Type': 'application/json'
-                 }
-             };
-             const body = JSON.stringify(newDescription);
-             const response = await axios.post(
-                 'https://localhost:4000/contact',
-                 body,
-                 config
-             );
-             setResponseDescription(response.data.description);
-             contactData.description = "";
- 
- 
-         } catch (err) {
-             console.log(`Something went wrong ${err}`);
-             setLoading(false);
-         } */
-    };
-    const handleEmail = () => {
+    const formSubmit = () => {
+        postNewDescription(description)
 
-        return <p>{responseDescription}</p>
-    }
+    };
+
 
     const nameRef = useRef()
 
@@ -85,9 +70,8 @@ const ChangeDescription = () => {
                             onChange={(e) => onChange(e)}
                             placeholder="about me*" rows="7" />
                     </div>
-                    <button type="submit" className="btn btn-primary btn-md">
-                        Submit
-              </button>
+                    <button type="submit" className="btn btn-primary btn-md" onClick={formSubmit}>
+                        Submit               </button>
 
                 </div>
 

@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
-//import axios from './configure-files/axios'
+// import axios from '../userControl/configure-files/axios'
 import axios from "axios"
 import searchContext from '../../context/SearchContext'
-
+import { useHistory } from 'react-router-dom';
 import ChangeDetailsForm from './ChangeDetailsForm'
 
 const ChangeDetails = () => {
-
+    const history = useHistory()
     const context = useContext(searchContext)
     const { setUserInfo } = context
 
@@ -36,12 +36,16 @@ const ChangeDetails = () => {
     const postNewUser = (firstname, lastname, country, region, username, savedImage, offerSelection) => {
 
         const data = { firstname, lastname, country, region, username, savedImage, offerSelection };
-
-        /* axios.post('http://localhost:4000/register', data)
+        const config = { headers: { authorization: userInfo.token } }
+        axios.patch('http://localhost:4000/profile', data, config)
             //we do not need res.json in axios at all
-            .then(res => setUserInfo({ token: res.data.token, user: res.data.user }))
+            .then(res => {
+                console.log(res.data)
+                setUserInfo({ ...userInfo, user: res.data })
+                history.push("/profile")
+            })
             // in case the API responded, we will have the error inside error.response.data 
-            .catch(err => console.log(err.res && err.res.data)) */
+            .catch(err => console.log(err.res && err.res.data))
     }
 
     const submitHandler = (e) => {
