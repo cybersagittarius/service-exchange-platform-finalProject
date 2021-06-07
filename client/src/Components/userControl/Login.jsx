@@ -5,7 +5,7 @@ import searchContext from "../../context/SearchContext";
 
 import LoginForm from "./forms/LoginForm";
 
-const Login = () => {
+const Login = (props) => {
   //we bring in the store at this point
   const context = useContext(searchContext);
 
