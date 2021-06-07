@@ -25,6 +25,7 @@ const Login = (props) => {
     axios.post('http://localhost:4000/login', data)
     .then(res => {
       setUserInfo({token: res.data.token, user: res.data.user})
+      console.log(res.data)      
       props.history.push('/profile')
       alert('login succeeded!')
     })    
