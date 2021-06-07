@@ -23,17 +23,32 @@ const Login = (props) => {
 
     /// FETCH TO SEND DATA TO BACKEND
     ///axios does not need res.json at all!!!!!!!!!!!!!
+  //   axios.post('http://localhost:4000/login', data)
+  //   .then(res => {      
+  //     if(res.data.status === 200){     
+  //     props.history.push('/profile')
+  //     alert('login succeeded!')
+  //     return setUserInfo({token: res.data.token, user: res.data.user})
+  //   }else{
+  //     alert('Oops! try again!')  
+  //   }
+  // }).catch(error=>
+  //     console.log(error)        
+  //   )}
+
     axios.post('http://localhost:4000/login', data)
-    .then(res => {
-      setUserInfo({token: res.data.token, user: res.data.user})
-      console.log(res.data)      
-      props.history.push('/profile')
-      alert('login succeeded!')
-    })    
-    .catch(error=>{
-      console.log(error)
-      alert('Oops! try again!')})    
-    }
+    .then(res => { 
+      setUserInfo({token: res.data.token, user: res.data.user})       
+      if(res.data.status===400){
+        alert('Oops! try again!')       
+      }else{
+         props.history.push('/profile')
+        alert('login succeeded!') 
+        }         
+      }).catch(error=>{    
+        console.log(error)
+      }        
+    )}
   
   const submitHandler = (e) => {
     e.preventDefault();
