@@ -1,12 +1,16 @@
 import React, { useState, useContext } from "react";
 //import axios from "./configure-files/axios"
 import axios from 'axios'
-
+// import searchContext from '../../context/SearchContext'
 import ForgetPWForm from "./forms/ForgetPWForm";
 
 const ForgetPW = () => {
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
+
+  // try to use the store
+  // const context = useContext(searchContext)
+  // const {setUserInfo} = context
 
   const postEmail = (email) =>{
 
@@ -14,11 +18,13 @@ const ForgetPW = () => {
 
    axios.post('http://localhost:4000/forget_password', data)
    .then(res => {
-     if(res.data.user){
-     alert('A link has been sent to your valid email account with us!') 
-    }else{
-      alert('This email has not been found!')
-    }
+     console.log(res.data)
+    if(res.data.status===200){
+      // setUserInfo({token:res.data.token, user:res.data.user})
+      alert('A link has been sent to your valid email account with us!')       
+        }else{
+          alert('This email has not been found!')      
+      }    
   })
   // in case the API responded, we will have the error inside error.response.data 
     .catch(error=>alert(error.res && error.res.data))  
