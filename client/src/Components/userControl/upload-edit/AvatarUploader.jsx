@@ -6,8 +6,8 @@ import React from "react";
 import Avatar from "react-avatar-edit";
 
 export const AvatarUploader = (props) => {
-  console.log('Avatar!!')
-  console.log(props)
+  /* console.log('Avatar!!')
+  console.log(props) */
   // const [preview, setPreview] = useState("");
   // const [savedImage, setSavedImage] = useState("");
   // const [sourceImage, setSourceImage] = useState("");
