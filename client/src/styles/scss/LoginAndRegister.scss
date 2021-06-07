@@ -91,12 +91,16 @@ a:hover {
 }
 
 .LogRegLarge {
+    
     display: flex;
     flex-direction: row;
 
     @media only screen and (max-width: 763px) {
         display: none;
     }
+}
+.log {
+    font-size: $fontSize;
 }
 
 .btn {
