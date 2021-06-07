@@ -2,11 +2,12 @@ const jwt = require('jsonwebtoken');
 require ('dotenv').config();
 
 const auth = (req, res, next) => {
-
+    //req.headers authorisation is an array
     console.log(req.headers)
 
     const authHeader = req.headers['authorization'] //there's a bearer token in here
-    const token = authHeader //&& authHeader.split(' ')[1];
+    //Bearer + token
+    const token = authHeader && authHeader.split(' ')[1];
     console.log(token);
     
     if(!token){ 
