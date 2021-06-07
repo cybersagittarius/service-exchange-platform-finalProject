@@ -17,30 +17,36 @@ const loginUser = async (req, res, next) => {
     let findEssentialUser = await Essential.findOne({ email: user.email });
 
     if (!findEssentialUser) {
-      return res.status(400).json({ errors: { msg: "no user found!" } });
+      //return res.status(400).send("no user found!");
+      // return res.status(400).json({msg: "No user found!"})
+      return res.json({msg: "no email found!", status: 400})
+      // return res.status(400).json({ errors: { msg: "no user found" } });
     }
 
     if (findEssentialUser) {
       const isMatch = await bcrypt.compare(password, findEssentialUser.password);
-      if (!isMatch) {
-        res.status(400).json({ errors: {msg: "invalid password"}})
-        //res.status(400).json({ errors: { msg: "Invalid Passwords" } });
+      if (!isMatch) {       
+        //return res.status(400).send("invalid password") 
+        //return res.status(400).json({msg: "Invalid Passwords!"})
+        return res.json({msg: "invalid password!", status: 400})
+        //return res.status(400).json({ errors: { msg: "Invalid Passwords" } });
       }  
         
       let findUser = await User.findOne({email: user.email})
 
         //in the previous version, id, not _id(assgined by Mongo) was used. To be consistent using mongo generated id,
-        //I changed id: findUser._id to _id: findUser._id    
-        const payload = { user: { _id: findUser._id, email: findUser.email, username: findUser.username } };
+        //I changed id: findUser._id to _id: findUser._id
+         
+        const payload = { user: { id: findUser._id, email: findUser.email, username: findUser.username } };
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: "1h",
         })
         res.status(200).json({ token, user: findUser});
-      }
-    } catch (err) {
-      return next(err);
-      }  
-  }
+    }
+  } catch (err) {
+    return next(err);
+  }  
+}
 
 
 module.exports = loginUser;
