@@ -4,13 +4,15 @@ import LandingPage from '../LandingPage';
 import LoginPage from '../userControl/Login';
 import RegisterPage from '../userControl/Register';
 import ContactPage from '../Contact';
-import NotFoundPage from '../NotFound'
 import Footer from '../Footer'
 import Header from '../Header'
 import SearchPage from '../Search';
 import ForgetPWPage from '../userControl/ForgetPW';
 import PwResetPage from '../userControl/PwReset_copy';
 import ChatPage from '../chat/Chat';
+import VisitorsPage from '../Visitors';
+import NotFound from '../NotFound';
+import ProfilePage from '../ProfilePage';
 
 
 const Routes = () => ( 
@@ -23,10 +25,13 @@ const Routes = () => (
                 <Route path="/register" exact component={RegisterPage}/>
                 <Route path="/forget_password" exact component={ForgetPWPage}/>
                 <Route path="/reset_password/:token" exact component={PwResetPage}/> 
-                <Route path="/contact" exact component={ContactPage}/>
-                <Route path="/not_found" exact component={NotFoundPage}/>
+                <Route path="/contact" exact component={ContactPage}/>               
                 <Route path="/search" exact component={SearchPage}/>
                 <Route path="/chat" exact component={ChatPage} />
+                <Route path="/profile" component={ProfilePage}/>           
+                <Route path="/visitors" exact component={VisitorsPage}/>
+                {/* <Route path="/change_details" exact component={ChangeDetails}/> */}
+                <Route component={NotFound}/>
             </Switch>            
             <Footer/>
         </Router>

@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 //import axios from './configure-files/axios'
 import axios from 'axios'
+import { Redirect } from "react-router-dom"
 import searchContext from '../../context/SearchContext'
 
 import LoginForm from "./forms/LoginForm";
@@ -12,9 +13,9 @@ const Login = (props) => {
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
 
-   //we bring in the store at this point
-   const context = useContext(searchContext)
-   const {setUserInfo} = context
+  //we bring in the store at this point
+  const context = useContext(searchContext)
+  const { setUserInfo } = context
 
   const postReturnedUser = (email, password) => {
     const data = { email, password }
@@ -112,15 +113,15 @@ const Login = (props) => {
   return (
     <>
       <LoginForm
-        submitHandler = { submitHandler }
-        changeEmail = { changeEmail }
-        changePW = { changePW }
-        changeRM = { changeRM }
-        email = { email }
-        password = { password }
-        rememberMe = { rememberMe }
-        alertEM = { alertEM }
-        alertPW = { alertPW }
+        submitHandler={submitHandler}
+        changeEmail={changeEmail}
+        changePW={changePW}
+        changeRM={changeRM}
+        email={email}
+        password={password}
+        rememberMe={rememberMe}
+        alertEM={alertEM}
+        alertPW={alertPW}
       />
     </>
   );
