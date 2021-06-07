@@ -23,8 +23,14 @@ const Login = (props) => {
     /// FETCH TO SEND DATA TO BACKEND
     ///axios does not need res.json at all!!!!!!!!!!!!!
     axios.post('http://localhost:4000/login', data)
-    .then(res => setUserInfo({token: res.data.token, user: res.data.user}))    
-    .catch(error=>console.log(error.res && error.res.data))    
+    .then(res => {
+      setUserInfo({token: res.data.token, user: res.data.user})
+      props.history.push('/profile')
+      alert('login succeeded!')
+    })    
+    .catch(error=>{
+      console.log(error)
+      alert('Oops! try again!')})    
     }
   
   const submitHandler = (e) => {
@@ -60,9 +66,7 @@ const Login = (props) => {
 
     setEmail("");
     setPassWord("");
-    setRememberMe(false);
-
-    props.history.push('/profile')
+    setRememberMe(false);    
   };
 
 //   const saveOnLocal = (key, initialValue) => {
