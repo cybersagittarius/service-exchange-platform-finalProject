@@ -34,11 +34,19 @@ const Register = (props) => {
 
         const data = {firstname, lastname, country, region, email, username, password, confirmPW, savedImage, offerSelection};
 
+        //do not accidentally type https!!!!!!
         axios.post('http://localhost:4000/register', data)
         //we do not need res.json in axios at all
-        .then(res => setUserInfo({token: res.data.token, user: res.data.user}))    
+        .then(res => {
+            setUserInfo({token: res.data.token, user: res.data.user})
+            props.history.push('/profile')
+            alert('registration succeeded!')
+        })    
         // in case the API responded, we will have the error inside error.response.data 
-        .catch(err => console.log(err.res && err.res.data))
+        .catch(err => {
+            console.log(err.res && err.res.data)
+            alert('please try again with a different email account')
+        })
         } 
 
      const submitHandler = (e) => {
@@ -94,9 +102,7 @@ const Register = (props) => {
         //  setPreview(null);
         //  setSavedImage(null);
          
-        //  setOfferSelection([]);
-
-        props.history.push('/profile');
+        //  setOfferSelection([]);      
     }    
 
     const changeFirstName = (e) => {
