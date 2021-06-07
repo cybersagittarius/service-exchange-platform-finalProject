@@ -3,7 +3,6 @@ import axios from 'axios';
 import searchContext from '../context/SearchContext'
 
 const Test = () => {
-
       
     const context = useContext(searchContext)
 
