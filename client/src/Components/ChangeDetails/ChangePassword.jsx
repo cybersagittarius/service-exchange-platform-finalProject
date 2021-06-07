@@ -1,6 +1,4 @@
 import React, { useRef, useEffect, useContext } from "react"
-import SkillsMenu from '../SkillsMenu'
-import items from '../../assets/data/itemsSkills'
 import MyAlert from "../userControl/layout/Alert";
 import SearchContext from "../../context/SearchContext";
 import { Link } from "react-router-dom";

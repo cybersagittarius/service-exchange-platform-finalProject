@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useContext } from "react"
-import SkillsMenu from '../SkillsMenu'
+import SkillsMenuLarge from '../SkillsMenuLarge'
 import items from '../../assets/data/itemsSkills'
 import MyAlert from "../userControl/layout/Alert";
 import SearchContext from "../../context/SearchContext";
@@ -99,7 +99,7 @@ const ChangeDetailsForm = (props) => {
                     </label>
 
 
-                    <SkillsMenu
+                    <SkillsMenuLarge
                       // title="I'm looking for" 
                       className="form-control"
                       items={items}
