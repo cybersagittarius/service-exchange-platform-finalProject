@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
-import SearchContext from "./SearchContext"
+import React, { useState } from "react";
+import SearchContext from "./SearchContext";
 
 const SearchProvider = (props) => {
+  const [country, setCountry] = useState(" ");
+  const [region, setRegion] = useState(" ");
+  const [offerSelection, setOfferSelection] = useState([]);
+  const [lookSelection, setLookSelection] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
+  const [showSkillsSelection, setShowSkillsSelection] = useState("block");
 
-    const [country, setCountry] = useState(" ");
-    const [region, setRegion] = useState(" ");
-    const [offerSelection, setofferSelection] = useState([]);
-    const [lookSelection, setlookSelection] = useState([]);
+  const selectCountry = (e) => {
+    setCountry(e);
+  };
 
-    const selectCountry = (e) => {
-        setCountry(e);
-      };
-    
-      const selectRegion = (e) => {
-        setRegion(e);
-      };
-    
-      const handleOfferSelection = (selection) => {
-        setofferSelection(selection);
-      };
-    
-      const handlelookSelection = (selection) => {
-        setlookSelection(selection);
-      };
+  const selectRegion = (e) => {
+    setRegion(e);
+  };
 
-    return (
-        <>
-        <SearchContext.Provider value={{country, region,offerSelection, lookSelection,selectCountry, selectRegion,  handleOfferSelection,handlelookSelection}}>
+  const handleOfferSelection = (selection) => {
+    setOfferSelection(selection);
+  };
+
+  const handleLookSelection = (selection) => {
+    setLookSelection(selection);
+  };
+
+  return (
+    <>
+      <SearchContext.Provider
+        value={{
+          country,
+          region,
+          offerSelection,
+          lookSelection,
+          selectCountry,
+          selectRegion,
+          handleOfferSelection,
+          handleLookSelection,
+          userInfo,
+          setUserInfo,
+          showSkillsSelection,
+          setShowSkillsSelection
+        }}
+      >
         {props.children}
-        </SearchContext.Provider>
-        </>
-    )
-}
+      </SearchContext.Provider>
+    </>
+  );
+};
 
 export default SearchProvider;

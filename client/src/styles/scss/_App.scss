@@ -2,19 +2,30 @@
 
 body {
   box-sizing: content-box;
-  /* box-sizing: border-box; */
   scroll-behavior: smooth;
+
+  @media only screen and (max-width: 538px) {
+    background-image: url("../../assets/images/priscilla-du-preez.jpg");
+  }
 }
 
 .slightContainer {
-  height: 75vh;
+  height: 42vh;
 }
 
 .box-gallery {
   top: 58px;
   margin-bottom: 70px;
   z-index: -1;
-  @media only screen and (max-width:841px) {
-/*     top: 93px;
- */  }
+
+  @media only screen and (max-width: 538px) {
+    display: none;
+  }
+}
+
+.home {
+  @media only screen and (max-width: 538px) {
+    display: none;
+    background-image: none;
+  }
 }
