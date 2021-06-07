@@ -26,36 +26,40 @@ const Contact = () => {
    //Submit event handler
     const formSubmit = async e =>{
         e.preventDefault();
-setLoading(true);
-    // create user object
-    const newMessage = {
-        name,
-        email,
-        message
-    };
-//post to backend
-try {
-    const config = {
-        headers: {
-            'Content Type': 'application/json'
+        setLoading(true);
+        // create user object
+        const newMessage = {
+            name,
+            email,
+            message
+        };
+        //post to backend
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            const body = JSON.stringify(newMessage);
+            const response = await axios.post(
+                'http://localhost:4000/contact',
+                body,
+                config
+            );
+            setResponseMessage(response.data.message);
+            // contactData.name = "";
+            // contactData.email = "";
+            // contactData.message = "";
+            setContactData({
+                name:"",
+                email:"",
+                message:""
+            })
+            setLoading(false); 
+        } catch (err) {
+        console.log(`Something went wrong ${err}`);
+        setLoading(false); 
         }
-    };
-    const body = JSON.stringify(newMessage);
-    const response = await axios.post(
-        'https://localhost:4000/contact',
-        body,
-        config
-    );
-setResponseMessage(response.data.message);
-contactData.name = "";
-contactData.email = "";
-contactData.message = "";
-
-
-} catch (err) {
-   console.log(`Something went wrong ${err}`);
-   setLoading(false); 
-}
     };
 const handleEmail = () => {  
 
