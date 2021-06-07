@@ -35,7 +35,6 @@ const PwReset = (props) => {
         
     const updatePW = async () => {
             try{
-
                 const result = await authAxios.post('/reset_password/',{
                     newPassword: newPassword //check that the key is the same as in the backend
                 })
