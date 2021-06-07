@@ -12,8 +12,7 @@ const userCredentialSchema = new mongoose.Schema ({
     //password: { type: String, required: true }, 
     avatar_url : { type: String, required: true },
     //originally skills look like this.
-    skills: {type: [{ id: Number, value: String }], required: true},    
-    
+    skills: {type: [{ id: Number, value: String }], required: true},     
     description: { type: String },
     // hobby: {type: [ ], }, 
     // receive_email: { type: Boolean, required: true }    
