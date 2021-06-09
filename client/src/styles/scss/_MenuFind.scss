@@ -8,6 +8,7 @@
   min-width: 100px;
   width: 100px !important;
 }
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -15,55 +16,65 @@
   margin-right: 10px;
   align-items: center;
 }
+
 .form {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
 .skillsMenus {
-    margin-left:9px;
-    display:flex;
-    flex-direction: row;
+  margin-left: 9px;
+  display: flex;
+  flex-direction: row;
+
   @media only screen and (max-width: 762px) {
     display: flex;
     flex-direction: column;
     flex-basis: 25%;
-     }
+  }
 }
+
 .inp {
   height: 23px;
   font-size: 12px;
   width: 90px;
   font-style: italic;
 }
-.btn-check:focus + .btn,
+
+.btn-check:focus+.btn,
 .btn:focus {
   box-shadow: none;
 }
+
 dropdown-item a:focus {
   color: black;
   text-decoration: none;
   background-color: transparent;
 }
+
 .btnCat:hover {
   color: $lightGrayOnHover !important;
 }
+
 .btnFind {
   @include redButtons()
 }
+
 .btnFind:hover {
   color: $lightWhiteOnHover;
 }
+
 option {
-  width:170px;
+  width: 170px;
   margin-top: 5px;
   margin-bottom: 5px;
   font-family: $fontFamily !important;
   font-size: 13px !important;
   font-weight: 300 !important;
 }
+
 select {
-  // margin-left: 19px;
   width: 110px;
   font-size: 13px !important;
   font-family: $fontFamily !important;
@@ -72,12 +83,14 @@ select {
   border: none;
   outline: none;
 }
+
 option:checked {
   background-color: -moz-html-cellhighlight !important;
   color: -moz-html-cellhighlighttext !important;
 }
+
 .dd-wrapper {
-  margin-left:5px;
+  margin-left: 5px;
   height: 25px;
   position: relative;
 }
@@ -85,15 +98,18 @@ option:checked {
 .dd-header:focus {
   outline: none;
 }
+
 .dd-header_title {
   width: 134px;
   font-size: 13px !important;
 }
-.smallMenu{
+
+.smallMenu {
   width: 40px;
   margin-left: 124px;
   margin-top: -27px;
 }
+
 .dd-list {
   list-style-type: none;
   background: #fff;
@@ -107,6 +123,7 @@ option:checked {
   text-align: left;
   padding-top: 0rem;
 }
+
 .dd-list button {
   width: 117px;
   font-family: $fontFamily;
@@ -118,18 +135,22 @@ option:checked {
   display: flex;
   flex-direction: row;
 }
+
 .dd-list button span {
   font-size: 13px;
   margin-right: 5px;
 }
+
 .dd-header_title {
   display: flex;
   flex-direction: row;
   position: left;
 }
-.dropdown-toggle{
-    weight:122,58px;
+
+.dropdown-toggle {
+  weight: 122, 58px;
 }
+
 .dropdown-toggle::after {
   display: inline-block;
   width: 0.5em;
@@ -148,22 +169,27 @@ option:checked {
   border-bottom-width: 2px;
   border-left-width: 0px;
   transform: rotateZ(45deg);
+
   @media only screen and (max-width: 762px) {
     margin-left: 1.7em;
   }
 }
+
 .btn-success {
   background-color: transparent !important;
   border-color: transparent !important;
 }
+
 .dd-header_title--bold {
   width: 120px;
   font-size: 13px;
 }
+
 .dd-header_action p {
   margin-left: -11px;
   color: $mainColor;
 }
+
 .x {
   position: relative;
   right: -17px;
@@ -173,28 +199,32 @@ option:checked {
   padding: 10px;
   margin-bottom: 0rem !important;
 }
+
 .spanX {
   position: absolute;
   text-align: right;
 }
+
 .y {
   position: relative;
   right: -86px;
   vertical-align: left;
   margin-bottom: 0rem !important;
 }
+
 .spanY {
   position: absolute;
   text-align: right;
 }
+
 .clear {
   position: absolute;
   right: 5px;
   margin-top: 2px;
-  // padding: 3px;
   background-color: $bgColor;
   border: none;
 }
+
 .selection {
   font-family: $fontFamily;
   font-size: 12px;
@@ -203,6 +233,7 @@ option:checked {
   top: 0;
   z-index: 1;
 }
+
 .selectionList {
   width: 157px;
   color: $redButton;
@@ -210,13 +241,14 @@ option:checked {
   list-style-type: none;
   display: block;
   margin-left: -32px;
-  // margin-top: 12px;
   margin-bottom: 12px;
   z-index: 1;
 }
+
 .selectionList li {
   padding: 2px;
 }
+
 .listLarge {
   width: 125px;
   position: relative;
@@ -227,6 +259,7 @@ option:checked {
   flex-direction: row;
   z-index: 1001;
 }
+
 .listSmall {
   width: 125px;
   position: relative;
@@ -234,49 +267,49 @@ option:checked {
   left: -140px;
   background-color: white;
   padding: 1px;
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
   z-index: 1001;
 }
+
 .languages::after {
   display: none;
 }
-.largeFindMenu{
-  @media only screen and (max-width: 763px){
-    display:none;
-  }
-}
-.smallFindMenu {
-  @media only screen and (max-width: 763px){
-    display: flex;
-    flex-direction: column;
-    background-color: $bgColor;
-    // padding: 10px;
-    align-self: flex-start;
-    margin-top: 13px;
-    margin-right: 15px;
-    // margin-left: 13px;
-  }
-  @media only screen and (min-width: 763px){
+
+.largeFindMenu {
+  @media only screen and (max-width: 763px) {
     display: none;
   }
 }
-.burger{
+
+.smallFindMenu {
+  @media only screen and (max-width: 763px) {
+    display: flex;
+    flex-direction: column;
+    background-color: $bgColor;
+    align-self: flex-start;
+    margin-top: 13px;
+    margin-right: 15px;
+  }
+
+  @media only screen and (min-width: 763px) {
+    display: none;
+  }
+}
+
+.burger {
   padding: 10px;
   margin-left: 83px;
-  // width: 15%;
   margin-bottom: 13px;
   border: none !important;
   background-color: transparent !important;
   align-self: left;
 }
+
 .smallMenu {
   margin-left: -137px;
-  margin-top:-40px;
+  margin-top: -40px;
 }
 
 .logo {
-  margin-left:20px;
-  margin-right:7px;
+  margin-left: 20px;
+  margin-right: 7px;
 }

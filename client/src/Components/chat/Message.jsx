@@ -1,5 +1,7 @@
 import React from 'react';
 
+//props from Message Panel key={m.id} id={m.id} senderName={m.senderName} text={m.text}
+
 export const Message = (props) => {
 
         return (

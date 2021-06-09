@@ -1,6 +1,7 @@
 import React from 'react';
 
 //for a strange reason, export default in this component does not work
+//props key={c.id} id={c.id} name={c.name} participants={c.participants} onClick={handleClick}
 
 export const Channel = (props) => {
 

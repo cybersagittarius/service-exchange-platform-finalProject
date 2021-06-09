@@ -1,19 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios';
 import searchContext from '../../context/SearchContext'
-
 import PwResetForm from './forms/PwResetForm'
 
 const PwReset = () => {
 
-    const [newPassword, setNewPassword] = useState("");
-    const [confirmNewPW, setConfirmNewPW] = useState("");
-
-    const [alertPW, setAlertPW] = useState(false);
-    const [alertPWCheck, setAlertPWCheck] = useState(false);
-
     const context = useContext(searchContext);
-    const {userInfo} = context;
+    const {userInfo, newPassword, setNewPassword, alertPW, setAlertPW, confirmNewPW, setConfirmNewPW, alertPWCheck, setAlertPWCheck} = context;
 
      const changeNewPW = (e) => {
         setNewPassword(e.target.value);

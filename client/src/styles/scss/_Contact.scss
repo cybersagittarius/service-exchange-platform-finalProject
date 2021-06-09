@@ -1,7 +1,7 @@
 @import 'variables';
 
-#contact{
-    position:fixed;
+#contact {
+    position: fixed;
     top: 73px;
     margin: auto;
     left: 0px;
@@ -13,42 +13,37 @@
     background-color: $bgColor;
     font-family: $fontFamily;
     font-size: 13px;
-    // box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     height: auto;
     z-index: 999;
-    &h3{
+
+    &h3 {
         font-weight: 400;
     }
-    .form-group{
+
+    .form-group {
         margin: 1rem;
         width: 35vw;
 
-        .form-control{
+        .form-control {
             width: 100%;
-                }
+        }
 
     }
+}
 
+@media screen and (max-width:501px) {
+    #contact {
+        margin-top: 10px;
+        width: 80vw;
 
-@media screen and (max-width:768px){
-    #contact{
-        width: 90vw;
-        left: 5%;
-        & h3{
+        & h3 {
             font-size: 1rem;
             margin-top: .75rem;
         }
-       & .form-group{
-           margin: 0.5rem auto;
+
+        & .form-group {
+            margin: 0.5rem auto;
             width: 60vw;
-            // border: 2px solid red;
         }
-    }
-    // @media only screen and (max-width: 537px){
-    //     width: 80%;
-    //   }
-      @media only screen and (max-width: 763px){
-          top: 92px;
-      }
     }
 }

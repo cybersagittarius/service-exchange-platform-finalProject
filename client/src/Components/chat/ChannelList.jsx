@@ -2,6 +2,7 @@ import React from 'react';
 import { Channel } from './Channel'
 
 //for a strange reason, export default in this component does not work
+//props are channels={channels} onSelectChannel={handleChannelSelect} 
 
 export const ChannelList = (props) => {
 
