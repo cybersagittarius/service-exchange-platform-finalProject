@@ -1,8 +1,7 @@
 import React from "react";
 import SkillsMenuSmall from "./SkillsMenuSmall";
-import MenuLoginAndRegisterSmall from "./MenuLoginAndRegisterSmall";
 import onClickOutside from "react-onclickoutside";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function FindMenuSmall({
   showHide,
@@ -23,11 +22,6 @@ function FindMenuSmall({
 }) {
   FindMenuSmall.handleClickOutside = () => setShow("none");
 
-  
-// const goSearchAndHide = ()=> {
-
-// }
-
   return (
     <>
       <div className="form smallFindMenu">
@@ -38,7 +32,22 @@ function FindMenuSmall({
         <div style={{ display: show }}>
           <form className="DDFindMenu">
             <div className="skillsMenus">
-              <MenuLoginAndRegisterSmall />
+              <div className="btn-group LogRegSmall" role="group">
+                <button>EN</button>
+                <button>DE</button>
+              </div>
+
+              <Link to="/login">
+                <button className="btn log">
+                  <a href="#">Login</a>
+                </button>
+              </Link>
+              <Link to="/register">
+                <button className="btn log">
+                  <a href="#">Register</a>
+                </button>
+              </Link>
+              <br />
               <SkillsMenuSmall
                 title="I'm Looking For"
                 items={items}
@@ -66,7 +75,7 @@ function FindMenuSmall({
                 type="button"
                 value="search"
                 className="btnFind"
-               >
+              >
                 Find
               </button>
             </div>
