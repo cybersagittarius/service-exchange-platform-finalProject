@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import SearchContext from "./SearchContext";
+
 
 const SearchProvider = (props) => {
   const [country, setCountry] = useState(" ");
@@ -8,6 +9,12 @@ const SearchProvider = (props) => {
   const [lookSelection, setLookSelection] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   const [showSkillsSelection, setShowSkillsSelection] = useState("block");
+  const [newPassword, setNewPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [alertEM, setAlertEM] = useState(false);
+  const [alertPW, setAlertPW] = useState(false);
+  const [confirmNewPW, setConfirmNewPW] = useState("");
+  const [alertPWCheck, setAlertPWCheck] = useState(false);
 
   const selectCountry = (e) => {
     setCountry(e);
@@ -40,7 +47,19 @@ const SearchProvider = (props) => {
           userInfo,
           setUserInfo,
           showSkillsSelection,
-          setShowSkillsSelection
+          setShowSkillsSelection,
+          email,
+          setEmail,
+          alertEM,
+          setAlertEM,
+          newPassword,
+          setNewPassword,
+          alertPW,
+          setAlertPW,
+          confirmNewPW,
+          setConfirmNewPW,
+          alertPWCheck,
+          setAlertPWCheck
         }}
       >
         {props.children}

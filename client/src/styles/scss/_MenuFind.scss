@@ -20,35 +20,18 @@
 .form {
   display: flex;
   flex-direction: row;
-  justify-content: left;
-  /* align-items: stretch; */
-  /* height: 35px; */
-  /* @media only screen and (max-width: 841px) {
-    margin-top: 16px;
-    align-self: flex-start;
-    flex-direction: column;
-    justify-content: center;
-    height: auto; 
-  }*/
-}
-
-.countryAndRegion {
-  @media only screen and (max-width: 841px) {
-    display: flex;
-    flex-direction: column;
-    align-content: felx-start;
-  }
+  justify-content: center;
 }
 
 .skillsMenus {
+  margin-left: 9px;
   display: flex;
   flex-direction: row;
 
-  @media only screen and (max-width: 622px) {
+  @media only screen and (max-width: 762px) {
     display: flex;
     flex-direction: column;
-    align-content: felx-start;
-
+    flex-basis: 25%;
   }
 }
 
@@ -106,19 +89,9 @@ option:checked {
   color: -moz-html-cellhighlighttext !important;
 }
 
-// option::after {
-//   display: none !important;
-//   background-color: transparent !important;
-// }
-// option::before {
-//   display: none !important;
-//   background-color: transparent !important;
-// }
 .dd-wrapper {
   margin-left: 5px;
   height: 25px;
-  margin-left: 24px;
-  margin-right: 10px;
   position: relative;
 }
 
@@ -150,12 +123,6 @@ option:checked {
   text-align: left;
   padding-top: 0rem;
 }
-
-// .dd-listSmall {
-//   position: absolute;
-//   top: 0px;
-// left: 82px;
-// }
 
 .dd-list button {
   width: 117px;
@@ -203,8 +170,8 @@ option:checked {
   border-left-width: 0px;
   transform: rotateZ(45deg);
 
-  @media only screen and (max-width: 622px) {
-    display: none;
+  @media only screen and (max-width: 762px) {
+    margin-left: 1.7em;
   }
 }
 
@@ -288,8 +255,6 @@ option:checked {
   top: 0px !important;
   left: -4px;
   background-color: white;
-}
-.listX {
   display: flex;
   flex-direction: row;
   z-index: 1001;
@@ -310,14 +275,13 @@ option:checked {
 }
 
 .largeFindMenu {
-  @media only screen and (max-width: 537px) {
+  @media only screen and (max-width: 763px) {
     display: none;
   }
 }
 
 .smallFindMenu {
-  @media only screen and (max-width: 537px) {
-
+  @media only screen and (max-width: 763px) {
     display: flex;
     flex-direction: column;
     background-color: $bgColor;
@@ -326,7 +290,7 @@ option:checked {
     margin-right: 15px;
   }
 
-  @media only screen and (min-width: 537px) {
+  @media only screen and (min-width: 763px) {
     display: none;
   }
 }

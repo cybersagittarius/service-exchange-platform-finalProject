@@ -1,5 +1,4 @@
 import React from "react";
-import Team from './Team'
 
 import { Card, CardDeck } from "react-bootstrap";
 import { FaRegCompass, FaMedapps } from "react-icons/fa";

@@ -3,7 +3,6 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenuLarge from "./SkillsMenuLarge";
 import items from "../assets/data/itemsSkills";
 import SearchContext from "../context/SearchContext";
-// import Visitor from '../Components/searchOutcome/Visitor';
 import { Link, useHistory } from "react-router-dom";
 import FindMenuSmall from "./FindMenuSmall";
 
@@ -79,7 +78,6 @@ function FindMenu() {
             type="button"
             value="search"
             className="btnFind"
-            // style={{display:showSkillsSelection}}
           >
             Find
           </button>
