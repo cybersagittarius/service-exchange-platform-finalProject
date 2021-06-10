@@ -15,6 +15,8 @@ const SearchProvider = (props) => {
   const [alertPW, setAlertPW] = useState(false);
   const [confirmNewPW, setConfirmNewPW] = useState("");
   const [alertPWCheck, setAlertPWCheck] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+
 
   const selectCountry = (e) => {
     setCountry(e);
@@ -59,7 +61,9 @@ const SearchProvider = (props) => {
           confirmNewPW,
           setConfirmNewPW,
           alertPWCheck,
-          setAlertPWCheck
+          setAlertPWCheck,
+          searchResults,
+          setSearchResults
         }}
       >
         {props.children}
