@@ -37,21 +37,25 @@ setLoading(true);
 try {
     const config = {
         headers: {
-            'Content Type': 'application/json'
+            'Content-Type': 'application/json'
         }
     };
     const body = JSON.stringify(newMessage);
     const response = await axios.post(
-        'https://localhost:4000/contact',
+        'http://localhost:4000/contact',
         body,
         config
     );
 setResponseMessage(response.data.message);
-contactData.name = "";
-contactData.email = "";
-contactData.message = "";
+// contactData.name = "";
+// contactData.email = "";
+// contactData.message = "";
 
-
+setContactData({
+    name,
+    email,
+    message
+})
 } catch (err) {
    console.log(`Something went wrong ${err}`);
    setLoading(false); 
