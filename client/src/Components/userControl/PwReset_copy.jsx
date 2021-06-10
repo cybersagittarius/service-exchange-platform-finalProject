@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import axios from 'axios';
-//import searchContext from '../../context/SearchContext'
-
+import searchContext from '../../context/SearchContext'
 import PwResetForm from './forms/PwResetForm'
 
 const PwReset = (props) => {
+
+    const context = useContext(searchContext);
+
+    const {newPassword, setNewPassword, alertPW, setAlertPW, confirmNewPW, setConfirmNewPW, alertPWCheck, setAlertPWCheck} = context;
 
     //frontend url: http://localhost:3000/reset_password/thisisthetoken
     console.log(props.match.params.token)
@@ -16,12 +19,6 @@ const PwReset = (props) => {
         withCredentials: true                    
     }) 
 
-    const [newPassword, setNewPassword] = useState("");
-    const [confirmNewPW, setConfirmNewPW] = useState("");
-
-    const [alertPW, setAlertPW] = useState(false);
-    const [alertPWCheck, setAlertPWCheck] = useState(false);
-
     //const context = useContext(searchContext);
     //const {userInfo} = context;
 
@@ -31,12 +28,10 @@ const PwReset = (props) => {
 
     const changeConfirmNewPW = (e) =>{
         setConfirmNewPW(e.target.value)
-    }; 
-    
+    };     
         
     const updatePW = async () => {
             try{
-
                 const result = await authAxios.post('/reset_password/',{
                     newPassword: newPassword //check that the key is the same as in the backend
                 })
@@ -70,7 +65,9 @@ const PwReset = (props) => {
         updatePW();
         
         setNewPassword("");
-        setConfirmNewPW("");        
+        setConfirmNewPW("");   
+        
+        props.history.push('/login')
     }
 
     useEffect(() => {
@@ -108,7 +105,6 @@ const PwReset = (props) => {
         </>
     )
 }
-
 
 export default PwReset
 
