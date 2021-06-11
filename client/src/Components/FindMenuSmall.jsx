@@ -1,12 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import SkillsMenuSmall from "./SkillsMenuSmall";
+import SearchContext from "../context/SearchContext";
 import onClickOutside from "react-onclickoutside";
 import { Link } from "react-router-dom";
 
-function FindMenuSmall({
-  showHide,
-  setShow,
-  show,
+function FindMenuSmall({  
   items,
   lookSelection,
   handleLookSelection,
@@ -16,10 +14,13 @@ function FindMenuSmall({
   RegionDropdown,
   region,
   selectRegion,
-  goSearch,
   setShowSkillsSelection,
-  showSkillsSelection,
+  showSkillsSelection
+  
 }) {
+  const context = useContext(SearchContext);
+  const {show, setShow, showHide, goSearch} = context
+
   FindMenuSmall.handleClickOutside = () => setShow("none");
 
   return (
