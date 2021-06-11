@@ -9,6 +9,7 @@ const SearchProvider = (props) => {
   const [lookSelection, setLookSelection] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   const [showSkillsSelection, setShowSkillsSelection] = useState("block");
+  const [password,setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
@@ -47,8 +48,11 @@ const SearchProvider = (props) => {
           country,
           region,
           offerSelection,
+          setOfferSelection,
           lookSelection,
+          setCountry,
           selectCountry,
+          setRegion,
           selectRegion,
           handleOfferSelection,
           handleLookSelection,
@@ -60,6 +64,8 @@ const SearchProvider = (props) => {
           setEmail,
           alertEM,
           setAlertEM,
+          password,
+          setPassword,
           newPassword,
           setNewPassword,
           alertPW,
