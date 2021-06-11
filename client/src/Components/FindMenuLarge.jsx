@@ -3,13 +3,10 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenuLarge from "./SkillsMenuLarge";
 import items from "../assets/data/itemsSkills";
 import SearchContext from "../context/SearchContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FindMenuSmall from "./FindMenuSmall";
 
-function FindMenu() {
-  const history = useHistory();
-
-  const [show, setShow] = useState("none");
+function FindMenu({goSearch}) {  
 
   const context = useContext(SearchContext);
 
@@ -22,27 +19,20 @@ function FindMenu() {
     handleLookSelection,
     setShowSkillsSelection,
     showSkillsSelection,
+    // itemSkills,
+    // setItemSkills
   } = context;
+  
+  // const data = { country, region, lookSelection, userInfo, searchResults, setItemSkills }
+ 
 
-  const goSearch = () => {
-    showHide();
-    setShowSkillsSelection("none");
-    history.push("/search");
-  };
-
-  const showHide = () => {
-    if (show === "none") {
-      setShow("block");
-    } else {
-      setShow("none");
-    }
-  };
+ 
 
   return (
     <>
       <Link to="/">
         <span className="logo">
-          <i class="fab fa-staylinked fa-2x"></i>
+          <i className="fab fa-staylinked fa-2x"></i>
         </span>
       </Link>
 
@@ -84,10 +74,10 @@ function FindMenu() {
         </div>
       </form>
 
-      <FindMenuSmall
-        showHide={showHide}
-        show={show}
-        setShow={setShow}
+      <FindMenuSmall 
+        //showHide={showHide}
+        // show={show}
+        //setShow={setShow}
         items={items}
         lookSelection={lookSelection}
         handleLookSelection={handleLookSelection}

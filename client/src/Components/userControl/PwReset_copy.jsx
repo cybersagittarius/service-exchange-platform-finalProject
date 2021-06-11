@@ -28,12 +28,10 @@ const PwReset = (props) => {
 
     const changeConfirmNewPW = (e) =>{
         setConfirmNewPW(e.target.value)
-    }; 
-    
+    };     
         
     const updatePW = async () => {
             try{
-
                 const result = await authAxios.post('/reset_password/',{
                     newPassword: newPassword //check that the key is the same as in the backend
                 })
@@ -67,7 +65,9 @@ const PwReset = (props) => {
         updatePW();
         
         setNewPassword("");
-        setConfirmNewPW("");        
+        setConfirmNewPW("");   
+        
+        props.history.push('/login')
     }
 
     useEffect(() => {
@@ -105,7 +105,6 @@ const PwReset = (props) => {
         </>
     )
 }
-
 
 export default PwReset
 

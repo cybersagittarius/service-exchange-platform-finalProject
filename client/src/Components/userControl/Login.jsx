@@ -20,15 +20,33 @@ const Login = (props) => {
 
     /// FETCH TO SEND DATA TO BACKEND
     ///axios does not need res.json at all!!!!!!!!!!!!!
+  //   axios.post('http://localhost:4000/login', data)
+  //   .then(res => {      
+  //     if(res.data.status === 200){     
+  //     props.history.push('/profile')
+  //     alert('login succeeded!')
+  //     return setUserInfo({token: res.data.token, user: res.data.user})
+  //   }else{
+  //     alert('Oops! try again!')  
+  //   }
+  // }).catch(error=>
+  //     console.log(error)        
+  //   )}
+
     axios.post('http://localhost:4000/login', data)
-      .then(res => {
-        setUserInfo({ token: res.data.token, user: res.data.user })
-        props.history.push("/profile")
-
-      })
-      .catch(error => console.log(error.res && error.res.data))
-  }
-
+    .then(res => { 
+      setUserInfo({token: res.data.token, user: res.data.user})       
+      if(res.data.status===400){
+        alert('Oops! try again!')       
+      }else{
+         props.history.push('/profile')
+        alert('login succeeded!') 
+        }         
+      }).catch(error=>{    
+        console.log(error)
+      }        
+    )}
+  
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -54,20 +72,28 @@ const Login = (props) => {
     //   return false;
     // }
 
-    rememberMe === true
-      ? saveOnLocal(email, password)
-      : console.log("No email nor password saved in the browser");
-
+    // rememberMe === true
+    //   ? saveOnLocal(userInfo.email, userInfo.token)
+    //   : console.log("No email nor token saved in the browser");
+      
     postReturnedUser(email, password);
 
     setEmail("");
     setPassWord("");
-    setRememberMe(false);
-
-
+    setRememberMe(false);    
   };
 
+//   const saveOnLocal = (key, initialValue) => {
+//     const [value, setValue] = use
 
+//   useEffect(()=>{
+
+
+
+//   }, []) 
+
+//   saveOnLocal()
+// }
 
   const saveOnLocal = (email, password) => {
     let data = JSON.parse(localStorage.getItem("user"));

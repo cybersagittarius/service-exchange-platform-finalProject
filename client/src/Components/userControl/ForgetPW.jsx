@@ -15,13 +15,18 @@ const ForgetPW = () => {
 
     axios
       .post("http://localhost:4000/forget_password", data)
-      .then((res) => {
-        console.log(res.data);
-        alert("A link has been sent to your email account!");
-      })
-      // in case the API responded, we will have the error inside error.response.data
-      .catch((error) => console.log(error.res && error.res.data));
-  };
+      .then(res => {
+        console.log(res.data)
+        if(res.data.status===200){
+         // setUserInfo({token:res.data.token, user:res.data.user})
+        alert('A link has been sent to your valid email account with us!')       
+        }else{
+          alert('This email has not been found!')      
+        }    
+     })
+     // in case the API responded, we will have the error inside error.response.data 
+    .catch(error=>alert(error.res && error.res.data))  
+  } 
 
   const submitHandler = (e) => {
     e.preventDefault();

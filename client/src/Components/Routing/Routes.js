@@ -1,18 +1,17 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SearchProvider from "../../context/SearchProvider";
-import Main from "../Main";
-import LandingPage from "../LandingPage";
-import LoginPage from "../userControl/Login";
-import RegisterPage from "../userControl/Register";
-import ContactPage from "../Contact";
-import SearchPage from "../Search";
-import ForgetPWPage from "../userControl/ForgetPW";
-import PwResetPage from "../userControl/PwReset_copy";
-import ChatPage from "../chat/Chat";
-import NotFound from "../NotFound";
-import Footer from "../Footer";
-import Header from "../Header";
-import ProfilePage from "../ProfilePage";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import SearchProvider from '../../context/SearchProvider';
+import LandingPage from '../LandingPage';
+import LoginPage from '../userControl/Login';
+import RegisterPage from '../userControl/Register';
+import ContactPage from '../Contact';
+import Footer from '../Footer'
+import Header from '../Header'
+import SearchPage from '../Search';
+import ForgetPWPage from '../userControl/ForgetPW';
+import PwResetPage from '../userControl/PwReset_copy';
+import ChatPage from '../chat/Chat';
+import NotFound from '../NotFound';
+import ProfilePage from '../ProfilePage';
 
 const Routes = () => (
   <SearchProvider>

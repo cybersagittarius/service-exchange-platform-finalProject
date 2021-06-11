@@ -5,7 +5,7 @@ import searchContext from "../../context/SearchContext";
 
 import RegistrationForm from "./forms/RegistrationForm";
 
-const Register = () => {
+const Register = (props) => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [username, setUserName] = useState("");
@@ -60,11 +60,16 @@ const Register = () => {
     axios
       .post("http://localhost:4000/register", data)
       //we do not need res.json in axios at all
-      .then((res) =>
-        setUserInfo({ token: res.data.token, user: res.data.user })
-      )
-      // in case the API responded, we will have the error inside error.response.data
-      .catch((err) => console.log(err.res && err.res.data));
+      .then(res => {
+        setUserInfo({token: res.data.token, user: res.data.user})
+        props.history.push('/profile')
+        alert('registration succeeded!')
+      })    
+      // in case the API responded, we will have the error inside error.response.data 
+      .catch(err => {
+          console.log(err.res && err.res.data)
+          alert('please try again with a different email account')
+      })
   };
 
   const submitHandler = (e) => {

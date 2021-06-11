@@ -1,11 +1,52 @@
-import { Link } from "react-router-dom";
+import React, {useEffect, useContext} from 'react'
+import { Link, useHistory } from "react-router-dom";
 import FindMenuLarge from "./FindMenuLarge";
+import Context from '../context/SearchContext'
+import axios from 'axios'
 
 const Header = () => {
+
+  const context = useContext(Context)
+  const {setItemSkills, country, region, lookSelection, userInfo, searchResults, setSearchResults, setShowSkillsSelection, show, setShow } = context
+  const history = useHistory();
+  
+    useEffect(() => {
+      axios.get('http://localhost:4000/itemSkills')
+      .then(res => { 
+        setItemSkills(res.data)  
+        
+        }).catch(error=>{    
+          console.log(error)
+        }        
+      )}, [])
+
+      const goSearch = () => {
+        const data = { country, region, lookSelection, userInfo, searchResults }
+        axios.post('http://localhost:4000/search', data)
+        .then(res => { 
+           setSearchResults(res.data)         
+        })
+          .catch(error=>{    
+           console.log(error)
+      }        
+        )
+        showHide();
+        setShowSkillsSelection("none");
+        history.push("/search");
+      };
+    
+      const showHide = () => {
+        if (show === "none") {
+          setShow("block");
+        } else {
+          setShow("none");
+        }
+      };
+
   return (
     <>
       <div className="find">
-        <FindMenuLarge />
+        <FindMenuLarge goSearch={goSearch}/>
         <div className="btn-group LogRegLarge" role="group">
           <Link to="/login">
             <button className="btn log">
