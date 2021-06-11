@@ -14,6 +14,7 @@ const registerUser = async(req, res, next) => {
    //console.log(req.body);
   try {
      let checkUser = await User.findOne({ email: email });
+     console.log(checkUser);
      if (checkUser) {
        return res
          .status(400)
