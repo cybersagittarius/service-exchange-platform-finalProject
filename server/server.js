@@ -55,12 +55,14 @@ const deleteRouter = require('./routes/deleteRouter');
 const forgetPwRouter = require('./routes/forgetPwRouter')
 const loginRouter = require('./routes/loginRouter');
 const profileRouter = require('./routes/profileRouter');
+const profilePwUpdateRouter = require('./routes/profilePwUpdateRouter');
 const pwResetRouter = require('./routes/pwResetRouter');
 const registerRouter = require('./routes/registerRouter');
-const chatRouter = require('./routes/chatRouter');
+//const chatRouter = require('./routes/chatRouter');
 const itemSkillsSeedRouter = require('./routes/itemSkillsSeedRouter')
-// const itemSkillsRouter = require('./routes/itemSkillsRouter');
+const itemSkillsRouter = require('./routes/itemSkillsRouter');
 const searchRouter = require('./routes/searchRouter');
+
 
 //user routers as middlewares
 //not going to implement social media account auth in this projects, 
@@ -72,11 +74,12 @@ app.use('/delete', deleteRouter);
 app.use('/forget_password', forgetPwRouter);
 app.use('/login', loginRouter);
 app.use('/profile', profileRouter);
+app.use('/profile/change_password', profilePwUpdateRouter)
 app.use('/register', registerRouter);
 app.use('/reset_password', pwResetRouter);
-app.use('/chat', chatRouter)
+//app.use('/chat', chatRouter)
 app.use('/itemSkillsSeed', itemSkillsSeedRouter)
-// app.use('/itemSkills', itemSkillsRouter);
+app.use('/itemSkills', itemSkillsRouter);
 app.use('/search', searchRouter);
 
 

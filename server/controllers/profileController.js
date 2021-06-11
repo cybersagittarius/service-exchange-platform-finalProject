@@ -1,15 +1,14 @@
 const User = require('../models/userModel');
-const jwt = require("jsonwebtoken");
 const express = require("express");
 //const session = request('express-session');
 
 const profileUser= async (req, res, next) => {  
   // we only update
-  //firstname, lastname, country, region, username, skills, avatar
+  // firstname, lastname, country, region, username, skills, avatar
   // we post   description
   // email is not to be modified
 
-  console.log(req.user)
+  console.log(req.user) //req.user comes from login controller
   console.log(req.body)
   try {
     //id: user._id. req.user._id, instead of req.user.id is used, because in login controller the payload takes _id as one part of the jwt generator                                        
