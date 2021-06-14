@@ -7,9 +7,9 @@ import SearchContext  from '../context/SearchContext';
 
 const Search = () => {  
 
-const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, setItemSkills } = useContext(SearchContext);
+const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, itemSkills } = useContext(SearchContext);
 
-const data = { country, region, lookSelection, userInfo, searchResults, setItemSkills }
+const data = { country, region, lookSelection, userInfo, searchResults, itemSkills }
 console.log(data)  
     
   return (

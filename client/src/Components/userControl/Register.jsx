@@ -16,6 +16,7 @@ const Register = (props) => {
   //we bring in the store at this point
   const context = useContext(searchContext);
   const {
+    userInfo,
     setUserInfo,
     email,
     setEmail,
@@ -29,7 +30,8 @@ const Register = (props) => {
     alertPWCheck,
     alertEM,
     offerSelection,
-    setOfferSelection
+    setOfferSelection,
+    itemSkills,    
   } = context;
 
   const postNewUser = (
@@ -42,7 +44,8 @@ const Register = (props) => {
     password,
     confirmPW,
     savedImage,
-    offerSelection
+    offerSelection,
+    
   ) => {
     const data = {
       firstname,
@@ -55,6 +58,7 @@ const Register = (props) => {
       confirmPW,
       savedImage,
       offerSelection,
+    
     };
 
     axios
@@ -73,7 +77,8 @@ const Register = (props) => {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
+        e.preventDefault();     
+
 
     //email validator source:
     //At least 8 characters long;
@@ -121,7 +126,8 @@ const Register = (props) => {
       password,
       confirmPW,
       savedImage,
-      offerSelection
+      offerSelection,
+      
     );
 
     //  setFirstName("");
@@ -198,7 +204,7 @@ const Register = (props) => {
   return (
     <>
       <RegistrationForm
-        submitHandler={submitHandler}
+        submitHandler = {submitHandler}
         changeFirstName={changeFirstName}
         changeLastName={changeLastName}
         changeEmail={changeEmail}
@@ -227,6 +233,7 @@ const Register = (props) => {
         onBeforeFileLoad={onBeforeFileLoad}
         preview={preview}
         savedImage={savedImage}
+        itemSkills={itemSkills}        
       />
     </>
   );

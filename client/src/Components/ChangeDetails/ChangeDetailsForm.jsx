@@ -13,18 +13,12 @@ import AvatarUploader from "../userControl/upload-edit/AvatarUploader";
 
 const ChangeDetailsForm = (props) => {
 
-
-
   const firstnameRef = useRef()
-
 
   useEffect(() => {
     firstnameRef.current.focus();
 
   }, []);
-
-
-
 
   return (
     <>

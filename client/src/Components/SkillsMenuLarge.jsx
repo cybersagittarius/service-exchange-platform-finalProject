@@ -126,3 +126,5 @@ const clickOutsideConfig = {
   handleClickOutside: () => SkillsMenu.handleClickOutside,
 };
 export default onClickOutside(SkillsMenu, clickOutsideConfig);
+
+//export default SkillsMenu;

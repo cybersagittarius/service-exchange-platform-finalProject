@@ -7,7 +7,7 @@ import axios from 'axios'
 const Header = () => {
 
   const context = useContext(Context)
-  const {setItemSkills, country, region, lookSelection, userInfo, searchResults, setSearchResults, setShowSkillsSelection, show, setShow } = context
+  const {itemSkills, setItemSkills, country, region, lookSelection, userInfo, searchResults, setSearchResults, setShowSkillsSelection, show, setShow } = context
   const history = useHistory();
   
     useEffect(() => {
@@ -21,7 +21,7 @@ const Header = () => {
       )}, [])
 
       const goSearch = () => {
-        const data = { country, region, lookSelection, userInfo, searchResults }
+        const data = { itemSkills, country, region, lookSelection, userInfo, searchResults }
         axios.post('http://localhost:4000/search', data)
         .then(res => { 
            setSearchResults(res.data)         

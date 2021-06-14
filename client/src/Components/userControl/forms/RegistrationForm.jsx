@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useContext } from "react"
 import SkillsMenu from '../../SkillsMenuLarge'
-import items from '../../../assets/data/itemsSkills'
+//import items from '../../../assets/data/itemsSkills'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
 import Main from '../../Main'
@@ -11,6 +11,7 @@ import AvatarUploader from "../upload-edit/AvatarUploader";
 
 const RegistrationForm = (props) => {
 
+  
   const firstnameRef = useRef()
 
   useEffect(()=> {
@@ -158,14 +159,29 @@ const RegistrationForm = (props) => {
                     <label>
                       Skills I can offer
                     </label>
-                    
-                    <SkillsMenu 
+
+                    {/* <SkillsMenu 
                       // title="I'm looking for" 
                       className="form-control"
                       items={ items } 
                       multiSelect
                       selection={props.offerSelection}
-                      handleSelection={props.changeOfferSelection}/>                    
+                      handleSelection={props.changeOfferSelection}/>    */}
+                    
+                    <SkillsMenu 
+                      // title="I'm looking for" 
+                      // className="form-control"
+                      // items={items} 
+                      // // items = { props.itemSkills }
+                      // // itemSkills={itemSkills}
+                      // multiSelect={props.multiSelect}
+                      // selection={props.offerSelection}
+                      // handleSelection={props.changeOfferSelection}/>    
+                      className="form-control"
+                      items={props.itemSkills}
+                      multiSelect
+                      selection={props.offerSelection}
+                      handleSelection={props.changeOfferSelection} />                    
                     
                   </div>
 

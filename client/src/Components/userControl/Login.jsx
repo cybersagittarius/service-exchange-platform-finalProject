@@ -9,7 +9,7 @@ const Login = (props) => {
   //we bring in the store at this point
   const context = useContext(searchContext);
 
-  const { setUserInfo, email, setEmail, alertEM, alertPW} = context;
+  const { setUserInfo, email, setEmail, alertEM, alertPW}  = context;
 
   const [password, setPassWord] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
