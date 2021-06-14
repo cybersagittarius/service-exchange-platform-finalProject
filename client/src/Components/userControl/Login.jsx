@@ -1,11 +1,18 @@
 import { useState, useContext } from "react";
+import {useHistory} from 'react-router-dom'
+
 //import axios from './configure-files/axios'
 import axios from "axios";
 import searchContext from "../../context/SearchContext";
 
 import LoginForm from "./forms/LoginForm";
 
+
+
 const Login = (props) => {
+
+  const history = useHistory();
+  
   //we bring in the store at this point
   const context = useContext(searchContext);
 
@@ -39,7 +46,7 @@ const Login = (props) => {
       if(res.data.status===400){
         alert('Oops! try again!')       
       }else{
-         props.history.push('/profile')
+        history.push('/profile')
         alert('login succeeded!') 
         }         
       }).catch(error=>{    

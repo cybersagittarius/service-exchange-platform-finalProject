@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation, useHistory } from "react-router-dom";
 import SearchContext from "./SearchContext";
 
 
@@ -18,12 +19,11 @@ const SearchProvider = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const [itemSkills, setItemSkills] = useState([]);
   const [show, setShow] = useState('none');
+  const [currentPage, setCurrentPage] = useState("/")
+
+  const location = useLocation();
+  const history = useHistory();
   
-  //showHide={showHide}
-        // show={show}
-        //setShow={setShow}
-
-
   const selectCountry = (e) => {
     setCountry(e);
   };
@@ -38,6 +38,23 @@ const SearchProvider = (props) => {
 
   const handleLookSelection = (selection) => {
     setLookSelection(selection);
+  };
+  const goLogin = () => {
+    // console.log(location.pathname);
+    if(location.pathname !== '/logInPage' && location.pathname !== '/register'){
+      setCurrentPage(location.pathname);
+      
+    }
+    history.push("/logInPage");
+  };
+
+  const goRegister = () => {
+    // console.log(location.pathname);
+    if(location.pathname !== '/logInPage' && location.pathname !== '/register'){
+      setCurrentPage(location.pathname);
+      
+    }
+    history.push("/register");
   };
 
   return (
@@ -73,7 +90,11 @@ const SearchProvider = (props) => {
           itemSkills,
           setItemSkills, 
           show,
-          setShow
+          setShow,
+          currentPage,
+          setCurrentPage,
+          goRegister,
+          goLogin
         }}
       >
         {props.children}
