@@ -20,7 +20,7 @@ const RegistrationForm = (props) => {
 
   return (
     <>
-    <Main />
+    {/* <Main /> */}
       <div className="backRegister">
         <div className="card div-center">
           <div className="container">

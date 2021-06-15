@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SearchProvider from '../../context/SearchProvider';
 import LandingPage from '../LandingPage';
-import LoginPage from '../userControl/Login';
-import RegisterPage from '../userControl/Register';
+// import LoginPage from '../userControl/Login';
+import LogInPage from '../LogInPage';
+import RegisterPage from '../RegisterPage';
 import ContactPage from '../Contact';
 import Footer from '../Footer'
 import Header from '../Header'
@@ -15,13 +16,14 @@ import ProfilePage from '../ProfilePage';
 
 const Routes = () => (
   
-    <Router>
-      <SearchProvider>
+  <Router>
+    <SearchProvider>
       <Header />
       
       <Switch>
         <Route path="/" exact component={LandingPage} />
-        <Route path="/login" exact component={LoginPage} />
+        {/* <Route path="/login" exact component={LoginPage} /> */}
+        <Route path="/logInPage" exact component={LogInPage} />
         <Route path="/register" exact component={RegisterPage} />
         <Route path="/forget_password" exact component={ForgetPWPage} />
         <Route path="/reset_password/:token" exact component={PwResetPage} />
@@ -33,9 +35,7 @@ const Routes = () => (
         <Route component={NotFound} />
       </Switch>
       <Footer />
-       </SearchProvider>
-    </Router>
-    
- 
+    </SearchProvider>
+  </Router>
 );
 export default Routes;

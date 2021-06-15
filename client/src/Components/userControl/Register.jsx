@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 //import axios from './configure-files/axios'
 import axios from "axios";
 import searchContext from "../../context/SearchContext";
-
+import { useHistory } from "react-router";
 import RegistrationForm from "./forms/RegistrationForm";
 
 const Register = (props) => {
@@ -15,6 +15,7 @@ const Register = (props) => {
 
   //we bring in the store at this point
   const context = useContext(searchContext);
+  const history = useHistory()
   const {
     userInfo,
     setUserInfo,
@@ -66,12 +67,12 @@ const Register = (props) => {
       //we do not need res.json in axios at all
       .then(res => {
         setUserInfo({token: res.data.token, user: res.data.user})
-        props.history.push('/profile')
+        history.push('/profile')
         alert('registration succeeded!')
       })    
       // in case the API responded, we will have the error inside error.response.data 
       .catch(err => {
-          console.log(err.res && err.res.data)
+          console.log(err)
           alert('please try again with a different email account')
       })
   };
