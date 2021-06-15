@@ -31,7 +31,7 @@ const LoginForm = (props) => {
 
   return (
     <>
-    <Main />
+    {/* <Main /> */}
       <div className="backLogin">
         <div className="div-center">
           <div className="container">

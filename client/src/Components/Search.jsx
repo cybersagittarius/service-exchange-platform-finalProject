@@ -1,7 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 // import usersGuest from '../assets/data/usersData';
-import {FiChevronRight, FiChevronLeft} from 'react-icons/fi';
 import SearchContext  from '../context/SearchContext';
 
 

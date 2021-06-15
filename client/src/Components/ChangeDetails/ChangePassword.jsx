@@ -2,9 +2,7 @@ import React, { useRef, useEffect, useContext } from "react"
 import MyAlert from "../userControl/layout/Alert";
 import SearchContext from "../../context/SearchContext";
 import { Link } from "react-router-dom";
-//3rd party package
-import RegionCountrySelector from "../userControl/selector/RegionCountrySelector";
-import AvatarUploader from "../userControl/upload-edit/AvatarUploader";
+
 
 const ChangePassword = (props) => {
 

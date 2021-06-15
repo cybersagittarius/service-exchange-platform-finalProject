@@ -15,11 +15,20 @@ function FindMenuSmall({
   region,
   selectRegion,
   setShowSkillsSelection,
-  showSkillsSelection
-  
+  showSkillsSelection,
+  goSearch,  
 }) {
   const context = useContext(SearchContext);
-  const {show, setShow, showHide, goSearch} = context
+  const {show, setShow, goRegister, goLogin} = context
+
+
+  const showHide = () => {
+    if (show === "none") {
+      setShow("block");
+    } else {
+      setShow("none");
+    }
+  };
 
   FindMenuSmall.handleClickOutside = () => setShow("none");
 
@@ -31,23 +40,20 @@ function FindMenuSmall({
         </button>
 
         <div style={{ display: show }}>
-          <form className="DDFindMenu">
+          <div className="DDFindMenu">
             <div className="skillsMenus">
               <div className="btn-group LogRegSmall" role="group">
                 <button>EN</button>
                 <button>DE</button>
               </div>
 
-              <Link to="/login">
-                <button className="btn log">
-                  <a href="#">Login</a>
+                <button onClick={goLogin} className="btn log">
+                  Login
                 </button>
-              </Link>
-              <Link to="/register">
-                <button className="btn log">
-                  <a href="#">Register</a>
+
+                <button onClick={goRegister} className="btn log">
+                  Register
                 </button>
-              </Link>
               <br />
               <SkillsMenuSmall
                 title="I'm Looking For"
@@ -80,7 +86,7 @@ function FindMenuSmall({
                 Find
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>
