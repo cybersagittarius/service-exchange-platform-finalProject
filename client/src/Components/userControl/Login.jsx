@@ -7,7 +7,7 @@ import searchContext from "../../context/SearchContext";
 
 import LoginForm from "./forms/LoginForm";
 
-const Login = (props) => {
+const Login = () => {
   const history = useHistory();
 
   //we bring in the store at this point
@@ -21,7 +21,11 @@ const Login = (props) => {
     alertPW,
     setShowHideButtons,
     setShowLogout,
+    currentPage,
+    searchAfterLogin
   } = context;
+
+
 
   const [password, setPassWord] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -52,7 +56,8 @@ const Login = (props) => {
         if (res.data.status === 400) {
           alert("Oops! try again!");
         } else {
-          history.push("/profile");
+          // history.push("/profile");
+          currentPage === "/search" ? searchAfterLogin({ token: res.data.token, user: res.data.user }) : history.push("/profile")
           alert("login succeeded!");
           setShowHideButtons("none");
           setShowLogout("block");
@@ -109,19 +114,19 @@ const Login = (props) => {
   //   saveOnLocal()
   // }
 
-  const saveOnLocal = (email, password) => {
-    let data = JSON.parse(localStorage.getItem("user"));
+  // const saveOnLocal = (email, password) => {
+  //   let data = JSON.parse(localStorage.getItem("user"));
 
-    if (data == null) {
-      data = { email, password };
-    } else {
-      data.email = email;
-      data.password = password;
-    }
+  //   if (data == null) {
+  //     data = { email, password };
+  //   } else {
+  //     data.email = email;
+  //     data.password = password;
+  //   }
 
-    localStorage.setItem("user", JSON.stringify(data));
-    console.log(data);
-  };
+  //   localStorage.setItem("user", JSON.stringify(data));
+  //   console.log(data);
+  // };
 
   //set change handlers at the parent level
   const changeEmail = (e) => {

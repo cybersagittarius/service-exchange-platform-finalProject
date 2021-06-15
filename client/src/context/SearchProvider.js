@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
+import axios from "axios";
 import SearchContext from "./SearchContext";
 
 const SearchProvider = (props) => {
@@ -10,7 +11,7 @@ const SearchProvider = (props) => {
   const [userInfo, setUserInfo] = useState({});
   const [showSkillsSelection, setShowSkillsSelection] = useState("block");
   const [newPassword, setNewPassword] = useState("");
-  const [password, setPassWord] = useState("") 
+  const [password, setPassWord] = useState("");
   const [email, setEmail] = useState("");
   const [alertEM, setAlertEM] = useState(false);
   const [alertPW, setAlertPW] = useState(false);
@@ -22,7 +23,6 @@ const SearchProvider = (props) => {
   const [currentPage, setCurrentPage] = useState("/");
   const [showHideButton, setShowHideButtons] = useState("block");
   const [showLogout, setShowLogout] = useState("none");
-
 
   const location = useLocation();
   const history = useHistory();
@@ -67,15 +67,38 @@ const SearchProvider = (props) => {
 
   const goProfile = (e) => {
     e.preventDefault();
-    history.push('/profile');
-    };
+    history.push("/profile");
+  };
 
   const goLogOut = (e) => {
     e.preventDefault();
-    history.push('/');
+    history.push("/");
     setShowHideButtons("block");
     setShowLogout("none");
-    setUserInfo({})
+    setUserInfo({});
+  };
+
+  const searchAfterLogin = (userInfo) => {
+    const data = { country, region, lookSelection, userInfo };
+    axios
+      .post("http://localhost:4000/search", data)
+      .then((res) => {
+        setSearchResults(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    showHide();
+    setShowSkillsSelection("none");
+    history.push("/search");
+  };
+
+  const showHide = () => {
+    if (show === "none") {
+      setShow("block");
+    } else {
+      setShow("none");
+    }
   };
 
   return (
@@ -102,7 +125,7 @@ const SearchProvider = (props) => {
           setEmail,
           alertEM,
           setAlertEM,
-          password, 
+          password,
           setPassWord,
           newPassword,
           setNewPassword,
@@ -128,7 +151,8 @@ const SearchProvider = (props) => {
           showLogout,
           setShowLogout,
           goProfile,
-          }}
+          searchAfterLogin,
+        }}
       >
         {props.children}
       </SearchContext.Provider>
