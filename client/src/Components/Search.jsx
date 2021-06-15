@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 // import usersGuest from '../assets/data/usersData';
-import SearchContext  from '../context/SearchContext';
+import {FiChevronRight, FiChevronLeft} from 'react-icons/fi';
+import SearchContext from '../context/SearchContext';
 
 
 const Search = () => {  
 
-const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, setItemSkills } = useContext(SearchContext);
+const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, itemSkills } = useContext(SearchContext);
 
-const data = { country, region, lookSelection, userInfo, searchResults, setItemSkills }
+const data = { country, region, lookSelection, userInfo, searchResults, itemSkills }
 console.log(data)  
     
   return (
