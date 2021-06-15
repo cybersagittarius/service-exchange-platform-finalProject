@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenuLarge from "./SkillsMenuLarge";
-import items from "../assets/data/itemsSkills";
+//import items from "../assets/data/itemsSkills";
 import SearchContext from "../context/SearchContext";
 import { Link } from "react-router-dom";
 import FindMenuSmall from "./FindMenuSmall";
@@ -19,14 +19,12 @@ function FindMenu({goSearch}) {
     handleLookSelection,
     setShowSkillsSelection,
     showSkillsSelection,
-    // itemSkills,
+    itemSkills,
     // setItemSkills
   } = context;
   
   // const data = { country, region, lookSelection, userInfo, searchResults, setItemSkills }
- 
-
- 
+  
 
   return (
     <>
@@ -40,7 +38,8 @@ function FindMenu({goSearch}) {
         <div className="skillsMenus">
           <SkillsMenuLarge
             title="I'm Looking For"
-            items={items}
+            // items={items}
+            items={itemSkills}
             multiSelect
             selection={lookSelection}
             handleSelection={handleLookSelection}
@@ -78,7 +77,8 @@ function FindMenu({goSearch}) {
         //showHide={showHide}
         // show={show}
         //setShow={setShow}
-        items={items}
+        // items={items}
+        items={itemSkills}
         lookSelection={lookSelection}
         handleLookSelection={handleLookSelection}
         CountryDropdown={CountryDropdown}

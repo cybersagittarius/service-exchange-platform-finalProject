@@ -6,7 +6,15 @@ import PwResetForm from './forms/PwResetForm'
 const PwReset = () => {
 
     const context = useContext(searchContext);
-    const {userInfo, newPassword, setNewPassword, alertPW, setAlertPW, confirmNewPW, setConfirmNewPW, alertPWCheck, setAlertPWCheck} = context;
+    const {userInfo, 
+        newPassword, 
+        setNewPassword, 
+        alertPW, 
+        setAlertPW, 
+        confirmNewPW, 
+        setConfirmNewPW, 
+        alertPWCheck, 
+        setAlertPWCheck} = context;
 
      const changeNewPW = (e) => {
         setNewPassword(e.target.value);
