@@ -10,8 +10,15 @@ const Search = () => {
 const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, setItemSkills } = useContext(SearchContext);
 
 const data = { country, region, lookSelection, userInfo, searchResults, setItemSkills }
-console.log(data)  
-    
+console.log(data) 
+
+
+
+
+
+
+
+
   return (
   
   <section className="users section">
