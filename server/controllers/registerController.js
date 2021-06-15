@@ -40,7 +40,8 @@ const registerUser = async(req, res, next) => {
      const payload = { user: { id: user._id, email: user.email, username: user.username } };
     //  const payload = { essential : { id: essential._id, email: essential.email } };
      const token = jwt.sign(payload, process.env.JWT_SECRET, {
-       expiresIn: 360000,
+       //equal to 10 hours
+       expiresIn: 3600000,
      });
 
      //res.sendStatus stops after the status being sent, does not send out json

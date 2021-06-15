@@ -39,7 +39,7 @@ const loginUser = async (req, res, next) => {
          
         const payload = { user: { id: findUser._id, email: findUser.email, username: findUser.username } };
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
-          expiresIn: "1h",
+          expiresIn: 3600000,
         })
         res.status(200).json({ token, user: findUser});
     }
