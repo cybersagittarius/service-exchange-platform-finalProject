@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 // import usersGuest from '../assets/data/usersData';
 import {FiChevronRight, FiChevronLeft} from 'react-icons/fi';
-import SearchContext  from '../context/SearchContext';
+import SearchContext from '../context/SearchContext';
 
 
 const Search = () => {  

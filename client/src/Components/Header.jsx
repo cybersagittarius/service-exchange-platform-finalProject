@@ -21,7 +21,7 @@ const Header = () => {
       )}, [])
 
       const goSearch = () => {
-        const data = { itemSkills, country, region, lookSelection, userInfo, searchResults }
+        const data = { country, region, lookSelection, userInfo }
         axios.post('http://localhost:4000/search', data)
         .then(res => { 
            setSearchResults(res.data)         

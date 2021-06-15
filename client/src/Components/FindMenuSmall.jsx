@@ -5,21 +5,41 @@ import onClickOutside from "react-onclickoutside";
 import { Link } from "react-router-dom";
 
 function FindMenuSmall({  
-  items,
-  lookSelection,
-  handleLookSelection,
+  //items,
+  //itemSkills,
+  // lookSelection,
+  // handleLookSelection,
   CountryDropdown,
-  country,
-  selectCountry,
+  // country,
+  // selectCountry,
   RegionDropdown,
-  region,
-  selectRegion,
-  setShowSkillsSelection,
-  showSkillsSelection
+  // region,
+  // selectRegion,
+  // setShowSkillsSelection,
+  // showSkillsSelection
   
 }) {
+  // const context = useContext(SearchContext);
+  // const {show, setShow, showHide, goSearch,  itemSkills} = context
+
   const context = useContext(SearchContext);
-  const {show, setShow, showHide, goSearch} = context
+
+  const {
+    country,
+    region,
+    lookSelection,
+    selectCountry,
+    selectRegion,
+    handleLookSelection,
+    setShowSkillsSelection,
+    showSkillsSelection,
+    itemSkills,
+    show, 
+    setShow, 
+    showHide, 
+    goSearch,
+    
+  } = context;
 
   FindMenuSmall.handleClickOutside = () => setShow("none");
 
@@ -51,7 +71,8 @@ function FindMenuSmall({
               <br />
               <SkillsMenuSmall
                 title="I'm Looking For"
-                items={items}
+                // items={items}
+                items = {itemSkills}
                 multiSelect
                 selection={lookSelection}
                 handleSelection={handleLookSelection}

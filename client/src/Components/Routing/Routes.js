@@ -9,14 +9,16 @@ import Header from '../Header'
 import SearchPage from '../Search';
 import ForgetPWPage from '../userControl/ForgetPW';
 import PwResetPage from '../userControl/PwReset_copy';
-import ChatPage from '../chat/Chat';
+// import ChatPage from '../chat/Chat';
 import NotFound from '../NotFound';
 import ProfilePage from '../ProfilePage';
 
 const Routes = () => (
-  <SearchProvider>
+  
     <Router>
+      <SearchProvider>
       <Header />
+      
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/login" exact component={LoginPage} />
@@ -25,13 +27,15 @@ const Routes = () => (
         <Route path="/reset_password/:token" exact component={PwResetPage} />
         <Route path="/contact" exact component={ContactPage} />
         <Route path="/search" exact component={SearchPage} />
-        <Route path="/chat" exact component={ChatPage} />
+        {/* <Route path="/chat" exact component={ChatPage} /> */}
         <Route path="/profile" component={ProfilePage} />
         {/* <Route path="/change_details" exact component={ChangeDetails}/> */}
         <Route component={NotFound} />
       </Switch>
       <Footer />
+       </SearchProvider>
     </Router>
-  </SearchProvider>
+    
+ 
 );
 export default Routes;
