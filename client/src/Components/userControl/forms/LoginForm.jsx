@@ -94,7 +94,7 @@ const LoginForm = (props) => {
                       />
                     </div>
 
-                    <div className="form-check form-group ml-4 col-lg-2">
+                    {/* <div className="form-check form-group ml-4 col-lg-2">
                       <input
                         type="checkbox"
                         className="form-check-input"
@@ -103,16 +103,16 @@ const LoginForm = (props) => {
                         //in theory onClick should be used but Chrome prefers onChange here
                       />
                       <label> Remember Me </label>
-                    </div>
+                    </div> */}
 
-                    <div className="form-check form-group col-lg-3">
+                    <div className="form-check form-group col-lg-6">
                       <button type="submit" className="btn btn-primary btn-sm"
                       >
                         Login
                       </button>
                     </div>
 
-                    <div className="form-check form-group mx-auto col-lg-5">
+                    <div className="form-check form-group col-lg-6">
                       <Link to="/forget_password">
                         <a href="#"> Forgot Your Password?</a>     
                       </Link>
