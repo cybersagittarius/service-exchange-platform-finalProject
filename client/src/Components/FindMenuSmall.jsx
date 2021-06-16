@@ -1,26 +1,12 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import SkillsMenuSmall from "./SkillsMenuSmall";
 import SearchContext from "../context/SearchContext";
 import onClickOutside from "react-onclickoutside";
-import { Link } from "react-router-dom";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
-function FindMenuSmall({  
-  items,
-  lookSelection,
-  handleLookSelection,
-  CountryDropdown,
-  country,
-  selectCountry,
-  RegionDropdown,
-  region,
-  selectRegion,
-  setShowSkillsSelection,
-  showSkillsSelection,
-  goSearch,  
-}) {
+function FindMenuSmall() {
+
   const context = useContext(SearchContext);
-  const {show, setShow, goRegister, goLogin} = context
-
 
   const showHide = () => {
     if (show === "none") {
@@ -29,6 +15,24 @@ function FindMenuSmall({
       setShow("none");
     }
   };
+
+  const {
+    country,
+    region,
+    lookSelection,
+    selectCountry,
+    selectRegion,
+    handleLookSelection,
+    setShowSkillsSelection,
+    showSkillsSelection,
+    itemSkills,
+    show,
+    setShow,
+    // showHide,
+    goSearch,
+    goRegister,
+    goLogin
+  } = context;
 
   FindMenuSmall.handleClickOutside = () => setShow("none");
 
@@ -47,17 +51,18 @@ function FindMenuSmall({
                 <button>DE</button>
               </div>
 
-                <button onClick={goLogin} className="btn log">
-                  Login
-                </button>
+              <button onClick={goLogin} className="btn log">
+                Login
+              </button>
 
-                <button onClick={goRegister} className="btn log">
-                  Register
-                </button>
+              <button onClick={goRegister} className="btn log">
+                Register
+              </button>
               <br />
               <SkillsMenuSmall
                 title="I'm Looking For"
-                items={items}
+                // items={items}
+                items={itemSkills}
                 multiSelect
                 selection={lookSelection}
                 handleSelection={handleLookSelection}

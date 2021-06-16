@@ -1,17 +1,102 @@
 import React, { useRef, useEffect, useContext } from "react"
 import MyAlert from "../userControl/layout/Alert";
 import SearchContext from "../../context/SearchContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from 'axios';
 
+const ChangePassword = () => {
 
-const ChangePassword = (props) => {
-
+    const history = useHistory()
     const context = useContext(SearchContext)
+    const { userInfo, 
+            newPassword,
+            setNewPassword,
+            confirmNewPW, 
+            setConfirmNewPW,
+            alertPWCheck,
+            setAlertPWCheck, 
+            alertEM,
+            alertPW, 
+             } = context
+
+             //the axios.create does not work, why?
+             const updatePW = async() => {
+                try {
+                    const config = {
+                        headers: { authorization: 'Bearer '+userInfo.token, 
+                                    "Content-Type": "application/json" },
+                    };
+                    const data = { newPassword };
+                    const response = await axios.post(
+                        'http://localhost:4000/profile/change_password',
+                        data,
+                        config
+                    );
+                    
+                    if (response){
+                        alert('Your password has been changed! Remember to use your new password next time you log in ')
+                    }
+                } catch (err) {
+                console.log(`Something went wrong ${err}`);                
+                }
+        }
+
+            const changePassWord = (e) => {
+                setNewPassword(e.target.value);
+            }
+        
+            const changeConfirmPW = (e) =>{
+                setConfirmNewPW(e.target.value)
+            };
+            const submitHandler = (e) => {
+                e.preventDefault();
+        
+                // const pwValidator = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,12})$/
+                // const isPwValid = pwValidator.test(newPassword);
+        
+                // if(!isPwValid){
+                //     setAlertPW(true)
+                //     setTimeout(() => {
+                //         setAlertPW(false)
+                //     }, 20000); 
+                //     return false;                    
+                // }        
+        
+                if(newPassword !== confirmNewPW) {
+                    setAlertPWCheck(true)
+                    setTimeout(()=>{
+                        setAlertPWCheck(false)
+                    }, 5000);
+                    return false;
+                }
+               
+
+            //     const url = `http://localhost:4000/profile`
+            //     const authAxios = axios.create({
+            //             baseURL: url,
+            //             // const config = { headers: { authorization: 'Bearer '+userInfo.token } }
+            //             headers: { authorization: 'Bearer '+userInfo.token, 
+            //                        "Content-Type": "application/json" },  
+            //             body: newPassword                        
+            //         }) 
+        
+            //     const updatePW = async()=>{
+            //             try{
+            //                 const result = await authAxios.post('/change_password/')
+            //                 console.log(result)
+            //             } catch(err)
+            //             { console.log(err.message) }
+            //         }
+                     updatePW();   
+                     
+                     setNewPassword("");
+                     setConfirmNewPW("");
+             }                
 
     return (
 
         <div className="card-body">
-            <form onSubmit={props.submitHandler}>
+            <form onSubmit={submitHandler}>
 
                 <div className="form-group col-lg-7">
                     <label>
@@ -21,11 +106,11 @@ const ChangePassword = (props) => {
                     <br />
                     <input
                         type="password"
-                        name="password"
-                        value={props.password}
+                        name="newPassword"
+                        value={newPassword}
                         placeholder="Please ensure you follow the password setting request"
                         className="form-control"
-                        onChange={props.changePassWord}
+                        onChange={changePassWord}
                         required
                     />
                 </div>
@@ -35,11 +120,11 @@ const ChangePassword = (props) => {
                     <br />
                     <input
                         type="password"
-                        name="confirmPassword"
-                        value={props.confirmPW}
+                        name="confirmNewPassword"
+                        value={confirmNewPW}
                         placeholder="Please confirm your password"
                         className="form-control"
-                        onChange={props.changeConfirmPW}
+                        onChange={changeConfirmPW}
                         required
                     />
                 </div>
@@ -47,7 +132,7 @@ const ChangePassword = (props) => {
                 <div className="form-group col-lg-12 d-flex">
                     <button type="submit" className="btn btn-primary btn-sm">
                         Submit
-                                        </button>
+                    </button>
                 </div>
 
                 <div className="form-group col-lg-12 d-flex">
@@ -55,21 +140,21 @@ const ChangePassword = (props) => {
                     </button>
                 </div>
                 <div className="form-group col-lg-9">
-                    {props.alertEM && (
+                    {alertEM && (
                         <MyAlert
                             alertType={"warning"}
                             alertHeading={"Error!"}
                             alertMessage={"Please Enter A Valid Email "}
                         />
                     )}
-                    {props.alertPW && (
+                    {alertPW && (
                         <MyAlert
                             alertType={"danger"}
                             alertHeading={"Error!"}
                             alertMessage={"Please Enter A Valid Password "}
                         />
                     )}
-                    {props.alertPWCheck && (
+                    {alertPWCheck && (
                         <MyAlert
                             alertType={"warning"}
                             alertHeading={"Error!"}

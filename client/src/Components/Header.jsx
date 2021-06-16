@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import FindMenuLarge from "./FindMenuLarge";
 import Context from "../context/SearchContext";
 import axios from "axios";
@@ -12,19 +12,19 @@ const Header = () => {
     region,
     lookSelection,
     userInfo,
-    searchResults,
     setSearchResults,
     setShowSkillsSelection,
     show,
     setShow,
     goLogin,
-    goRegister
+    goRegister,
+    goLogOut,
+    showHideButton,
+    showLogout,
+    goProfile
   } = context;
 
-  
   const history = useHistory();
- 
-  
 
   useEffect(() => {
     axios
@@ -34,11 +34,11 @@ const Header = () => {
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   }, []);
 
   const goSearch = () => {
-    const data = { country, region, lookSelection, userInfo, searchResults };
+    const data = { country, region, lookSelection, userInfo };
     axios
       .post("http://localhost:4000/search", data)
       .then((res) => {
@@ -60,29 +60,41 @@ const Header = () => {
     }
   };
 
-  
   return (
     <>
       <div className="find">
         <FindMenuLarge goSearch={goSearch} />
         <div className="btn-group LogRegLarge" role="group">
-          {/* <Link to="/logInPage">
-            <button className="btn log">
-              Login
-            </button>
-          </Link>
-          <Link to="/register">
-            <button className="btn log">
-              Register
-            </button>
-          </Link> */}
-
-          <button onClick={goLogin} className="btn log">
+          <button
+            onClick={goLogin}
+            className="btn log"
+            style={{ display: showHideButton }}
+          >
             Login
           </button>
 
-          <button onClick={goRegister} className="btn log">
+          <button
+            onClick={goRegister}
+            className="btn log"
+            style={{ display: showHideButton }}
+          >
             Register
+          </button>
+
+          <button 
+          onClick={goLogOut} 
+          className="btn log" 
+          style={{ display: showLogout }}
+          >
+            Logout
+          </button>
+
+          <button 
+          onClick={goProfile} 
+          className="btn log" 
+          style={{ display: showLogout }}
+          >
+            Profile
           </button>
 
           <div className="btn-group LogRegSmall" role="group">

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 //import axios from './configure-files/axios'
 import axios from "axios";
 import searchContext from "../../context/SearchContext";
-
+import { useHistory } from "react-router";
 import RegistrationForm from "./forms/RegistrationForm";
 
 const Register = (props) => {
@@ -15,7 +15,9 @@ const Register = (props) => {
 
   //we bring in the store at this point
   const context = useContext(searchContext);
+  const history = useHistory()
   const {
+    userInfo,
     setUserInfo,
     email,
     setEmail,
@@ -29,7 +31,8 @@ const Register = (props) => {
     alertPWCheck,
     alertEM,
     offerSelection,
-    setOfferSelection
+    setOfferSelection,
+    itemSkills,    
   } = context;
 
   const postNewUser = (
@@ -42,7 +45,8 @@ const Register = (props) => {
     password,
     confirmPW,
     savedImage,
-    offerSelection
+    offerSelection,
+    
   ) => {
     const data = {
       firstname,
@@ -55,6 +59,7 @@ const Register = (props) => {
       confirmPW,
       savedImage,
       offerSelection,
+    
     };
 console.log(data);
     axios
@@ -62,18 +67,19 @@ console.log(data);
       //we do not need res.json in axios at all
       .then(res => {
         setUserInfo({token: res.data.token, user: res.data.user})
-        props.history.push('/profile')
+        history.push('/profile')
         alert('registration succeeded!')
       })    
       // in case the API responded, we will have the error inside error.response.data 
       .catch(err => {
-          console.log(err.res && err.res.data)
+          console.log(err)
           alert('please try again with a different email account')
       })
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
+        e.preventDefault();     
+
 
     //email validator source:
     //At least 8 characters long;
@@ -121,7 +127,8 @@ console.log(data);
       password,
       confirmPW,
       savedImage,
-      offerSelection
+      offerSelection,
+      
     );
 
     //  setFirstName("");
@@ -198,7 +205,7 @@ console.log(data);
   return (
     <>
       <RegistrationForm
-        submitHandler={submitHandler}
+        submitHandler = {submitHandler}
         changeFirstName={changeFirstName}
         changeLastName={changeLastName}
         changeEmail={changeEmail}
@@ -227,6 +234,7 @@ console.log(data);
         onBeforeFileLoad={onBeforeFileLoad}
         preview={preview}
         savedImage={savedImage}
+        itemSkills={itemSkills}        
       />
     </>
   );
