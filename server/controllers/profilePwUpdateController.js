@@ -1,12 +1,10 @@
 const express = require('express');
 const Essential = require('../models/essentialModel');
 
-const profilePWChange = async(req, res, next) => {
+const profilePWChange = async(req, res, next) => {  
   
-  //let {email} = req.user ?
   let { email } = req.user
-  //let email = req.userInfo.user.email
-  console.log('is there a req.body', req)
+  //let email = req.userInfo.user.email  
   let essential = await Essential.findOne({email: email}) 
 
   try {

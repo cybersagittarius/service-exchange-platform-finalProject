@@ -6,7 +6,7 @@ const sendEmail2User = async(req, res, next) => {
 
     //toUser is the recepient, fromUser is the sender
     const {toUser, fromUser, text, subject} = req.body
-    console.log(toUser.email, fromUser.email, text, subject)    
+    console.log(toUser.email, fromUser.email, text, subject) 
     
         
         sendEmail(toUser, fromUser, text, subject)
