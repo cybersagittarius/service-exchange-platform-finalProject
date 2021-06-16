@@ -1,20 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState, useEffect} from 'react';
+import axios from 'axios'; 
 // import usersGuest from '../assets/data/usersData';
 import SearchContext  from '../context/SearchContext';
 
 
-const Search = () => {  
+const Search = () => { 
+
 
 const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, setItemSkills } = useContext(SearchContext);
 
 const data = { country, region, lookSelection, userInfo, searchResults, setItemSkills }
-console.log(data) 
-
-
-
-
-
-
+// console.log(data) 
 
 
   return (
@@ -36,24 +32,21 @@ console.log(data)
         }
         if (userIndex === index -1 || (index === 0 && userIndex === users.length -1)){
           position = "lastIndex";
-        }
-        return(
-         
-<article key={id} className={position}>
-<img src={image} alt={name} className="user-img"/>
-<h4>{name}</h4>
-<h6 className="skills"><span>{skills}</span></h6>
-<p className="text">{desc}</p>
-</article>
+        }*/}
+   
+      {searchResults.map((search) => {
+        const {avatar_url, skills, username, description} = search
+        console.log(search)
+            return(
+                <article>
+            <img src={avatar_url} alt={username} className="user-img"/>
+                <h4>{username}</h4>
+              <h6 className="skills"><span>{skills[0].length}</span></h6>
+              <p className="text">{description}</p>
+                  </article> 
+                )
+                })}    
 
-        )
-    })}
-    <button className="prev">
-          <FiChevronLeft onClick={prevSlide}/>
-        </button>
-        <button className="next">
-          <FiChevronRight onClick={nextSlide}/>
-        </button> */}
     </div>
    
     </section>     
