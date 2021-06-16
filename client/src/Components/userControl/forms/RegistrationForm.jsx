@@ -37,7 +37,7 @@ const RegistrationForm = (props) => {
               <form onSubmit={props.submitHandler}>
                 <div className="form-row">
                   <div className="form-group col-lg-6">
-                    <label>First Name</label>
+                    <label>First Name*</label>
 
                     <input
                       type="text"
@@ -52,7 +52,7 @@ const RegistrationForm = (props) => {
                   </div>
 
                   <div className="form-group col-lg-6">
-                    <label>Last Name</label>
+                    <label>Last Name*</label>
 
                     <input
                       type="text"
@@ -66,7 +66,7 @@ const RegistrationForm = (props) => {
                   </div>
 
                   <div className="form-group col-lg-12">
-                    <label>Country</label>
+                    <label>Country*</label>
                     
                     <RegionCountrySelector
                       country={props.country}
@@ -78,7 +78,7 @@ const RegistrationForm = (props) => {
                   </div>
 
                   <div className="form-group col-lg-7">
-                    <label>Email</label>
+                    <label>Email*</label>
 
                     <input
                       type="text"
@@ -92,7 +92,7 @@ const RegistrationForm = (props) => {
                   </div>
 
                   <div className="form-group col-lg-5">
-                    <label>User Name</label>
+                    <label>User Name*</label>
 
                     <input
                       type="text"
@@ -107,7 +107,7 @@ const RegistrationForm = (props) => {
 
                   <div className="form-group col-lg-7">
                     <label>
-                      Set Password (8-12 characters, at least 1 uppercase, 1 lowercase, 1
+                      Set Password* (8-12 characters, at least 1 uppercase, 1 lowercase, 1
                       number, 1 special character. No Whitespace)
                     </label>
                     <br />
@@ -123,7 +123,7 @@ const RegistrationForm = (props) => {
                   </div>
 
                   <div className="form-group col-lg-5">
-                    <label className="mb-4">Confirm Password</label>
+                    <label className="mb-4">Confirm Password*</label>
                     <br />
                     <input
                       type="password"
@@ -138,7 +138,7 @@ const RegistrationForm = (props) => {
 
                  <div className="form-group col-lg-4">
                     <label>
-                      Avatar: Maximal Upload File Size 80 KB
+                      Avatar*: Maximal Upload File Size 80 KB
                     </label>
                         
                     <AvatarUploader
@@ -157,7 +157,7 @@ const RegistrationForm = (props) => {
 
                   <div className="form-group col-lg-4">
                     <label>
-                      Skills I can offer
+                      Skills I can offer*
                     </label>
 
                     {/* <SkillsMenu 

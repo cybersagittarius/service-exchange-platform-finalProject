@@ -31,7 +31,7 @@ const PwResetForm = (props) => {
                 <br />
                   {/* <div className="form-row"> */}
                     <div className="form-group col-lg-12">
-                      <label>Enter Your New Password</label>
+                      <label>Enter Your New Password*</label>
 
                       <input
                         type="password"
@@ -47,7 +47,7 @@ const PwResetForm = (props) => {
                 {/* </div> */}
 
                     <div className="form-group col-lg-12">
-                      <label>Confirm Your New Password</label>
+                      <label>Confirm Your New Password*</label>
                       
                       <input
                         type="password"

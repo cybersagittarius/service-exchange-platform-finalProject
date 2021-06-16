@@ -66,7 +66,7 @@ const LoginForm = (props) => {
                 <br />
                   <div className="form-row">
                     <div className="form-group col-lg-6">
-                      <label>Your Email</label>
+                      <label>Your Email*</label>
 
                       <input
                         type="text"
@@ -81,7 +81,7 @@ const LoginForm = (props) => {
                     </div>
 
                     <div className="form-group col-lg-6">
-                      <label>Your Password</label>
+                      <label>Your Password*</label>
                       <br />
                       <input
                         type="password"
