@@ -138,7 +138,7 @@ const RegistrationForm = (props) => {
 
                  <div className="form-group col-lg-4">
                     <label>
-                      Avatar*: Maximal Upload File Size <strong style={{textDecoration: 'underline'}}>80</strong> KB
+                      Avatar*: Maximal Upload File Size <strong style={{textDecoration: 'underline red'}}>80</strong> KB
                     </label>
                         
                     <AvatarUploader
