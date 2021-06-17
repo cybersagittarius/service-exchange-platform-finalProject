@@ -76,7 +76,7 @@ const checkToken4Search = async(req, res, next) => {
 const limitedSearch = (req, res, next) => {
     // we want to find all users with the same lookselection and country
     console.log(req.body)
-    const { lookSelection, country, userInfo, searchResults } = req.body //decide if we should include region later
+    const { lookSelection, country, region, userInfo, searchResults } = req.body //decide if we should include region later
 
     // get id from lookselection
     let arrayOfSkillsIds = lookSelection.map(item=>item.id);
@@ -97,12 +97,12 @@ const limitedSearch = (req, res, next) => {
 const fullSearch = (req, res, next) => {
     //take out region from deconstructuring for now
     console.log(req.body)
-    const { lookSelection, country, userInfo, searchResults } = req.body    
+    const { lookSelection, country, region, userInfo, searchResults } = req.body    
 
     let arrayOfSkillsIds = lookSelection.map(item=>item.id);
 
     //take out region: region after country: country for now
-    User.find({country: country, "skills.id": {$in: arrayOfSkillsIds} }, {_id:0})
+    User.find({country: country, region: region, "skills.id": {$in: arrayOfSkillsIds} }, {_id:0})
     .then(data=>{
         console.log(data)
         res.json(data)
