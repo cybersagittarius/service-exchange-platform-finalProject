@@ -62,6 +62,7 @@ const registerRouter = require('./routes/registerRouter');
 const itemSkillsSeedRouter = require('./routes/itemSkillsSeedRouter')
 const itemSkillsRouter = require('./routes/itemSkillsRouter');
 const searchRouter = require('./routes/searchRouter');
+const sendEmailRouter = require('./routes/sendEmailRouter')
 
 
 //user routers as middlewares
@@ -81,6 +82,7 @@ app.use('/reset_password', pwResetRouter);
 app.use('/itemSkillsSeed', itemSkillsSeedRouter)
 app.use('/itemSkills', itemSkillsRouter);
 app.use('/search', searchRouter);
+app.use('/search/sendemail', sendEmailRouter)
 
 
 //a simple test to make sure server works

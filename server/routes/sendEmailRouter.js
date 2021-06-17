@@ -4,4 +4,4 @@ const sendEmailController = require('../controllers/sendEmailController')
 
 router.route('/').post(sendEmailController)
 
-module.exports = route
+module.exports = router

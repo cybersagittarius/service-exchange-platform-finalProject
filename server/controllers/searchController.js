@@ -85,7 +85,7 @@ const limitedSearch = (req, res, next) => {
     // to do this we will use the user model and the find method
     // User.find({condition},{config})
     //region: region, we can decide if we want to include them after country: country
-    User.find({country: country, "skills.id": {$in: arrayOfSkillsIds} }, {_id:false, email:false, firstname:false, lastname:false, hobby: false})
+    User.find({country: country, region: region, "skills.id": {$in: arrayOfSkillsIds} }, {_id:false, email:false, firstname:false, lastname:false, description: false, hobby: false})
     .then(data=>{
         console.log(data)
         res.json(data)
