@@ -10,7 +10,7 @@ const ChangeDetails = () => {
     const context = useContext(searchContext)
     const { setUserInfo } = context
 
-    const { userInfo } = context
+    const { userInfo, itemSkills } = context
     const user = userInfo.user
 
 
@@ -28,7 +28,7 @@ const ChangeDetails = () => {
 
     const [alertEM, setAlertEM] = useState(false);
     const [alertPW, setAlertPW] = useState(false);
-    const [alertPWCheck, setAlertPWCheck] = useState(false);
+    const [alertPWCheck, setAlertPWCheck] = useState(false);    
 
     //we bring in the store at this point
 
@@ -170,6 +170,8 @@ const ChangeDetails = () => {
                 alertEM={alertEM}
                 alertPW={alertPW}
                 alertPWCheck={alertPWCheck}
+                //send this over to form
+                itemSkills={itemSkills}
 
                 //props passing to grandchild of Avatar
                 // take onClose off to deactivate it

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useContext } from "react"
 import SkillsMenuLarge from '../SkillsMenuLarge'
-import items from '../../assets/data/itemsSkills'
+//comment out to try
+//import items from '../../assets/data/itemsSkills'
 import MyAlert from "../userControl/layout/Alert";
 import SearchContext from "../../context/SearchContext";
 
@@ -9,6 +10,7 @@ import { Link } from "react-router-dom";
 //3rd party package
 import RegionCountrySelector from "../userControl/selector/RegionCountrySelector";
 import AvatarUploader from "../userControl/upload-edit/AvatarUploader";
+
 
 
 const ChangeDetailsForm = (props) => {
@@ -96,7 +98,7 @@ const ChangeDetailsForm = (props) => {
                     <SkillsMenuLarge
                       // title="I'm looking for" 
                       className="form-control"
-                      items={items}
+                      items={props.itemSkills}
                       multiSelect
                       selection={props.offerSelection}
                       handleSelection={props.changeOfferSelection} />
