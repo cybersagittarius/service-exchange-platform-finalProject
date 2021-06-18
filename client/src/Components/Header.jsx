@@ -38,7 +38,9 @@ const Header = () => {
   }, []);
 
   const goSearch = () => {
+
     const data = { country, region, lookSelection, userInfo };
+
     axios
       .post("http://localhost:4000/search", data)
       .then((res) => {
@@ -47,6 +49,7 @@ const Header = () => {
       .catch((error) => {
         console.log(error);
       });
+
     showHide();
     setShowSkillsSelection("none");
     history.push("/search");
@@ -60,6 +63,7 @@ const Header = () => {
     }
   };
 
+  
   return (
     <>
       <div className="find">
@@ -96,6 +100,11 @@ const Header = () => {
           >
             Profile
           </button>
+
+          {userInfo.user && <img 
+          width="30px"
+          height="30px"
+          src={userInfo.user.avatar_url} alt="avatar" style={{ display: showLogout }}/> }
 
           <div className="btn-group LogRegSmall" role="group">
             <button>EN</button>

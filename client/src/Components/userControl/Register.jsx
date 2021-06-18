@@ -6,9 +6,9 @@ import { useHistory } from "react-router";
 import RegistrationForm from "./forms/RegistrationForm";
 
 const Register = (props) => {
-  const [firstname, setFirstName] = useState("");
+  // const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-  const [username, setUserName] = useState("");
+  // const [username, setUserName] = useState("");
   const [confirmPW, setConfirmPW] = useState("");
   const [preview, setPreview] = useState("");
   const [savedImage, setSavedImage] = useState("");
@@ -17,7 +17,6 @@ const Register = (props) => {
   const context = useContext(searchContext);
   const history = useHistory()
   const {
-    userInfo,
     setUserInfo,
     email,
     setEmail,
@@ -32,7 +31,13 @@ const Register = (props) => {
     alertEM,
     offerSelection,
     setOfferSelection,
-    itemSkills,    
+    itemSkills,
+    firstname,
+    setFirstName,
+    username,
+    setUserName,
+    setShowHideButtons,
+    setShowLogout
   } = context;
 
   const postNewUser = (
@@ -69,6 +74,8 @@ console.log(data);
         setUserInfo({token: res.data.token, user: res.data.user})
         history.push('/profile')
         alert('registration succeeded!')
+        setShowHideButtons("none");
+        setShowLogout("block");
       })    
       // in case the API responded, we will have the error inside error.response.data 
       .catch(err => {

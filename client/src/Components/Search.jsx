@@ -1,139 +1,45 @@
-import React, { useContext,useState, useEffect} from 'react';
-import axios from 'axios'; 
-// import usersGuest from '../assets/data/usersData';
-import {FiChevronRight, FiChevronLeft} from 'react-icons/fi';
-import SearchContext from '../context/SearchContext';
+import React, { useContext } from "react";
+import SearchResult from "./SearchResult";
+import SearchContext from "../context/SearchContext";
 
 
-const Search = () => { 
+const Search = () => {
 
 
-const{ lookSelection, country, region, searchResults, setSearchResults, userInfo, itemSkills } = useContext(SearchContext);
+  const { lookSelection, country, region, searchResults } =
+    useContext(SearchContext);
 
-const data = { country, region, lookSelection, userInfo, searchResults, itemSkills }
-console.log(data)  
-    
+  const searchResultsDisplay = searchResults.map((result) => (
+    <SearchResult result={result} />
+  ));
+
+  const list = lookSelection.map((selection) => selection.value);
+
   return (
-  
-  <section className="users section">
-          <div  className="show-category">
-        <h4>You are looking for/<span>{lookSelection.length >0 && lookSelection.map((select => <ol>{select.value}</ol>)
-        )}</span></h4>
-  
-       <h4>Country/<span>{country}</span> </h4> 
-        <h4>Region/<span>{region}</span> </h4>
-</div>
-    <div className="section-center">
-    {/* {users.map((user,userIndex)=>{
-        const {id,name,image,skills,desc} = user
-        let position = "nextSlide";
-        if(userIndex === index){
-          position = "activeSlide";
-        }
-        if (userIndex === index -1 || (index === 0 && userIndex === users.length -1)){
-          position = "lastIndex";
-        }*/}
-   
-      {searchResults.map((search) => {
-        const {avatar_url, skills, username, description} = search
-        console.log(search)
-            return(
-                <article>
-            <img src={avatar_url} alt={username} className="user-img"/>
-                <h4>{username}</h4>
-              <h6 className="skills"><span>{skills[0].length}</span></h6>
-              <p className="text">{description}</p>
-                  </article> 
-                )
-                })}    
+    <>
+      <br />
+      <br />
+      <br />
+      <div className="searchCriteriaDisplay">
+        <p>You are looking for: {list.toString()}</p>
+        <p>
+          {" "}
+          in {country} / {region}.
+        </p>
+      </div>
 
-    </div>
-   
-    </section>     
-    
+      {searchResults.length > 0 && <p className="matches">Here comes the matches we found for you:</p>}
+      {searchResults.length > 0 ? (
+        searchResultsDisplay
+      ) : (
+        <h1 className="noMatches">
+          No matches found <br />
+          or you you forgot to login
+        </h1>
+      )}
+    </>
+
   );
 };
 
-export default Search
-
-
-// import React, {useState, useContext} from 'react';
-// import {Link} from 'react-router-dom';
-// import usersGuest from '../assets/data/usersData';
-// import {FiChevronRight, FiChevronLeft} from 'react-icons/fi';
-// import SearchContext  from '../context/SearchContext';
-
-// const Search = () => {
-//   const [users, setUsers] = useState(usersGuest);
-//   const [index, setIndex] = useState(0);
-
-// const{ lookSelection,country,region } = useContext(SearchContext);
-
-//   const prevSlide = () => {
-// setIndex((oldIndex) => {
-//   let index = oldIndex -1
-//   if (index < 0) {
-//     index = users.length -1
-//   }
-//   return index;
-// });
-//   };
-//   const nextSlide = () => {
-//     setIndex((oldIndex) => {
-//       let index = oldIndex +1
-//       if (index > users.length -1) {
-//         index = 0
-//       }
-//       return index;
-//     });
-//       };
-     
-
-//   return (
-    
-//   <section className="users section">
-//           <div  className="show-category">
-//         <h4>You are looking for/<span>{lookSelection.length >0 && lookSelection.map((select)=>{
-//           const {id,value} = select;
-//           return <ol>{select.value}</ol>
-//         })}</span></h4>
-  
-//        <h4>Country/<span>{country}</span> </h4> 
-//         <h4>Region/<span>{region}</span> </h4>
-// </div> 
-//     <div className="section-center">
-//     {users.map((user,userIndex)=>{
-//         const {id,name,image,skills,desc} = user
-//         let position = "nextSlide";
-//         if(userIndex === index){
-//           position = "activeSlide";
-//         }
-//         if (userIndex === index -1 || (index === 0 && userIndex === users.length -1)){
-//           position = "lastIndex";
-//         }
-//         return(
-         
-// <article key={id} className={position}>
-// <img src={image} alt={name} className="user-img"/>
-// <h4>{name}</h4>
-// <h6 className="skills"><span>{skills}</span></h6>
-// <p className="text">{desc}</p>
-// </article>
-
-//         )
-//     })}
-//     <button className="prev">
-//           <FiChevronLeft onClick={prevSlide}/>
-//         </button>
-//         <button className="next">
-//           <FiChevronRight onClick={nextSlide}/>
-//         </button>
-//     </div>
-   
-//     </section>
-     
-    
-//   );
-// };
-
-// export default Search
+export default Search;
