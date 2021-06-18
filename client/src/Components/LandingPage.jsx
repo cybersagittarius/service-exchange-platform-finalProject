@@ -6,7 +6,7 @@ import React from "react";
 import Main from "./Main";
 import About from "./About";
 import Team from "./Team";
-import Chat from "./chat/Chat"
+//import Chat from "./chat/Chat"
 //npm install react-router-dom
 import "bootstrap/dist/css/bootstrap.min.css";
 

@@ -22,8 +22,8 @@
         "_mixins.scss",
         "_Team.scss",
         "_variables.scss",
-        "_userControl.scss",
-        "_chat.scss"
+        "_userControl.scss"
+        //"_chat.scss"
     ],
     "names": [],
     "file": "mainStyle.css"
