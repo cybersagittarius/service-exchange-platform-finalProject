@@ -1,25 +1,37 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import SkillsMenuSmall from "./SkillsMenuSmall";
 import SearchContext from "../context/SearchContext";
 import onClickOutside from "react-onclickoutside";
-import { Link } from "react-router-dom";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
-function FindMenuSmall({  
-  items,
-  lookSelection,
-  handleLookSelection,
-  CountryDropdown,
-  country,
-  selectCountry,
-  RegionDropdown,
-  region,
-  selectRegion,
-  setShowSkillsSelection,
-  showSkillsSelection
-  
-}) {
+function FindMenuSmall({goSearch}) {
+
   const context = useContext(SearchContext);
-  const {show, setShow, showHide, goSearch} = context
+
+  const showHide = () => {
+    if (show === "none") {
+      setShow("block");
+    } else {
+      setShow("none");
+    }
+  };
+
+  const {
+    country,
+    region,
+    lookSelection,
+    selectCountry,
+    selectRegion,
+    handleLookSelection,
+    setShowSkillsSelection,
+    showSkillsSelection,
+    itemSkills,
+    show,
+    setShow,
+    // showHide,
+    goRegister,
+    goLogin
+  } = context;
 
   FindMenuSmall.handleClickOutside = () => setShow("none");
 
@@ -31,27 +43,25 @@ function FindMenuSmall({
         </button>
 
         <div style={{ display: show }}>
-          <form className="DDFindMenu">
+          <div className="DDFindMenu">
             <div className="skillsMenus">
               <div className="btn-group LogRegSmall" role="group">
                 <button>EN</button>
                 <button>DE</button>
               </div>
 
-              <Link to="/login">
-                <button className="btn log">
-                  <a href="#">Login</a>
-                </button>
-              </Link>
-              <Link to="/register">
-                <button className="btn log">
-                  <a href="#">Register</a>
-                </button>
-              </Link>
+              <button onClick={goLogin} className="btn log">
+                Login
+              </button>
+
+              <button onClick={goRegister} className="btn log">
+                Register
+              </button>
               <br />
               <SkillsMenuSmall
                 title="I'm Looking For"
-                items={items}
+                // items={items}
+                items={itemSkills}
                 multiSelect
                 selection={lookSelection}
                 handleSelection={handleLookSelection}
@@ -80,7 +90,7 @@ function FindMenuSmall({
                 Find
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

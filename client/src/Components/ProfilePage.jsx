@@ -15,9 +15,6 @@ const ProfilePage = (props) => {
     const context = useContext(SearchContext)
     const { userInfo } = context
 
-
-
-
     return (
 
         <div className="app_body">

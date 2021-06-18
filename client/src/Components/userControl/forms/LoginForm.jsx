@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect} from "react";
 import { Link } from "react-router-dom";
-
 import Main from '../../Main'
 import MyAlert from "../layout/Alert";
 import ButtonMU from "../layout/ButtonMU";
@@ -31,7 +30,6 @@ const LoginForm = (props) => {
 
   return (
     <>
-    <Main />
       <div className="backLogin">
         <div className="div-center">
           <div className="container">
@@ -108,7 +106,8 @@ const LoginForm = (props) => {
                     </div>
 
                     <div className="form-check form-group col-lg-3">
-                      <button type="submit" className="btn btn-primary btn-sm">
+                      <button type="submit" className="btn btn-primary btn-sm"
+                      >
                         Login
                       </button>
                     </div>
