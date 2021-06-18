@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import SkillsMenuLarge from "./SkillsMenuLarge";
 //import items from "../assets/data/itemsSkills";
@@ -40,6 +40,7 @@ function FindMenu({goSearch}) {
             title="I'm Looking For"
             // items={items}
             items={itemSkills}
+            goSearch={goSearch}
             multiSelect
             selection={lookSelection}
             handleSelection={handleLookSelection}

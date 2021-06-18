@@ -4,7 +4,7 @@ import SearchContext from "../context/SearchContext";
 import onClickOutside from "react-onclickoutside";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
-function FindMenuSmall() {
+function FindMenuSmall({goSearch}) {
 
   const context = useContext(SearchContext);
 
@@ -29,7 +29,6 @@ function FindMenuSmall() {
     show,
     setShow,
     // showHide,
-    goSearch,
     goRegister,
     goLogin
   } = context;

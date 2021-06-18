@@ -52,6 +52,7 @@ const Login = () => {
     axios
       .post("http://localhost:4000/login", data)
       .then((res) => {
+        console.log(res.data);
         setUserInfo({ token: res.data.token, user: res.data.user });
         if (res.data.status === 400) {
           alert("Oops! try again!");
