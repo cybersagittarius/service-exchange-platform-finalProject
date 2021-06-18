@@ -21,7 +21,7 @@ const Register = (props) => {
     email,
     setEmail,
     password,
-    setPassWord,
+    setPassword,
     country,
     setCountry,
     region,
@@ -66,7 +66,7 @@ const Register = (props) => {
       offerSelection,
     
     };
-
+console.log(data);
     axios
       .post("http://localhost:4000/register", data)
       //we do not need res.json in axios at all
@@ -170,7 +170,7 @@ const Register = (props) => {
   };
 
   const changePassWord = (e) => {
-    setPassWord(e.target.value);
+    setPassword(e.target.value);
   };
 
   const changeConfirmPW = (e) => {

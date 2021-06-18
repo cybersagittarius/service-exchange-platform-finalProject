@@ -4,6 +4,7 @@ import axios from "axios";
 import SearchContext from "./SearchContext";
 
 const SearchProvider = (props) => {
+
     const [firstname, setFirstName] = useState("");
     const [username, setUserName] = useState("");
     const [country, setCountry] = useState(" ");
@@ -168,6 +169,7 @@ const SearchProvider = (props) => {
         } > { props.children } { " " } <
         /SearchContext.Provider>{" "} < / >
     );
+
 };
 
 export default SearchProvider;

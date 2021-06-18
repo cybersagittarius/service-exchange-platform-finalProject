@@ -5,6 +5,7 @@ import SearchContext from "../context/SearchContext";
 
 const Search = () => {
 
+
   const { lookSelection, country, region, searchResults } =
     useContext(SearchContext);
 
@@ -37,6 +38,7 @@ const Search = () => {
         </h1>
       )}
     </>
+
   );
 };
 
